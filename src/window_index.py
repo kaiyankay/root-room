@@ -143,7 +143,7 @@ def select(paths: Iterable[pathlib.Path], bbox: Optional[BBox]) -> List[pathlib.
 
 _JSON: "OrderedDict[str, tuple]" = OrderedDict()   # path -> (size, mtime_ns, parsed, bytes)
 _JSON_BYTES = 0
-JSON_CACHE_BYTES = 192 * 1024 * 1024   # the parsed window files kept between runs in one process (a street's set is ~40 MB)
+JSON_CACHE_BYTES = int(os.environ.get("ROOT_ROOM_JSON_CACHE_MB", "192")) * 1024 * 1024   # the parsed window files kept between runs in one process (a street's set is ~40 MB); smaller on a small host
 
 
 def load_json(path: pathlib.Path):

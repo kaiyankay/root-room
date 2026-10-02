@@ -31,6 +31,8 @@ python3 scripts/serve_web.py --port 8767
 
 Open **http://127.0.0.1:8767/** in a desktop browser (composed for 1500 × 800 and up). The pilot street, the 400 block of West King Edward Avenue, is ready to use: this repository carries its City data. Any other street works too; its City data is fetched on first use and kept (about two minutes the first time). The engine and the exporter run inside the server: the first run after a start takes about six seconds, after that a tree click answers in four to five seconds and a ground change in two to three.
 
+To put it online for others, the repository carries a `Dockerfile` (Hugging Face Spaces with the Docker SDK, port 7860, or any container host) and a `render.yaml` (a Render free web service); both start the same server.
+
 ## The six stages
 
 One question runs through the page, *how much tree can the ground carry at …?*, and one continuous scroll answers it in six stages on one drawing. The rail's steps, the keys 1–6 and the arrow keys jump between them. Every run shows itself: a bar along the top of the sheet fills over the time the last run took, and the stage tag counts the seconds.
