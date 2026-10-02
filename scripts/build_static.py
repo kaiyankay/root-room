@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -29,6 +30,7 @@ import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PILOT = "KE-198571_curb10"
+PYODIDE_PY = (3, 12)          # the Python of the Pyodide release engine-worker.js loads (0.27.7)
 MAP_FILES = {
     "data/raw": ("parks-polygon-representation.geojson", "public-streets.geojson", "local-area-boundary.geojson"),
     "data/processed": ("local_area_species.json", "local_area_capacity.json", "citywide_faces.json", "region_base.json",
@@ -107,16 +109,89 @@ for s in sorted(sites):
 # 4 · the paths the page takes in the browser: a ground change, a species, a saved scenario
 T0 = PILOT.split("_")[0]
 sc = dict(base, site_id=T0, scenario=True, scenario_fresh=True, base_engine=pilot["engine_file"], depth=1.2)
-S1 = scene_api.evaluate_scene(T0, sc)
+S1 = scene_api.evaluate_scene(T0, sc); dump("_check/scenario_d12.json", S1)
 lib = (S1.get("library") or {}).get("cards") or []
 if lib:
     scene_api.evaluate_scene(T0, dict(sc, scenario_fresh=False, candidate=lib[0]["id"], candidate_only=True))
-scene_api.evaluate_scene(T0, dict(sc, scenario_fresh=False, depth=0.9, extensions=[{"side": "property", "width_m": 1.8, "soil_type": "structural_soil", "provenance": "DESIGN_ASSUMPTION"}]))
+S3 = scene_api.evaluate_scene(T0, dict(sc, scenario_fresh=False, depth=0.9, extensions=[{"side": "property", "width_m": 1.8, "soil_type": "structural_soil", "provenance": "DESIGN_ASSUMPTION"}])); dump("_check/scenario_ext.json", S3)
+S4 = scene_api.evaluate_scene(T0, dict(sc, scenario_fresh=False, depth=0.6, soil="structural_soil", replacement=True)); dump("_check/scenario_struct.json", S4)
 scene_api.freeze_scene(T0, S1, "trace", 0.0)
 scene_api.list_frozen(T0)
 
 json.dump({"before": sorted(before), "reads": sorted(reads), "story": story, "base": base, "engine_assets": engine_assets}, open(OUT / "_trace.json", "w"))
 '''
+
+
+CLIP_PAD_M = 350.0
+CLIP_MIN_BYTES = 100_000
+CLIP_KEEP = ("gwells",)          # the nearest logged borehole may lie far away: never cut
+SKIP_KEYS = ("exported_on", "generated", "timestamp", "run_at", "saved_at", "engine_stdout", "args", "run_on")
+
+
+def demo_bbox(out: pathlib.Path, tr) -> list:
+    pts = []
+    for a in tr["engine_assets"]:
+        try:
+            d = json.loads((out / "api" / "tree" / f"{a}.json").read_text()); pts.append((d["lon"], d["lat"]))
+        except (OSError, KeyError, ValueError):
+            pass
+    lo0, lo1 = min(p[0] for p in pts), max(p[0] for p in pts); la0, la1 = min(p[1] for p in pts), max(p[1] for p in pts)
+    import math
+    dla = CLIP_PAD_M / 111_320.0; dlo = CLIP_PAD_M / (111_320.0 * math.cos(math.radians((la0 + la1) / 2)))
+    return [lo0 - dlo, la0 - dla, lo1 + dlo, la1 + dla]
+
+
+def _coords(g):
+    if not g:
+        return
+    if g.get("type") == "GeometryCollection":
+        for x in g.get("geometries", []):
+            yield from _coords(x)
+        return
+    st = [g.get("coordinates")]
+    while st:
+        x = st.pop()
+        if isinstance(x, (list, tuple)) and x and isinstance(x[0], (int, float)):
+            yield x
+        elif isinstance(x, (list, tuple)):
+            st.extend(x)
+
+
+def clip_large_files(work: pathlib.Path, rels, bbox) -> list:
+    lo0, la0, lo1, la1 = bbox
+    cut = []
+    for rel in rels:
+        fp = work / rel
+        if not rel.startswith("data/raw/") or not rel.endswith(".geojson") or fp.stat().st_size < CLIP_MIN_BYTES or any(k in rel for k in CLIP_KEEP):
+            continue
+        doc = json.loads(fp.read_text(encoding="utf-8"))
+        feats = doc.get("features", [])
+        keep = [f for f in feats if any(lo0 <= c[0] <= lo1 and la0 <= c[1] <= la1 for c in _coords(f.get("geometry")))]
+        doc["features"] = keep
+        fp.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        cut.append((rel, len(feats), len(keep)))
+    return cut
+
+
+def _strip(o):
+    if isinstance(o, dict):
+        return {k: _strip(v) for k, v in o.items() if k not in SKIP_KEYS}
+    if isinstance(o, list):
+        return [_strip(v) for v in o]
+    return o
+
+
+def compare_runs(a: pathlib.Path, b: pathlib.Path, story) -> list:
+    names = [f"api/scene/{s}.json" for s in story] + [str(p.relative_to(a)) for p in sorted((a / "_check").glob("*.json"))]
+    diffs = []
+    for n in names:
+        try:
+            x, y = json.loads((a / n).read_text()), json.loads((b / n).read_text())
+        except (OSError, ValueError) as e:
+            diffs.append(f"{n}: {e}"); continue
+        if _strip(x) != _strip(y):
+            diffs.append(n)
+    return diffs
 
 
 def copy_repo(dst: pathlib.Path) -> None:
@@ -144,7 +219,25 @@ def main(argv=None) -> int:
         (out / "_trace.json").unlink()
         before = set(tr["before"])
 
+        # the large City files cut to the streets the demo carries (+ CLIP_PAD_M); kept only if every check run is unchanged
+        work2 = pathlib.Path(tmp) / "repo_clipped"
+        copy_repo(work2)
+        bbox = demo_bbox(out, tr)
+        cut = clip_large_files(work2, sorted(r for r in tr["reads"] if r in before), bbox)
+        out2 = pathlib.Path(tmp) / "check"
+        # this second run is the browser's case: clipped files, and records decided by the fast validator alone
+        subprocess.run([sys.executable, "-c", TRACE, str(out2), PILOT], cwd=work2, check=True, stdout=subprocess.DEVNULL, env={**os.environ, "ROOT_ROOM_FAST_ONLY": "1"})
+        diffs = compare_runs(out, out2, tr["story"])
+        if diffs:
+            print("clipping changes the result, the bundle keeps the full files:", "; ".join(diffs[:4]))
+            work_bundle = work
+        else:
+            print(f"clipped {len(cut)} files to the demo's streets; every check run identical")
+            work_bundle = work2
+        shutil.rmtree(out / "_check", ignore_errors=True)
+
         # the engine bundle: the Python, then what the runs read, then the scene and engine files as the runs left them
+        work = work_bundle
         files = {str(p.relative_to(work)) for p in (work / "src").rglob("*.py")}
         files |= {"scripts/export_scene.py", "scripts/run_block_face.py"}
         files |= {r for r in tr["reads"] if r in before and not r.endswith(".py")}
@@ -155,6 +248,14 @@ def main(argv=None) -> int:
         idx = work / "data" / "processed" / "window_bbox_index.json"
         if idx.exists():
             files.add(str(idx.relative_to(work)))
+        # bytecode compiled here when this Python matches the browser's (3.12): the browser skips compiling the engine
+        pyc = {}
+        if sys.version_info[:2] == PYODIDE_PY:
+            import importlib.util, py_compile
+            for rel in sorted(f for f in files if f.endswith('.py')):
+                src = work / rel; cache = pathlib.Path(importlib.util.cache_from_source(str(src)))
+                py_compile.compile(str(src), cfile=str(cache), dfile=f"/home/pyodide/rr/{rel}", doraise=True, invalidation_mode=py_compile.PycInvalidationMode.UNCHECKED_HASH)
+                pyc[str(cache.relative_to(work))] = cache
         (out / "engine").mkdir()
         size = 0
         with zipfile.ZipFile(out / "engine" / "bundle.zip", "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
@@ -162,7 +263,9 @@ def main(argv=None) -> int:
                 fp = work / rel
                 if fp.is_file():
                     z.write(fp, rel); size += fp.stat().st_size
-        print(f"engine bundle: {len(files)} files, {size / 1e6:.1f} MB unpacked, {(out / 'engine' / 'bundle.zip').stat().st_size / 1e6:.1f} MB zipped")
+            for rel, fp in pyc.items():
+                z.write(fp, rel)
+        print(f"engine bundle: {len(files)} files ({len(pyc)} precompiled), {size / 1e6:.1f} MB unpacked, {(out / 'engine' / 'bundle.zip').stat().st_size / 1e6:.1f} MB zipped")
 
     # the page
     for p in (ROOT / "web").iterdir():

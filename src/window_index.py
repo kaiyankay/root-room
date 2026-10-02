@@ -12,6 +12,7 @@ nothing but a little work.
 """
 from __future__ import annotations
 
+import gc
 import json
 import os
 import pathlib
@@ -143,6 +144,12 @@ def select(paths: Iterable[pathlib.Path], bbox: Optional[BBox]) -> List[pathlib.
 
 _JSON: "OrderedDict[str, tuple]" = OrderedDict()   # path -> (size, mtime_ns, parsed, bytes)
 _JSON_BYTES = 0
+_RAW_GEN = 0          # bumped whenever a file under data/raw is parsed anew: caches built from City data key on it
+_RAW = str(ROOT / "data" / "raw")
+
+
+def raw_generation() -> int:
+    return _RAW_GEN
 _SIZE_ONLY = os.environ.get("ROOT_ROOM_INDEX_SIZE_ONLY") == "1"   # a bundle unpacked elsewhere (the browser's engine): file times change, sizes do not
 JSON_CACHE_BYTES = int(os.environ.get("ROOT_ROOM_JSON_CACHE_MB", "192")) * 1024 * 1024   # the parsed window files kept between runs in one process (a street's set is ~40 MB); smaller on a small host
 
@@ -150,7 +157,7 @@ JSON_CACHE_BYTES = int(os.environ.get("ROOT_ROOM_JSON_CACHE_MB", "192")) * 1024 
 def load_json(path: pathlib.Path):
     """json.loads of a file, kept in memory between runs (keyed by size + mtime, so a rewritten file is read again).
     A long-lived server reads a street's windows once; a one-shot script pays nothing extra."""
-    global _JSON_BYTES
+    global _JSON_BYTES, _RAW_GEN
     key = str(path)
     st = path.stat()
     ent = _JSON.get(key)
@@ -163,6 +170,10 @@ def load_json(path: pathlib.Path):
         del _JSON[key]
     _JSON[key] = (st.st_size, int(st.st_mtime_ns), doc, st.st_size)
     _JSON_BYTES += st.st_size
+    if key.startswith(_RAW) and key.endswith(".geojson"):   # City geometry, not the fetch logs beside it
+        _RAW_GEN += 1
+    if st.st_size > 1_000_000:
+        gc.freeze()   # the parsed City data lives for the process: keep it out of every later collection (they cost seconds otherwise)
     while _JSON_BYTES > JSON_CACHE_BYTES and len(_JSON) > 1:
         _, old = _JSON.popitem(last=False)
         _JSON_BYTES -= old[3]

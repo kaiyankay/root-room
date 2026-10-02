@@ -29,6 +29,7 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
     worker = new Worker(new URL('./engine-worker.js', import.meta.url));
     worker.onmessage = (e) => {
       const { id, ok, result, error } = e.data;
+      if ('log' in e.data) { console.info(`[engine] ${e.data.ms} ms · ${e.data.log}`); return; }
       if ('stage' in e.data && id == null) { onStage(e.data.stage); return; }
       const w = waits.get(id); if (!w) return; waits.delete(id); if (ok) w.res(result); else w.rej(new Error(error));
     };
@@ -44,13 +45,17 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
   let trees = null;
   const treesAll = () => trees || (trees = get('api/trees_all.json'));
   const story = M.story || { trees: [], knobs: {} };
+  if (STATIC) boot().catch(() => {});   /* the engine starts with the page, not after the street has loaded */
   return {
     scene: async (s) => {
       if (session.has(s)) return engine('scene_get', [s]);
       try { return await get(`api/scene/${encodeURIComponent(s)}.json`); } catch (e) { if (booted) return engine('scene_get', [s]); throw e; }
     },
     evaluate: async (p) => {
-      if (p.scenario === false && !p.candidate_only && story.trees.includes(p.site_id) && same(pick(p), story.knobs)) return get(`api/scene/${encodeURIComponent(p.site_id)}.json`);
+      if (p.scenario === false && !p.candidate_only && story.trees.includes(p.site_id) && same(pick(p), story.knobs)) {
+        if (booting) booting.then(() => call('warm', [{ ...p, scenario: true, scenario_fresh: true }])).catch(() => {});   /* the engine gets ready for this tree while it is read */
+        return get(`api/scene/${encodeURIComponent(p.site_id)}.json`);
+      }
       const S = await engine('evaluate_scene', [p.site_id, p]);
       session.add(S.site_id); return S;
     },
@@ -70,6 +75,6 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
     addresses: () => get('api/address_index.json'),
     rules: () => get('api/rules.json'),
     runSite: async () => { throw new Error(M.offPilot || 'the online demo carries the City data of the pilot street only'); },
-    warm: () => boot().then(() => call('warm', [])).catch(() => {}),
+    warm: (payload) => boot().then(() => call('warm', [payload || null])).catch(() => {}),
   };
 }

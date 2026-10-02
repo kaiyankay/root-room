@@ -255,7 +255,23 @@ def _coords(geom):
             stack.extend(x)
 
 
+_FEATURES_CACHE = {}
+
+
 def features(dataset, sub=None):
+    """The layer's features near this site (below); the same for every run of the site while the City data is unchanged."""
+    if _CLIP is None:
+        return _features(dataset, sub)
+    F, ext, pad = _CLIP
+    key = (dataset, sub, F.lon0, F.lat0, F.ux, F.uy, F.px, F.py, tuple(sorted(ext.items())), pad, wi.raw_generation())
+    if key not in _FEATURES_CACHE:
+        if len(_FEATURES_CACHE) > 400:
+            _FEATURES_CACHE.clear()
+        _FEATURES_CACHE[key] = _features(dataset, sub)
+    return _FEATURES_CACHE[key]
+
+
+def _features(dataset, sub=None):
     # Every window file of the dataset is read (the citywide sample stores one window per sampled block face), so the
     # features are clipped to this site's padded extent and de-duplicated where windows overlap; otherwise a per-site
     # export walks the whole city (nearest-manhole search became minutes long after the 2026-09-28 batch).

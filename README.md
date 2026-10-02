@@ -24,7 +24,7 @@ Root Room starts from a real public street tree, reads the City's data about the
 
 ## Run the demo
 
-**Online.** [kaiyankay.github.io/root-room](https://kaiyankay.github.io/root-room/) runs the whole tool on the pilot street, the 400 block of West King Edward Avenue, with nothing to install. The page is static; the rule engine runs inside your browser (Python compiled to WebAssembly with [Pyodide](https://pyodide.org)), the same code as the local server, so the numbers are the engine's, not an approximation. Clicking a tree is instant. The first change of the ground takes about 15 to 20 seconds while the engine loads; after that a change takes about three seconds. Saved scenarios last as long as the browser tab.
+**Online.** [kaiyankay.github.io/root-room](https://kaiyankay.github.io/root-room/) runs the whole tool on the pilot street, the 400 block of West King Edward Avenue, with nothing to install. The page is static; the rule engine runs inside your browser (Python compiled to WebAssembly with [Pyodide](https://pyodide.org)), the same code as the local server, so the numbers are the engine's, not an approximation. Clicking a tree is instant. The engine starts in the background as the page opens and is ready a few seconds later, usually before you reach the scenario builder; from then on a change of the ground answers in under a second. Saved scenarios last as long as the browser tab.
 
 **On your own machine,** for any street in the City. Python 3.10+ and one package. The page loads three.js and jsPDF from a CDN, so the browser needs internet access.
 
@@ -33,7 +33,7 @@ pip install jsonschema
 python3 scripts/serve_web.py --port 8767
 ```
 
-Open **http://127.0.0.1:8767/** in a desktop browser (composed for 1500 × 800 and up). The pilot street, the 400 block of West King Edward Avenue, is ready to use: this repository carries its City data. Any other street works too; its City data is fetched on first use and kept (about two minutes the first time). The engine and the exporter run inside the server: the first run after a start takes about six seconds, after that a tree click answers in four to five seconds and a ground change in two to three.
+Open **http://127.0.0.1:8767/** in a desktop browser (composed for 1500 × 800 and up). The pilot street, the 400 block of West King Edward Avenue, is ready to use: this repository carries its City data. Any other street works too; its City data is fetched on first use and kept (about two minutes the first time). The engine and the exporter run inside the server: the first run after a start takes a few seconds, after that a ground change answers in well under a second.
 
 The online version is built by `scripts/build_static.py` and published by GitHub Actions (`.github/workflows/pages.yml`) at every push to `main`. To host the full server instead, the repository carries a `Dockerfile` (any container host) and a `render.yaml` (Render).
 

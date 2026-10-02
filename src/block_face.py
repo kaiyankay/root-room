@@ -216,7 +216,26 @@ def _sites_doc(sites_path: pathlib.Path) -> Dict[str, Any]:
 # 1. Measure the block face from City data
 # --------------------------------------------------------------------------
 
+_FACE_CACHE: Dict[Any, Dict[str, Any]] = {}
+
+
 def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> Dict[str, Any]:
+    """The measured face, kept per site, SITE file and City data generation: the knobs never change it (evaluate_block_face applies them)."""
+    try:
+        st = pathlib.Path(sites_path).stat(); key = (site_id, str(sites_path), st.st_size, st.st_mtime_ns, wi.raw_generation())
+    except OSError:
+        key = None
+    if key is not None and key in _FACE_CACHE:
+        return copy.deepcopy(_FACE_CACHE[key])
+    face = _build_block_face(site_id, sites_path)
+    if key is not None:
+        if len(_FACE_CACHE) > 32:
+            _FACE_CACHE.clear()
+        _FACE_CACHE[key] = copy.deepcopy(face)
+    return face
+
+
+def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> Dict[str, Any]:
     """
     Measure the block face of one boulevard site. Every value is DERIVED_CALCULATION from
     CITY_DATA files; each entry says which dataset it was read from. Raises BlockFaceError
