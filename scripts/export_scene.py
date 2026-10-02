@@ -34,6 +34,7 @@ RAW = ROOT / "data" / "raw"
 PROCESSED = ROOT / "data" / "processed"
 
 from src import rule_engine as engine                    # noqa: E402  (R17 Table 9-3 lookup, rules 1.3)
+from src import window_index as wi                      # noqa: E402  (open only the window files near the site)
 
 NOMINAL_BUILDING_HEIGHT_M = 8.0     # 09 standard: buildings are massing, footprints 2015
 CROWN_DIAMETER_PER_HEIGHT = 0.6     # fallback crown when a tree has no library record (round form)
@@ -176,7 +177,7 @@ GWELLS_FT_TO_M = 0.3048     # GWELLS stores lithology from/to and well depths in
 
 
 def load(path):
-    return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    return wi.load_json(pathlib.Path(path))   # parsed once per process while the file is unchanged (the server keeps a street's windows)
 
 
 def r2(x, nd=2):
@@ -223,6 +224,20 @@ def window_files(dataset, sub=None):
 _CLIP = None   # (Frame, extent, pad_m): set by main; features() then keeps only what lies near this site's extent
 
 
+def clip_bbox(margin_m=80.0):
+    """The lon/lat box of the padded extent (+ a margin): only the window files that touch it are opened (window_index)."""
+    if _CLIP is None:
+        return None
+    F, ext, pad = _CLIP
+    lons, lats = [], []
+    for u in (ext["u_from"] - pad - margin_m, ext["u_to"] + pad + margin_m):
+        for v in (ext["v_from"] - pad - margin_m, ext["v_to"] + pad + margin_m):
+            x, y = u * F.ux + v * F.px, u * F.uy + v * F.py
+            lons.append(F.lon0 + x / F.kx)
+            lats.append(F.lat0 + y / F.ky)
+    return [min(lons), min(lats), max(lons), max(lats)]
+
+
 def _coords(geom):
     if not geom:
         return
@@ -246,7 +261,8 @@ def features(dataset, sub=None):
     # export walks the whole city (nearest-manhole search became minutes long after the 2026-09-28 batch).
     out = []
     seen = set()
-    for p in window_files(dataset, sub):
+    for p in wi.select(window_files(dataset, sub), clip_bbox()):
+
         if p.name.endswith("__dataset_metadata.json") or p.name.endswith("__layer_info.json"):
             continue
         for f in load(p).get("features", []):

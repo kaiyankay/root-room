@@ -45,6 +45,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from . import rule_engine as engine
 from . import site_inputs as si
+from . import window_index as wi
 from .schema_validation import assert_valid_record, derived_field, field, known_field, unknown_field
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -174,27 +175,34 @@ def _r(x: Optional[float], nd: int = 2) -> Optional[float]:
 # --------------------------------------------------------------------------
 
 _CACHE: Dict[str, Any] = {}
+_CLIP_BBOX: Optional[List[float]] = None   # lon/lat box around the site being measured; set by build_block_face, read by _layer
+ENGINE_WINDOW_PAD_M = 900.0                # a window file is opened when its box comes within this of the tree: any block face fits
 
 
 def _layer(dataset_id: str) -> List[Dict[str, Any]]:
-    """All features of a City dataset saved under data/raw (every window file), else []."""
-    if dataset_id not in _CACHE:
+    """All features of a City dataset saved under data/raw, else []. Only the window files whose bounding box comes near
+    the site (window_index) are opened: windows overlap and are de-duplicated, so the features near the site are the same."""
+    cache_key = f"{dataset_id}|{_CLIP_BBOX}"
+    if cache_key not in _CACHE:
+        if len(_CACHE) > 64:          # a long-lived process over many sites: the de-duplicated layers do not pile up
+            for k in [k for k in _CACHE if "|" in k]:
+                del _CACHE[k]
         feats: List[Dict[str, Any]] = []
         if dataset_id == "public-streets":
             paths = [STREETS_PATH] if STREETS_PATH.exists() else []
         else:
-            paths = [pathlib.Path(p) for p in sorted(glob.glob(str(RAW / f"{dataset_id}__*.geojson")))]
+            paths = wi.select([pathlib.Path(p) for p in sorted(glob.glob(str(RAW / f"{dataset_id}__*.geojson")))], _CLIP_BBOX)
         seen = set()
         for p in paths:
-            for f in json.loads(p.read_text(encoding="utf-8")).get("features", []):
+            for f in wi.load_json(p).get("features", []):
                 # windows overlap (the same City feature is exported into every window that contains it): keep one copy
                 key = json.dumps([f.get("geometry"), f.get("properties")], sort_keys=True, default=str)
                 if key in seen:
                     continue
                 seen.add(key)
                 feats.append(f)
-        _CACHE[dataset_id] = feats
-    return _CACHE[dataset_id]
+        _CACHE[cache_key] = feats
+    return _CACHE[cache_key]
 
 
 def _sites_doc(sites_path: pathlib.Path) -> Dict[str, Any]:
@@ -220,6 +228,8 @@ def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> 
         raise BlockFaceError(f"{site_id}: street_name is UNKNOWN; the face cannot be located")
     street_name = rec["street_name"]["value"]
     lon0, lat0 = rec["tree_point"]["value"]["coordinates"]
+    global _CLIP_BBOX
+    _CLIP_BBOX = wi.pad_lonlat(lon0, lat0, ENGINE_WINDOW_PAD_M)
     to = _frame(lon0, lat0)
 
     # --- street centreline: nearest segment of the named street gives bearing and offset -----
@@ -402,7 +412,7 @@ def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> 
                     "provenance": "CITY_DATA",
                     "note": "plan position as published; depth not published; catch basins 'location approximate'",
                 })
-        if n_in_files == 0:
+        if n_in_files == 0 and not wi.any_features([pathlib.Path(p) for p in glob.glob(str(RAW / f"{dataset_id}__*.geojson"))]):   # no window of the dataset holds a feature anywhere: not fetched
             utilities.append({"dataset": dataset_id, "kind": kind, "clearance_m": CLEARANCES.get(kind),
                               "geometry": None, "local_uv": None, "provenance": "UNKNOWN",
                               "note": "dataset not present under data/raw for this location; not fetched"})

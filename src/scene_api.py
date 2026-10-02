@@ -12,15 +12,20 @@ Scene endpoints for the phase-3 page (11_redefinition §8): any site, engine + e
 
 The page computes nothing: every number it shows is read from the scene file.
 """
+import contextlib
 import datetime
 import glob
 import hashlib
+import importlib.util
+import io
 import json
+import os
 import re
 import pathlib
 import shutil
 import subprocess
 import sys
+import threading
 from typing import Any, Dict, List, Optional
 
 from . import web_api as W
@@ -75,7 +80,51 @@ def export_scene(site: str, candidate: Optional[str] = None) -> None:
         if candidate not in library_ids():
             raise W.ApiError(f"candidate {candidate!r}: not a library species id")
         args += ["--candidate", candidate]
-    W._run(args, "exporter")
+    _run(args, "exporter")
+
+
+# ---- the engine and the exporter run inside the server process ------------------------------------------------------
+# A subprocess per run cost a Python start-up and a cold import each time, and re-read the street's window files on every
+# click. In-process, the scripts' main(argv) is called under one lock (their module globals — the exporter's clip, the engine's
+# layer cache — are per run), stdout is captured as the subprocess's was, and window_index keeps the parsed files between
+# runs. ROOT_ROOM_SUBPROCESS=1 in the environment restores the subprocess path (e.g. while editing the scripts: an in-process
+# module is imported once per server start).
+_RUN_LOCK = threading.RLock()
+_MODULES: Dict[str, Any] = {}
+
+
+def _script_module(path: str):
+    p = pathlib.Path(path)
+    mod = _MODULES.get(p.name)
+    if mod is None:
+        spec = importlib.util.spec_from_file_location("rootroom_scripts_" + p.stem, str(p))
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(mod)
+        _MODULES[p.name] = mod
+    return mod
+
+
+def _run(args: List[str], what: str) -> str:
+    if os.environ.get("ROOT_ROOM_SUBPROCESS") == "1":
+        return W._run(args, what)
+    mod = _script_module(args[0])
+    out = io.StringIO()
+    with _RUN_LOCK:
+        try:
+            with contextlib.redirect_stdout(out):
+                rc = mod.main(args[1:])
+        except W.ApiError:
+            raise
+        except SystemExit as exc:          # argparse: a bad flag
+            rc = exc.code
+        except Exception as exc:           # the scripts raise on a site that cannot be measured; the page shows the message
+            tail = out.getvalue().strip().splitlines()[-3:]
+            raise W.ApiError(f"{what} failed: {type(exc).__name__}: {exc}" + (" | " + " | ".join(tail) if tail else ""))
+    if rc not in (None, 0):
+        tail = out.getvalue().strip().splitlines()
+        raise W.ApiError(f"{what} failed (exit {rc}): " + " | ".join(tail[-6:]))
+    return out.getvalue()
 
 
 def scene_result(site: str) -> Dict[str, Any]:
@@ -182,7 +231,7 @@ def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
     if scenario:
         args += ["--out", str(PROCESSED / f"block_face_{out_id}.json")]
     args += _knob_args(params)
-    stdout = W._run(args, "engine")
+    stdout = _run(args, "engine")
     export_scene(out_id, params.get("candidate") or None)
     scene = json.loads(scene_path(out_id).read_text(encoding="utf-8"))
     scene["engine_stdout"] = stdout.strip().splitlines()[-6:]

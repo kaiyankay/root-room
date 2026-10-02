@@ -316,25 +316,28 @@ async function show(S) {
   if (ck !== app.cityKey) { await app.scene.buildCity(S, city, app.shade); app.cityKey = ck; }   // the city texture is drawn once per block, not per engine run
   app.scene.build(S); app.scene.setStop(app.t); question(); app.ctlKey = ''; draw();
 }
-async function load(site) { status('loading…'); try { const S = await api.scene(site); if (!(S && S.band && S.band.design)) throw new Error((S && S.error) || 'no scene for ' + site); app.existing = S; app.scenario = null; app.saved = []; app.axo = 0; app.pan = 0; app.cutU = 0; await show(S); app.site = site; await restoreSaved(site); draw(); status(''); return true; } catch (e) { status(e.message); return false; } }   /* false: no usable scene file on this server (a fresh clone) — the caller may run the tree instead */
+async function load(site) { status('loading…'); runStart('open', 'OPENING THE STREET'); try { const S = await api.scene(site); if (!(S && S.band && S.band.design)) throw new Error((S && S.error) || 'no scene for ' + site); app.existing = S; app.scenario = null; app.saved = []; app.axo = 0; app.pan = 0; app.cutU = 0; await show(S); app.site = site; await restoreSaved(site); draw(); status(''); runEnd(true); return true; } catch (e) { runEnd(false); status(e.message); return false; } }   /* false: no usable scene file on this server (a fresh clone) — the caller may run the tree instead */
 // a change: the page shows it at once (app.pending), the engine runs (about 40 s: the block-face engine and the scene exporter), the file replaces it.
 // story mode (selecting a tree) runs from the existing baseline's knobs and refreshes the baseline; scenario / review run from the
 // scenario's knobs and the server writes the _scenario side file, so the existing condition on disk is never overwritten by a what-if
 async function evaluate(patch) {
-  if (app.busy) return; app.busy = true; app.pending = patch; closeMenu(); question(); app.ctlKey = ''; app.resKey = ''; draw(); status(patch.candidate_only ? 'placing the tree in the ground …' : 'the rule is running · about 40 s');
+  if (app.busy) return; app.busy = true; app.pending = patch; closeMenu(); question(); app.ctlKey = ''; app.resKey = ''; draw();
+  const runTree = patch.site_id ? ((app.existing || app.S).trees.find((x) => x.site_id === patch.site_id) || null) : null; const runName = runTree ? ((runTree.species_ref && runTree.species_ref.common) || runTree.genus || 'the tree') : '';
+  status(patch.candidate_only ? 'placing the tree in the ground …' : runTree ? `reading the ground under ${runName} …` : 'the rule is running …');
+  runStart(patch.candidate_only ? 'place' : 'engine', patch.candidate_only ? 'PLACING THE TREE' : runTree ? `READING THE GROUND · ${runName.toUpperCase()}` : 'RUNNING THE RULE');
   const story = app.t < 3; const base = story ? { ...knobs(app.existing || app.S), candidate: null } : knobs(app.S);   // 02–03: selecting a tree refreshes the existing condition; 04: the working scenario
-  try { const S = await api.evaluate({ ...base, ...patch, scenario: !story, scenario_fresh: !app.scenario, base_engine: (app.existing || app.S).engine_file });   /* fresh: no scenario run yet, the working ground is the existing one (the server must not reuse an old side file) */ app.pending = null; if (story) { if (app.cutKeep) { app.cutKeep = false; if (app.cutNext != null) { app.cutU = app.cutNext; app.cutNext = null; } app.pan = 0; } else if (!app.existing || app.existing.site_id.split('_')[0] !== S.site_id.split('_')[0]) app.cutU = 0; app.existing = S; app.scenario = null; } else app.scenario = S; await show(S); if (story) await restoreSaved(S.site_id); status('');   /* another tree: its own frozen scenarios, not an empty 05 */ } catch (e) { app.pending = null; app.cutKeep = false; app.cutNext = null; status(e.message); question(); }
+  try { const S = await api.evaluate({ ...base, ...patch, scenario: !story, scenario_fresh: !app.scenario, base_engine: (app.existing || app.S).engine_file });   /* fresh: no scenario run yet, the working ground is the existing one (the server must not reuse an old side file) */ app.pending = null; if (story) { if (app.cutKeep) { app.cutKeep = false; if (app.cutNext != null) { app.cutU = app.cutNext; app.cutNext = null; } app.pan = 0; } else if (!app.existing || app.existing.site_id.split('_')[0] !== S.site_id.split('_')[0]) app.cutU = 0; app.existing = S; app.scenario = null; } else app.scenario = S; await show(S); if (story) { await restoreSaved(S.site_id); app.hotTree = null; } status(''); runEnd(true);   /* another tree: its own frozen scenarios, not an empty 05; the section shows the chosen tree, not whatever the pan left under the pointer */ } catch (e) { app.pending = null; app.cutKeep = false; app.cutNext = null; runEnd(false); status(e.message); question(); }
   app.busy = false; app.ctlKey = ''; app.resKey = ''; draw();
 }
 // ---------- the saved scenarios: immutable snapshots of a finished engine run on the section; the axonometric and the report read them ----------
 async function saveScenario() {
   const S = app.S; if (!app.scenario || S !== app.scenario || app.busy || app.pending) return;   // only the last finished evaluation of the working scenario
-  app.busy = true; status('freezing the scenario …'); app.ctlKey = ''; draw();
+  app.busy = true; status('freezing the scenario …'); runStart('freeze', 'FREEZING THE SCENARIO'); app.ctlKey = ''; draw();
   try {
     const F = await api.freezeScenario({ site_id: S.site_id.split('_')[0], scene: S, subject: resultFor(S).subject, cut_aa_u: app.cutU || 0 });   /* the server writes scene_<site>_<ID>.json and hands the file back: the snapshot is the file */
-    app.saved.push(snapshotOf(F)); app.axo = app.saved.length - 1; app.ctlKey = ''; app.sumKey = ''; status(`scenario ${F.frozen.scenario_id} frozen · ${F.frozen.file}`);
+    app.saved.push(snapshotOf(F)); app.axo = app.saved.length - 1; app.ctlKey = ''; app.sumKey = ''; runEnd(true); status(`scenario ${F.frozen.scenario_id} frozen · ${F.frozen.file}`);
     app.busy = false; draw(); scrollToT(STOP_T[4]);
-  } catch (e) { app.busy = false; status(e.message); draw(); }
+  } catch (e) { app.busy = false; runEnd(false); status(e.message); draw(); }
 }
 /* a saved scenario is read from its frozen file: knobs, result and subject are derived from the file, nothing from the page's memory */
 /* the working state as 05 reads it when nothing is frozen: the same shape as a saved snapshot, marked live */
@@ -417,6 +420,23 @@ function liveKnobs(S) {
   const kk = knobs(S); return { curb, depth, soil: v('soil', k.soil_type && k.soil_type.value), land_use: v('land_use', k.land_use && k.land_use.value), width_level: v('width_level', k.width_level && k.width_level.value), target: v('target', k.target_tree_class && k.target_tree_class.value), replacement: p.replacement != null ? !!p.replacement : kk.replacement, extensions: p.extensions != null ? p.extensions : kk.extensions };
 }
 function status(m) { $('status').textContent = m; }
+/* a run the user waits for (the engine, the exporter, a fetch, a freeze): one bar along the top of the sheet that fills over the time the
+   last run of its kind took (a default before the first), the stage tag names the run and ticks the seconds, the controls that cannot
+   answer step back (#fixed.busy). The bar is an estimate, the tick is the truth. */
+const RUN_ETA = { engine: 9000, place: 5000, freeze: 4000, fetch: 60000, open: 2500 };
+function runStart(kind, label) {
+  let eta = RUN_ETA[kind] || 8000; try { eta = +localStorage.getItem('rr_eta_' + kind) || eta; } catch (e) { /* storage may be closed */ }
+  app.run = { kind, label, t0: performance.now(), eta }; const b = $('prog'); b.style.transition = 'none'; b.style.width = '0%'; b.className = 'prog on'; void b.offsetWidth;
+  b.style.transition = `width ${Math.round(eta * 1.2)}ms cubic-bezier(.15,.55,.35,1)`; b.style.width = '92%'; $('fixed').classList.add('busy');
+  clearInterval(app.runT); app.runT = setInterval(runTick, 500); runTick();
+}
+function runTick() { const r = app.run; if (!r) return; const s = Math.round((performance.now() - r.t0) / 1000); const m = $('q-mode'); m.textContent = `${r.label} · ${s} s`; m.className = 'mode run'; }
+function runEnd(ok = true) {
+  const r = app.run; if (!r) return; const dt = performance.now() - r.t0; if (ok) { try { localStorage.setItem('rr_eta_' + r.kind, String(Math.round(dt))); } catch (e) { /* no storage: the default stays */ } }
+  app.run = null; clearInterval(app.runT); app.runT = null; $('fixed').classList.remove('busy'); if (app.S) question();   /* the tag goes back to the stage's */
+  const b = $('prog'); b.style.transition = 'width 220ms ease-out'; b.style.width = '100%'; b.className = 'prog on' + (ok ? '' : ' fail');
+  setTimeout(() => { if (!app.run) { b.style.transition = 'opacity 400ms ease'; b.className = 'prog'; setTimeout(() => { if (!app.run) { b.style.transition = 'none'; b.style.width = '0%'; } }, 420); } }, ok ? 500 : 1600);
+}
 
 // ---------- the question line: one sentence, one verdict, always ----------
 function question() {
@@ -426,7 +446,7 @@ function question() {
   /* one sentence for the whole tool; what the stage shows is the small tag at the right, never a tail on the sentence */
   if (app.report) mode = `REPORT · SCENARIO ${app.report.id} · ${app.report.subject.toUpperCase()}`;
   else if (st === 0) { head = 'HOW MUCH TREE CAN THE GROUND CARRY IN VANCOUVER? ·'; tail = ''; }
-  else if (st === 1) mode = `STREET PLAN · ${S.trees.length} TREES · CLICK ONE`;
+  else if (st === 1) mode = sel && app.sectionOpen && name ? `STREET PLAN · ${name.toUpperCase()} · ${S.trees.length} TREES` : `STREET PLAN · ${S.trees.length} TREES · CLICK ONE`;
   else if (st === 2) mode = `EXISTING CONDITION · ${name.toUpperCase()}`;
   else if (st === 4) mode = snap && !snap.live ? `AXONOMETRIC · SCENARIO ${snap.id} · ${snap.subject.toUpperCase()}` : app.scenario ? 'AXONOMETRIC · WORKING SCENARIO' : 'AXONOMETRIC · EXISTING CONDITION';
   else if (st === 5) mode = `SUMMARY · ${nS} SAVED SCENARIO${nS === 1 ? '' : 'S'}`;
@@ -434,7 +454,7 @@ function question() {
   const chip = $('q-addr'); if (app.t < 2) chip.onclick = editAddress; else { chip.classList.add('locked'); chip.title = 'go back to the location or the street plan to go elsewhere'; }
   $('q').classList.toggle('city', st === 0);
   const v = $('q-verdict'); const r = app.report ? app.report.result : st === 3 ? resultFor(S) : st === 4 && snap && !snap.live ? snap.result : null; const bf = st === 3 && !app.report ? bandFit(S) : null; v.textContent = bf ? (bf.vcls === 'wait' || bf.vcls === 'review' || !cand ? bf.label : `${fmt(bf.available)} m³ · ${cand.common.toUpperCase()} · ${r.label}`) : r ? resultLine(r) : ''; v.className = 'verdict ' + (bf ? (cand && bf.vcls !== 'wait' && bf.vcls !== 'review' ? r.cls : bf.vcls) : r ? r.cls : '') + (r ? '' : ' off');
-  const m = $('q-mode'); m.textContent = mode; m.className = 'mode';
+  const m = $('q-mode'); if (app.run) runTick(); else { m.textContent = mode; m.className = 'mode'; }   /* while a run is on, the tag is the run's */
 }
 function headline() { question(); }
 
@@ -470,11 +490,11 @@ async function goTo(q, fail = () => {}, toT = null) {
       const info = await api.tree(asset); app.busy = false;
       let needRun = !info.has_engine_file;
       if (info.has_engine_file) { status('going to ' + (info.street || asset) + ' …'); const S0 = await api.scene(info.site_id); if (S0.band && S0.band.design) { await load(info.site_id); if (toT != null) { app.ctlKey = ''; draw(); scrollToT(toT); } } else needRun = true; }   /* an engine file without a design band (no curb could be set): run again, with the hint or the typed curb */
-      if (needRun) { status('new tree ' + asset + ': running the engine as a boulevard tree, about a minute …'); app.busy = true; try { const kk = knobs(app.existing || app.S); const run = (curb) => api.runSite({ asset_id: asset, site_type: 'boulevard', target: kk.target, soil: kk.soil, land_use: kk.land_use, width_level: kk.width_level, depth: kk.depth, ...(curb != null ? { curb } : {}) });
+      if (needRun) { status('new tree ' + asset + ': fetching its street and running the rule as a boulevard tree …'); app.busy = true; runStart('fetch', `NEW TREE ${asset} · FETCHING THE STREET · RUNNING THE RULE`); try { const kk = knobs(app.existing || app.S); const run = (curb) => api.runSite({ asset_id: asset, site_type: 'boulevard', target: kk.target, soil: kk.soil, land_use: kk.land_use, width_level: kk.width_level, depth: kk.depth, ...(curb != null ? { curb } : {}) });
         let S2 = await run(app.curbFor && app.curbFor.asset === asset ? app.curbFor.curb : null);
         if (!(S2.band && S2.band.design)) { const hint = curbHint(S2); if (hint != null) { status(`no curb line on ${S2.title.hblock} · the catch basins put it near ${fmt(hint, 1)} m from ℄ · running with that as a design assumption …`); S2 = await run(hint); } }   /* the City publishes no curb line: the batch's convention is the median catch-basin offset, a DESIGN_ASSUMPTION */
-        if (!(S2.band && S2.band.design)) { app.needCurb = { asset, hblock: S2.title.hblock, pl: +(S2.street.property_line_v - S2.street.centreline_v).toFixed(1) }; app.ctlKey = ''; draw(); status(`no curb line and no catch basin on ${S2.title.hblock} · type the curb distance in the rail to run this tree`); done(null); app.busy = false; return; }   /* nothing to infer from: the user types it (the form at 01) */
-        app.needCurb = null; app.curbFor = null; app.existing = S2; app.scenario = null; app.saved = []; app.axo = 0; await show(S2); app.site = 'V-' + asset; status(''); if (toT != null) { app.ctlKey = ''; draw(); scrollToT(toT); } } catch (err) { status(err.message); done(null); } app.busy = false; }
+        if (!(S2.band && S2.band.design)) { app.needCurb = { asset, hblock: S2.title.hblock, pl: +(S2.street.property_line_v - S2.street.centreline_v).toFixed(1) }; app.ctlKey = ''; draw(); runEnd(false); status(`no curb line and no catch basin on ${S2.title.hblock} · type the curb distance in the rail to run this tree`); done(null); app.busy = false; return; }   /* nothing to infer from: the user types it (the form at 01) */
+        app.needCurb = null; app.curbFor = null; app.existing = S2; app.scenario = null; app.saved = []; app.axo = 0; await show(S2); app.site = 'V-' + asset; status(''); runEnd(true); if (toT != null) { app.ctlKey = ''; draw(); scrollToT(toT); } } catch (err) { runEnd(false); status(err.message); done(null); } app.busy = false; }
     } catch (err) { status(err.message); done(null); app.busy = false; }
   }
 }
@@ -524,7 +544,7 @@ function ctlFor(t, S) {
   else if (st === 3) { const lib = S.library; const cond = (lib && lib.condition) || 'shared_row'; const vol = (cls) => { const c0 = lib ? lib.cards.find((c) => c.listed && c.class === cls) : null; return c0 && c0.volume_m3 ? c0.volume_m3[cond] : '—'; };
     ctl.innerHTML = `<div class="ph">04 · SCENARIO BUILDER</div><div class="do">design the ground · see how much tree it can carry</div><div class="pn">Table 9-2 (${cond.replace(/_/g, ' ')}): Small ${vol('Small')} · Medium ${vol('Medium')} · Large ${vol('Large')} m³. The soil comes from the band between the back of curb and the sidewalk, less the mains' clearances.</div><div class="pn">left: what you can move · centre: the ground answers in section · right: what it can support</div>${app.saved.length ? '<div class="ph">SAVED</div>' + app.saved.map((x) => `<div class="sv"><b>${x.id}</b> ${esc(x.subject)} · ${esc((x.knobs.soil || '').replace('_', ' '))} · ${fmt(x.knobs.depth, 2)} m · <span class="${x.result.cls}">${esc(x.result.label)}</span></div>`).join('') + '<div class="pn">scroll on for their axonometric and the comparison</div>' : ''}`; if ($('inputs')) inputsPanel($('inputs'), S); }   /* 04 the scenario builder: the inputs live in the right column with the result */
   else if (st === 4) axoPanel(ctl);                          // 05 the axonometric: the saved scenarios as tabs
-  else ctl.innerHTML = `<div class="ph">06 · SUMMARY &amp; REPORT</div><div>${app.saved.length ? 'the saved scenarios side by side · open the full information · download the report of one' : 'nothing saved yet · scroll back to the scenario builder and save a scenario'}</div>`;
+  else ctl.innerHTML = `<div class="ph">06 · SUMMARY &amp; REPORT</div><div>${app.saved.length ? 'the saved scenarios side by side · open the full information · download the report of one' : app.scenario ? 'the working scenario beside the existing condition · VIEW SPATIAL RESULT at 04 saves it, then its report is here' : 'the existing condition alone · design the ground at 04 and the scenario compares here'}</div>`;
 }
 const esc = (x) => String(x == null ? '' : x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const PROV = { user: '<span class="prov user">USER INPUT</span>', assumed: '<span class="prov assumed">ASSUMED</span>', derived: '<span class="prov derived">DERIVED</span>', city: '<span class="prov">CITY RECORD</span>' };
@@ -547,8 +567,8 @@ function sendExt(S, side, patch) {
   evaluate({ extensions: list });
 }
 /* A · the site as the City and the tables give it: nothing here is designed; the curb and the sidewalk are facts the City does not publish, so they carry ASSUMED until evidenced */
-function factsHtml(S) {
-  const st = S.street; const sel = S.trees.find((x) => x.selected); const sr = sel.species_ref || {}; const k = S.knobs; const live = liveKnobs(S);
+function factsHtml(S, selOverride = null) {
+  const st = S.street; const sel = selOverride || S.trees.find((x) => x.selected); const sr = sel.species_ref || {}; const k = S.knobs; const live = liveKnobs(S);
   const strips = S.band.strips || []; const atTree = strips.find((x) => sel.u >= x.u0 && sel.u <= x.u1); const kinds = [...new Set(strips.map((x) => (x.dataset || x.kind || '').replace(/-/g, ' ')))];
   const curbK = k.curb_offset_from_centreline_m || {}; const curbConf = curbK.provenance === 'CONFIRMED_SITE_DATA'; const curbNow = fmt(live.curb - st.centreline_v, 1);
   const ex = S.band.existing || {}; const lu = k.land_use && k.land_use.value; const wl = (k.width_level && k.width_level.value) || 'minimum';
@@ -686,7 +706,7 @@ function reviewPanel(ctl, S) {
 }
 // 03 · the City's record of the selected tree and the ground at it, in the right column: what the City knows, lightly tagged — the full provenance is in VIEW FULL INFORMATION and the PDF
 function recordPanel(S) {
-  const el2 = $('result'); const sel = S.trees.find((x) => x.selected); const stg = stage(app.t); const recOn = stg === 2 || (stg === 1 && app.secK > 0.5); if (!recOn || !sel) { el2.classList.remove('record'); if (stg === 1) el2.classList.remove('on'); return; } el2.classList.add('on', 'record'); el2.classList.remove('tool'); el2.style.width = (SHEET.eastRec - 14) + 'px'; el2.style.left = 'auto'; el2.style.right = '10px';   /* only 03 owns the column here; the result panel owns it at 04 */
+  const el2 = $('result'); const pendId = app.pending && app.pending.site_id; const sel = (pendId && S.trees.find((x) => x.site_id === pendId)) || S.trees.find((x) => x.selected); const stg = stage(app.t); const recOn = stg === 2 || (stg === 1 && app.secK > 0.5);   /* a tree just clicked: its City record at once, the run's numbers follow */ if (!recOn || !sel) { el2.classList.remove('record'); if (stg === 1) el2.classList.remove('on'); return; } el2.classList.add('on', 'record'); el2.classList.remove('tool'); el2.style.width = (SHEET.eastRec - 14) + 'px'; el2.style.left = 'auto'; el2.style.right = '10px';   /* only 03 owns the column here; the result panel owns it at 04 */
   const k = S.knobs; const curbK = k.curb_offset_from_centreline_m || {};
   const key = `rec|${S.site_id}|${sel.site_id}|${curbK.provenance}|${app.busy ? 1 : 0}|${app.pending ? JSON.stringify(app.pending) : ''}|${(app.cutU || 0).toFixed(1)}`; if (key === app.resKey) return; app.resKey = key;
   const sr = sel.species_ref || {}; const st = S.street; const strips = S.band.strips || []; const cell = sel.cell || {};
@@ -695,8 +715,8 @@ function recordPanel(S) {
   const sw = S.ground && S.ground.sidewalk; const c311 = S.ground && S.ground.cases_311 && S.ground.cases_311.since_2022 ? S.ground.cases_311.since_2022.count : null;
   const row = (kk, v, tag) => `<div class="r"><em>${kk}</em><b>${v}${tag ? ` <i class="prov ${tag[0]}">${tag[1]}</i>` : ''}</b></div>`; const ex = S.band.existing || {};
   const run = !!app.pending; const curbConf = curbK.provenance === 'CONFIRMED_SITE_DATA';
-  el2.innerHTML = `<div class="k">03 · WHAT DO WE KNOW ABOUT THIS SITE?</div><div class="v small">${esc(sr.common || sel.genus)}</div><div class="sub">${esc(sr.latin || (sel.genus + ' ' + sel.species))} · tree ${esc(sel.site_id.replace(/^(KE|V)-/, ''))}</div>
-    ${factsHtml(S).replace(/<div class="facts fold">[\s\S]*<\/div>\n?\s*$/, '')}
+  el2.innerHTML = `<div class="k">03 · WHAT DO WE KNOW ABOUT THIS SITE?${pendId && !sel.selected ? '<i class="prov run">READING ITS GROUND …</i>' : ''}</div><div class="v small">${esc(sr.common || sel.genus)}</div><div class="sub">${esc(sr.latin || (sel.genus + ' ' + sel.species))} · tree ${esc(sel.site_id.replace(/^(KE|V)-/, ''))}</div>
+    ${factsHtml(S, sel).replace(/<div class="facts fold">[\s\S]*<\/div>\n?\s*$/, '')}
     <details class="adv"><summary>MORE · THE CITY'S RECORDS</summary>
       ${(factsHtml(S).match(/<div class="facts fold">[\s\S]*<\/div>/) || [''])[0]}
       ${row('DIAMETER', sel.diameter_cm != null ? fmt(sel.diameter_cm, 1) + ' cm' : '—', ['', 'CITY'])}${row('CROWN · ROOTS', `${fmt(sel.crown_diameter_m || 3)} m · ${esc((sel.roots && sel.roots.form) || 'heart')} form`, ['derived', 'NOMINAL'])}${row('IN THE CITY', sr.city_count != null ? sr.city_count.toLocaleString() + ' trees' : '—')}
@@ -715,7 +735,7 @@ function axoPanel(ctl) {
   ctl.innerHTML = `<div class="ph">05 · AXONOMETRIC RESULTS</div><div class="tabs">${tabs}</div>
     <div class="card"><div class="nm">${esc(x.subject)}</div><div class="r"><em>SOIL</em><span>${esc((x.knobs.soil || '').replace('_', ' '))} · ${fmt(x.knobs.depth, 2)}&nbsp;m&nbsp;deep</span></div><div class="r"><em>CURB</em><span>${fmt(x.knobs.curb, 1)} m from ℄</span></div>
       <div class="r"><em>SOIL VOLUME</em><span>${r.available != null ? fmt(r.available) : '—'} of ${r.required != null ? r.required : '—'} m³</span></div><div class="r"><em>RESULT</em><span class="${r.cls}">${esc(r.label)}</span></div><div class="r"><em>${x.live ? 'STATE' : 'FROZEN'}</em><span class="file" title="${esc(x.hash || '')}">${x.live ? 'not saved · as it stands' : esc(x.file || '—')}</span></div>${x.scene.cut && x.scene.cut.aa ? `<div class="r"><em>A–A</em><span>${Math.abs(x.scene.cut.aa.u) >= 0.05 ? fmt(Math.abs(x.scene.cut.aa.u), 1) + ' m ' + (x.scene.cut.aa.u > 0 ? 'east' : 'west') + ' of the tree' : 'through the tree'}</span></div>` : ''}</div>
-    <div class="pn">${x.live ? 'the block as 02–04 left it · VIEW SPATIAL RESULT at 04 freezes it as a file (Rhino and the report read frozen files only)' : 'the proposed tree in ink, the City\'s tree as a ghost, the planter is the credited soil with the roots inside, the mains in the air at their depth'} · drag the block to turn it</div>
+    <div class="pn">${x.live ? 'as 02–04 left it · not saved yet' : 'the proposed tree in ink, the City\'s tree as a ghost, the planter is the credited soil with the roots inside'} · drag the block to turn it</div>
     <div class="do"><a id="ax-edit">◂ ${x.live ? 'design the ground' : 'edit the scenario'}</a> · <a id="ax-sum">the summary ▸</a></div>`;
   for (const b of ctl.querySelectorAll('.tab[data-i]')) b.onclick = () => { app.axo = +b.dataset.i; app.ctlKey = ''; app.sumKey = ''; syncScene(); app.scene.setStop(app.t); draw(); };
   $('ax-edit').onclick = () => scrollToT(STOP_T[3]); $('ax-sum').onclick = () => scrollToT(STOP_T[5]);
@@ -749,29 +769,30 @@ function axoLayers(snap, S, ax, ex, G) {
 // 06 · the summary: compact cards of the saved scenarios, VIEW FULL INFORMATION (the review's content for one), DOWNLOAD REPORT
 function summaryPanel() {
   const el2 = $('summary'); const on = stage(app.t) === 5 && !app.report; el2.classList.toggle('on', on); if (!on) { app.sumKey = ''; return; }
-  const key = `${app.saved.length}|${app.axo}|${app.sumOpen ? 1 : 0}|${app.busy ? 1 : 0}`; if (key === app.sumKey) return; app.sumKey = key;
-  if (!app.saved.length) { el2.innerHTML = `<div class="k">SCENARIO COMPARISON</div><div class="empty">No saved scenarios yet.<br><span>Save a scenario in the scenario builder (04) to compare it here and download its report.</span><br><a id="su-up">◂ back to the scenario builder</a></div>`; $('su-up').onclick = () => scrollToT(STOP_T[3]); return; }
-  const cards = app.saved.map((x, i) => { const r = x.result; return `<div class="sc${i === app.axo ? ' on' : ''}" data-i="${i}"><div class="id">SCENARIO ${x.id}</div><div class="nm">${esc(x.subject)}</div>
+  const live = !app.saved.length && app.scenario ? liveSnap() : null; const list = app.saved.length ? app.saved : live ? [live] : [];   /* 06 follows 02–04 as 05 does: nothing saved yet, the working scenario stands in, marked so; no scenario yet, the existing condition alone */
+  const key = `${app.saved.length}|${app.axo}|${app.sumOpen ? 1 : 0}|${app.busy ? 1 : 0}|${live ? live.scene.site_id + ':' + (live.scene.exported_on || '') + ':' + JSON.stringify(live.knobs) + ':' + live.subject : ''}|${app.existing ? app.existing.site_id : ''}`; if (key === app.sumKey) return; app.sumKey = key;
+  const axo = Math.max(0, Math.min(app.axo, list.length - 1)); const idOf = (y) => (y.live ? 'WORKING SCENARIO · NOT SAVED' : 'SCENARIO ' + y.id);
+  const cards = list.map((x, i) => { const r = x.result; return `<div class="sc${i === axo ? ' on' : ''}${x.live ? ' live' : ''}" data-i="${i}"><div class="id">${idOf(x)}</div><div class="nm">${esc(x.subject)}</div>
       <div class="r"><em>SOIL SYSTEM</em><span>${esc((x.knobs.soil || '').replace('_', ' '))}</span></div><div class="r"><em>SOIL DEPTH</em><span>${fmt(x.knobs.depth, 2)} m</span></div><div class="r"><em>AVAILABLE / REQUIRED</em><span>${r.available != null ? fmt(r.available) : '—'} / ${r.required != null ? r.required : '—'} m³</span></div>
       <div class="verdict ${r.cls}">${esc(r.label)}</div></div>`; }).join('');
-  const x = app.saved[app.axo]; const ex = app.existing; const exSel = ex.trees.find((t) => t.selected); const exR = { ...resultFor(ex), available: null, gap: null, label: 'NOT KNOWN', cls: '' }; const exBd = ex.band.design; const exK = { ...knobs(ex), soil: null, depth: null };   /* the existing ground has no evidence: no volume, no verdict */
+  const x = list[axo] || null; const ex = app.existing; const exSel = ex.trees.find((t) => t.selected); const exR = { ...resultFor(ex), available: null, gap: null, label: 'NOT KNOWN', cls: '' }; const exBd = ex.band.design; const exK = { ...knobs(ex), soil: null, depth: null };   /* the existing ground has no evidence: no volume, no verdict */
   const exCard = `<div class="sc ex"><div class="id">EXISTING · TODAY</div><div class="nm">${esc(((exSel || {}).species_ref || {}).common || (exSel || {}).genus || '')}</div>
       <div class="r"><em>EXISTING SOIL</em><span>unknown · not supplied</span></div><div class="r"><em>SOIL DEPTH</em><span>unknown</span></div><div class="r"><em>AVAILABLE / REQUIRED</em><span>unknown / ${exR.required != null ? exR.required : '—'} m³</span></div>
       <div class="verdict ${exR.cls}">${esc(exR.label)}</div></div>`;
   const cols = [{ h: 'EXISTING', K: exK, R: exR, bd: exBd, cls: exSel && exSel.table_9_3 && exSel.table_9_3.listed ? exSel.table_9_3.class : 'not listed', sp: ((exSel || {}).species_ref || {}).common || '', ex: true }]
-    .concat(app.saved.map((y) => ({ h: 'SCENARIO ' + y.id, K: y.knobs, R: y.result, bd: y.scene.band.design, cls: y.result.treeClass || 'not listed', sp: y.subject, on: y === x })));
-  const tr = (label, f) => `<tr><th>${label}</th>${cols.map((c) => `<td class="${c.ex ? 'ex' : ''}${c.on ? ' on' : ''}">${f(c)}</td>`).join('')}</tr>`;
-  const table = `<table class="cmp"><thead><tr><th></th>${cols.map((c) => `<th class="${c.ex ? 'ex' : ''}${c.on ? ' on' : ''}">${c.h}</th>`).join('')}</tr></thead><tbody>
+    .concat(list.map((y) => ({ h: y.live ? 'WORKING · NOT SAVED' : 'SCENARIO ' + y.id, K: y.knobs, R: y.result, bd: y.scene.band.design, cls: y.result.treeClass || 'not listed', sp: y.subject, on: y === x, live: !!y.live })));
+  const cc = (c) => `${c.ex ? 'ex' : ''}${c.on ? ' on' : ''}${c.live ? ' live' : ''}`;
+  const tr = (label, f) => `<tr><th>${label}</th>${cols.map((c) => `<td class="${cc(c)}">${f(c)}</td>`).join('')}</tr>`;
+  const table = `<table class="cmp"><thead><tr><th></th>${cols.map((c) => `<th class="${cc(c)}">${c.h}</th>`).join('')}</tr></thead><tbody>
     ${tr('species', (c) => esc(c.sp))}${tr('Table 9-3 class', (c) => esc(c.cls))}${tr('premise', (c) => (c.ex ? "the City's tree as it stands" : c.K.replacement ? 'replacement tree' : "keep the City's tree"))}${tr('soil system', (c) => (c.K.soil ? esc((c.K.soil || '').replace('_', ' ')) : 'unknown · not supplied'))}${tr('soil depth', (c) => (c.K.depth != null ? fmt(c.K.depth, 2) + ' m' : 'unknown'))}${tr('proposed zones', (c) => (c.ex ? 'none' : (c.K.extensions || []).length ? c.K.extensions.map((z) => (z.side === 'property' ? 'sidewalk' : 'parking lane') + ' ' + fmt(z.width_m, 1) + ' m' + (z.status ? ' · ' + z.status.toLowerCase().replace(/_/g, ' ') : '')).join(' · ') : 'none'))}${tr('band width', (c) => fmt(c.bd.v_to - c.bd.v_from, 2) + ' m')}${tr('curb from ℄', (c) => fmt(c.K.curb, 1) + ' m')}
     ${tr('available soil', (c) => (c.R.available != null ? fmt(c.R.available) + ' m³' : '—'))}${tr('required · Table 9-2', (c) => (c.R.required != null ? c.R.required + ' m³ · ' + esc(c.R.condition) : '—'))}${tr('gap / surplus', (c) => (c.R.gap == null ? '—' : `<b class="${c.R.gap >= 0 ? 'yes' : 'no'}">${c.R.gap >= 0 ? '+' : '−'}${fmt(Math.abs(c.R.gap))} m³</b>`))}${tr('rule result', (c) => `<b class="${c.R.cls}">${esc(c.R.label)}</b>`)}</tbody></table>`;
-  el2.innerHTML = `<div class="k">SCENARIO COMPARISON <span class="sub">${esc(app.S.title.hblock)} · ${esc(app.S.title.side)} · the City's tree: ${esc(((exSel || {}).species_ref || {}).common || '')} · ${app.saved.length} saved scenario${app.saved.length === 1 ? '' : 's'}</span></div><div class="cards">${exCard}${cards}</div>
+  el2.innerHTML = `<div class="k">SCENARIO COMPARISON <span class="sub">${esc(app.S.title.hblock)} · ${esc(app.S.title.side)} · the City's tree: ${esc(((exSel || {}).species_ref || {}).common || '')} · ${app.saved.length ? app.saved.length + ' saved scenario' + (app.saved.length === 1 ? '' : 's') : live ? 'the working scenario, not saved yet' : 'no scenario yet'}</span></div><div class="cards">${exCard}${cards}</div>
     <div class="two"><div>${table}</div><div class="side"><div class="k">THE REPORT</div><p>One saved scenario per report. <b>Page 1</b>: the sheet as drawn — the plan with the need-box, SECTION A–A with the proposed tree over the City's tree, the inputs, the rule check. <b>Page 2</b>: existing → proposed, the inputs and the rule context, the rule check and why, the numbered captions, the grades of what is drawn (City record · derived · nominal · design assumption · not published).</p><p class="grey">Click a card to choose the scenario. VIEW FULL INFORMATION opens the same detail on this page.</p>
-    <div class="acts"><button id="su-info" class="cta alt">${app.sumOpen ? '▾' : '▸'} VIEW FULL INFORMATION · SCENARIO ${x.id}</button><button id="su-pdf" class="cta"${app.busy ? ' disabled' : ''}>⤓ DOWNLOAD REPORT (PDF) · SCENARIO ${x.id}</button></div></div></div>
-    <div id="su-drawer" class="drawer${app.sumOpen ? ' on' : ''}"></div>`;
-  for (const c of el2.querySelectorAll('.sc')) c.onclick = () => { app.axo = +c.dataset.i; app.sumKey = ''; app.ctlKey = ''; syncScene(); draw(); };
-  $('su-info').onclick = () => { app.sumOpen = !app.sumOpen; app.sumKey = ''; draw(); };
-  $('su-pdf').onclick = () => reportFor(x);
-  if (app.sumOpen) reviewPanel($('su-drawer'), x.scene);
+    <div class="acts">${x ? `<button id="su-info" class="cta alt">${app.sumOpen ? '▾' : '▸'} VIEW FULL INFORMATION · ${idOf(x)}</button><button id="su-pdf" class="cta"${app.busy || x.live ? ' disabled' : ''}>⤓ DOWNLOAD REPORT (PDF)${x.live ? '' : ' · SCENARIO ' + x.id}</button>${x.live ? '<p class="hint">the report reads a saved file · VIEW SPATIAL RESULT at 04 saves this scenario, then its PDF is here</p>' : ''}` : `<button id="su-up" class="cta alt">◂ DESIGN THE GROUND AT 04 · A SCENARIO COMPARES HERE</button>`}</div></div></div>
+    <div id="su-drawer" class="drawer${app.sumOpen && x ? ' on' : ''}"></div>`;
+  for (const c of el2.querySelectorAll('.sc[data-i]')) c.onclick = () => { if (app.saved.length) { app.axo = +c.dataset.i; syncScene(); } app.sumKey = ''; app.ctlKey = ''; draw(); };
+  if (x) { $('su-info').onclick = () => { app.sumOpen = !app.sumOpen; app.sumKey = ''; draw(); }; $('su-pdf').onclick = () => { if (!x.live) reportFor(x); }; } else $('su-up').onclick = () => scrollToT(STOP_T[3]);
+  if (app.sumOpen && x) reviewPanel($('su-drawer'), x.scene);
 }
 // the rule result: the one fixed answer on the right in scenario and review; the need-box and the credited soil are its spatial explanation
 function resultPanel(S) {
@@ -1019,7 +1040,7 @@ function sectionPanel(gAll, sc, S, tr, x0, y0, W, H, replace = false, review = f
   const g = el('g', { class: 'card' }); gAll.appendChild(g);
   g.appendChild(el('text', { class: 'ptitle', x: x0, y: y0 + 16 }, 'SECTION A–A' + (Math.abs(app.cutU || 0) >= 0.05 ? ` · ${fmt(Math.abs(app.cutU), 1)} m ${app.cutU > 0 ? 'EAST' : 'WEST'} OF THE TREE` : '')));
   if (replace && !review) g.appendChild(el('text', { class: 'psub swap', x: x0, y: y0 + 34 }, 'DRAG THE HANDLE · DEPTH ↕ · CURB ⟷'));
-  g.appendChild(el('text', { class: 'psub' + (cand ? ' swap' : ''), x: x0 + 132 + (Math.abs(app.cutU || 0) >= 0.05 ? 170 : 0), y: y0 + 16 }, cand ? `${cand.common.toUpperCase()} · ${(cand.latin || '').toUpperCase()} · IN PLACE OF ${((tr.species_ref && tr.species_ref.common) || tr.genus || '').toUpperCase()}` : `${(sr.common || tr.genus || '').toUpperCase()} · ${(sr.latin || (tr.genus + ' ' + tr.species)).toUpperCase()}${tr.selected ? '' : ' · PREVIEW'}`));
+  g.appendChild(el('text', { class: 'psub' + (cand ? ' swap' : ''), x: x0 + 132 + (Math.abs(app.cutU || 0) >= 0.05 ? 170 : 0), y: y0 + 16 }, cand ? `${cand.common.toUpperCase()} · ${(cand.latin || '').toUpperCase()} · IN PLACE OF ${((tr.species_ref && tr.species_ref.common) || tr.genus || '').toUpperCase()}` : `${(sr.common || tr.genus || '').toUpperCase()} · ${(sr.latin || (tr.genus + ' ' + tr.species)).toUpperCase()}${tr.selected ? '' : app.pending && app.pending.site_id === tr.site_id ? ' · READING ITS GROUND …' : ' · PREVIEW · CLICK TO CHOOSE'}`));
   const sx = x0 + PADL, yG = y0 + HEAD + above; const X = (v) => sx + (vL - v) * k, Z = (z) => yG - z * k;   /* v runs left→right from the property line to the road; z up */
   const svgRoot = $('overlay'); const cid = 'clip-sec'; let cp = svgRoot.querySelector('#' + cid); if (!cp) { cp = el('clipPath', { id: cid }); cp.appendChild(el('rect', { id: cid + '-r' })); svgRoot.querySelector('defs').appendChild(cp); } const cr0 = svgRoot.querySelector('#' + cid + '-r'); cr0.setAttribute('x', sx - 2); cr0.setAttribute('y', y0 + HEAD - 4); cr0.setAttribute('width', secW + 4); cr0.setAttribute('height', above + below + 8);
   const gs = el('g', { 'clip-path': `url(#${cid})` }); g.appendChild(gs);
@@ -1329,7 +1350,7 @@ function plan(svg, sc, S, t) {
   // the sheet: everything beside the drawing waits until the camera has arrived
   const gSheet = el('g', { class: 'sheet', opacity: smooth((t - 0.8) / 0.2) }); gAll.appendChild(gSheet);
   const replace = t >= 3, review = false;   // 04 the scenario builder: the same section, now with its handles and choosers
-  const shown = (!replace && app.hotTree && S.trees.find((x) => x.site_id === app.hotTree)) || sel;   // the tree the section is cut through (in replace, always the selected one: the handles stay put)
+  const pendTree = app.pending && app.pending.site_id ? S.trees.find((x) => x.site_id === app.pending.site_id) : null; const shown = (!replace && (pendTree || (!app.busy && app.hotTree && S.trees.find((x) => x.site_id === app.hotTree)))) || sel;   /* the clicked tree's cut at once while its run is on; hover previews wait */   // the tree the section is cut through (in replace, always the selected one: the handles stay put)
   // the plan panel's title, scale bar and north
   const gP = el('g', { opacity: 1 - toolK }); gSheet.appendChild(gP);   /* the plan's sheet furniture goes with the plan */
   gP.appendChild(el('text', { class: 'ptitle', x: wx0, y: yTop - 26 }, 'PLAN'));

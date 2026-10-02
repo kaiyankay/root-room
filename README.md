@@ -1,128 +1,142 @@
 # Root Room
 
-**How much tree can the ground carry?**
-A soil-capacity reader for Vancouver's boulevard trees.
+### How much tree can the ground carry?
 
-![Root Room · the axonometric of a saved scenario](docs/preview.png)
+ARCH 540 · Assignment 1 · Making Design Knowledge Interactive
 
-Root Room takes one public street tree in Vancouver, reads what the City publishes about the ground around it
-(the street's width, the mains and conduits with their clearances, the sidewalk, the neighbours), and answers one
-question with the City's own rule: **how much tree can this piece of boulevard carry**, under the Engineering Design
-Manual 2026 §9.3 Table 9-2 soil volumes? You then design the ground — depth, soil system, extensions under the sidewalk or
-the parking lane — and watch the answer change, in section and in an exploded axonometric.
+![Root Room · a saved scenario as an exploded axonometric: the credited soil lifted as a planter with the roots inside, the mains at their depth, the native ground drawn as a convention](docs/readme_cover.png)
 
-Every number on the page is read from the engine's file, and every value carries where it came from:
-CITY RECORD · DERIVED · ASSUMED · NO RECORD. The tool never invents a curb line, a soil depth or a utility depth; it says
-when the City has none.
+## Purpose
 
----
+Vancouver's street tree standards say how much soil a tree of each size needs. The number alone does not show what that volume means on a real street, where a tree shares the ground with sidewalks, roads, utilities, pavement and neighbouring trees.
 
-## Run it
+Root Room turns the soil volume requirement into a spatial design question. It takes a real Vancouver street condition and tests how changes to soil depth, soil system and connected soil space change the amount of credited soil and the size of tree the site can support.
 
-Requirements: **Python 3.10+**, one package, and a desktop browser with internet access (the page loads three.js and jsPDF
-from a CDN; new streets are fetched live from City of Vancouver Open Data).
+The goal is not simply to calculate soil volume. It is to understand how the ground itself can be designed to make more room for trees.
+
+## What it does
+
+**street condition → ground design → credited soil volume → tree size**
+
+Root Room starts from a real public street tree, reads the City's data about the tree and the street around it, lets you propose a ground condition (soil depth, soil system, connected soil space), calculates the physical and the credited soil volume, and compares the result with the City's requirements. The answer is drawn as well as counted: a plan, two sections, an exploded axonometric and, from the same saved scenario, Rhino geometry.
+
+## Run the demo
+
+Python 3.10+ and one package. The page loads three.js and jsPDF from a CDN, so the browser needs internet access.
 
 ```bash
 pip install jsonschema
 python3 scripts/serve_web.py --port 8767
 ```
 
-Open **http://127.0.0.1:8767/** in a window of at least 1500 × 800. The pilot street, 400 W King Edward Av, is ready to
-use; the repository carries its City data. Any other street works too and takes about two minutes the first time (the
-City data for that area is fetched once and kept).
+Open **http://127.0.0.1:8767/** in a desktop browser (composed for 1500 × 800 and up). The pilot street, the 400 block of West King Edward Avenue, is ready to use: this repository carries its City data. Any other street works too; its City data is fetched on first use and kept (about two minutes the first time). The engine and the exporter run inside the server: the first run after a start takes about six seconds, after that a tree click answers in four to five seconds and a ground change in two to three.
 
----
+## The six stages
 
-## How to use it
+One question runs through the page, *how much tree can the ground carry at …?*, and one continuous scroll answers it in six stages on one drawing. The rail's steps, the keys 1–6 and the arrow keys jump between them. Every run shows itself: a bar along the top of the sheet fills over the time the last run took, and the stage tag counts the seconds.
 
-One question runs through the page and one continuous scroll answers it in six stages on one drawing. The rail on the
-left lists the stages; click them, or press **1–6**, or use the arrow keys.
+![Stage 1 · location: the city as an atlas of the 22 local areas; the checked streets listed in the rail](docs/readme_01_atlas.png)
 
-### 1 · Location — the atlas
-The map of Vancouver's 22 local areas, shaded by how many of their public trees are species the City recommends.
-**Scroll = zoom, click = choose.**
+**1 · location.** The city as an atlas. Scroll zooms through three levels (CITY · AREA · BLOCK); a click chooses the subject at each level: a local area, one of its checked streets, or, at the block level, any public tree as a dot. The rail lists what the tool reads (the City layers and the rule sources) and the checked streets of the focused area, 182 block faces in the 22 local areas. Any address or tree id typed into the title runs the engine for a new street.
 
-| level | what you see | what a click does |
+**2 · street plan.** The whole block face at one scale: the property line, the sidewalk, the band, the curb, the road, every tree with its share of the band in m³, the mains' clearance strips hatched across the band. Click a tree and its SECTION A–A opens beside the plan; the A–A mark drags along the street and picks the tree it crosses.
+
+![Stage 3 · tree + ground: the plan, SECTION A–A through the chosen tree, and the City's record of the site with its tags](docs/readme_03_tree_ground.png)
+
+**3 · tree + ground.** Before anything is changed, what is known about this site: the tree's City record, the band it is given (width × its cell), what cuts it (the mains and their Table 2-2 clearances), and the existing soil, which the City does not record. Each value carries its tag (see *What the tool knows*). A curb measured on site can be entered here with its evidence and replaces the assumed curb.
+
+![Stage 4 · scenario builder: the ground's inputs on the left, SECTION A–A and B–B as the instrument in the centre, capacity, species and the result on the right](docs/readme_04_workbench.png)
+
+**4 · scenario builder.** Design the ground and see how much tree it can carry. Left: the premise (keep the City's tree, or a replacement tree), the soil depth, the soil system (native, structural, soil cells), and two extension proposals, under the sidewalk and under the parking lane. Centre: SECTION A–A with the depth handle, and SECTION B–B along the band with the neighbours, their cells, the credited soil and what the mains take. Right: the physical and the credited volume, the Table 9-2 tiles (Small · Medium · Large, FITS or NO ROOM), the Table 9-3 species of each class that fits, one result, and VIEW SPATIAL RESULT, which saves the scenario as a file.
+
+**5 · axonometric results.** The scenario as an exploded axonometric: the credited soil lifted off the block as a planter with the roots inside, the proposed tree in ink and the City's tree as a ghost, the mains at their recorded depth, the native ground drawn as a soil section and captioned as a convention. Drag to turn it. The stage follows wherever 02–04 left the street; a saved scenario is what Rhino and the report read.
+
+**6 · summary & report.** The saved scenarios beside the existing condition: cards, a comparison table (species, class, premise, soil system, depth, zones, band width, available and required volume, the result), VIEW FULL INFORMATION, and DOWNLOAD REPORT, a PNG of the sheet and a two-page PDF.
+
+## The rule behind it
+
+Root Room operates one small part of the City of Vancouver Engineering Design Manual (2026): **Section 9.3 Urban Forest** and its **Table 9-2 Soil Volumes for Street Trees**, which ties a required soil volume to a tree size class. Around that table the tool reads what the table needs to be applied on a real street:
+
+| source | what it decides | where it is on the page |
 |---|---|---|
-| CITY | the 22 areas | an area: the map drops to it, the rail lists its checked streets |
-| AREA | the checked streets in colour (the largest Table 9-2 class the band carries) | a street: it loads and the page lands on its plan |
-| BLOCK | every public tree as a dot (ink = a Table 9-3 species, grey = other) | a tree: it opens at stage 3 |
+| EDM Table 9-2 | the volume a Small, Medium or Large tree needs (shared row) | 04 TREE CAPACITY tiles, the result, 06's table |
+| EDM Table 9-3 | the City's street tree list by size class; a species never has a class inferred | 04 CHOOSE A TREE, the species chips |
+| EDM Tables 8-3 and 8-4 | the sidewalk and back-boulevard widths of the land-use row, hence the band's width between the back of curb and the sidewalk | 03 THE SOIL IT IS GIVEN, the plan's dimensions |
+| EDM Table 2-2 | the clearance each main takes from the band; the band is interrupted there | the plan's hatched strips, the section's red NOT CREDITED edge |
+| the crediting rule | native soil counts in full, structural soil at one half, soil cells for new trees only | 04 SOIL SYSTEM, HOW IT IS COUNTED |
+| extension zones (R31) | soil proposed under the sidewalk or the parking lane counts when it connects to the tree's cell past the mains | 04 EXTENSIONS · CONNECTED / NOT CONNECTED |
+| the premise (R20) | an existing tree's Table 9-2 value is a benchmark; a replacement tree is sized by what the ground gives | 04 PREMISE |
 
-The search box takes any address or tree asset id. **WHAT THE TOOL READS** lists the City layers and the rule sources.
+The tool does not translate the whole manual. It asks one question, *how does a soil volume requirement become a spatial design decision on a real street?*, and turns the answer into an operation that can be repeated for any site and any set of inputs. The rules as the engine reads them are in `sources/06_rules.json`, each cited to the page of the manual it comes from; the manual itself is not included, the City publishes it.
 
-### 2 · Street plan
-The whole block face: houses, parcels, the sidewalk, the band, every tree as a disc with its share of the band's soil
-(m³) and the spacing between trees. Click a tree: its SECTION A–A opens beside the plan. Drag the A–A line along the
-street to cut through a neighbour.
+## How the calculation works
 
-### 3 · Tree + ground
-The selected tree in section, at true scale, with what the City knows: height and DBH, the soil the rule gives it (band
-width × its cell), what cuts the band (a main's Table 2-2 clearance), and whether any existing soil is on record. The
-right column tags every fact. ASSUMPTIONS folds the curb, land use and sidewalk width; the curb can be corrected with
-evidence. **DESIGN A SCENARIO →** goes on.
+For the chosen tree the engine measures the block face from City geometry: the street centreline, the property line from the block outlines and parcels, the trees on the face and their spacing, the right-of-way. The band between the back of curb and the sidewalk is apportioned to the trees as cells, and the mains' clearances are cut out of it. A scenario adds the proposed depth, soil system and extensions; the engine returns the physical volume (footprint × depth), the credited volume (physical × the soil system's credit, plus connected zones), and the Table 9-2 classes that volume carries. The page draws the same numbers: the band and the cell in plan, the credited soil and the need-box in section, the planter in the axonometric. The purpose is not only to say how many cubic metres there are, but to show which spatial change produced the number.
 
-### 4 · Scenario builder
-Design the ground, see how much tree it can carry.
+## What the tool knows
 
-- **Left — what you can move.** The premise (keep the City's tree, or a replacement), the soil depth (a slider; let go and
-  the rule runs, about 40 s), the soil system (native · structural · soil cells), and two extension proposals: under the
-  sidewalk and under the parking lane. The engine checks each against the mains and answers CONNECTED or NOT CONNECTED.
-- **Centre — the ground answers in section.** SECTION A–A across the street with the credited soil, the need-box, the
-  clearances in red; SECTION B–B along the band with the neighbours and their cells.
-- **Right — what it can support.** Physical and credited soil volume, the Table 9-2 tiles (Small 5 · Medium 15 · Large
-  20 m³ for a shared row), the classes that fit and their Table 9-3 species with the spacing range, one result, and
-  **VIEW SPATIAL RESULT →**, which freezes the scenario as a file (`data/processed/scene_<site>_<A|B|C>.json`).
+Not everything on the page has the same source, and the page keeps them apart with four tags:
 
-### 5 · Axonometric results
-The block of street as 02–04 left it, exploded: the credited soil lifted as a planter with the roots drawn inside it,
-the mains in the air at their recorded depth, the native ground as a drawn soil section (a convention, the City publishes
-none). Drag to turn it. Saved scenarios appear as tabs; nothing has to be saved to see the current state.
+- **CITY** · read from a City record: the tree (species, height, diameter, planting year), its position, the street geometry, the mains in plan, the recorded depths where VanMap publishes them.
+- **DERIVED** · calculated from City geometry: the band width, a tree's cell and spacing, the share of the band it is given, the clearances that cut it.
+- **ASSUMED** · introduced by the tool or the designer and shown as such: the curb line where the City publishes none (from the catch basins), the land-use row, and at 04 every proposed value (PROPOSED).
+- **NO RECORD** · not available in the source material. The City has no record of the existing soil under a street tree, so the existing soil volume stays NO RECORD; nothing is counted for today, and the page says so. A proposed depth can be introduced in a scenario, but it is an assumption, never an existing condition.
 
-### 6 · Summary & report
-The saved scenarios side by side against the existing condition, VIEW FULL INFORMATION for one, DOWNLOAD REPORT (a PNG
-sheet and a two-page PDF with every value's provenance).
+Below grade, the roots and the native strata are drawn as a landscape section draws them, and captioned as a drawing convention, not data. Every drawn depth carries its grade (City record · derived · nominal · not published).
 
----
+## Web and Rhino
 
-## What the engine does
+The web tool is for interaction: move through the site, pick a tree, change the ground, run the rule, see the spatial answer at once. A saved scenario is one file, `data/processed/scene_<site>_<ID>.json`, and Rhino reads that file alone: a builder script (run through the RhinoAI MCP in Rhino 8, kept with the working files rather than in this repository) rebuilds the street, the band's cells at their credited volumes, the extensions, the mains and the tree as geometry, and its cell volumes match the engine's. The browser does not yet display the Rhino output; for now the browser is the interactive spatial preview and Rhino the second representation of the same scenario, from the same logic.
 
-`src/` is the rule engine. For one block face it:
+**web → saved scenario → Rhino geometry**
 
-1. measures the street from City Open Data (centreline, property line, trees, sidewalk by the EDM pedestrian-realm tables);
-2. draws the **band** — the front boulevard between the back of curb and the sidewalk — and apportions it per tree, half-way
-   to each neighbour;
-3. removes what the mains take: EDM Table 2-2 clearances (water and sewer mains 2.0 m, electrical conduits 0.3 m) as
-   strips across or along the band;
-4. credits the soil by system (native in full, structural soil at 50 %, soil cells by their own conditions), adds any
-   connected extension zone;
-5. compares the share with Table 9-2 for the chosen planting condition and lists the Table 9-3 species whose class fits.
+## What Root Room does not decide
 
-The rules are `sources/06_rules.json`; each is cited to the page of the Engineering Design Manual 2026 or the Vancouver
-GRI *Soil Volumes for Street Trees* it comes from. The manual itself is not included; the City publishes it.
+It does not decide whether an existing tree should stay or be removed; the premise is yours, and the tool shows what each premise implies. It does not predict tree health or survival. It does not claim to know underground conditions that the source data does not hold. It never treats a proposed scenario as an existing condition. It is not a compliance checker for the Engineering Design Manual; it works one relationship between street space, soil volume and tree size, to support spatial testing and design decisions around it.
+
+## Command line
+
+The same engine runs for any City tree without the page:
+
+```bash
+python3 scripts/run_site.py --address "2819 W 11th Av"        # lists the trees at that address
+python3 scripts/run_site.py --asset-id 10880 --site-type boulevard \
+    --curb 4.2 --depth 0.9 --target Medium --soil native_soil --land-use residential_detached
+```
+
+The first run for a new area fetches the City Open Data context, the underground layers and the VanMap depth layers for a 500 m window and reuses them afterwards. Output: `data/processed/block_face_V-<asset_id>.json`, every number with its provenance. An existing soil typed with evidence (`--existing-width --existing-depth --existing-soil --existing-provenance CONFIRMED_SITE_DATA --existing-evidence …`) is counted; typed without evidence it is marked USER_INPUT.
+
+## Repository
+
+| | |
+|---|---|
+| `web/` | the page: `one.html`, `js/one.js` (the six stages, the drawings, the panels), `js/scene.js` (the three.js scene), `css/`, `assets/` (the line-art trees), `models/` |
+| `src/` | the engine: `sites.py` (any tree → a SITE record), `block_face.py` (measure the face, apportion the band, evaluate), `rule_engine.py`, `calculations.py`, `schema_validation.py`; the server's API `web_api.py`, `scene_api.py` (runs the engine and the exporter in-process, freezes scenarios), `window_index.py` (which City window files a site needs) |
+| `scripts/` | `serve_web.py` (the server), `run_site.py` (any tree), `run_block_face.py`, `export_scene.py` (the scene file the page draws), `fetch_context.py`, `fetch_vanmap.py`, `fetch_ground_layers.py` |
+| `sources/` | the rules (`06_rules.json`), the record schema, the drawing standard, the Table 9-3 transcription, the Street Tree Guidelines and root-atlas extracts |
+| `data/` | `raw/` the pilot window's City files as served (Open Data, `vanmap/`), `processed/` the pilot's engine and scene files and the atlas summary, `species/` the species library |
+| `docs/` | the captures in this README |
 
 ## Data
 
 | what | from | in the repository |
 |---|---|---|
-| every public tree, the streets, parks, local areas | City of Vancouver Open Data | yes (`data/raw/`) |
+| every public tree, the streets, the local areas | City of Vancouver Open Data | yes (`data/raw/`) |
 | the pilot street's underground layers (mains, conduits, catch basins, poles) and VanMap depths | City Open Data · VanMap | yes (`*__king_edward_window.geojson`) |
-| the same for any other street | fetched on first use by `scripts/fetch_context.py` and `fetch_vanmap.py` | no — fetched, then kept, ignored by git |
+| the same for any other street | fetched on first use by `scripts/fetch_context.py` and `fetch_vanmap.py` | no: fetched, then kept, ignored by git |
 | the 182 checked block faces (the atlas colours) | a batch run of this engine | summary only (`citywide_faces.json`) |
-| Table 9-3 species library | EDM 2026 + City tree counts | yes (`data/species/`) |
+| the Table 9-3 species library | EDM 2026 + City tree counts | yes (`data/species/`) |
 
 City data is used under the City of Vancouver Open Government Licence.
 
-## URLs for a demo
+## Status and limits
 
-`?t=1.5` street plan · `?t=2.5` tree + ground · `?t=3.5` scenario builder · `?t=4.85` axonometric · `?t=5.5` summary ·
-`?site=KE-198570` another pilot tree.
+- The pilot street is ready; any other City tree runs from the City's data on first visit (about two minutes, with the fetch).
+- The existing soil has no City record anywhere; the page shows NO RECORD and counts nothing for today. A measured existing soil can be typed with evidence on the command line, not yet on the page.
+- Species are drawn as the library's line-art billboards; Rhino species models are parked.
+- The Rhino model is built on the author's machine from the saved file; the public hosting of the demo, and with it how the Rhino build reports back to the page, is not decided.
+- Composed for a desktop window of 1500 × 800 and up. `?t=1.5 / 2.5 / 3.5 / 4.85 / 5.5` opens the page at a stage.
 
-## Layout
+## Sources
 
-```
-web/       the page: one.html, js/one.js (the six stages), js/scene.js (the three.js block), css, assets, models
-src/       the rule engine and the two APIs the page calls
-scripts/   serve_web.py (the server), run_site.py (any tree), run_block_face.py, export_scene.py, the two fetchers
-sources/   the rules (06_rules.json), the record schema, the species table, the drawing standard
-data/      City data for the pilot window, the atlas files, the species library, the pilot's engine files and scenes
-```
+City of Vancouver Engineering Design Manual (2026), §9.3 Urban Forest, §8.4 boulevards, Table 2-2 clearances; Protection of Trees By-law 9958; Street Tree Guidelines (2011); the City's standard detail drawings; City of Vancouver Open Data and VanMap layers; the Vancouver Park Board Park Development Standards and the Wageningen root atlas as the references for how the sections and the roots are drawn.

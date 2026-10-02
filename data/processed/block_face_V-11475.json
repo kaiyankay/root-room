@@ -425,7 +425,7 @@
     "genus": "STYRAX",
     "species": "JAPONICUS",
     "cultivar": "NONE",
-    "install_date": "2010-11-19",
+    "install_date": null,
     "height_m": 4.6,
     "diameter_cm": 7.6,
     "property_line_offset_m": 3.31,
@@ -712,72 +712,6 @@
     "geometry": "line",
     "local_uv": [
      [
-      120.11,
-      3.89
-     ],
-     [
-      129.62,
-      -5.78
-     ]
-    ],
-    "properties": {
-     "material": "Concrete",
-     "effluent_type": "Storm"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "geometry": "line",
-    "local_uv": [
-     [
-      118.74,
-      167.32
-     ],
-     [
-      117.82,
-      4.15
-     ]
-    ],
-    "properties": {
-     "material": "Concrete",
-     "effluent_type": "Sanitary"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "geometry": "line",
-    "local_uv": [
-     [
-      104.08,
-      -7.02
-     ],
-     [
-      109.57,
-      -7.47
-     ]
-    ],
-    "properties": {
-     "material": "Vitrified Clay",
-     "effluent_type": "Combined"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "geometry": "line",
-    "local_uv": [
-     [
       -45.14,
       -6.67
      ],
@@ -832,6 +766,72 @@
     ],
     "properties": {
      "material": "Concrete",
+     "effluent_type": "Combined"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      120.11,
+      3.89
+     ],
+     [
+      129.62,
+      -5.78
+     ]
+    ],
+    "properties": {
+     "material": "Concrete",
+     "effluent_type": "Storm"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      118.74,
+      167.32
+     ],
+     [
+      117.82,
+      4.15
+     ]
+    ],
+    "properties": {
+     "material": "Concrete",
+     "effluent_type": "Sanitary"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      104.08,
+      -7.02
+     ],
+     [
+      109.57,
+      -7.47
+     ]
+    ],
+    "properties": {
+     "material": "Vitrified Clay",
      "effluent_type": "Combined"
     },
     "provenance": "CITY_DATA",
@@ -1437,48 +1437,6 @@
     "geometry": "line",
     "local_uv": [
      [
-      -25.21,
-      -2.07
-     ],
-     [
-      29.04,
-      -1.33
-     ]
-    ],
-    "properties": {
-     "wireset_type": "2-10"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "street-lighting-conduits",
-    "kind": "electrical_conduit",
-    "clearance_m": 0.3,
-    "geometry": "line",
-    "local_uv": [
-     [
-      29.04,
-      -1.33
-     ],
-     [
-      76.21,
-      -1.36
-     ]
-    ],
-    "properties": {
-     "wireset_type": "3-10"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "street-lighting-conduits",
-    "kind": "electrical_conduit",
-    "clearance_m": 0.3,
-    "geometry": "line",
-    "local_uv": [
-     [
       -97.63,
       1.7
      ],
@@ -1500,37 +1458,16 @@
     "geometry": "line",
     "local_uv": [
      [
-      99.64,
-      -0.73
+      29.04,
+      -1.33
      ],
      [
-      132.43,
-      -0.89
+      76.21,
+      -1.36
      ]
     ],
     "properties": {
-     "wireset_type": "2-10"
-    },
-    "provenance": "CITY_DATA",
-    "note": "plan position as published; depth not published; catch basins 'location approximate'"
-   },
-   {
-    "dataset": "street-lighting-conduits",
-    "kind": "electrical_conduit",
-    "clearance_m": 0.3,
-    "geometry": "line",
-    "local_uv": [
-     [
-      -97.63,
-      1.7
-     ],
-     [
-      -94.57,
-      33.83
-     ]
-    ],
-    "properties": {
-     "wireset_type": "1-8G"
+     "wireset_type": "3-10"
     },
     "provenance": "CITY_DATA",
     "note": "plan position as published; depth not published; catch basins 'location approximate'"
@@ -1584,6 +1521,48 @@
     "geometry": "line",
     "local_uv": [
      [
+      99.64,
+      -0.73
+     ],
+     [
+      132.43,
+      -0.89
+     ]
+    ],
+    "properties": {
+     "wireset_type": "2-10"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -97.63,
+      1.7
+     ],
+     [
+      -94.57,
+      33.83
+     ]
+    ],
+    "properties": {
+     "wireset_type": "1-8G"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
       98.88,
       -21.5
      ],
@@ -1594,6 +1573,27 @@
     ],
     "properties": {
      "wireset_type": "3-10"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -25.21,
+      -2.07
+     ],
+     [
+      29.04,
+      -1.33
+     ]
+    ],
+    "properties": {
+     "wireset_type": "2-10"
     },
     "provenance": "CITY_DATA",
     "note": "plan position as published; depth not published; catch basins 'location approximate'"
@@ -1701,15 +1701,13 @@
   "curb_offset_from_centreline_m": {
    "value": 4.8,
    "provenance": "DESIGN_ASSUMPTION",
-   "evidence": null,
    "hint": {
     "catch_basin_offsets_from_centreline_m": [
      4.75,
      4.86
     ],
     "note": "City sewer-catch-basins on this face; the City labels them 'location approximate'. A hint for the curb knob only; the curb line itself is not in City Open Data."
-   },
-   "note": "a site fact the City does not publish: DESIGN_ASSUMPTION until a measurement with evidence confirms it"
+   }
   },
   "soil_depth_m": {
    "value": 0.9,
@@ -1795,6 +1793,42 @@
     "provenance": "CITY_DATA",
     "properties": {
      "material": "Concrete",
+     "effluent_type": "Combined"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "material": "Concrete",
+     "effluent_type": "Combined"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "material": "Concrete",
+     "effluent_type": "Combined"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "sewer-mains",
+    "kind": "sewer_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "material": "Concrete",
      "effluent_type": "Storm"
     },
     "applied": true,
@@ -1824,42 +1858,6 @@
     "provenance": "CITY_DATA",
     "properties": {
      "material": "Vitrified Clay",
-     "effluent_type": "Combined"
-    },
-    "applied": false,
-    "reason": "outside the band and its clearance zone"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "provenance": "CITY_DATA",
-    "properties": {
-     "material": "Concrete",
-     "effluent_type": "Combined"
-    },
-    "applied": false,
-    "reason": "outside the band and its clearance zone"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "provenance": "CITY_DATA",
-    "properties": {
-     "material": "Concrete",
-     "effluent_type": "Combined"
-    },
-    "applied": false,
-    "reason": "outside the band and its clearance zone"
-   },
-   {
-    "dataset": "sewer-mains",
-    "kind": "sewer_main",
-    "clearance_m": 2.0,
-    "provenance": "CITY_DATA",
-    "properties": {
-     "material": "Concrete",
      "effluent_type": "Combined"
     },
     "applied": false,
@@ -2004,14 +2002,14 @@
     "clearance_m": 0.3,
     "provenance": "CITY_DATA",
     "properties": {
-     "wireset_type": "2-10"
+     "wireset_type": null
     },
     "applied": true,
     "type": "partial",
-    "u0": -24.78,
-    "u1": 29.34,
-    "v0": -1.76,
-    "v1": -1.03,
+    "u0": -92.74,
+    "u1": -92.26,
+    "v0": -0.82,
+    "v1": -0.01,
     "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
    },
    {
@@ -2038,13 +2036,19 @@
     "properties": {
      "wireset_type": null
     },
-    "applied": true,
-    "type": "partial",
-    "u0": -92.74,
-    "u1": -92.26,
-    "v0": -0.82,
-    "v1": -0.01,
-    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "3-6"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
    },
    {
     "dataset": "street-lighting-conduits",
@@ -2079,28 +2083,6 @@
     "clearance_m": 0.3,
     "provenance": "CITY_DATA",
     "properties": {
-     "wireset_type": null
-    },
-    "applied": false,
-    "reason": "outside the band and its clearance zone"
-   },
-   {
-    "dataset": "street-lighting-conduits",
-    "kind": "electrical_conduit",
-    "clearance_m": 0.3,
-    "provenance": "CITY_DATA",
-    "properties": {
-     "wireset_type": "3-6"
-    },
-    "applied": false,
-    "reason": "outside the band and its clearance zone"
-   },
-   {
-    "dataset": "street-lighting-conduits",
-    "kind": "electrical_conduit",
-    "clearance_m": 0.3,
-    "provenance": "CITY_DATA",
-    "properties": {
      "wireset_type": "3-10"
     },
     "applied": true,
@@ -2109,6 +2091,22 @@
     "u1": 99.94,
     "v0": -1.76,
     "v1": -0.43,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "2-10"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -24.78,
+    "u1": 29.34,
+    "v0": -1.76,
+    "v1": -1.03,
     "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
    },
    {
@@ -3252,9 +3250,9 @@
       "status": "KNOWN"
      },
      "install_date": {
-      "value": "2010-11-19",
-      "provenance": "CITY_DATA",
-      "status": "KNOWN"
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
      },
      "inventory_height": {
       "value": 4.6,
@@ -3267,9 +3265,9 @@
       "status": "KNOWN"
      },
      "location_notes": {
-      "value": "Block 4400 DINMONT AV.  Side 1 in cell 3 ",
-      "provenance": "CITY_DATA",
-      "status": "KNOWN"
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
      },
      "missing_inputs": {
       "value": [
@@ -3857,20 +3855,6 @@
       },
       "outputs": [],
       "missing": []
-     },
-     {
-      "rule_id": "R32",
-      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
-      "status": "reference_only",
-      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
-      "automation": false,
-      "outcome": "not_automated",
-      "message": "retained as reference information; no compliance check performed",
-      "inputs": {
-       "inventory_diameter": 7.6
-      },
-      "outputs": [],
-      "missing": []
      }
     ],
     "warnings": [],
@@ -4084,47 +4068,6 @@
          "minimum": 180,
          "note": "or more depending on size and shape of tree"
         }
-       }
-      },
-      "note": "reference information only; V1 does not judge this rule"
-     },
-     {
-      "rule_id": "R32",
-      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
-      "category": "tree_protection",
-      "source_reference": [
-       {
-        "document": "City of Vancouver Protection of Trees By-law No. 9958 (consolidated to December 9, 2025; amended to include By-law 14546 effective January 1, 2026)",
-        "prepared_extract": "9958c.pdf",
-        "sections": "§1.2 'protection barrier' and 'tree protection area' (pp.3–4), §2.2 (p.4), §7.5–7.8 (pp.14–15), §7.10 (p.15), Schedule A (PDF p.25)"
-       },
-       {
-        "document": "City of Vancouver Street Tree Guidelines for the Public Realm, 2011 revision",
-        "prepared_extract": "StreetTreeGuidelines.pdf",
-        "pages": "19–20 (table 'MINIMUM PROTECTION REQUIRED – parallel to curb', excerpted from By-law 9958)"
-       },
-       {
-        "document": "City of Vancouver Standard Detail Drawings, General Details",
-        "prepared_extract": "standard-detail-drawings-general-details.pdf",
-        "drawing": "G10.1 Protection of boulevard trees adjacent to construction sites (Sept 2018, rev. 2022-01-12)"
-       }
-      ],
-      "guardrails": [
-       "A protection barrier distance is a construction-site requirement (where a fence must stand before demolition, excavation or construction), not a root extent: it is drawn as a dashed ring around the trunk labelled 'protection radius (By-law 9958 Sch. A), not root extent' and never changes any credited volume or share.",
-       "The engine reports it in reference_info from the City's inventory_diameter (CITY_DATA); it is never applied to the record.",
-       "The By-law measures the barrier parallel to the curb; across the boulevard the barrier is bounded by the curb (0.6 m) and the sidewalk edge (0.3 m), so the drawn ring is cut at those lines."
-      ],
-      "inputs_present": {
-       "inventory_diameter": true
-      },
-      "content": {
-       "protection_barrier": {
-        "applies": false,
-        "distance_m": null,
-        "dbh_cm": 7.6,
-        "row_cm": null,
-        "cite": "By-law 9958 §2.2: the By-law does not apply to a tree under 20 cm (except a replacement tree or a hedge)",
-        "message": "7.6 cm at 1.4 m: below the 20 cm threshold; no Schedule A distance"
        }
       },
       "note": "reference information only; V1 does not judge this rule"
@@ -4491,9 +4434,9 @@
       "status": "KNOWN"
      },
      "install_date": {
-      "value": "2010-11-19",
-      "provenance": "CITY_DATA",
-      "status": "KNOWN"
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
      },
      "inventory_height": {
       "value": 4.6,
@@ -4506,9 +4449,9 @@
       "status": "KNOWN"
      },
      "location_notes": {
-      "value": "Block 4400 DINMONT AV.  Side 1 in cell 3 ",
-      "provenance": "CITY_DATA",
-      "status": "KNOWN"
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
      },
      "missing_inputs": {
       "value": [
@@ -5096,20 +5039,6 @@
       },
       "outputs": [],
       "missing": []
-     },
-     {
-      "rule_id": "R32",
-      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
-      "status": "reference_only",
-      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
-      "automation": false,
-      "outcome": "not_automated",
-      "message": "retained as reference information; no compliance check performed",
-      "inputs": {
-       "inventory_diameter": 7.6
-      },
-      "outputs": [],
-      "missing": []
      }
     ],
     "warnings": [],
@@ -5311,47 +5240,6 @@
          "minimum": 180,
          "note": "or more depending on size and shape of tree"
         }
-       }
-      },
-      "note": "reference information only; V1 does not judge this rule"
-     },
-     {
-      "rule_id": "R32",
-      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
-      "category": "tree_protection",
-      "source_reference": [
-       {
-        "document": "City of Vancouver Protection of Trees By-law No. 9958 (consolidated to December 9, 2025; amended to include By-law 14546 effective January 1, 2026)",
-        "prepared_extract": "9958c.pdf",
-        "sections": "§1.2 'protection barrier' and 'tree protection area' (pp.3–4), §2.2 (p.4), §7.5–7.8 (pp.14–15), §7.10 (p.15), Schedule A (PDF p.25)"
-       },
-       {
-        "document": "City of Vancouver Street Tree Guidelines for the Public Realm, 2011 revision",
-        "prepared_extract": "StreetTreeGuidelines.pdf",
-        "pages": "19–20 (table 'MINIMUM PROTECTION REQUIRED – parallel to curb', excerpted from By-law 9958)"
-       },
-       {
-        "document": "City of Vancouver Standard Detail Drawings, General Details",
-        "prepared_extract": "standard-detail-drawings-general-details.pdf",
-        "drawing": "G10.1 Protection of boulevard trees adjacent to construction sites (Sept 2018, rev. 2022-01-12)"
-       }
-      ],
-      "guardrails": [
-       "A protection barrier distance is a construction-site requirement (where a fence must stand before demolition, excavation or construction), not a root extent: it is drawn as a dashed ring around the trunk labelled 'protection radius (By-law 9958 Sch. A), not root extent' and never changes any credited volume or share.",
-       "The engine reports it in reference_info from the City's inventory_diameter (CITY_DATA); it is never applied to the record.",
-       "The By-law measures the barrier parallel to the curb; across the boulevard the barrier is bounded by the curb (0.6 m) and the sidewalk edge (0.3 m), so the drawn ring is cut at those lines."
-      ],
-      "inputs_present": {
-       "inventory_diameter": true
-      },
-      "content": {
-       "protection_barrier": {
-        "applies": false,
-        "distance_m": null,
-        "dbh_cm": 7.6,
-        "row_cm": null,
-        "cite": "By-law 9958 §2.2: the By-law does not apply to a tree under 20 cm (except a replacement tree or a hedge)",
-        "message": "7.6 cm at 1.4 m: below the 20 cm threshold; no Schedule A distance"
        }
       },
       "note": "reference information only; V1 does not judge this rule"
@@ -5732,36 +5620,24 @@
   "note": "existing open-strip width not supplied; existing share stays UNKNOWN (no default strip)"
  },
  "run": {
-  "script": "scripts/run_block_face.py",
-  "run_on": "2026-10-02",
-  "args": {
-   "site": "V-11475",
-   "curb": 4.8,
+  "script": "scripts/batch_faces.py",
+  "run_on": "2026-09-29",
+  "knobs": {
    "depth": 0.9,
    "target": "Medium",
    "soil": "native_soil",
    "land_use": "residential_detached",
-   "width_level": "minimum",
-   "knob_provenance": "DESIGN_ASSUMPTION",
-   "curb_provenance": null,
-   "curb_evidence": null,
-   "existing_width": null,
-   "existing_depth": null,
-   "existing_soil": null,
-   "existing_provenance": "USER_INPUT",
-   "existing_evidence": null,
-   "utility_note": null,
-   "fixture_main_u": null,
-   "no_city_utilities": false,
-   "extend_property": null,
-   "extend_road": null,
-   "extension_evidence": null,
-   "replacement": false,
-   "out": null,
-   "sites": "/private/tmp/claude-501/-Users-kay-Desktop-street-tree-vancouver/6eb757ef-8171-4465-9ad9-4e021fdbf006/scratchpad/root-room/data/processed/sites_wm123_112_p49_244.json"
+   "width_level": "minimum"
   },
-  "rules": "sources/06_rules.json v1.4",
-  "definition": "sources/11_redefinition_2026-09-28.md (supersedes 08); test cases sources/09_block_face_test_cases.md",
-  "sites": "data/processed/sites_wm123_112_p49_244.json"
+  "curb_from_catch_basins": [
+   4.75,
+   4.86
+  ],
+  "site_type": {
+   "value": "boulevard",
+   "provenance": "DESIGN_ASSUMPTION",
+   "note": "assumed for the batch; a user confirmation in the tool"
+  },
+  "rules": "sources/06_rules.json v1.3"
  }
 }
