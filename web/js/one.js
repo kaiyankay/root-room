@@ -53,7 +53,7 @@ const secOnAt = (t) => Math.max(smooth((t - 1.72) / 0.28), app.secK);   /* the s
 const planWAt = (t) => { const W = app.scene ? app.scene.W : 2000; const wide = Math.max(SHEET.planW, W - SHEET.rail - SHEET.west - 40); return lerp(wide, SHEET.planW, secOnAt(t)); };
 // which scene a stage draws: 01–03 the existing condition; 04 the working scenario (or the existing until something is changed); 05–06 the selected saved scenario
 const sceneFor = (t) => (app.report ? app.report.scene : t < 3 ? (app.existing || app.S) : t < 4 ? (app.scenario || app.existing || app.S) : (app.saved[app.axo] ? app.saved[app.axo].scene : (app.scenario || app.existing || app.S)));   /* 05: the chosen frozen scenario, else the working state as it stands (02–04 decide it; saving is optional); 06 compares frozen ones */
-function syncScene() { const S = sceneFor(app.t); if (S && S !== app.S) { app.S = S; app.scene.build(S); app.ctlKey = ''; app.resKey = ''; question(); } }
+function syncScene() { const S = sceneFor(app.t); if (S && S !== app.S) { app.S = S; buildScene(S); app.ctlKey = ''; app.resKey = ''; question(); } else if (S && app.builtFor !== S && !(app.t >= 3 && app.t < 4)) buildScene(S); }   /* a block deferred at 04 is built before it is seen */
 const SOIL_NOTE = { native_soil: 'native soil · credited in full', structural_soil: 'structural soil · 50 % credited · R06', soil_cell: 'soil cells · no credit factor in the source (R11) · manual conditions R10', other: 'other soil · as the engine reads it' };
 // the sampled block faces (scripts/batch_faces.py): one colour per "largest Table 9-2 class that fits" at the batch knobs
 const FACE_COL = { Large: '#2E5A2B', Medium: '#6E9E6A', Small: '#A9C2A4', none: '#B0413E', unknown: '#9A9A9A' };   // one hue by size; red only for nothing
@@ -316,8 +316,14 @@ async function show(S) {
   app.S = S; const ids = new Set(); for (const t of S.trees) if (t.species_ref) ids.add(t.species_ref.model); if (S.candidate) ids.add(S.candidate.model); await loadModels([...ids]);
   const city = await cityData(); const ck = `${S.site_id.split('_')[0]}|${app.shade}`;
   if (ck !== app.cityKey) { await app.scene.buildCity(S, city, app.shade); app.cityKey = ck; }   // the city texture is drawn once per block, not per engine run
-  app.scene.build(S); app.scene.setStop(app.t); question(); app.ctlKey = ''; draw();
+  /* at 04 the 3-D block is behind the sections: an engine run redraws the sections now and rebuilds the block when the page is idle
+     (or when the scroll reaches it), so a change answers in the time the sections take, not the 0.3–1 s the block takes */
+  const same = app.builtFor && app.builtFor.site_id.split('_')[0] === S.site_id.split('_')[0];
+  if (app.t >= 3 && app.t < 4 && same) scheduleBuild(); else buildScene(S);
+  app.scene.setStop(app.t); question(); app.ctlKey = ''; draw();
 }
+function buildScene(S) { clearTimeout(app.buildT); app.scene.build(S); app.builtFor = S; }
+function scheduleBuild() { clearTimeout(app.buildT); app.buildT = setTimeout(() => { if (app.busy || app.drag) { scheduleBuild(); return; } if (app.S && app.builtFor !== app.S) { buildScene(app.S); app.scene.setStop(app.t); draw(); } }, 1500); }
 async function load(site) { status('loading…'); runStart('open', 'OPENING THE STREET'); try { const S = await api.scene(site); if (!(S && S.band && S.band.design)) throw new Error((S && S.error) || 'no scene for ' + site); app.existing = S; app.scenario = null; app.saved = []; app.axo = 0; app.pan = 0; app.cutU = 0; await show(S); app.site = site; await restoreSaved(site); draw(); status(''); runEnd(true); return true; } catch (e) { runEnd(false); status(e.message); return false; } }   /* false: no usable scene file on this server (a fresh clone) — the caller may run the tree instead */
 // a change: the page shows it at once (app.pending), the engine runs (about 40 s: the block-face engine and the scene exporter), the file replaces it.
 // story mode (selecting a tree) runs from the existing baseline's knobs and refreshes the baseline; scenario / review run from the
@@ -1571,7 +1577,7 @@ window.addEventListener('resize', () => { if (app.S) { app.scene._resize(); app.
 
 (async function boot() {
   app.scene = new One(canvas);
-  Promise.all([loadTreeArt(), loadGroundArt()]).then(() => { if (app.S && app.scene.needsArtRebuild) { app.scene.needsArtRebuild = false; app.scene.build(app.S); app.scene.setStop(app.t); } if (app.S) draw(); });   /* a block built before the tree art arrived is rebuilt with it */
+  Promise.all([loadTreeArt(), loadGroundArt()]).then(() => { if (app.S && app.scene.needsArtRebuild) { app.scene.needsArtRebuild = false; buildScene(app.S); app.scene.setStop(app.t); } if (app.S) draw(); });   /* a block built before the tree art arrived is rebuilt with it */
   r30().catch(() => null);                                                                              // the land-use rows' widths (R30) for the inputs panel
   await load(app.site);
   if (STATIC && api.warm) setTimeout(() => { const E = app.existing || app.S; api.warm(E ? { ...knobs(E), candidate: null, scenario: true, scenario_fresh: true, base_engine: E.engine_file } : null); }, 300);   /* a static host: the browser's engine starts, and runs once for this street, while the visitor reads the map */

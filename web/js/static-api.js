@@ -26,7 +26,7 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
   const call = (op, args) => new Promise((res, rej) => { const id = ++seq; waits.set(id, { res, rej }); worker.postMessage({ id, op, args }); });
   function boot() {
     if (booting) return booting;
-    worker = new Worker(new URL('./engine-worker.js', import.meta.url));
+    worker = new Worker(new URL('./engine-worker.js' + (M.version ? '?v=' + M.version : ''), import.meta.url));   /* versioned: a deploy never meets a cached worker */
     worker.onmessage = (e) => {
       const { id, ok, result, error } = e.data;
       if ('log' in e.data) { console.info(`[engine] ${e.data.ms} ms · ${e.data.log}`); return; }

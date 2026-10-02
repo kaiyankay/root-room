@@ -21,6 +21,7 @@ import argparse
 import datetime
 import json
 import os
+import re
 import pathlib
 import shutil
 import subprocess
@@ -277,12 +278,23 @@ def main(argv=None) -> int:
             src = ROOT / d / n
             if src.exists():
                 (out / "data").mkdir(exist_ok=True); shutil.copy2(src, out / "data" / n)
-    manifest = {"bundle": "engine/bundle.zip", "pilot": PILOT, "story": {"trees": tr["story"], "knobs": tr["base"]},
+    # every script and the bundle carry the build's version: a visitor's cache (Pages allows ten minutes) never mixes two builds
+    import hashlib
+    h = hashlib.sha1()
+    for p in sorted((out / "js").glob("*.js")) + [out / "engine" / "bundle.zip"]:
+        h.update(p.read_bytes())
+    version = h.hexdigest()[:10]
+    for js in (out / "js").glob("*.js"):
+        s = js.read_text(encoding="utf-8")
+        s2 = re.sub(r"(from\s+'\./[A-Za-z0-9_-]+\.js)'", rf"\1?v={version}'", s)
+        if s2 != s:
+            js.write_text(s2, encoding="utf-8")
+    manifest = {"version": version, "bundle": f"engine/bundle.zip?v={version}", "pilot": PILOT, "story": {"trees": tr["story"], "knobs": tr["base"]},
                 "engineAssets": tr["engine_assets"], "offPilot": OFF_PILOT, "built": datetime.date.today().isoformat()}
     html = (ROOT / "web" / "one.html").read_text(encoding="utf-8")
     tag = '<script type="module" src="js/one.js"></script>'
     assert tag in html, "one.html: the module tag moved"
-    html = html.replace(tag, f"<script>window.ROOT_ROOM_STATIC = {json.dumps(manifest, ensure_ascii=False)};</script>\n{tag}")
+    html = html.replace(tag, f"<script>window.ROOT_ROOM_STATIC = {json.dumps(manifest, ensure_ascii=False)};</script>\n" + tag.replace('js/one.js', f'js/one.js?v={version}'))
     (out / "one.html").write_text(html, encoding="utf-8")
     (out / "index.html").write_text(html, encoding="utf-8")
     (out / ".nojekyll").write_text("")
