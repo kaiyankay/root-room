@@ -1,0 +1,165 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "effluent_type",
+   "description": "Pipe flow material",
+   "annotations": {
+    "facet": true,
+    "disjunctive": true,
+    "sortable": true
+   },
+   "label": "Effluent Type",
+   "type": "text"
+  },
+  {
+   "name": "material",
+   "description": "Pipe construction material",
+   "annotations": {
+    "facet": true,
+    "disjunctive": true
+   },
+   "label": "Material",
+   "type": "text"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "sewer-mains",
+ "dataset_uid": "da_l43iqo",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze",
+  "timeserie"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "sewer_mains_dwgzip",
+   "title": "sewer_mains_dwg.zip",
+   "description": "",
+   "mimetype": "application/zip",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/sewer-mains/alternative_exports/sewer_mains_dwgzip"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Sewer mains",
+   "description": "<div><p>This dataset consists of sewer mains. The types of mains (Sanitary, Storm, Combined, Sanitary Force) are distinguished by attributes. </p><p>Related datasets include: </p><ul><li><p>GVRD (Metro Vancouver) trunk\u00a0</p></li><li>\u200bSewers\u00a0manholes\u200b<br></li><li>Sewer catch basins</li></ul><p>Commercial and residential connections to the mains are not available. </p></div><p><h3>Data currency</h3></p><div><p>This data is updated frequently in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract of this data on this website is updated weekly.</p></div><p><h3>Data accuracy</h3></p><div><p>Sewer features are generally created with survey accuracy.</p></div>",
+   "theme": [
+    "Water and sewer"
+   ],
+   "keyword": [
+    "sewer"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-10-02T13:32:35+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-10-02T13:32:35+00:00",
+   "metadata_processed": "2026-10-02T13:48:23.144000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": false,
+   "territory": null,
+   "geometry_types": [
+    "LineString",
+    "MultiLineString"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02296084351838,
+        49.30105479899794
+       ],
+       [
+        -123.22705683298409,
+        49.30105479899794
+       ],
+       [
+        -123.22705683298409,
+        49.199481890536845
+       ],
+       [
+        -123.02296084351838,
+        49.199481890536845
+       ],
+       [
+        -123.02296084351838,
+        49.30105479899794
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 39927,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": null,
+   "change-log": null
+  }
+ }
+}

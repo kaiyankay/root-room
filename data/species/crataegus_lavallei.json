@@ -1,0 +1,189 @@
+{
+ "id": "crataegus_lavallei",
+ "genus": "CRATAEGUS",
+ "species": "LAVALLEI",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Lavallée Hawthorn",
+  "latin": "Crataegus × lavalleei",
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.4.1 Table 9-3 p.351, row 7, column Small Trees",
+  "spelling_note": "Table 9-3 prints 'lavalleei'; the City register spells 'lavallei'"
+ },
+ "table_9_3": {
+  "listed": true,
+  "class": "Small",
+  "row": 7,
+  "page": 351,
+  "provenance": "SOURCE_RULE",
+  "note": "\"Tree size classifications are approximate and intended as guidelines\" (p.352); Columnar is never assigned from this table"
+ },
+ "volume_m3": {
+  "solitary": 10,
+  "shared_row": 5,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R01)"
+ },
+ "spacing_m": {
+  "min": 7.0,
+  "max": 10.0,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R02, reference only)"
+ },
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == CRATAEGUS and first species word == LAVALLEI; hybrid marker 'X' ignored; any cultivar",
+  "count": 1350,
+  "height_m": {
+   "n": 1350,
+   "p50": 7.6,
+   "p90": 7.6,
+   "max": 25.9,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 1350,
+   "p50": 12.7,
+   "p90": 33.0,
+   "max": 58.0,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "NONE",
+    1349
+   ],
+   [
+    "CARIERREI",
+    1
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Hastings-Sunrise",
+    275
+   ],
+   [
+    "Kensington-Cedar Cottage",
+    152
+   ],
+   [
+    "Renfrew-Collingwood",
+    127
+   ],
+   [
+    "Dunbar-Southlands",
+    123
+   ],
+   [
+    "Sunset",
+    100
+   ]
+  ],
+  "city_common_names": [
+   [
+    "LAVALLEI HYBRID HAWTHORN",
+    1349
+   ],
+   [
+    "LAVALLÉE'S HAWTHORN",
+    1
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Small",
+   "definition_as_printed": "Trees maturing twenty-five (25) feet. Suitable for locating at or below overhead electrical conductors",
+   "height_ft": 25,
+   "height_m": 7.62,
+   "width_ft": null,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form (round .6, oval .5, vase .7, columnar .3, conical .45, weeping .8) until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "heart",
+  "depth_ratio_of_credited": 0.8,
+  "provenance": "NOMINAL",
+  "note": "root habit for the drawing only: roots are drawn to fill the soil the rule credits and are cut where the black or a clearance begins; never a measured extent",
+  "nearest_atlas_plates_same_genus": [
+   {
+    "item_id": "1307",
+    "title": "Crataegus monogyna",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1307"
+   },
+   {
+    "item_id": "1308",
+    "title": "Crataegus monogyna",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1308"
+   }
+  ],
+  "atlas_note": "no plate of this species in the WUR root atlas; same-genus plates listed for orientation, habit stays NOMINAL"
+ },
+ "on_block_faces": {
+  "sites": [],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Small",
+    "botanical_as_printed": "Crataegus X Lavallei",
+    "common_as_printed": "Lavalle Hawthorn"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Small)",
+  "class_definitions": {
+   "Small": "Trees maturing twenty-five (25) feet. Suitable for locating at or below overhead electrical conductors"
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": true
+ },
+ "drawn_height_m": {
+  "value": 7.6,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 1350 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/crataegus_lavallei.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 51,
+  "hull_faces": 76,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": {
+   "section": {
+    "width_m": 2.58,
+    "depth_m": 0.9,
+    "source": "V-10880 (2819 W 11th Av, Kitsilano) front boulevard under R30, an ordinary 20 m residential section; reference only"
+   },
+   "note": "reference only; on a site the box takes the site's band section"
+  },
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

@@ -1,0 +1,248 @@
+{
+ "id": "carpinus_betulus",
+ "genus": "CARPINUS",
+ "species": "BETULUS",
+ "cultivar_filter": null,
+ "name": {
+  "common": "European Hornbeam",
+  "latin": "Carpinus betulus",
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.4.1 Table 9-3 p.351, row 2, column Large Trees"
+ },
+ "table_9_3": {
+  "listed": true,
+  "class": "Large",
+  "row": 2,
+  "page": 351,
+  "provenance": "SOURCE_RULE",
+  "note": "\"Tree size classifications are approximate and intended as guidelines\" (p.352); Columnar is never assigned from this table"
+ },
+ "volume_m3": {
+  "solitary": 30,
+  "shared_row": 20,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R01)"
+ },
+ "spacing_m": {
+  "min": 9.0,
+  "max": 11.0,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R02, reference only)"
+ },
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == CARPINUS and first species word == BETULUS; hybrid marker 'X' ignored; any cultivar",
+  "count": 5908,
+  "height_m": {
+   "n": 5906,
+   "p50": 7.6,
+   "p90": 13.7,
+   "max": 25.9,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": [
+    50.0,
+    70.0
+   ]
+  },
+  "diameter_cm": {
+   "n": 5908,
+   "p50": 21.6,
+   "p90": 61.0,
+   "max": 147.3,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "FASTIGIATA",
+    3570
+   ],
+   [
+    "NONE",
+    1577
+   ],
+   [
+    "FRANS FONTAINE",
+    343
+   ],
+   [
+    "EMERALD AVENUE",
+    214
+   ],
+   [
+    "GLOBOSA",
+    121
+   ],
+   [
+    "LUCAS",
+    83
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Hastings-Sunrise",
+    678
+   ],
+   [
+    "Kensington-Cedar Cottage",
+    575
+   ],
+   [
+    "Renfrew-Collingwood",
+    506
+   ],
+   [
+    "Sunset",
+    461
+   ],
+   [
+    "Grandview-Woodland",
+    424
+   ]
+  ],
+  "city_common_names": [
+   [
+    "PYRAMIDAL EUROPEAN HORNBEAM",
+    3570
+   ],
+   [
+    "EUROPEAN HORNBEAM",
+    1791
+   ],
+   [
+    "FRANZ FONTAINE HORNBEAM",
+    343
+   ]
+  ]
+ },
+ "form": {
+  "value": "oval",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {
+   "FASTIGIATA": "columnar",
+   "FRANS FONTAINE": "columnar",
+   "EMERALD AVENUE": "columnar"
+  }
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Medium",
+   "definition_as_printed": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk.",
+   "height_ft": [
+    25,
+    50
+   ],
+   "height_m": [
+    7.62,
+    15.24
+   ],
+   "width_ft": null,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.5,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form (round .6, oval .5, vase .7, columnar .3, conical .45, weeping .8) until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.3,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "heart",
+  "depth_ratio_of_credited": 0.8,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1375,
+     "figure": "135",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1375",
+     "excavated_plant": {
+      "height_cm": 1350.0,
+      "root_depth_cm": 126.0,
+      "root_system_diameter_cm": 1710.0
+     }
+    },
+    {
+     "item_id": 1376,
+     "figure": "136",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1376",
+     "excavated_plant": {
+      "height_cm": 1089.0,
+      "root_depth_cm": 387.0,
+      "root_system_diameter_cm": 1650.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "heart",
+    "mean_depth_over_diameter": 0.154,
+    "plates_used": 2
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "heart",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Medium",
+    "botanical_as_printed": "Carpinus Betulus",
+    "common_as_printed": "European Hornbeam"
+   },
+   {
+    "class": "Columnar",
+    "botanical_as_printed": "Carpinus Betulas 'Fastigiata'",
+    "common_as_printed": "European Hornbeam"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Columnar, Medium)",
+  "class_definitions": {
+   "Medium": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk.",
+   "Columnar": "Trees exhibiting a distinct upright branch arrangement. Suitable for locating in confined situations or on tree lawns offset from overhead electrical conductors."
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": false
+ },
+ "drawn_height_m": {
+  "value": 13.7,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 5906 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/carpinus_betulus.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 41,
+  "hull_faces": 78,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": {
+   "section": {
+    "width_m": 2.58,
+    "depth_m": 0.9,
+    "source": "V-10880 (2819 W 11th Av, Kitsilano) front boulevard under R30, an ordinary 20 m residential section; reference only"
+   },
+   "note": "reference only; on a site the box takes the site's band section"
+  },
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

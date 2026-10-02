@@ -1,0 +1,221 @@
+{
+ "id": "robinia_pseudoacacia",
+ "genus": "ROBINIA",
+ "species": "PSEUDOACACIA",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Black Locust",
+  "latin": "Robinia pseudoacacia",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == ROBINIA and first species word == PSEUDOACACIA; hybrid marker 'X' ignored; any cultivar",
+  "count": 913,
+  "height_m": {
+   "n": 913,
+   "p50": 16.8,
+   "p90": 22.9,
+   "max": 32.0,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 913,
+   "p50": 43.2,
+   "p90": 83.8,
+   "max": 200.7,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "NONE",
+    666
+   ],
+   [
+    "FRISIA",
+    139
+   ],
+   [
+    "UMBRACULIFERA",
+    74
+   ],
+   [
+    "PURPLE ROBE",
+    23
+   ],
+   [
+    "PYRAMIDALIS",
+    7
+   ],
+   [
+    "UNIFOLIA",
+    2
+   ],
+   [
+    "BESSONIANA",
+    1
+   ],
+   [
+    "COLUTEOIDES",
+    1
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Kerrisdale",
+    95
+   ],
+   [
+    "Shaughnessy",
+    87
+   ],
+   [
+    "Hastings-Sunrise",
+    68
+   ],
+   [
+    "Kensington-Cedar Cottage",
+    61
+   ],
+   [
+    "Riley Park",
+    54
+   ]
+  ],
+  "city_common_names": [
+   [
+    "BLACK LOCUST",
+    667
+   ],
+   [
+    "GOLD LEAF BLACK LOCUST",
+    139
+   ],
+   [
+    "GLOBE OR MOPHEAD ACACIA",
+    74
+   ]
+  ]
+ },
+ "form": {
+  "value": "oval",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Large",
+   "definition_as_printed": "Trees over 50 ' in height and 25 ' in width. Suitable for boulevards with no overhead obstructions and > 10 ' of width.",
+   "height_ft_min": 50,
+   "width_ft_min": 25,
+   "width_m_min": 7.62,
+   "height_m_min": 15.24,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.5,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.3,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "flat",
+  "depth_ratio_of_credited": 0.5,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1384,
+     "figure": "145",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1384",
+     "excavated_plant": {
+      "height_cm": 510.0,
+      "root_depth_cm": 228.0,
+      "root_system_diameter_cm": 1190.0
+     }
+    },
+    {
+     "item_id": 1385,
+     "figure": "146",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1385",
+     "excavated_plant": {
+      "height_cm": 2450.0,
+      "root_depth_cm": 364.0,
+      "root_system_diameter_cm": 4795.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.134,
+    "plates_used": 2
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "heart",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [
+   "V-305190"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Large",
+    "botanical_as_printed": "Robinia Pseudoacacia 'Friscia'",
+    "common_as_printed": "Golden Black Locust"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Large)",
+  "class_definitions": {
+   "Large": "Trees over 50 ' in height and 25 ' in width. Suitable for boulevards with no overhead obstructions and > 10 ' of width."
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": null
+ },
+ "drawn_height_m": {
+  "value": 22.9,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 913 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/robinia_pseudoacacia.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 49,
+  "hull_faces": 78,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

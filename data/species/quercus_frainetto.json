@@ -1,0 +1,187 @@
+{
+ "id": "quercus_frainetto",
+ "genus": "QUERCUS",
+ "species": "FRAINETTO",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Hungarian Oak",
+  "latin": "Quercus frainetto",
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.4.1 Table 9-3 p.351, row 4, column Large Trees"
+ },
+ "table_9_3": {
+  "listed": true,
+  "class": "Large",
+  "row": 4,
+  "page": 351,
+  "provenance": "SOURCE_RULE",
+  "note": "\"Tree size classifications are approximate and intended as guidelines\" (p.352); Columnar is never assigned from this table"
+ },
+ "volume_m3": {
+  "solitary": 30,
+  "shared_row": 20,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R01)"
+ },
+ "spacing_m": {
+  "min": 9.0,
+  "max": 11.0,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R02, reference only)"
+ },
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == QUERCUS and first species word == FRAINETTO; hybrid marker 'X' ignored; any cultivar",
+  "count": 290,
+  "height_m": {
+   "n": 290,
+   "p50": 4.6,
+   "p90": 10.7,
+   "max": 22.9,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 290,
+   "p50": 7.6,
+   "p90": 27.9,
+   "max": 71.0,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "FOREST GREEN",
+    186
+   ],
+   [
+    "NONE",
+    104
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Downtown",
+    56
+   ],
+   [
+    "Marpole",
+    44
+   ],
+   [
+    "Riley Park",
+    27
+   ],
+   [
+    "Killarney",
+    23
+   ],
+   [
+    "Sunset",
+    21
+   ]
+  ],
+  "city_common_names": [
+   [
+    "FOREST GREEN HUNGARIAN OAK",
+    186
+   ],
+   [
+    "HUNGARIAN OAK",
+    104
+   ]
+  ]
+ },
+ "form": {
+  "value": "oval",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": null,
+  "ratio_of_height": 0.5,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form (round .6, oval .5, vase .7, columnar .3, conical .45, weeping .8) until a cited value replaces it"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.3,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "tap",
+  "depth_ratio_of_credited": 1.0,
+  "provenance": "NOMINAL",
+  "note": "root habit for the drawing only: roots are drawn to fill the soil the rule credits and are cut where the black or a clearance begins; never a measured extent",
+  "nearest_atlas_plates_same_genus": [
+   {
+    "item_id": "1346",
+    "title": "Quercus cerris",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+   },
+   {
+    "item_id": "1347",
+    "title": "Quercus cerris",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+   },
+   {
+    "item_id": "1360",
+    "title": "Quercus robur",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+   },
+   {
+    "item_id": "1348",
+    "title": "Quercus rubra",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+   },
+   {
+    "item_id": "1349",
+    "title": "Quercus pubescens",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+   },
+   {
+    "item_id": "1350",
+    "title": "Quercus petraea",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+   }
+  ],
+  "atlas_note": "no plate of this species in the WUR root atlas; same-genus plates listed for orientation, habit stays NOMINAL"
+ },
+ "on_block_faces": {
+  "sites": [],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": false,
+  "provenance": "REFERENCE",
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14: not listed"
+ },
+ "drawn_height_m": {
+  "value": 10.7,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 290 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/quercus_frainetto.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 46,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": {
+   "section": {
+    "width_m": 2.58,
+    "depth_m": 0.9,
+    "source": "V-10880 (2819 W 11th Av, Kitsilano) front boulevard under R30, an ordinary 20 m residential section; reference only"
+   },
+   "note": "reference only; on a site the box takes the site's band section"
+  },
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

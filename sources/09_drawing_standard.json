@@ -1,0 +1,1542 @@
+{
+ "$comment": "Machine-readable companion of sources/09_drawing_standard.md. Same rules, one source of truth for the Rhino generator. Units: metres in model space, millimetres on the layout page. Colours RGB 0-255. Print widths in mm.",
+ "version": "2026-09-28",
+ "units": {
+  "model": "metres",
+  "page": "millimetres",
+  "tolerance_m": 0.01
+ },
+ "frame": {
+  "origin": "City tree point of the selected site (WGS84) -> model (0,0,0)",
+  "x": "east (local equirectangular metres)",
+  "y": "north",
+  "z": "elevation; z = 0 is the flat datum, labelled 'grade nominal, not surveyed'",
+  "along_unit": "unit vector along the street centreline, from src/web_api.site_context().frame.along_unit (DERIVED_CALCULATION)",
+  "across_unit_to_road": "unit vector from tree toward the road centreline, from the same frame",
+  "nominal": {
+   "building_height_m": 8.0,
+   "curb_height_m": 0.15,
+   "canopy_diameter_factor_of_height": 0.6,
+   "trunk_diameter_m": 0.3,
+   "figure_height_m": 1.7
+  },
+  "engine_frame_note": "The engine (src/block_face.py, data/processed/block_face_<site>.json) measures v positive toward the PROPERTY; the section shows the road on the right, so section horizontal = -v_engine. Along-street u is shared.",
+  "section_cut": {
+   "method": "Rhino ClippingPlane object, not a separate 2D drawing",
+   "plane": "vertical plane through the selected tree point (0,0,0), normal = along_unit (u axis); the plane clips everything at u < 0 (looking along +u, i.e. toward increasing u)",
+   "camera": "parallel projection, direction +along_unit, up +z; with the road on the right (across_unit_to_road x along_unit points down, so the road side is camera-right for a north-side site; for a south-side site use direction -along_unit so the road stays on the right)",
+   "depth_of_field": "objects beyond the plane remain visible in Pen display; neighbour trees and buildings read as thin silhouettes behind the cut; the generator may add a second ClippingPlane at u = +25 m facing -u to limit clutter",
+   "section_fills": "every solid layer carries a section_fill value (see layers[].section_fill): solid_black / accent_dots / hatch45 / solid_accent / dashed / none; the generator sets the layer's section style (Rhino 8 clipping-plane section fill / hatch per layer) from that field; where the display cannot fill, it draws the cut outline in the layer colour and hatches the closed cut curve with the placeholder pattern",
+   "in_plane_annotations": "flat elements that belong to the section only (utility traces 20_UTILITY::SECTION_TRACE, silhouettes of the selected tree and the two figures, tag circles) are placed IN the cut plane, offset +0.01 m toward the camera so they are not clipped; page-space furniture (rulers, capsules, grid, note boxes, READOUT, legend, title block) lives on the layout",
+   "sheet_axes": "on the section layout, horizontal = distance across the street from the trunk (positive toward the road, = -v_engine), vertical = z; identical to the earlier flat-drawing convention so nothing else in this document changes"
+  }
+ },
+ "colours": {
+  "black": [
+   0,
+   0,
+   0
+  ],
+  "grey": [
+   128,
+   128,
+   128
+  ],
+  "grey_light": [
+   190,
+   190,
+   190
+  ],
+  "accent": [
+   85,
+   127,
+   82
+  ],
+  "accent_tint": [
+   201,
+   217,
+   198
+  ],
+  "paper": [
+   247,
+   244,
+   236
+  ],
+  "white": [
+   255,
+   255,
+   255
+  ],
+  "silhouette_light": [
+   222,
+   222,
+   222
+  ],
+  "silhouette_mid": [
+   190,
+   190,
+   190
+  ],
+  "silhouette_dark": [
+   110,
+   110,
+   110
+  ]
+ },
+ "print_widths_mm": {
+  "heavy": 0.5,
+  "medium": 0.25,
+  "thin": 0.13,
+  "ground": 0.7,
+  "$note": "'ground' is used by exactly one object per sheet: the grade line in section (and the grade edge of the band solid in axo). Everything else uses the three grades."
+ },
+ "linetypes": {
+  "continuous": "Continuous",
+  "unknown": "Dashed",
+  "centreline": "DashDot",
+  "ghost": "Hidden",
+  "cut_line": "Border"
+ },
+ "hatches": {
+  "soil_added_placeholder": {
+   "pattern": "Dots",
+   "scale_m_at_1_100": 0.08,
+   "note": "replaced by assets/hatches/soil_added.svg when supplied",
+   "section_note": "in section the band fill is lighter (Dots at 0.14 m) so the root lines read over it"
+  },
+  "soil_unknown_placeholder": {
+   "pattern": "Dots",
+   "scale_m_at_1_100": 0.25,
+   "note": "sparse; replaced by assets/hatches/soil_unknown.svg"
+  },
+  "typed_input": {
+   "pattern": "Hatch1",
+   "angle_deg": 45,
+   "scale_m_at_1_100": 0.15
+  },
+  "evidenced_input": {
+   "pattern": "Solid"
+  },
+  "interruption": {
+   "pattern": "Hatch1",
+   "angle_deg": 135,
+   "scale_m_at_1_100": 0.15
+  },
+  "asphalt_placeholder": {
+   "pattern": "Hatch1",
+   "angle_deg": 45,
+   "scale_m_at_1_100": 0.3,
+   "note": "replaced by assets/hatches/asphalt.svg"
+  },
+  "concrete_placeholder": {
+   "pattern": "Grid",
+   "scale_m_at_1_100": 0.3,
+   "note": "replaced by assets/hatches/concrete.svg"
+  },
+  "planting_strip_placeholder": {
+   "pattern": "Dots",
+   "scale_m_at_1_100": 0.2,
+   "note": "replaced by assets/hatches/planting_strip.svg"
+  }
+ },
+ "layers": [
+  {
+   "name": "00_SHEET",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "content": "layout-space only: frame, title block, READOUT, legend, note boxes, north arrow, scale bar"
+  },
+  {
+   "name": "00_SHEET::FRAME",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none"
+  },
+  {
+   "name": "00_SHEET::TITLEBLOCK",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none"
+  },
+  {
+   "name": "00_SHEET::READOUT",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none"
+  },
+  {
+   "name": "00_SHEET::LEGEND",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none"
+  },
+  {
+   "name": "00_SHEET::NOTES",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none"
+  },
+  {
+   "name": "00_SHEET::CLIPPING_PLANES",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "the two ClippingPlane objects on A–A (u = 0): section plane, normal +along, PlaneDepth 3 m, assigned to the BSB_SECTION_AA detail; axo plane, normal -along, no depth, assigned to the BSB_AXO detail. Hidden in every detail."
+  },
+  {
+   "name": "10_CITY",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA",
+   "content": "geometry read from City Open Data without modification other than projection to local metres"
+  },
+  {
+   "name": "10_CITY::PARCELS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "property-parcel-polygons",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::PROPERTY_LINE",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "dataset": "block-outlines",
+   "note": "the block outline edge facing the street = property line / right-of-way edge",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::FOOTPRINTS",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "dataset": "building-footprints-2015",
+   "note": "extruded to nominal.building_height_m in 3D; label 'height nominal, footprint 2015'",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::FOOTPRINTS::MASS",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA + nominal height",
+   "section_fill": "none",
+   "note": "footprints 2015 extruded 8 m nominal (white faces in Pen); shown in axo only, hidden in plan and section"
+  },
+  {
+   "name": "10_CITY::CENTRELINE",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "centreline",
+   "dataset": "public-streets",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::CROSS_STREETS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "centreline",
+   "dataset": "public-streets",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::LANES",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "unknown",
+   "dataset": "lanes",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::ROW_WIDTH",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "right-of-way-widths",
+   "note": "text only: 'ROW <value> as published (unit not stated) · <m> m if feet'",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::TREE_POINTS",
+   "colour": "black",
+   "width": "heavy",
+   "linetype": "continuous",
+   "dataset": "public-trees",
+   "note": "point + 0.3 m circle; selected tree heavy, block-face trees medium, others thin",
+   "section_fill": "none"
+  },
+  {
+   "name": "10_CITY::TREE_POINTS::SELECTED",
+   "colour": "black",
+   "width": "heavy",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA",
+   "section_fill": "none",
+   "note": "the selected tree's point + 0.3 m circle"
+  },
+  {
+   "name": "10_CITY::TREE_POINTS::FACE",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA",
+   "section_fill": "none",
+   "note": "the other trees on the block face"
+  },
+  {
+   "name": "10_CITY::TREE_POINTS::OTHER",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA",
+   "section_fill": "none",
+   "note": "trees in the window but not on the face (opposite side, cross streets, medians)"
+  },
+  {
+   "name": "10_CITY::TREE_SYMBOLS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "public-trees",
+   "note": "placeholder canopy = circle, diameter = 0.6 x height_m, label 'canopy nominal'; replaced by assets",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY",
+   "colour": "grey",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA",
+   "content": "plan position only; every utility element carries the text 'depth not published'"
+  },
+  {
+   "name": "20_UTILITY::WATER_DIST",
+   "colour": "grey",
+   "width": "medium",
+   "linetype": "continuous",
+   "dataset": "water-distribution-mains",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::WATER_TRANS",
+   "colour": "grey",
+   "width": "heavy",
+   "linetype": "continuous",
+   "dataset": "water-transmission-mains",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::SEWER",
+   "colour": "grey",
+   "width": "medium",
+   "linetype": "continuous",
+   "dataset": "sewer-mains",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::LIGHT_CONDUIT",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "street-lighting-conduits",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::CATCH_BASINS",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "sewer-catch-basins",
+   "symbol": "square 0.6 m",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::LIGHT_POLES",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "continuous",
+   "dataset": "street-lighting-poles",
+   "symbol": "circle 0.3 m with centre dot",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::SECTION_TRACE",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "unknown",
+   "note": "section only, drawn IN the cut plane (offset 0.01 m toward the camera): grey circle Ø 0.32 m at nominal depth 1.25 m + vertical dashed grey line from grade to z = -2.2 m at the plan position of every utility line within ±1 m of the cut; label 'plan position · depth not published · drawn nominal'",
+   "section_fill": "none"
+  },
+  {
+   "name": "20_UTILITY::SHEETS",
+   "colour": "grey",
+   "width": "thin",
+   "linetype": "unknown",
+   "provenance": "CITY_DATA (plan position) + nominal extent",
+   "section_fill": "none",
+   "note": "one vertical surface per utility line along its plan alignment, z 0 → -2 m, NO depth information: the cut shows it as a dashed grey vertical line; label 'plan position only · depth not published'. Replaces SECTION_TRACE's line for lines that the plane crosses; the nominal-depth circle of SECTION_TRACE stays. Hidden in plan."
+  },
+  {
+   "name": "30_DESIGN",
+   "colour": "accent",
+   "width": "heavy",
+   "linetype": "continuous",
+   "provenance": "DESIGN_ASSUMPTION | USER_INPUT | CONFIRMED_SITE_DATA",
+   "content": "everything the four knobs and the designer inputs produce"
+  },
+  {
+   "name": "30_DESIGN::CURB",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "knob": "curb position",
+   "note": "curb face at the knob position; curb width 0.15 m (Table 8-4 n.7); label 'curb assumed <v> m from ℄' unless CONFIRMED_SITE_DATA",
+   "section_fill": "solid_black"
+  },
+  {
+   "name": "30_DESIGN::BAND",
+   "colour": "accent",
+   "width": "heavy",
+   "linetype": "continuous",
+   "knob": "curb position + soil depth + land-use category (Table 8-3 row)",
+   "fill": "soil_added_placeholder",
+   "note": "the front boulevard band: block face length x front-boulevard width x depth (knob 2), widths read from the engine file; ONE solid in 3D (axo), cut by the A–A ClippingPlane for the section (section_fill accent_dots); its top face is the plan band",
+   "section_fill": "accent_dots"
+  },
+  {
+   "name": "30_DESIGN::SIDEWALK",
+   "colour": "accent",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SOURCE_RULE + user category",
+   "fill": "concrete_placeholder",
+   "note": "sidewalk clear zone from EDM Table 8-3 p.253 for the land-use row the user chose; label 'sidewalk <w> m · Table 8-3 <row> · <level>'; drawn between the band and the back boulevard | its two edges are cross-section boundaries; in section draw them as thin vertical lines from grade to +4.6 m",
+   "section_fill": "solid_black"
+  },
+  {
+   "name": "30_DESIGN::BACK_BOULEVARD",
+   "colour": "accent",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SOURCE_RULE + user category",
+   "note": "back boulevard from EDM Table 8-4 p.255; label 'back boulevard <w> m · Table 8-4 <row> · <level>'; between sidewalk and P/L | its property-side edge is the P/L",
+   "section_fill": "solid_black"
+  },
+  {
+   "name": "30_DESIGN::BAND_SEGMENTS",
+   "colour": "accent",
+   "width": "heavy",
+   "linetype": "continuous",
+   "note": "band after utility interruptions; one closed region per segment, labelled with its per-tree share",
+   "section_fill": "accent_dots"
+  },
+  {
+   "name": "30_DESIGN::INTERRUPTION",
+   "colour": "grey",
+   "width": "medium",
+   "linetype": "unknown",
+   "fill": "interruption",
+   "note": "Table 2-2 clearance applied as a band interruption; label '<x> m · Table 2-2 p.31–33 · PROJECT INTERPRETATION'",
+   "section_fill": "hatch45"
+  },
+  {
+   "name": "30_DESIGN::EXISTING_SOIL_TYPED",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "unknown",
+   "fill": "typed_input",
+   "provenance": "USER_INPUT",
+   "note": "designer-typed existing soil width / depth / type; result phrased 'based on your inputs'",
+   "section_fill": "hatch45"
+  },
+  {
+   "name": "30_DESIGN::EXISTING_SOIL_EVIDENCED",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "fill": "evidenced_input",
+   "provenance": "CONFIRMED_SITE_DATA",
+   "note": "requires the evidence reference from the schema; label with it",
+   "section_fill": "solid_accent"
+  },
+  {
+   "name": "30_DESIGN::TARGET_GHOST",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "ghost",
+   "knob": "target tree class",
+   "note": "box of the Table 9-2 Shared/Row volume for the target class at the measured spacing: width = band width, length = spacing, depth = volume / (width x spacing); label the class and the m³",
+   "section_fill": "dashed"
+  },
+  {
+   "name": "40_UNKNOWN",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "unknown",
+   "provenance": "UNKNOWN | SOURCE_RULE",
+   "content": "existing conditions nobody has evidenced"
+  },
+  {
+   "name": "40_UNKNOWN::GROUND_POCHE",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SOURCE_RULE / UNKNOWN",
+   "fill": "Solid black",
+   "note": "section only: ONE solid below grade — a box from z = 0 (0.15 in the pedestrian realm) down to z = -2.2 m spanning the block face and the road to the centreline — with section_fill solid_black. Black means 'soil not credited or unknown'. The credited-soil solids (BAND, EXISTING_SOIL_*) are booleaned OUT of it so the cut shows them as holes with their own fill; TARGET_GHOST is a dashed outline, not a hole. Utilities sit inside the black as grey circles + vertical dashed lines on 20_UTILITY::SECTION_TRACE, placed in the cut plane.",
+   "section_fill": "solid_black"
+  },
+  {
+   "name": "40_UNKNOWN::EXISTING_SOIL",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "unknown",
+   "fill": "soil_unknown_placeholder",
+   "note": "GRI p.18 default: open planting strip only, depth UNKNOWN; drawn to the strip width, depth drawn to 0.6 m with the label 'depth UNKNOWN · drawn nominal'",
+   "section_fill": "dashed"
+  },
+  {
+   "name": "40_UNKNOWN::UNDER_HARDSCAPE",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "unknown",
+   "note": "soil under sidewalk / road: label 'not credited · GRI p.18' and no fill",
+   "section_fill": "solid_black"
+  },
+  {
+   "name": "50_ANNOTATION",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET"
+  },
+  {
+   "name": "50_ANNOTATION::DIMENSIONS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "style": "BSB",
+   "section_fill": "none"
+  },
+  {
+   "name": "50_ANNOTATION::TAGS",
+   "colour": "accent",
+   "width": "medium",
+   "linetype": "continuous",
+   "note": "numbered circles ①②③④, model space",
+   "section_fill": "none"
+  },
+  {
+   "name": "50_ANNOTATION::LABELS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "note": "short model-space text labels (layer names, 'depth not published', 'canopy nominal')",
+   "section_fill": "none"
+  },
+  {
+   "name": "50_ANNOTATION::CUT_LINE",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "cut_line",
+   "note": "A–A cut through the selected tree, perpendicular to along_unit",
+   "section_fill": "none"
+  },
+  {
+   "name": "50_ANNOTATION::GRID",
+   "colour": "grey_light",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "page-space grey grid 1 m × 0.5 m at the detail scale, above grade only, opacity 0.55; masked behind every text halo (§page-space rules)"
+  },
+  {
+   "name": "50_ANNOTATION::GRADE_LINE",
+   "colour": "black",
+   "width": "ground",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "page-space grade line at print width 'ground' 0.7 mm, full detail width, with the 0.15 m curb step; the only object at this width on the sheet"
+  },
+  {
+   "name": "50_ANNOTATION::BOUNDARY",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "page-space verticals at the five segment boundaries (curb face, back of curb, both sidewalk edges, P/L) from grade to +4.6 m, plus the centreline as DashDot medium"
+  },
+  {
+   "name": "50_ANNOTATION::RULERS",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "page-space elevation ruler (right) and distance ruler (bottom) with ticks and labels"
+  },
+  {
+   "name": "50_ANNOTATION::CAPSULES",
+   "colour": "black",
+   "width": "medium",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "page-space zone capsules (rounded rectangles, black medium stroke) with label text, subline and leader"
+  },
+  {
+   "name": "50_ANNOTATION::CAPSULES::FILL",
+   "colour": "white",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "the white fill hatch of each capsule, drawn under CAPSULES"
+  },
+  {
+   "name": "50_ANNOTATION::TAGS::STRIP",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "the black title strip of each numbered tag (solid hatch)"
+  },
+  {
+   "name": "50_ANNOTATION::TAGS::STRIP_TEXT",
+   "colour": "white",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "section_fill": "none",
+   "note": "white upper-case title text on the strip"
+  },
+  {
+   "name": "60_ASSETS",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "SHEET",
+   "content": "user-supplied SVG line art placed by script; placeholders until the files exist"
+  },
+  {
+   "name": "60_ASSETS::TREE_PLAN",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "section_fill": "none"
+  },
+  {
+   "name": "60_ASSETS::TREE_SECTION",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "note": "grey-scale layered silhouette: canopy as filled grey shapes (silhouette_light / silhouette_mid), never a line circle; trunk silhouette_dark with a thin black edge; scaled to height_m; crown may run off the sheet",
+   "section_fill": "none"
+  },
+  {
+   "name": "60_ASSETS::TREE_AXO",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "section_fill": "none"
+  },
+  {
+   "name": "60_ASSETS::TREE_3D",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA (height) + nominal form",
+   "section_fill": "none",
+   "note": "parent of the 3D tree placeholders used until the SVG assets arrive"
+  },
+  {
+   "name": "60_ASSETS::TREE_3D::TRUNK",
+   "colour": "silhouette_dark",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA (height) + nominal form",
+   "section_fill": "solid_dark_grey",
+   "note": "trunk cylinder Ø 0.3 m to 0.75 × City height_m"
+  },
+  {
+   "name": "60_ASSETS::TREE_3D::CANOPY",
+   "colour": "silhouette_light",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "CITY_DATA (height) + nominal form",
+   "section_fill": "solid_light_grey",
+   "note": "canopy = flattened ellipsoid Ø 0.6 × height_m, half as tall, centred at 0.75 × height_m: a disc in plan, a lens in section; label 'canopy nominal'"
+  },
+  {
+   "name": "60_ASSETS::ROAD_SLAB",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "provenance": "nominal placeholder",
+   "section_fill": "hatch45_black",
+   "note": "road slab centreline → curb face, 0.10 m thick, nominal; its cut face carries the asphalt placeholder (Hatch1 45° black) until assets/hatches/asphalt.svg; hidden in plan"
+  },
+  {
+   "name": "60_ASSETS::FIGURES",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "note": "grey-scale layered silhouettes (silhouette_dark for the near figure, silhouette_mid for the far one), thin outline or none; 1.7 m; two per section sheet (sidewalk, road edge)",
+   "section_fill": "none"
+  },
+  {
+   "name": "60_ASSETS::HATCHES",
+   "colour": "black",
+   "width": "thin",
+   "linetype": "continuous",
+   "section_fill": "none"
+  }
+ ],
+ "line_weight_by_element": {
+  "heavy_0.50": [
+   "soil band outline",
+   "band segment outline",
+   "selected tree point and trunk",
+   "section cut face outline (grade line at the cut)",
+   "water transmission main"
+  ],
+  "medium_0.25": [
+   "building footprints",
+   "property line",
+   "centreline",
+   "curb",
+   "existing soil outlines (typed / evidenced / unknown)",
+   "target ghost box",
+   "utility mains",
+   "interruption zones",
+   "tags",
+   "cut line",
+   "frame"
+  ],
+  "thin_0.13": [
+   "parcels",
+   "lanes",
+   "cross streets",
+   "tree canopies",
+   "other tree points",
+   "hatches",
+   "dimensions",
+   "labels",
+   "leaders",
+   "legend",
+   "assets",
+   "conduits, poles, catch basins"
+  ]
+ },
+ "tags": {
+  "1": {
+   "title": "MEASURED STREET",
+   "meaning": "what City data gives with no assumption: spacing between same-side trees, tree to property line, tree to centreline, right-of-way width",
+   "provenance": "CITY_DATA / DERIVED_CALCULATION",
+   "anchor_object": "the spacing dimension of the selected tree"
+  },
+  "2": {
+   "title": "SOIL BAND",
+   "meaning": "the front boulevard (back of curb to sidewalk edge, R30) at the soil-depth knob; its width follows from the curb knob and the Table 8-3 / 8-4 rows",
+   "provenance": "DERIVED_CALCULATION on DESIGN_ASSUMPTION + SOURCE_RULE",
+   "anchor_object": "30_DESIGN::BAND"
+  },
+  "3": {
+   "title": "INTERRUPTION",
+   "meaning": "a City utility crossing the band, widened by the Table 2-2 clearance and applied as a band break (PROJECT INTERPRETATION)",
+   "provenance": "CITY_DATA + SOURCE_RULE + PROJECT INTERPRETATION",
+   "anchor_object": "30_DESIGN::INTERRUPTION (omit the tag when no utility crosses the band)"
+  },
+  "4": {
+   "title": "SHARE VS TABLE 9-2",
+   "meaning": "per-tree share = band width x depth x measured spacing, compared with the Shared/Row and Solitary columns for the target class",
+   "provenance": "DERIVED_CALCULATION vs SOURCE_RULE",
+   "anchor_object": "30_DESIGN::TARGET_GHOST"
+  }
+ },
+ "tag_geometry": {
+  "circle_diameter_page_mm": 6.0,
+  "circle_colour": "accent",
+  "circle_fill": "white",
+  "number_font": "title",
+  "number_height_page_mm": 3.5,
+  "title_strip": {
+   "fill": "black",
+   "text_colour": "white",
+   "font": "title",
+   "text_height_page_mm": 3.0,
+   "height_page_mm": 5.0,
+   "gap_from_circle_mm": 1.0,
+   "case": "upper"
+  },
+  "model_space_rule": "circle radius in model units = 3.0 mm x detail scale factor (1:250 -> 0.75 m; 1:100 -> 0.30 m); text height likewise"
+ },
+ "note_box": {
+  "fill": "black",
+  "text_colour": "white",
+  "font": "mono",
+  "text_height_page_mm": 2.2,
+  "line_spacing": 1.35,
+  "width_page_mm": 60,
+  "padding_page_mm": 3,
+  "max_lines": 9,
+  "first_line": "source anchor in the form '<file short name> <section> p.<page>' or 'City: <dataset id>'",
+  "leader": "none; the box starts with the tag number it explains (① ② ③ ④); cross-reference by number",
+  "space": "layout (page) space",
+  "wrap": "wrap at 40 characters; the box grows with the wrapped line count (max 9 lines after wrapping)",
+  "position": "two boxes per sheet, page space, at x = 150 and 214 mm, top y = 214 mm; the READOUT starts at x = 284 mm"
+ },
+ "readout": {
+  "count_per_sheet": 1,
+  "position": "bottom-right of the drawing area, 8 mm above the title block, right edge 8 mm from the frame",
+  "size_page_mm": [
+   120,
+   22
+  ],
+  "fill": "white",
+  "border": {
+   "colour": "black",
+   "width_mm": 0.5
+  },
+  "header": {
+   "text": "READOUT",
+   "font": "title",
+   "height_mm": 3.0,
+   "fill": "black",
+   "text_colour": "white"
+  },
+  "line_1": {
+   "font": "mono",
+   "height_mm": 2.6,
+   "content": "existing → design pair: '<existing share or UNKNOWN> (<grade>) → <design share> m³ vs <shared_row> / <solitary> m³ (<class>)'; existing is typed / evidenced / UNKNOWN per the engine"
+  },
+  "line_2": {
+   "font": "mono",
+   "height_mm": 2.0,
+   "content": "provenance codes after each number, from the engine's provenance fields, e.g. [D: C spacing × D band(A curb, S 8-3, S 8-4) × A depth] vs [S EDM Table 9-2 p.350]"
+  },
+  "provenance_codes": {
+   "C": "CITY_DATA",
+   "D": "DERIVED_CALCULATION",
+   "S": "SOURCE_RULE",
+   "U": "USER_INPUT",
+   "E": "CONFIRMED_SITE_DATA",
+   "A": "DESIGN_ASSUMPTION",
+   "?": "UNKNOWN"
+  },
+  "never": [
+   "PASS",
+   "FAIL",
+   "OK",
+   "✓",
+   "✗",
+   "score",
+   "percent"
+  ],
+  "source": "every number is read from data/processed/block_face_<site_id>.json (engine output). The sheet never computes a share, gap or benchmark.",
+  "placeholder": "when the file is absent or older than the current rules version: line 1 = 'READOUT awaiting block_face_<site_id>.json (regenerate with scripts/run_block_face.py)', line 2 = the file's run.rules version if any",
+  "line_3": {
+   "font": "mono",
+   "height_mm": 1.7,
+   "content": "R02 reference (reference_only, no judgement): 'measured spacing <s> m · Table 9-2 <class> <min>–<max> m · at <min+1> m only <share> m³'"
+  }
+ },
+ "legend": {
+  "position": "bottom-left of the drawing area, 8 mm above the title block, left edge 8 mm from the frame; the scale bar sits to its right at x = 110 mm",
+  "row_height_page_mm": 5,
+  "swatch_page_mm": [
+   14,
+   3
+  ],
+  "rows": [
+   {
+    "label": "CITY DATA",
+    "colour": "black",
+    "linetype": "continuous",
+    "width": "medium",
+    "fill": null
+   },
+   {
+    "label": "DERIVED FROM CITY DATA",
+    "colour": "black",
+    "linetype": "continuous",
+    "width": "thin",
+    "fill": null,
+    "suffix": "· derived"
+   },
+   {
+    "label": "DESIGN ASSUMPTION (knob)",
+    "colour": "accent",
+    "linetype": "continuous",
+    "width": "heavy",
+    "fill": "soil_added_placeholder"
+   },
+   {
+    "label": "TYPED INPUT · no evidence",
+    "colour": "accent",
+    "linetype": "unknown",
+    "width": "medium",
+    "fill": "typed_input"
+   },
+   {
+    "label": "EVIDENCED SITE DATA",
+    "colour": "accent",
+    "linetype": "continuous",
+    "width": "medium",
+    "fill": "evidenced_input"
+   },
+   {
+    "label": "UNKNOWN",
+    "colour": "black",
+    "linetype": "unknown",
+    "width": "medium",
+    "fill": "soil_unknown_placeholder"
+   },
+   {
+    "label": "UTILITY · depth not published",
+    "colour": "grey",
+    "linetype": "continuous",
+    "width": "medium",
+    "fill": null
+   }
+  ]
+ },
+ "honesty_rules": [
+  "The four knobs recompute Table 9-2 arithmetic, not physics.",
+  "Existing underground conditions are dashed / UNKNOWN unless evidenced.",
+  "Every number traces to one source passage or one City data read."
+ ],
+ "title_block": {
+  "position": "full-width strip along the bottom of the page",
+  "height_page_mm": 42,
+  "fill": "accent",
+  "fill_fallback": "if the display mode does not print hatch fills, draw the strip outline in accent and set all title-block text to accent",
+  "text_colour_on_fill": "white",
+  "columns": [
+   {
+    "x_mm": 10,
+    "width_mm": 120,
+    "lines": [
+     {
+      "font": "mono",
+      "height_mm": 2.6,
+      "text": "BOULEVARD SOIL BAND · ARCH540 A1"
+     },
+     {
+      "font": "title",
+      "height_mm": 11,
+      "text": "<VIEW NAME>",
+      "examples": [
+       "PLAN",
+       "SECTION A–A",
+       "AXONOMETRIC"
+      ]
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.6,
+      "text": "<site_id> · <street> · <cross street 1> → <cross street 2> · <side>"
+     }
+    ]
+   },
+   {
+    "x_mm": 140,
+    "width_mm": 170,
+    "lines": [
+     {
+      "font": "mono",
+      "height_mm": 2.6,
+      "text": "How much tree can this boulevard carry under EDM 2026 §9.3 Table 9-2, and what would have to change?"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "<honesty rule 1>"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "<honesty rule 2>"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "<honesty rule 3>"
+     }
+    ]
+   },
+   {
+    "x_mm": 320,
+    "width_mm": 90,
+    "lines": [
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "generated by script · <YYYY-MM-DD>"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "City data: trees <fetch date> · footprints 2015 · parcels/ROW weekly"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "grade nominal, not surveyed · scale 1:<n> on A3"
+     },
+     {
+      "font": "mono",
+      "height_mm": 2.2,
+      "text": "knobs: curb <v> m · depth <d> m · target <class> · soil <type>"
+     }
+    ]
+   }
+  ]
+ },
+ "fonts": {
+  "title": {
+   "family": "Barlow Condensed",
+   "weight": "SemiBold",
+   "case": "upper",
+   "licence": "OFL",
+   "fallback": [
+    "Arial Narrow",
+    "Helvetica Neue Condensed",
+    "Arial"
+   ]
+  },
+  "mono": {
+   "family": "IBM Plex Mono",
+   "weight": "Regular",
+   "licence": "OFL",
+   "fallback": [
+    "Menlo",
+    "Courier New"
+   ]
+  },
+  "note": "Rhino uses installed system fonts; the generator checks availability and records which font it used in the title block"
+ },
+ "annotation_style": {
+  "name": "BSB",
+  "font": "mono",
+  "text_height_page_mm": 2.5,
+  "layout_scaling": true,
+  "arrow": "tick",
+  "arrow_size_page_mm": 1.5,
+  "extension_offset_page_mm": 1.0,
+  "precision_m": 0.1,
+  "suffix": " m",
+  "city_point_suffix": " m ±1–2 m (City tree point)",
+  "dimension_line_colour": "black",
+  "dimension_line_width": "thin"
+ },
+ "dimension_positions": {
+  "plan": [
+   {
+    "what": "same-side spacing, selected tree to each neighbour",
+    "where": "parallel to the street, 3 m toward the road from the tree points",
+    "tag": "1"
+   },
+   {
+    "what": "tree to property line",
+    "where": "across the street at the selected tree, on the cut line",
+    "tag": "1"
+   },
+   {
+    "what": "tree to centreline",
+    "where": "across the street at the selected tree, on the cut line, continuing the previous",
+    "tag": "1"
+   },
+   {
+    "what": "band width",
+    "where": "inside the band, at the block-face midpoint",
+    "tag": "2"
+   },
+   {
+    "what": "interruption width",
+    "where": "inside each interruption zone",
+    "tag": "3"
+   },
+   {
+    "what": "block face length",
+    "where": "along the property line, 6 m into the parcels",
+    "tag": null
+   }
+  ],
+  "section": [
+   {
+    "what": "band depth",
+    "where": "left of the band cut-out, vertical, accent",
+    "tag": "2"
+   },
+   {
+    "what": "target ghost box depth",
+    "where": "right of the ghost box, vertical, accent",
+    "tag": "4"
+   }
+  ],
+  "axo": [
+   {
+    "what": "band width",
+    "where": "on the top face of the band at the cut",
+    "tag": "2"
+   },
+   {
+    "what": "band depth",
+    "where": "on the cut face of the band",
+    "tag": "2"
+   },
+   {
+    "what": "one spacing",
+    "where": "between the selected tree and its downstream neighbour, on grade",
+    "tag": "1"
+   }
+  ]
+ },
+ "views": {
+  "BSB_PLAN": {
+   "layout": {
+    "name": "BSB_PLAN",
+    "page_mm": [
+     420,
+     297
+    ],
+    "detail_rect_mm": [
+     12,
+     52,
+     408,
+     287
+    ]
+   },
+   "projection": "top, north up",
+   "scale_candidates": [
+    "1:250",
+    "1:500",
+    "1:750"
+   ],
+   "scale_rule": "smallest denominator such that the block outline length + 2 x 15 m fits in 396 mm (KE-198571: 164.8 m block -> 1:500)",
+   "window": "block outline (the parcels' street edge) + 15 m beyond each end, so both cross-street centrelines show; across: 30 m behind the property line to 10 m beyond the centreline",
+   "display_mode": "Pen",
+   "north_arrow": {
+    "position_mm": [
+     396,
+     275
+    ],
+    "size_mm": 12
+   },
+   "scale_bar": {
+    "position_mm": [
+     110,
+     240
+    ],
+    "length_m": 20,
+    "divisions": 4
+   },
+   "required": [
+    "30_DESIGN::CURB / BAND / SIDEWALK / BACK_BOULEVARD as strips along the block face (their edges = curb face, back of curb, sidewalk edges, P/L); widths from the engine file",
+    "10_CITY::PARCELS",
+    "10_CITY::PROPERTY_LINE",
+    "10_CITY::FOOTPRINTS",
+    "10_CITY::CENTRELINE",
+    "10_CITY::CROSS_STREETS",
+    "10_CITY::LANES",
+    "30_DESIGN::TARGET_GHOST as a plan cell: band width x measured spacing, centred on the selected tree (Hidden linetype) — the anchor of tag ④",
+    "10_CITY::TREE_POINTS (all trees in window; selected heavy)",
+    "10_CITY::TREE_SYMBOLS (block-face trees)",
+    "10_CITY::ROW_WIDTH (text)",
+    "20_UTILITY::* (all six datasets in window, each with 'depth not published' once per line)",
+    "30_DESIGN::CURB",
+    "30_DESIGN::BAND or BAND_SEGMENTS",
+    "30_DESIGN::INTERRUPTION (if any)",
+    "50_ANNOTATION::CUT_LINE with 'A' at both ends",
+    "50_ANNOTATION::TAGS ① ② (③) ④",
+    "dimensions per dimension_positions.plan",
+    "legend",
+    "READOUT",
+    "note boxes ① and ②",
+    "title block",
+    "north arrow",
+    "scale bar",
+    "40_UNKNOWN::EXISTING_SOIL (planting strip, engine 'existing' band)"
+   ],
+   "forbidden": [
+    "contours",
+    "raster basemap",
+    "utility depths",
+    "result cards",
+    "any colour other than black / grey / accent / white"
+   ]
+  },
+  "BSB_SECTION_AA": {
+   "layout": {
+    "name": "BSB_SECTION_AA",
+    "page_mm": [
+     420,
+     297
+    ],
+    "detail_rect_mm": [
+     12,
+     52,
+     408,
+     287
+    ]
+   },
+   "projection": "ClippingPlane section of the 3D model: detail viewport in parallel projection looking along +along_unit (road on the right), ClippingPlane at the tree point with normal along_unit, enabled for this detail only",
+   "cut": "vertical plane through the selected tree point, perpendicular to along_unit; the cut faces show the layer's section_fill; objects beyond the plane stay visible as thin Pen silhouettes (optionally limited by a second ClippingPlane at u = +25 m)",
+   "scale": "1:50",
+   "window": "horizontal (= -v_engine) from property line - 2 m to centreline + 0.6 m (18.9 m at KE-198571 -> 378 mm); vertical from -2.2 m to +5.6 m: the crown is cropped, the trunk runs off the top, and the tree height is written as text; the building face is off-sheet and its distance behind the P/L is written as text",
+   "display_mode": "Pen",
+   "scale_bar": {
+    "position_mm": [
+     110,
+     240
+    ],
+    "length_m": 2,
+    "divisions": 4
+   },
+   "required": [
+    "fine grey grid (rulers.grid)",
+    "40_UNKNOWN::GROUND_POCHE solid cut by the plane, section_fill solid_black, credited-soil solids booleaned out; the pedestrian realm sits 0.15 m above the road surface (nominal curb height)",
+    "grade line at print width 'ground', the heaviest line on the sheet, labelled 'grade nominal, not surveyed'",
+    "the five segments from the engine file, road to property: curb 0.15 | front boulevard (= band) | sidewalk (Table 8-3 row) | back boulevard (Table 8-4 row) | P/L; boundaries as thin vertical lines; capsules per views.BSB_SECTION_AA.capsules",
+    "curb face at the knob position, labelled 'curb face assumed <v> m from ℄ (knob 1)' or the evidence reference; the City catch-basin offsets quoted as the hint",
+    "30_DESIGN::BAND solid cut by the plane (section_fill accent_dots), accent medium outline, width = front boulevard, depth = knob 2",
+    "30_DESIGN::EXISTING_SOIL_TYPED (accent 45° hatch, dashed outline) or _EVIDENCED (solid accent) when the designer supplied them, as holes in the ground poché (section_fill hatch45 / solid_accent)",
+    "30_DESIGN::TARGET_GHOST: dashed accent outline at the band width and the engine's target depth; label '<class> · <m³> Shared/Row · Table 9-2 p.350'",
+    "20_UTILITY::SECTION_TRACE for every utility line within ±1 m of the cut: grey circle at nominal depth + vertical dashed line, 'plan position · depth not published · drawn nominal'",
+    "white text on the black, once: 'black = soil not credited or unknown · GRI p.18: under hardscape not counted unless tested'",
+    "building face as text ('<d> m behind P/L, off sheet · footprints 2015 · height 8 m nominal')",
+    "selected tree as a grey-scale silhouette (60_ASSETS::TREE_SECTION), trunk to the sheet top, text 'height <h> m (City), crown off sheet'",
+    "two grey-scale figures (60_ASSETS::FIGURES): sidewalk and road edge",
+    "elevation ruler and distance ruler (rulers)",
+    "50_ANNOTATION::TAGS ① ② (③) ④ — ② and ④ may sit inside the black (white circle, black strip)",
+    "legend",
+    "READOUT (numbers from the engine file or the placeholder sentence)",
+    "note boxes ② and ④",
+    "title block"
+   ],
+   "forbidden": [
+    "utility depth",
+    "a ground profile from contours",
+    "water table",
+    "any soil layer without provenance",
+    "a line-circle canopy",
+    "a second accent",
+    "dimension strings across the drawing (the rulers and capsule sublines carry the numbers)",
+    "root symbols (no provenance: root extent is neither City data nor a source rule)"
+   ],
+   "style": "transect: black ground poché below grade, grade line the heaviest line on the sheet (print width 'ground' 0.7 mm), credited soil cut out of the black, two rulers, fine grey grid, five segment capsules above the drawing, grey-scale silhouettes for tree and figures",
+   "rulers": {
+    "elevation": {
+     "position": "right edge of the drawing window",
+     "zero": "z = 0 = road surface (nominal)",
+     "tick_m": 0.5,
+     "label_every_m": 1.0,
+     "label_side": "left of the ruler, white where the label falls on the black",
+     "title": "ELEVATION (m) · z = 0 road surface · grade nominal, not surveyed"
+    },
+    "distance": {
+     "position": "bottom edge of the drawing window, just below the black",
+     "zero": "0 = trunk of the selected tree",
+     "positive": "toward the road",
+     "tick_m": 1.0,
+     "label_every_m": 1.0,
+     "title": "DISTANCE (m) · 0 = trunk · positive toward the road · City tree point ±1–2 m"
+    },
+    "grid": {
+     "x_m": 1.0,
+     "z_m": 0.5,
+     "colour": "grey_light",
+     "width": "thin",
+     "opacity": 0.55,
+     "note": "behind everything; the black poché covers it below grade"
+    }
+   },
+   "capsules": {
+    "what": "the five R30 segments plus ℄, one capsule each, hung above the drawing",
+    "shape": "rounded rectangle, white fill, black medium stroke, corner radius = half height, height 6.4 mm",
+    "text": "mono 2.6 mm upper case, black",
+    "subline": "mono 1.8 mm under the capsule: '<width> m · <table> p.<page> · <row> · <level> · <provenance code>'",
+    "leader": "thin black vertical line from the capsule to the top of the segment's boundary lines",
+    "rows": "two rows, staggered so no capsule or subline overlaps: row 1 (z = 5.3 m) BACK BOULEVARD, FRONT BOULEVARD · BAND; row 2 (z = 4.5 m) P/L, SIDEWALK, CURB, ℄",
+    "labels": [
+     "P/L",
+     "BACK BOULEVARD",
+     "SIDEWALK",
+     "FRONT BOULEVARD · BAND",
+     "CURB",
+     "℄"
+    ]
+   },
+   "boundaries": "five thin black vertical lines from grade to z = +4.6 m at: curb face, back of curb, sidewalk edge (road side = band inner edge), sidewalk edge (property side), property line; the centreline as DashDot medium",
+   "main_lines_must_appear": [
+    "grade line (print width ground, full sheet width, with the 0.15 m curb step)",
+    "five segment boundary lines",
+    "elevation ruler",
+    "distance ruler"
+   ],
+   "missing_rule": "if any of main_lines_must_appear cannot be drawn, the READOUT second line lists it as 'missing: <line>'",
+   "dimensions_note": "the earlier dimension strings are replaced by the two rulers and the capsule sublines; the only dimension objects left are band depth (left of the band, accent) and ghost depth (right of the ghost box, accent)"
+  },
+  "BSB_AXO": {
+   "layout": {
+    "name": "BSB_AXO",
+    "page_mm": [
+     420,
+     297
+    ],
+    "detail_rect_mm": [
+     12,
+     52,
+     408,
+     287
+    ]
+   },
+   "projection": "parallel; camera direction (1, 1, -1) normalised (from the south-west, 35.26° down) when the boulevard is on the north side; mirror to (1, -1, -1) for a south-side site so the buildings stay behind the street",
+   "scale": "fit the block face; state 'axonometric, not to scale' in the title block",
+   "window": "block face + 10 m; parcels one lot deep",
+   "display_mode": "Pen",
+   "required": [
+    "10_CITY::FOOTPRINTS extruded to nominal height (one label 'buildings 8 m nominal · footprints 2015')",
+    "10_CITY::PARCELS, PROPERTY_LINE, CENTRELINE, CROSS_STREETS, LANES on the ground plane",
+    "10_CITY::TREE_POINTS + 60_ASSETS::TREE_AXO billboards (placeholder: trunk cylinder 0.3 m + canopy sphere) scaled to height_m",
+    "20_UTILITY::* on the ground plane, grey, one label 'utilities: plan position only, depth not published'",
+    "30_DESIGN::BAND as a solid below grade, cut open at the A–A plane so the depth reads; heavy outline",
+    "30_DESIGN::INTERRUPTION solids if any",
+    "30_DESIGN::TARGET_GHOST as a hidden-line box at the selected tree",
+    "40_UNKNOWN::EXISTING_SOIL as a dashed outline volume at nominal depth",
+    "two scale figures",
+    "50_ANNOTATION::TAGS ① ② (③) ④",
+    "dimensions per dimension_positions.axo",
+    "legend",
+    "READOUT",
+    "note boxes ① ② ③ ④ (short form, 4 lines each)",
+    "title block"
+   ],
+   "forbidden": [
+    "terrain",
+    "textures or materials",
+    "shadows",
+    "perspective",
+    "any 'viewer' chrome"
+   ]
+  }
+ },
+ "capture": {
+  "command": "-ViewCaptureToFile from each layout, or Print to PNG",
+  "pixels": [
+   2480,
+   1754
+  ],
+  "dpi": 150,
+  "background": "paper",
+  "output_dir": "reports/screens/rhino/",
+  "filename": "<site_id>_<view>_<YYYY-MM-DD>.png",
+  "make2d": "manual step for final boards only: Make2D -> Illustrator; not part of the tool"
+ },
+ "placeholders_until_assets_arrive": {
+  "tree_plan": "circle, diameter 0.6 x height_m, thin, centre dot",
+  "tree_section": "grey-scale silhouette: trunk polygon (silhouette_dark) + two or three overlapping ellipses (silhouette_light / mid) for the crown",
+  "tree_axo": "cylinder 0.3 m + sphere as above",
+  "figure": "grey silhouette: head circle 0.22 m, torso 0.34 × 0.7 m rounded, two legs 0.12 × 0.75 m",
+  "hatches": "see hatches.*_placeholder",
+  "note": "tree_* placeholders remain for the parked Rhino sheet generators only; the web scene uses species_models since 2026-09-28"
+ },
+ "preview": {
+  "rendered": "2026-09-24",
+  "files": [
+   "reports/screens/standard_preview/KE-198571_plan_preview.png",
+   "reports/screens/standard_preview/KE-198571_section_preview.png",
+   "reports/screens/standard_preview/KE-198571_section_v2_transect_preview.png"
+  ],
+  "renderer": "reports/screens/standard_preview/render_preview.py (SVG -> headless Chrome; reads this JSON and real City data; knob values illustrative)",
+  "note": "a preview of the standard, not a Rhino capture; the section preview reads segments, widths, ghost depth and READOUT from data/processed/block_face_KE-198571.json (R30 version, 2026-09-24); the plan preview still shows an illustrative band and predates R30",
+  "renderer_section_v2": "reports/screens/standard_preview/render_section_v2.py — 2D reference rendering of what the ClippingPlane section must look like (same sheet axes); it is a preview, not the generator"
+ },
+ "revision_notes": [
+  "2026-09-24 step 2: band = front boulevard (R30, EDM §8.4 pp.253–256); layers 30_DESIGN::SIDEWALK and BACK_BOULEVARD added; tag ② wording updated. Captures go to reports/screens/rhino/ (user instruction).",
+  "2026-09-24 late: ROOTS legend rows and 60_ASSETS::TREE_ROOTS removed (no provenance: root extent is neither City data nor a source rule); READOUT becomes an existing → design pair with an R02 spacing reference line; plan gets a 1:200 inset (tree ±15 m) at the bottom right.",
+  "2026-09-28 (phase 4): species_models added; the web scene draws every tree from its library model scaled to the City height; Table 9-3 species carry their Table 9-2 box; chapter 04 cards. The tree_* placeholders now apply only to the parked Rhino sheet generators.",
+  "2026-09-28 (phase 4 review): roots restored as a NOMINAL drawing that fills the credited soil (key roots); section proportion: grade line at mid-height, ground body 0 to -8 m; chapter 05 is a thick slab pulled out of the street with numbered captions (result view, observation only); facilities drawn to diameter in section and slab.",
+  "2026-09-28 night: roots redrawn after the WUR root atlas (three weights, habit REFERENCE where a plate exists); protection_barrier (R32), nominal_corridors (Table 7-1), street_lighting_conduit_cover (G4.7) and ground_records added."
+ ],
+ "band_definition": {
+  "band": "FRONT BOULEVARD (EDM 2026 §8.4.3.1 p.253, §8.4.6 p.255, Tables 8-3 p.253 and 8-4 p.256; rule R30): the strip between the back of curb and the sidewalk",
+  "cross_section_from_road_to_property": [
+   {
+    "segment": "curb",
+    "width": "0.15 m",
+    "source": "Table 8-4 note 7 p.256",
+    "provenance": "SOURCE_RULE"
+   },
+   {
+    "segment": "front boulevard = THE BAND",
+    "width": "(property line - curb face) - sidewalk - back boulevard - 0.15",
+    "source": "R30 composition (PROJECT_INTERPRETATION of Tables 8-3 / 8-4)",
+    "provenance": "DERIVED_CALCULATION on a DESIGN_ASSUMPTION (curb knob)"
+   },
+   {
+    "segment": "sidewalk clear width",
+    "width": "Table 8-3 row for the land-use category, at the width level (default minimum)",
+    "source": "Table 8-3 p.253",
+    "provenance": "SOURCE_RULE"
+   },
+   {
+    "segment": "back boulevard",
+    "width": "Table 8-4 row (Residential / Commercial) at the width level",
+    "source": "Table 8-4 p.256",
+    "provenance": "SOURCE_RULE"
+   },
+   {
+    "segment": "property line",
+    "width": "boundary, measured",
+    "source": "City block-outlines / parcels",
+    "provenance": "DERIVED_CALCULATION"
+   }
+  ],
+  "inputs": "the four knobs (curb position, soil depth, target class, soil type) plus two categorical choices that R30 needs: land-use category (a Table 8-3 row) and width level (constrained / minimum / preferred, default minimum). There is NO fifth numeric input: the former 'sidewalk edge (typed)' is removed; the sidewalk edge is where Table 8-3 puts it.",
+  "engine_output": "the engine writes the five segments with widths and provenance into data/processed/block_face_<site>.json; the sheets draw those values and never recompute them",
+  "layers": "30_DESIGN::CURB (0.15 m), 30_DESIGN::BAND (front boulevard), 30_DESIGN::SIDEWALK (Table 8-3), 30_DESIGN::BACK_BOULEVARD (Table 8-4); the P/L is 10_CITY::PROPERTY_LINE"
+ },
+ "section_fill_values": {
+  "solid_black": "cut face filled solid black (ground poché; the sidewalk, back boulevard and curb are solids of 0.15 m thickness in the pedestrian realm and read as part of the black)",
+  "accent_dots": "cut face white with the accent dot pattern (soil added; placeholder hatch 'Dots' 0.14 m at 1:50 until assets/hatches/soil_added.svg)",
+  "hatch45": "cut face white with accent 45° lines (typed input, no evidence) or grey 135° for interruption zones",
+  "solid_accent": "cut face filled solid accent (evidenced site data)",
+  "dashed": "no fill; cut outline drawn dashed in the layer colour (unknown existing soil; the target ghost box, Hidden linetype)",
+  "none": "the object is not a solid or is not cut: no fill, edges only",
+  "solid_dark_grey": "cut face filled silhouette_dark (110,110,110): the trunk placeholder",
+  "solid_light_grey": "cut face filled silhouette_light (222,222,222): the canopy placeholder",
+  "hatch45_black": "cut face white with black 45° lines: the road slab (asphalt placeholder)"
+ },
+ "per_sheet_sublayers": "any 50_ANNOTATION layer may carry ::PLAN / ::SECTION / ::AXO sublayers so the generator can show each sheet's own annotation in its detail only; the parent layer's colour, width and linetype are inherited",
+ "page_space_layout": {
+  "applies_to": "everything on a layout page in millimetres: note boxes, READOUT, legend, capsules, rulers, grid, labels projected from the model, tags' strips. Implemented by the generator (Rhino session Round 10).",
+  "draw_order_bottom_to_top": [
+   "GRID",
+   "detail viewport (model, clipping plane)",
+   "GRADE_LINE",
+   "BOUNDARY",
+   "RULERS",
+   "CAPSULES::FILL then CAPSULES",
+   "text halos",
+   "labels and dimensions",
+   "TAGS (circle, strip, text)",
+   "note boxes",
+   "READOUT",
+   "legend",
+   "title block"
+  ],
+  "note_boxes": {
+   "max_per_sheet": 4,
+   "row": "one row along the bottom of the drawing area: top y = 214 mm, bottom ≤ 247 mm (8 mm above the title block)",
+   "band_x": "from x = 110 mm (right of the legend) to x = 278 mm (left of the READOUT); the boxes divide this band into equal slots",
+   "slot_width_mm": "(168 − (n − 1) × 4) / n for n boxes: 82 (n = 2), 53.3 (n = 3), 39 (n = 4); one box uses 82 mm at the left of the band",
+   "text": "mono 2.2 mm, line spacing 1.35, padding 3 mm; wrap at floor((slot_width − 6) / 1.32) characters (1.32 mm per character at 2.2 mm mono): 57 / 35 / 25 characters for n = 2 / 3 / 4",
+   "overflow": "at most 9 wrapped lines (≈ 33 mm); if the text needs more, cut after line 8 and make line 9 read '…see WHY' (WHY = the conversation's T5 citations for this tag)",
+   "order": "slots are filled in tag order ① ② ③ ④; a tag without a box leaves no gap (the boxes re-divide the band)",
+   "first_line_rule": "line 1 is the source anchor and is never wrapped: if it exceeds the slot, shorten the document name (EDM → 'EDM 2026'), never the page"
+  },
+  "readout": {
+   "size_mm": [
+    120,
+    25
+   ],
+   "position": "bottom-right of the drawing area, right edge 8 mm from the frame, bottom 8 mm above the title block",
+   "line_1": "mono 2.6 mm, wrap at 72 characters (1.56 mm per character over 114 mm); two lines at most, then the box grows by one line height (3.5 mm) up to 32 mm total",
+   "line_2_and_3": "mono 1.7 mm, wrap at 110 characters; each at most two lines",
+   "overflow": "if lines 1–3 would exceed 32 mm the last line is cut and ends with '…see WHY'",
+   "never_reflow": "numbers and their units stay on one line: wrap only at ' · ' or ' — ' separators, never inside '<value> m³'"
+  },
+  "capsules_and_labels": {
+   "capsule_rows": "two rows above the drawing at z = 5.3 m (row 1) and z = 4.5 m (row 2) at the detail scale; the six capsules take fixed rows: row 1 BACK BOULEVARD, FRONT BOULEVARD · BAND; row 2 P/L, SIDEWALK, CURB, ℄",
+   "collision_test": "two page items collide when their bounding boxes (text extent + 1 mm margin) overlap in x by more than 2 mm and in y at all",
+   "resolution": "the later item in draw order moves to the alternate row (± one row height = 4.5 mm for labels, 8 mm for capsules); if both rows are taken, it moves outward along x to the nearest free position within its segment; a subline moves with its capsule; leaders are redrawn to the new position",
+   "labels_from_model": "model-space labels (band depth, ghost depth, curb note, utility notes, existing-soil note) are projected to page mm and enter the same test; they never overlap a capsule, a ruler label or a tag strip",
+   "min_gap_mm": 1.0
+  },
+  "grid_vs_text": {
+   "rule": "the grid never crosses text: every page text (labels, sublines, ruler labels, ruler titles, tag strips) gets a halo rectangle in the paper colour, text extent + 0.8 mm, drawn above the grid and below the text",
+   "exception": "note boxes, READOUT, legend and title block are opaque and need no halo",
+   "below_grade": "the grid stops at the grade line; the ground poché covers nothing because the grid is not drawn there"
+  },
+  "text_metrics": {
+   "mono_char_width_factor": 0.6,
+   "title_char_width_factor": 0.45,
+   "line_height_factor": 1.35,
+   "note": "width per character = factor × text height; used for wrapping and collision boxes when the font is not measured"
+  }
+ },
+ "species_models": {
+  "status": "implemented 2026-09-28 (phase 4); supersedes placeholders_until_assets_arrive.tree_plan / tree_section / tree_axo on the web scene",
+  "record": "data/species/<id>.json (one per species: Table 9-3 class, Table 9-2 volume, City counts and height / diameter distribution, form NOMINAL, crown ratio NOMINAL)",
+  "model": "web/models/<id>.json: trunk cylinder + faceted convex-hull crown, no branching; normalized to height 1.0; built once per species in Rhino (scripts/rhino_species_models.py via RhinoAI MCP); library file data/processed/species_library.3dm",
+  "scale": "uniform by the tree's City height_m (existing trees) or the species' City p90 height (cards); crown x/y scaled to the nominal ratio by form: round .6, oval .5, vase .7, columnar .3, conical .45, weeping .8",
+  "linework": "white hull, edges ink medium (selected: heavy) for Table 9-3 species; grey edges for species not listed (no box); accent edges for the candidate card; the replaced existing tree drops to grey_light",
+  "need_box": "listed species carry a Table 9-2 box below grade: the site band's section × the length that holds the volume (PROJECT_INTERPRETATION); in the library .3dm the reference section 2.58 × 0.90 m (V-10880 front boulevard) stands in; conflicts with Table 2-2 strips hatched red, overrun into the neighbour's cell dashed red",
+  "honesty": "crown form and width are nominal; the City publishes height classes and trunk diameter, not crown or mature size; a class comes only from Table 9-3 and is looked up, never applied (R17, rules 1.3)"
+ },
+ "roots": {
+  "status": "restored 2026-09-28 (phase 4 review) as a NOMINAL drawing; redrawn the same night after the WUR root atlas (task 3); never a data layer",
+  "provenance": "NOMINAL drawing; habit REFERENCE where a WUR atlas plate exists (sources/14_wur_root_atlas.json), else NOMINAL",
+  "reference": "Kutschera & Lichtenegger 2002, Wurzelatlas mitteleuropäischer Waldbäume und Sträucher, via WUR Image Collections coll13 (Root System Drawings): whole root systems drawn in section with a depth scale, species by species",
+  "rule": "roots are drawn as the inhabitant of the soil the rule credits: a seeded line drawing per tree that fills the tree's credited volume (its band cell within the segment + KNOWN extension zones, to the credited depth × the habit's depth ratio) and is cut where the black poché, a Table 2-2 clearance strip or the neighbour's cell begins",
+  "habit": "tap / heart / flat from the species record: tap = a heavy vertical root plus oblique primaries (depth ratio 1.0); heart = several oblique heavy primaries (0.8); flat = a surface plate of heavy laterals with thin sinkers (0.5). Read from the atlas plates by the ratio root depth / root-system diameter of the excavated plants (≥ 0.40 tap, 0.15–0.40 heart, < 0.15 flat), a transparent project reading",
+  "linework": "three weights after the atlas: primaries heavy (0.35 mm), laterals medium (0.25), fine roots thin (0.18); the selected tree in ink, listed species in ink, unlisted grey, the candidate card in the accent; cut ends marked with a short red tick; on the cut face the same system flattened onto the section beside the elevation ruler (the depth scale)",
+  "never": "root spread or depth is never printed as a number, never enters a readout, never changes any rule result; the atlas plates are excavated Central-European specimens, not this site",
+  "legend": "roots drawn to the credited soil, not a measured extent"
+ },
+ "protection_barrier": {
+  "status": "added 2026-09-28 (task 0.5 / 3): By-law 9958 Schedule A through R32 (rules 1.4, reference only)",
+  "provenance": "SOURCE_RULE (City inventory_diameter × Schedule A); drawn, never applied",
+  "geometry": "a dashed rectangle at grade around the trunk: along the curb ± the Schedule A distance for the City trunk diameter (20 cm → 1.2 m … 100 cm → 6.0 m; 6 × Ø on Standard Detail G10.1), across the boulevard from 0.6 m off the curb face to 0.3 m off the sidewalk edge (§7.8(c)); four dashed posts 1.2 m high at the corners; on the cut face the fence as dashed verticals ± the distance, above grade",
+  "linework": "dashed ink, medium for the selected tree, thin for the others; never a fill",
+  "label": "protection radius (By-law 9958 Sch. A), not root extent",
+  "never": "never a root extent, never enters a share; trees under 20 cm at 1.4 m have none (§2.2)"
+ },
+ "nominal_corridors": {
+  "status": "added 2026-09-28 (task 4): EDM §7 private utilities nobody publishes",
+  "provenance": "NOMINAL (depth from EDM 2026 Table 7-1 p.202; lateral position undetermined: no source)",
+  "geometry": "one corridor per utility (FortisBC gas 0.61 m, BC Hydro main ducts 1.07 m, telecom main ducts 1.07 m cover), a dashed frame 0.15 m thick spanning the boulevard from the back of curb to the property line along the whole block face; on the cut face two dashed lines at its cover across the face; on the slab's end faces a dashed segment from the curb to the property line at its depth; nothing in the plan view (the position is not known)",
+  "linework": "grey dashed in 3-D, white dashed on the black faces; never a tube, never a fill",
+  "label": "<owner> <utility> · nominal corridor · cover <d> m (Table 7-1) · position undetermined",
+  "quote": "EDM §7.2.1 p.201: It must not be assumed that all utilities are at standard depth",
+  "never": "a corridor never interrupts the band (Table 2-2 strips come only from published plan positions) and never enters a share"
+ },
+ "street_lighting_conduit_cover": {
+  "status": "added 2026-09-28 (task 0.5): Standard Detail G4.7 (May 2025)",
+  "provenance": "NOMINAL: 0.45 m min. cover in a non-vehicular area, 0.60 m in a vehicular area; VanMap plan position (CITY_DATA)",
+  "drawn": "as the nominal grade (dashed tube outline at the G4.7 cover), replacing the former unknown-depth question band for street-lighting conduits"
+ },
+ "ground_records": {
+  "status": "added 2026-09-28 (task 2)",
+  "items": {
+   "sidewalk": "Sidewalk Condition Index of the nearest rated hundred-block (City 2021), CITY_DATA, one line in the street labels",
+   "cases_311": "3-1-1 tree / boulevard / utility cases whose address point falls in the face's frontage parcels, since 2022 and 2009–2021, CITY_DATA, one line",
+   "borehole": "the nearest BC GWELLS well with a lithology log, PROVINCIAL_RECORD, its distance always printed, its intervals listed beside the tool's borehole column, never interpolated",
+   "surficial": "GSC 1486A unit: not obtained; printed as 'not obtained'"
+  },
+  "never": "none of these changes a share; a rating or a case count is a record on this block, not a diagnosis"
+ }
+}

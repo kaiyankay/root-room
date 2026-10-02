@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root Room · how much tree can the ground carry? · Vancouver boulevards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/scene.css">
+<link rel="stylesheet" href="css/one.css">
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+               "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body class="one">
+<div id="fixed">
+  <div id="q" class="q"><span id="q-text">—</span><span class="qr"><span id="q-mode" class="mode"></span><span id="q-verdict" class="verdict"></span></span></div>
+  <canvas id="scene"></canvas>
+  <svg id="overlay"><defs><pattern id="hatchp" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#ECEAE2"/><line x1="0" y1="0" x2="0" y2="5" stroke="rgba(0,0,0,.35)" stroke-width="1"/></pattern>
+<radialGradient id="fadeL" cx="35%" cy="70%" r="65%"><stop offset="0" stop-color="#F7F4EC" stop-opacity=".96"/><stop offset=".6" stop-color="#F7F4EC" stop-opacity=".85"/><stop offset="1" stop-color="#F7F4EC" stop-opacity="0"/></radialGradient>
+<pattern id="p-cross" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#ACC5A0"/><path d="M6 3.5V8.5M3.5 6H8.5" stroke="rgba(30,45,35,.7)" stroke-width="1"/></pattern>
+<pattern id="p-grid" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#ACC5A0"/><path d="M0 3H6M3 0V6" stroke="rgba(30,45,35,.6)" stroke-width=".7"/></pattern>
+<pattern id="p-diag" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#ACC5A0"/><path d="M-1 6L6 -1" stroke="rgba(30,45,35,.65)" stroke-width=".8"/></pattern>
+<pattern id="p-x" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#ACC5A0"/><path d="M-1 9L9 -1M-1 -1L9 9" stroke="rgba(20,30,20,.45)" stroke-width="1"/></pattern>
+</defs></svg>
+  <svg id="osec"></svg>
+  <div id="tip" class="tip"></div>
+  <div id="menu" class="menu"></div>
+  <aside id="result" class="result"></aside>
+  <section id="tool" class="strip"><div id="inputsB" class="ctl eq"></div><div id="inputsC" class="ctl trees"></div></section>
+  <section id="summary" class="summary"></section>
+  <aside id="rail" class="rail">
+    <div class="kicker">ROOT ROOM</div><div class="sub">how much tree can the ground carry?<br><small>a soil-capacity reader for Vancouver's boulevard trees</small></div>
+    <ol id="steps" class="steps">
+      <li data-s="0"><b>1</b><span>location</span></li>
+      <li data-s="1"><b>2</b><span>street plan</span></li>
+      <li data-s="2"><b>3</b><span>tree + ground</span></li>
+      <li data-s="3"><b>4</b><span>scenario builder</span></li>
+      <li data-s="4"><b>5</b><span>axonometric results</span></li>
+      <li data-s="5"><b>6</b><span>summary &amp; report</span></li>
+    </ol>
+    <div id="ctl" class="ctl"></div>
+    <div id="hint" class="railhint">scroll ▾</div>
+    <div id="status" class="status"></div>
+  </aside>
+</div>
+<div id="spacer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="js/one.js"></script>
+</body>
+</html>

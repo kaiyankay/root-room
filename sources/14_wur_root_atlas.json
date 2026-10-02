@@ -1,0 +1,1315 @@
+{
+ "$comment": "Searched 2026-09-28 through the collection's own search API (images.wur.nl/digital/api/search/collection/coll13/...) for every species in data/species/_index.json: the Latin binomial first, then the genus. Item metadata read with dmGetItemInfo. Plates are cited as REFERENCE for the root habit only; the excavated plants are single Central-European specimens, never a measured extent on a Vancouver site.",
+ "collection": {
+  "name": "Root System Drawings",
+  "host": "Wageningen University & Research, Image Collections",
+  "alias": "coll13",
+  "url": "https://images.wur.nl/digital/collection/coll13/search",
+  "items_total": 1180,
+  "subcollections": {
+   "Wurzelatlas mitteleuropäischer Waldbäume und Sträucher": 178,
+   "Wurzelatlas mitteleuropäischer Grünlandpflanzen, Band 2/1": 360,
+   "Wurzelatlas mitteleuropäischer Ackerunkräuter und Kulturpflanzen": 210,
+   "Bewurzelung von Pflanzen in verschiedenen Lebensräumen (Stapfia 49)": 189,
+   "Wurzelatlas mitteleuropäischer Grünlandpflanzen, Band 1": 152,
+   "Wurzelatlas der Kulturpflanzen gemäßigter Gebiete": 90
+  },
+  "creator": "Kutschera, L.; Lichtenegger, E. (Wurzeldarstellungen)",
+  "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+  "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)",
+  "citation_form": "Kutschera & Lichtenegger 2002, Wurzelatlas mitteleuropäischer Waldbäume und Sträucher, Fig. <figure>; WUR Image Collections coll13 item <item_id>"
+ },
+ "reading_rule": {
+  "provenance": "REFERENCE (project reading of the atlas' own figures, transparent and reproducible)",
+  "rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+  "note": "a drawing convention chosen for the root line-drawing; it lifts root_form from author-assigned NOMINAL to a cited reference; it says nothing about roots on the site"
+ },
+ "species": {
+  "acer_campestre": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1393,
+     "title": "Acer campestre",
+     "figure": "154",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1393",
+     "excavated_plant": {
+      "height_cm": 1425.0,
+      "root_depth_cm": 345.0,
+      "root_system_diameter_cm": 1695.0
+     },
+     "excavated_as_printed": "H plant 1425 cm, D root 345 cm, diameter root system 1695 cm"
+    }
+   ],
+   "reading": {
+    "form": "heart",
+    "mean_depth_over_diameter": 0.204,
+    "plates_used": 1
+   }
+  },
+  "fagus_sylvatica": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1340,
+     "title": "Fagus sylvatica",
+     "figure": "100",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1340",
+     "excavated_plant": {
+      "height_cm": 74.0,
+      "root_depth_cm": 65.0,
+      "root_system_diameter_cm": 260.0
+     },
+     "excavated_as_printed": "H plant 74 cm, D root 65 cm, diameter root system 260 cm"
+    },
+    {
+     "item_id": 1341,
+     "title": "Fagus sylvatica",
+     "figure": "101",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1341",
+     "excavated_plant": {
+      "height_cm": 1040.0,
+      "root_depth_cm": 240.0,
+      "root_system_diameter_cm": 2820.0
+     },
+     "excavated_as_printed": "H plant 1040 cm, D root 240 cm, diameter root system 2820 cm"
+    },
+    {
+     "item_id": 1342,
+     "title": "Fagus sylvatica",
+     "figure": "102",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1342",
+     "excavated_plant": {
+      "height_cm": 1200.0,
+      "root_depth_cm": 160.0,
+      "root_system_diameter_cm": 2520.0
+     },
+     "excavated_as_printed": "H plant 1200 cm, D root 160 cm, diameter root system 2520 cm"
+    },
+    {
+     "item_id": 1343,
+     "title": "Fagus sylvatica",
+     "figure": "103_01",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1343",
+     "excavated_plant": {
+      "height_cm": 585.0,
+      "root_depth_cm": 166.0,
+      "root_system_diameter_cm": 1009.0
+     },
+     "excavated_as_printed": "H plant 585 cm, D root 166 cm, diameter root system 1009 cm"
+    },
+    {
+     "item_id": 1344,
+     "title": "Fagus sylvatica",
+     "figure": "103_02",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1344",
+     "excavated_plant": null,
+     "excavated_as_printed": null
+    },
+    {
+     "item_id": 1345,
+     "title": "Fagus sylvatica",
+     "figure": "104",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1345",
+     "excavated_plant": null,
+     "excavated_as_printed": null
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.104,
+    "plates_used": 3
+   }
+  },
+  "carpinus_betulus": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1375,
+     "title": "CarPinus betulus",
+     "figure": "135",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1375",
+     "excavated_plant": {
+      "height_cm": 1350.0,
+      "root_depth_cm": 126.0,
+      "root_system_diameter_cm": 1710.0
+     },
+     "excavated_as_printed": "H plant 1350 cm, D root 126 cm, diameter root system 1710 cm"
+    },
+    {
+     "item_id": 1376,
+     "title": "Carpinus betulus",
+     "figure": "136",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1376",
+     "excavated_plant": {
+      "height_cm": 1089.0,
+      "root_depth_cm": 387.0,
+      "root_system_diameter_cm": 1650.0
+     },
+     "excavated_as_printed": "H plant 1089 cm, D root 387 cm, diameter root system 1650 cm"
+    }
+   ],
+   "reading": {
+    "form": "heart",
+    "mean_depth_over_diameter": 0.154,
+    "plates_used": 2
+   }
+  },
+  "pinus_sylvestris_watereri": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1267,
+     "title": "Pinus sylvestris",
+     "figure": "27",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1267",
+     "excavated_plant": {
+      "height_cm": 225.0,
+      "root_depth_cm": 346.0,
+      "root_system_diameter_cm": 415.0
+     },
+     "excavated_as_printed": "H plant 225 cm, D root 346 cm, diameter root system 415 cm"
+    },
+    {
+     "item_id": 1268,
+     "title": "Pinus sylvestris",
+     "figure": "28",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1268",
+     "excavated_plant": {
+      "height_cm": 368.0,
+      "root_depth_cm": 403.0,
+      "root_system_diameter_cm": 1087.0
+     },
+     "excavated_as_printed": "H plant 368 cm, D root 403 cm, diameter root system 1087 cm"
+    },
+    {
+     "item_id": 1269,
+     "title": "Pinus sylvestris",
+     "figure": "29",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1269",
+     "excavated_plant": {
+      "height_cm": 230.0,
+      "root_depth_cm": 186.0,
+      "root_system_diameter_cm": 651.0
+     },
+     "excavated_as_printed": "H plant 230 cm, D root 186 cm, diameter root system 651 cm"
+    },
+    {
+     "item_id": 1270,
+     "title": "Pinus sylvestris",
+     "figure": "30",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1270",
+     "excavated_plant": {
+      "height_cm": 1173.0,
+      "root_depth_cm": 180.0,
+      "root_system_diameter_cm": 1340.0
+     },
+     "excavated_as_printed": "H plant 1173 cm, D root 180 cm, diameter root system 1340 cm"
+    },
+    {
+     "item_id": 1271,
+     "title": "Pinus sylvestris",
+     "figure": "31",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1271",
+     "excavated_plant": {
+      "height_cm": 87.0,
+      "root_depth_cm": 174.0,
+      "root_system_diameter_cm": 653.0
+     },
+     "excavated_as_printed": "H plant 87 cm, D root 174 cm, diameter root system 653 cm"
+    },
+    {
+     "item_id": 1272,
+     "title": "Pinus sylvestris",
+     "figure": "32",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1272",
+     "excavated_plant": {
+      "height_cm": 575.0,
+      "root_depth_cm": 950.0,
+      "root_system_diameter_cm": 1380.0
+     },
+     "excavated_as_printed": "H plant 575 cm, D root 950 cm, diameter root system 1380 cm"
+    },
+    {
+     "item_id": 1273,
+     "title": "Pinus sylvestris",
+     "figure": "33",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1273",
+     "excavated_plant": {
+      "height_cm": null,
+      "root_depth_cm": 218.0,
+      "root_system_diameter_cm": 657.0
+     },
+     "excavated_as_printed": "H plant  cm, D root 218 cm, diameter root system 657 cm"
+    },
+    {
+     "item_id": 1274,
+     "title": "Pinus sylvestris",
+     "figure": "34",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1274",
+     "excavated_plant": {
+      "height_cm": 217.0,
+      "root_depth_cm": 94.0,
+      "root_system_diameter_cm": 663.0
+     },
+     "excavated_as_printed": "H plant 217 cm, D root 94 cm, diameter root system 663 cm"
+    }
+   ],
+   "reading": {
+    "form": "tap",
+    "mean_depth_over_diameter": 0.411,
+    "plates_used": 2
+   }
+  },
+  "acer_platanoides": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1392,
+     "title": "Acer platanoides",
+     "figure": "153",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1392",
+     "excavated_plant": {
+      "height_cm": 1206.0,
+      "root_depth_cm": 285.0,
+      "root_system_diameter_cm": 1965.0
+     },
+     "excavated_as_printed": "H plant 1206 cm, D root 285 cm, diameter root system 1965 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.145,
+    "plates_used": 1
+   }
+  },
+  "acer_pseudoplatanus": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1389,
+     "title": "Acer pseudoplatanus",
+     "figure": "150",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1389",
+     "excavated_plant": {
+      "height_cm": 612.0,
+      "root_depth_cm": 190.0,
+      "root_system_diameter_cm": 1637.0
+     },
+     "excavated_as_printed": "H plant 612 cm, D root 190 cm, diameter root system 1637 cm"
+    },
+    {
+     "item_id": 1390,
+     "title": "Acer pseudoplatanus",
+     "figure": "151",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1390",
+     "excavated_plant": {
+      "height_cm": 675.0,
+      "root_depth_cm": 180.0,
+      "root_system_diameter_cm": 1500.0
+     },
+     "excavated_as_printed": "H plant 675 cm, D root 180 cm, diameter root system 1500 cm"
+    },
+    {
+     "item_id": 1391,
+     "title": "Acer pseudoplatanus",
+     "figure": "152",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1391",
+     "excavated_plant": {
+      "height_cm": 726.0,
+      "root_depth_cm": 96.0,
+      "root_system_diameter_cm": 1659.0
+     },
+     "excavated_as_printed": "H plant 726 cm, D root 96 cm, diameter root system 1659 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.098,
+    "plates_used": 3
+   }
+  },
+  "fraxinus_ornus": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1419,
+     "title": "Fraxinus ornus",
+     "figure": "179",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1419",
+     "excavated_plant": {
+      "height_cm": 712.0,
+      "root_depth_cm": 81.0,
+      "root_system_diameter_cm": 1600.0
+     },
+     "excavated_as_printed": "H plant 712 cm, D root 81 cm, diameter root system 1600 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.051,
+    "plates_used": 1
+   }
+  },
+  "sorbus_aria": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1314,
+     "title": "Sorbus aria",
+     "figure": "74",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1314",
+     "excavated_plant": {
+      "height_cm": 436.0,
+      "root_depth_cm": 120.0,
+      "root_system_diameter_cm": 1370.0
+     },
+     "excavated_as_printed": "H plant 436 cm, D root 120 cm, diameter root system 1370 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.088,
+    "plates_used": 1
+   }
+  },
+  "pseudotsuga_menziesii": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1289,
+     "title": "Pseudotsuga menziesii",
+     "figure": "49",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1289",
+     "excavated_plant": {
+      "height_cm": 344.0,
+      "root_depth_cm": 112.0,
+      "root_system_diameter_cm": 720.0
+     },
+     "excavated_as_printed": "H plant 344 cm, D root 112 cm, diameter root system 720 cm"
+    },
+    {
+     "item_id": 1290,
+     "title": "Pseudotsuga menziesii",
+     "figure": "50",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1290",
+     "excavated_plant": {
+      "height_cm": 1203.0,
+      "root_depth_cm": 144.0,
+      "root_system_diameter_cm": 1500.0
+     },
+     "excavated_as_printed": "H plant 1203 cm, D root 144 cm, diameter root system 1500 cm"
+    },
+    {
+     "item_id": 1291,
+     "title": "Pseudotsuga menziesii",
+     "figure": "51",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1291",
+     "excavated_plant": {
+      "height_cm": 1395.0,
+      "root_depth_cm": 240.0,
+      "root_system_diameter_cm": 2025.0
+     },
+     "excavated_as_printed": "H plant 1395 cm, D root 240 cm, diameter root system 2025 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.107,
+    "plates_used": 2
+   }
+  },
+  "robinia_pseudoacacia": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1384,
+     "title": "Robinia pseudoacacia",
+     "figure": "145",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1384",
+     "excavated_plant": {
+      "height_cm": 510.0,
+      "root_depth_cm": 228.0,
+      "root_system_diameter_cm": 1190.0
+     },
+     "excavated_as_printed": "H plant 510 cm, D root 228 cm, diameter root system 1190 cm"
+    },
+    {
+     "item_id": 1385,
+     "title": "Robinia pseudoacacia",
+     "figure": "146",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1385",
+     "excavated_plant": {
+      "height_cm": 2450.0,
+      "root_depth_cm": 364.0,
+      "root_system_diameter_cm": 4795.0
+     },
+     "excavated_as_printed": "H plant 2450 cm, D root 364 cm, diameter root system 4795 cm"
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.134,
+    "plates_used": 2
+   }
+  },
+  "pinus_mugo": {
+   "match": "species",
+   "plates": [
+    {
+     "item_id": 1278,
+     "title": "Pinus mugo",
+     "figure": "38",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1278",
+     "excavated_plant": {
+      "height_cm": 10.0,
+      "root_depth_cm": 16.0,
+      "root_system_diameter_cm": 192.0
+     },
+     "excavated_as_printed": "H plant 10 cm, D root 16 cm, diameter root system 192 cm"
+    },
+    {
+     "item_id": 1279,
+     "title": "Pinus mugo",
+     "figure": "39",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1279",
+     "excavated_plant": {
+      "height_cm": 85.0,
+      "root_depth_cm": 162.0,
+      "root_system_diameter_cm": 567.0
+     },
+     "excavated_as_printed": "H plant 85 cm, D root 162 cm, diameter root system 567 cm"
+    }
+   ],
+   "reading": {
+    "form": "heart",
+    "mean_depth_over_diameter": 0.185,
+    "plates_used": 2
+   }
+  }
+ },
+ "genus_only": {
+  "amelanchier_alnifolia": {
+   "match": "genus_only",
+   "term": "Amelanchier",
+   "plates": [
+    {
+     "item_id": "1320",
+     "title": "Amelanchier ovalis",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1320"
+    },
+    {
+     "item_id": "1321",
+     "title": "Amelanchier ovalis",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1321"
+    }
+   ]
+  },
+  "quercus_garryana": {
+   "match": "genus_only",
+   "term": "Quercus",
+   "plates": [
+    {
+     "item_id": "1346",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+    },
+    {
+     "item_id": "1347",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+    },
+    {
+     "item_id": "1360",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+    },
+    {
+     "item_id": "1348",
+     "title": "Quercus rubra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+    },
+    {
+     "item_id": "1349",
+     "title": "Quercus pubescens",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+    },
+    {
+     "item_id": "1350",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+    },
+    {
+     "item_id": "1351",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1351"
+    },
+    {
+     "item_id": "1352",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1352"
+    },
+    {
+     "item_id": "1353",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1353"
+    },
+    {
+     "item_id": "1354",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1354"
+    },
+    {
+     "item_id": "1355",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1355"
+    },
+    {
+     "item_id": "1356",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1356"
+    },
+    {
+     "item_id": "1357",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1357"
+    },
+    {
+     "item_id": "1358",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1358"
+    },
+    {
+     "item_id": "1359",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1359"
+    }
+   ]
+  },
+  "pinus_thunbergii": {
+   "match": "genus_only",
+   "term": "Pinus",
+   "plates": [
+    {
+     "item_id": "1280",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1280"
+    },
+    {
+     "item_id": "1281",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1281"
+    },
+    {
+     "item_id": "1282",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1282"
+    },
+    {
+     "item_id": "930",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/930"
+    },
+    {
+     "item_id": "1283",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1283"
+    },
+    {
+     "item_id": "1267",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1267"
+    },
+    {
+     "item_id": "1284",
+     "title": "Pinus cembra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1284"
+    },
+    {
+     "item_id": "1285",
+     "title": "Pinus nigra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1285"
+    },
+    {
+     "item_id": "1286",
+     "title": "Pinus nigra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1286"
+    },
+    {
+     "item_id": "1287",
+     "title": "Pinus nigra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1287"
+    },
+    {
+     "item_id": "1268",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1268"
+    },
+    {
+     "item_id": "1269",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1269"
+    },
+    {
+     "item_id": "1270",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1270"
+    },
+    {
+     "item_id": "1271",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1271"
+    },
+    {
+     "item_id": "1288",
+     "title": "Pinus nigra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1288"
+    },
+    {
+     "item_id": "1272",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1272"
+    },
+    {
+     "item_id": "1273",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1273"
+    },
+    {
+     "item_id": "1274",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1274"
+    },
+    {
+     "item_id": "1275",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1275"
+    },
+    {
+     "item_id": "1276",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1276"
+    },
+    {
+     "item_id": "1277",
+     "title": "Pinus sylvestris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1277"
+    },
+    {
+     "item_id": "1278",
+     "title": "Pinus mugo",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1278"
+    },
+    {
+     "item_id": "1279",
+     "title": "Pinus mugo",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1279"
+    }
+   ]
+  },
+  "quercus_frainetto": {
+   "match": "genus_only",
+   "term": "Quercus",
+   "plates": [
+    {
+     "item_id": "1346",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+    },
+    {
+     "item_id": "1347",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+    },
+    {
+     "item_id": "1360",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+    },
+    {
+     "item_id": "1348",
+     "title": "Quercus rubra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+    },
+    {
+     "item_id": "1349",
+     "title": "Quercus pubescens",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+    },
+    {
+     "item_id": "1350",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+    },
+    {
+     "item_id": "1351",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1351"
+    },
+    {
+     "item_id": "1352",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1352"
+    },
+    {
+     "item_id": "1353",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1353"
+    },
+    {
+     "item_id": "1354",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1354"
+    },
+    {
+     "item_id": "1355",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1355"
+    },
+    {
+     "item_id": "1356",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1356"
+    },
+    {
+     "item_id": "1357",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1357"
+    },
+    {
+     "item_id": "1358",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1358"
+    },
+    {
+     "item_id": "1359",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1359"
+    }
+   ]
+  },
+  "acer_palmatum": {
+   "match": "genus_only",
+   "term": "Acer",
+   "plates": [
+    {
+     "item_id": "1392",
+     "title": "Acer platanoides",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1392"
+    },
+    {
+     "item_id": "1393",
+     "title": "Acer campestre",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1393"
+    },
+    {
+     "item_id": "1389",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1389"
+    },
+    {
+     "item_id": "1390",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1390"
+    },
+    {
+     "item_id": "1391",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1391"
+    }
+   ]
+  },
+  "crataegus_lavallei": {
+   "match": "genus_only",
+   "term": "Crataegus",
+   "plates": [
+    {
+     "item_id": "1307",
+     "title": "Crataegus monogyna",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1307"
+    },
+    {
+     "item_id": "1308",
+     "title": "Crataegus monogyna",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1308"
+    }
+   ]
+  },
+  "ulmus_sp_endeavor": {
+   "match": "genus_only",
+   "term": "Ulmus",
+   "plates": [
+    {
+     "item_id": "1381",
+     "title": "Ulmus glabra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1381"
+    },
+    {
+     "item_id": "1382",
+     "title": "Ulmus minor",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1382"
+    },
+    {
+     "item_id": "1383",
+     "title": "Ulmus laevis",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1383"
+    }
+   ]
+  },
+  "ostrya_virginiana": {
+   "match": "genus_only",
+   "term": "Ostrya",
+   "plates": [
+    {
+     "item_id": "1377",
+     "title": "Ostrya carpinifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1377"
+    },
+    {
+     "item_id": "1378",
+     "title": "Ostrya carpinifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1378"
+    }
+   ]
+  },
+  "quercus_macdanielii": {
+   "match": "genus_only",
+   "term": "Quercus",
+   "plates": [
+    {
+     "item_id": "1346",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+    },
+    {
+     "item_id": "1347",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+    },
+    {
+     "item_id": "1360",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+    },
+    {
+     "item_id": "1348",
+     "title": "Quercus rubra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+    },
+    {
+     "item_id": "1349",
+     "title": "Quercus pubescens",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+    },
+    {
+     "item_id": "1350",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+    },
+    {
+     "item_id": "1351",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1351"
+    },
+    {
+     "item_id": "1352",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1352"
+    },
+    {
+     "item_id": "1353",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1353"
+    },
+    {
+     "item_id": "1354",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1354"
+    },
+    {
+     "item_id": "1355",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1355"
+    },
+    {
+     "item_id": "1356",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1356"
+    },
+    {
+     "item_id": "1357",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1357"
+    },
+    {
+     "item_id": "1358",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1358"
+    },
+    {
+     "item_id": "1359",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1359"
+    }
+   ]
+  },
+  "corylus_colurna": {
+   "match": "genus_only",
+   "term": "Corylus",
+   "plates": [
+    {
+     "item_id": "1372",
+     "title": "Corylus avellana",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1372"
+    },
+    {
+     "item_id": "1373",
+     "title": "Corylus avellana",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1373"
+    },
+    {
+     "item_id": "1374",
+     "title": "Corylus avellana",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1374"
+    }
+   ]
+  },
+  "quercus_coccinea": {
+   "match": "genus_only",
+   "term": "Quercus",
+   "plates": [
+    {
+     "item_id": "1346",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+    },
+    {
+     "item_id": "1347",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+    },
+    {
+     "item_id": "1360",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+    },
+    {
+     "item_id": "1348",
+     "title": "Quercus rubra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+    },
+    {
+     "item_id": "1349",
+     "title": "Quercus pubescens",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+    },
+    {
+     "item_id": "1350",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+    },
+    {
+     "item_id": "1351",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1351"
+    },
+    {
+     "item_id": "1352",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1352"
+    },
+    {
+     "item_id": "1353",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1353"
+    },
+    {
+     "item_id": "1354",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1354"
+    },
+    {
+     "item_id": "1355",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1355"
+    },
+    {
+     "item_id": "1356",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1356"
+    },
+    {
+     "item_id": "1357",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1357"
+    },
+    {
+     "item_id": "1358",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1358"
+    },
+    {
+     "item_id": "1359",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1359"
+    }
+   ]
+  },
+  "prunus_serrula": {
+   "match": "genus_only",
+   "term": "Prunus",
+   "plates": [
+    {
+     "item_id": "1322",
+     "title": "Prunus padus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1322"
+    },
+    {
+     "item_id": "1323",
+     "title": "Prunus padus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1323"
+    },
+    {
+     "item_id": "1324",
+     "title": "Prunus avium",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1324"
+    },
+    {
+     "item_id": "1325",
+     "title": "Prunus avium",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1325"
+    },
+    {
+     "item_id": "1326",
+     "title": "Prunus spinosa",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1326"
+    },
+    {
+     "item_id": "1327",
+     "title": "Prunus spinosa",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1327"
+    }
+   ]
+  },
+  "quercus_phellos": {
+   "match": "genus_only",
+   "term": "Quercus",
+   "plates": [
+    {
+     "item_id": "1346",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1346"
+    },
+    {
+     "item_id": "1347",
+     "title": "Quercus cerris",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1347"
+    },
+    {
+     "item_id": "1360",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1360"
+    },
+    {
+     "item_id": "1348",
+     "title": "Quercus rubra",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1348"
+    },
+    {
+     "item_id": "1349",
+     "title": "Quercus pubescens",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1349"
+    },
+    {
+     "item_id": "1350",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1350"
+    },
+    {
+     "item_id": "1351",
+     "title": "Quercus petraea",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1351"
+    },
+    {
+     "item_id": "1352",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1352"
+    },
+    {
+     "item_id": "1353",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1353"
+    },
+    {
+     "item_id": "1354",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1354"
+    },
+    {
+     "item_id": "1355",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1355"
+    },
+    {
+     "item_id": "1356",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1356"
+    },
+    {
+     "item_id": "1357",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1357"
+    },
+    {
+     "item_id": "1358",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1358"
+    },
+    {
+     "item_id": "1359",
+     "title": "Quercus robur",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1359"
+    }
+   ]
+  },
+  "acer_truncatum": {
+   "match": "genus_only",
+   "term": "Acer",
+   "plates": [
+    {
+     "item_id": "1392",
+     "title": "Acer platanoides",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1392"
+    },
+    {
+     "item_id": "1393",
+     "title": "Acer campestre",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1393"
+    },
+    {
+     "item_id": "1389",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1389"
+    },
+    {
+     "item_id": "1390",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1390"
+    },
+    {
+     "item_id": "1391",
+     "title": "Acer pseudoplatanus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1391"
+    }
+   ]
+  },
+  "fraxinus_pennsylvanica": {
+   "match": "genus_only",
+   "term": "Fraxinus",
+   "plates": [
+    {
+     "item_id": "1414",
+     "title": "Fraxinus angustifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1414"
+    },
+    {
+     "item_id": "1415",
+     "title": "Fraxinus angustifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1415"
+    },
+    {
+     "item_id": "1416",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1416"
+    },
+    {
+     "item_id": "1417",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1417"
+    },
+    {
+     "item_id": "1418",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1418"
+    },
+    {
+     "item_id": "1419",
+     "title": "Fraxinus ornus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1419"
+    }
+   ]
+  },
+  "fraxinus_species": {
+   "match": "genus_only",
+   "term": "Fraxinus",
+   "plates": [
+    {
+     "item_id": "1414",
+     "title": "Fraxinus angustifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1414"
+    },
+    {
+     "item_id": "1415",
+     "title": "Fraxinus angustifolia",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1415"
+    },
+    {
+     "item_id": "1416",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1416"
+    },
+    {
+     "item_id": "1417",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1417"
+    },
+    {
+     "item_id": "1418",
+     "title": "Fraxinus excelsior",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1418"
+    },
+    {
+     "item_id": "1419",
+     "title": "Fraxinus ornus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1419"
+    }
+   ]
+  },
+  "prunus_cerasifera": {
+   "match": "genus_only",
+   "term": "Prunus",
+   "plates": [
+    {
+     "item_id": "1322",
+     "title": "Prunus padus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1322"
+    },
+    {
+     "item_id": "1323",
+     "title": "Prunus padus",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1323"
+    },
+    {
+     "item_id": "1324",
+     "title": "Prunus avium",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1324"
+    },
+    {
+     "item_id": "1325",
+     "title": "Prunus avium",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1325"
+    },
+    {
+     "item_id": "1326",
+     "title": "Prunus spinosa",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1326"
+    },
+    {
+     "item_id": "1327",
+     "title": "Prunus spinosa",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1327"
+    }
+   ]
+  }
+ }
+}

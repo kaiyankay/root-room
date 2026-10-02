@@ -1,0 +1,163 @@
+{
+ "id": "pinus_mugo",
+ "genus": "PINUS",
+ "species": "MUGO",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Mugo Pine",
+  "latin": "Pinus mugo",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == PINUS and first species word == MUGO; hybrid marker 'X' ignored; any cultivar",
+  "count": 29,
+  "height_m": {
+   "n": 29,
+   "p50": 7.6,
+   "p90": 10.7,
+   "max": 13.7,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 29,
+   "p50": 20.3,
+   "p90": 40.6,
+   "max": 48.3,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "NONE",
+    29
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Kitsilano",
+    7
+   ],
+   [
+    "Riley Park",
+    4
+   ],
+   [
+    "Kensington-Cedar Cottage",
+    3
+   ],
+   [
+    "Downtown",
+    3
+   ],
+   [
+    "Oakridge",
+    2
+   ]
+  ],
+  "city_common_names": [
+   [
+    "MUGO PINE",
+    29
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": null,
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "heart",
+  "depth_ratio_of_credited": 0.8,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1278,
+     "figure": "38",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1278",
+     "excavated_plant": {
+      "height_cm": 10.0,
+      "root_depth_cm": 16.0,
+      "root_system_diameter_cm": 192.0
+     }
+    },
+    {
+     "item_id": 1279,
+     "figure": "39",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1279",
+     "excavated_plant": {
+      "height_cm": 85.0,
+      "root_depth_cm": 162.0,
+      "root_system_diameter_cm": 567.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "heart",
+    "mean_depth_over_diameter": 0.185,
+    "plates_used": 2
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "tap",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [
+   "V-332826"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": false,
+  "provenance": "REFERENCE",
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14: not listed"
+ },
+ "drawn_height_m": {
+  "value": 10.7,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 29 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/pinus_mugo.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 42,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

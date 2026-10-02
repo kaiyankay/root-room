@@ -1,0 +1,499 @@
+{
+ "currentVersion": 10.91,
+ "cimVersion": "2.9.0",
+ "id": 14,
+ "name": "Water Transmission Mains",
+ "type": "Feature Layer",
+ "description": "",
+ "geometryType": "esriGeometryPolyline",
+ "sourceSpatialReference": {
+  "wkid": 26910,
+  "latestWkid": 26910,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -5120900,
+  "falseY": -9998100,
+  "xyUnits": 10000,
+  "falseZ": 0,
+  "zUnits": 1,
+  "falseM": 0,
+  "mUnits": 1
+ },
+ "copyrightText": "",
+ "parentLayer": null,
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "simple",
+   "symbol": {
+    "type": "esriSLS",
+    "style": "esriSLSSolid",
+    "color": [
+     0,
+     92,
+     230,
+     255
+    ],
+    "width": 3
+   }
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "defaultVisibility": false,
+ "extent": {
+  "xmin": 483707.9349999996,
+  "ymin": 5449711.897,
+  "xmax": 498323.16500000004,
+  "ymax": 5462270.199999999,
+  "spatialReference": {
+   "wkid": 26910,
+   "latestWkid": 26910,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -5120900,
+   "falseY": -9998100,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "COV_SOURCE_KEY",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "SHAPE_Length",
+   "type": "esriFieldTypeDouble",
+   "alias": "SHAPE_Length",
+   "domain": null
+  },
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "COV_SOURCE_KEY",
+   "type": "esriFieldTypeString",
+   "alias": "Cov Source Key",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "UPDATED_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "Updated Date",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "COV_DATE_UPDATE",
+   "type": "esriFieldTypeDate",
+   "alias": "Cov Date Update",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "TBFID",
+   "type": "esriFieldTypeDouble",
+   "alias": "Tbfid",
+   "domain": null
+  },
+  {
+   "name": "ORACLE_ID",
+   "type": "esriFieldTypeString",
+   "alias": "Oracle ID",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "UNIT_ID_1",
+   "type": "esriFieldTypeString",
+   "alias": "Unit ID 1",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "UNIT_ID_2",
+   "type": "esriFieldTypeString",
+   "alias": "Unit ID 2",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "MAIN_COMP1",
+   "type": "esriFieldTypeDouble",
+   "alias": "Main Comp 1",
+   "domain": null
+  },
+  {
+   "name": "MAIN_KEY_1",
+   "type": "esriFieldTypeDouble",
+   "alias": "Main Key 1",
+   "domain": null
+  },
+  {
+   "name": "MAIN_COMP2",
+   "type": "esriFieldTypeDouble",
+   "alias": "Main Comp 2",
+   "domain": null
+  },
+  {
+   "name": "MAIN_KEY_2",
+   "type": "esriFieldTypeDouble",
+   "alias": "Main Key 2",
+   "domain": null
+  },
+  {
+   "name": "ADDRESS_KEY",
+   "type": "esriFieldTypeDouble",
+   "alias": "Address Key",
+   "domain": null
+  },
+  {
+   "name": "INSTALLATION_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "Installation Date",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "DEPTH_OF_COVER_M",
+   "type": "esriFieldTypeSingle",
+   "alias": "Depth Of Cover M",
+   "domain": null
+  },
+  {
+   "name": "RESTRAINED_JOINT",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Restrained Joint",
+   "domain": null
+  },
+  {
+   "name": "CATHODICALLY_PROTECTED",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Cathodically Protected",
+   "domain": null
+  },
+  {
+   "name": "REMARKS",
+   "type": "esriFieldTypeString",
+   "alias": "Remarks",
+   "length": 2000,
+   "domain": null
+  },
+  {
+   "name": "ASSET_DESCRIPTION",
+   "type": "esriFieldTypeString",
+   "alias": "Asset Description",
+   "length": 300,
+   "domain": null
+  },
+  {
+   "name": "SPLIT_ON_CITYSIDE",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Split On Cityside",
+   "domain": null
+  },
+  {
+   "name": "COMPKEY",
+   "type": "esriFieldTypeDouble",
+   "alias": "Compkey",
+   "domain": null
+  },
+  {
+   "name": "COMPTYPE",
+   "type": "esriFieldTypeDouble",
+   "alias": "Comptype",
+   "domain": null
+  },
+  {
+   "name": "COATING_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "Coating Date",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "LINING_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "Lining Date",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "UPDATED_BY",
+   "type": "esriFieldTypeString",
+   "alias": "Updated By",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "WATERMAIN_KEY",
+   "type": "esriFieldTypeInteger",
+   "alias": "Watermain Key",
+   "domain": null
+  },
+  {
+   "name": "BUN",
+   "type": "esriFieldTypeString",
+   "alias": "Bun",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "PIPE_LENGTH_M",
+   "type": "esriFieldTypeDouble",
+   "alias": "Pipe Length M",
+   "domain": null
+  },
+  {
+   "name": "PARALLEL_LINE_NUMBER",
+   "type": "esriFieldTypeString",
+   "alias": "Parallel Line Number",
+   "length": 1,
+   "domain": null
+  },
+  {
+   "name": "PRESSURE_ZONE",
+   "type": "esriFieldTypeDouble",
+   "alias": "Pressure Zone",
+   "domain": null
+  },
+  {
+   "name": "PIPE_USE",
+   "type": "esriFieldTypeString",
+   "alias": "Pipe Use",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "SERVICE_STATUS",
+   "type": "esriFieldTypeString",
+   "alias": "Service Status",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "SUBSYSTEM",
+   "type": "esriFieldTypeString",
+   "alias": "Subsystem",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "OWNER",
+   "type": "esriFieldTypeString",
+   "alias": "Owner",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "OPERATOR",
+   "type": "esriFieldTypeString",
+   "alias": "Operator",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "DIAMETER",
+   "type": "esriFieldTypeString",
+   "alias": "Diameter",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "PIPE_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "Pipe Class",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "MATERIAL",
+   "type": "esriFieldTypeString",
+   "alias": "Material",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "LINING_MATERIAL",
+   "type": "esriFieldTypeString",
+   "alias": "Lining Material",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "COATING_MATERIAL",
+   "type": "esriFieldTypeString",
+   "alias": "Coating Material",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "FACET",
+   "type": "esriFieldTypeString",
+   "alias": "Facet",
+   "length": 10,
+   "domain": null
+  },
+  {
+   "name": "CONNECTION_TYPE",
+   "type": "esriFieldTypeString",
+   "alias": "Connection Type",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "DOMESTIC_DIAMETER",
+   "type": "esriFieldTypeString",
+   "alias": "Domestic Diameter",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "DOMESTIC_MATERIAL",
+   "type": "esriFieldTypeString",
+   "alias": "Domestic Material",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "FIRE_LIN_DIAMETER",
+   "type": "esriFieldTypeString",
+   "alias": "Fire Line Diameter",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "INSTALLED_BY",
+   "type": "esriFieldTypeString",
+   "alias": "Installed By",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "FIRE_LIN_MATERIAL",
+   "type": "esriFieldTypeString",
+   "alias": "Fire Line Material",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "MAP_TOOLTIP",
+   "type": "esriFieldTypeString",
+   "alias": "Map Tooltip",
+   "length": 1033,
+   "domain": null
+  },
+  {
+   "name": "SHAPE",
+   "type": "esriFieldTypeGeometry",
+   "alias": "SHAPE",
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "FDO_OBJECTID",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "FDO_SHAPE",
+   "fields": "SHAPE",
+   "isAscending": true,
+   "isUnique": false,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": false,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 2000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {
+  "allowOthersToQuery": true
+ },
+ "useStandardizedQueries": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsPagination": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true,
+  "supportsTimeRelation": true,
+  "supportsSqlFormat": false,
+  "supportsQueryAnalytic": false
+ },
+ "supportsDatumTransformation": true,
+ "dateFieldsTimeReference": {
+  "timeZone": "Pacific Standard Time",
+  "respectsDaylightSaving": true
+ },
+ "preferredTimeReference": null,
+ "datesInUnknownTimezone": false,
+ "hasGeometryProperties": true,
+ "geometryProperties": {
+  "shapeLengthFieldName": "SHAPE_Length",
+  "units": "esriMeters"
+ },
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true,
+ "serviceItemId": "67eb4bcc318c4610b97fd6f40a7c4460"
+}

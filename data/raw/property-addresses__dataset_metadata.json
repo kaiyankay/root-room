@@ -1,0 +1,194 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "civic_number",
+   "description": null,
+   "annotations": {},
+   "label": "CIVIC_NUMBER",
+   "type": "text"
+  },
+  {
+   "name": "geo_local_area",
+   "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).  For more details, see the Local area boundary data set.",
+   "annotations": {
+    "facet": true,
+    "facetsort": "-count"
+   },
+   "label": "Geo Local Area",
+   "type": "text"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "p_parcel_id",
+   "description": null,
+   "annotations": {},
+   "label": "P_PARCEL_ID",
+   "type": "text"
+  },
+  {
+   "name": "pcoord",
+   "description": null,
+   "annotations": {},
+   "label": "PCOORD",
+   "type": "text"
+  },
+  {
+   "name": "site_id",
+   "description": null,
+   "annotations": {},
+   "label": "SITE_ID",
+   "type": "text"
+  },
+  {
+   "name": "std_street",
+   "description": null,
+   "annotations": {},
+   "label": "STD_STREET",
+   "type": "text"
+  },
+  {
+   "name": "note",
+   "description": null,
+   "annotations": {},
+   "label": "NOTE",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "property-addresses",
+ "dataset_uid": "da_yi8pdk",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "property_information_addresses_dwgzip",
+   "title": "property_information_addresses_dwg.zip",
+   "description": "",
+   "mimetype": "application/zip",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-addresses/alternative_exports/property_information_addresses_dwgzip"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Property addresses",
+   "description": "<div><p>The property addresses dataset contains addresses       used for parcel polygon display. <span class=\"boldText\">Please note</span>: these addresses are the primary addresses displayed in VanMap and do not represent a complete set of all addresses.  Some addresses are duplicated because they appear more than once on VanMap.</p><p>For other related property datasets, such as property parcel polygons and property cadastral boundaries, you may wish to <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">filter datasets on the <em>property </em>keyword. </a></p></div> <h3>Data currency</h3><div><p>This data in City systems is updated frequently  in the normal course of business, however priorities and resources determine  how fast a change in reality is reflected in the database.\u00a0 The extract on this website is updated  weekly.</p></div> <h3>Data accuracy</h3><div><p>Much of the City's land base is created using survey  accuracy however some features are not as precise.</p></div> ",
+   "theme": [
+    "Property and development"
+   ],
+   "keyword": [
+    "property"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-09-28T13:35:32+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-09-28T13:35:32+00:00",
+   "metadata_processed": "2026-10-02T13:47:45.712000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": false,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02333375439048,
+        49.29805546067655
+       ],
+       [
+        -123.22441410273314,
+        49.29805546067655
+       ],
+       [
+        -123.22441410273314,
+        49.19961730018258
+       ],
+       [
+        -123.02333375439048,
+        49.19961730018258
+       ],
+       [
+        -123.02333375439048,
+        49.29805546067655
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 99743,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": "address label, block number, block outline, cadastral boundaries, building lines, district lot, number, legal lot number, graffiti, heritage site, easement, parcel polygon, tie line, property boundary, package",
+   "change-log": null
+  }
+ }
+}

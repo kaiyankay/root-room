@@ -1,0 +1,39 @@
+{
+  "source": {
+    "document": "City of Vancouver Engineering Design Manual 2026 (V1.1, April 2026)",
+    "section": "§9.3.4.1 Table 9-3 Recommended Tree Species",
+    "pages": "351–352 (8 rows on p.351, 3 rows on p.352 under a repeated header)",
+    "file": "sources/02_source_extract.pdf (pp.349–356) / sources/01_source.pdf (full manual)",
+    "transcribed_on": "2026-09-28",
+    "transcription_note": "Verbatim. Common names and the Latin names in parentheses are as printed; column membership verified from cell x-coordinates in the PDF text matrix (see reports/11_fact_check_2026-09-28.md §1). The table has exactly three columns and no other attributes: no mature height, spread, form, notes or cultivar-availability column. There is no Columnar column, although Table 9-2 has a Columnar row.",
+    "provenance": "SOURCE_RULE"
+  },
+  "usage_text": [
+    {"page": 351, "quote": "To support City of Vancouver tree diversity and climate-change adaptation objectives, the City has identified preferred tree species for planting. This list is not comprehensive, may evolve over time in response to changing conditions, priorities, and species availability. City staff may approve alternative species where appropriate. Species are grouped by mature size and form, including large, medium, and small trees."},
+    {"page": 352, "quote": "Tree size classifications are approximate and intended as guidelines."},
+    {"page": 352, "note": "Species selection must be approved by Park Board Urban Forestry (pbdevelopment.trees@vancouver.ca), as stated in the manual."}
+  ],
+  "columns": ["Small Trees", "Medium Trees", "Large Trees"],
+  "rows": [
+    {"row": 1, "page": 351, "Small": {"common": "Amelanchier 'Standing Ovation' / 'Obelisk'", "latin": "Amelanchier alnifolia"}, "Medium": {"common": "Black Tupelo", "latin": "Nyssa sylvatica"}, "Large": {"common": "European Beech", "latin": "Fagus sylvatica"}},
+    {"row": 2, "page": 351, "Small": {"common": "Whitebeam", "latin": "Sorbus aria"}, "Medium": {"common": "Chinese Pistache", "latin": "Pistacia chinensis"}, "Large": {"common": "European Hornbeam", "latin": "Carpinus betulus"}},
+    {"row": 3, "page": 351, "Small": {"common": "Watereri Scots Pine", "latin": "Pinus sylvestris 'Watereri'"}, "Medium": {"common": "Golden Rain Tree", "latin": "Koelreuteria paniculata"}, "Large": {"common": "Garry Oak", "latin": "Quercus garryana"}},
+    {"row": 4, "page": 351, "Small": {"common": "Japanese Black Pine", "latin": "Pinus thunbergii"}, "Medium": {"common": "Hedge Maple", "latin": "Acer campestre"}, "Large": {"common": "Hungarian Oak", "latin": "Quercus frainetto"}},
+    {"row": 5, "page": 351, "Small": {"common": "Japanese Tree Lilac", "latin": "Syringa reticulata"}, "Medium": {"common": "Hackberry", "latin": "Celtis occidentalis"}, "Large": {"common": "Incense Cedar", "latin": "Calocedrus decurrens"}},
+    {"row": 6, "page": 351, "Small": {"common": "Japanese Maple – tree form varieties", "latin": "Acer palmatum"}, "Medium": {"common": "Hardy Rubber Tree", "latin": "Eucommia ulmoides"}, "Large": {"common": "Kentucky Coffeetree", "latin": "Gymnocladus dioicus"}},
+    {"row": 7, "page": 351, "Small": {"common": "Lavallée Hawthorn", "latin": "Crataegus × lavalleei"}, "Medium": {"common": "Japanese Zelkova", "latin": "Zelkova serrata"}, "Large": {"common": "Elm 'Endeavor'", "latin": "Ulmus 'Endeavor'"}},
+    {"row": 8, "page": 351, "Small": {"common": "Seven-Son Flower", "latin": "Heptacodium miconioides"}, "Medium": {"common": "Persian Ironwood", "latin": "Parrotia persica"}, "Large": {"common": "Ginkgo", "latin": "Ginkgo biloba"}},
+    {"row": 9, "page": 352, "Small": {"common": "Amur Maackia", "latin": "Maackia amurensis"}, "Medium": {"common": "American Hophornbeam", "latin": "Ostrya virginiana"}, "Large": {"common": "Heritage Oak", "latin": "Quercus × macdanielii"}},
+    {"row": 10, "page": 352, "Small": {"common": "Strawberry Tree", "latin": "Arbutus unedo"}, "Medium": {"common": "Turkish Hazel", "latin": "Corylus colurna"}, "Large": {"common": "Scarlet Oak", "latin": "Quercus coccinea"}},
+    {"row": 11, "page": 352, "Small": {"common": "Tibetan Cherry", "latin": "Prunus serrula"}, "Medium": {"common": "Yellowwood", "latin": "Cladrastis kentukea"}, "Large": {"common": "Willow Oak", "latin": "Quercus phellos"}}
+  ],
+  "cross_reference_table_9_2": {
+    "page": 350,
+    "note": "Table 9-2 (soil volume and spacing) is the benchmark the class maps to; transcribed in sources/10_source_interpretation_final.md §3.1. Solitary / Shared-Row m³: Large 30/20, Medium 20/15, Small 10/5, Columnar 20/15. Table 9-3 has no Columnar group, so no species is ever assigned Columnar from the source (R17)."
+  },
+  "city_data_matching": {
+    "file": "data/interim/table_9-3_city_counts.json",
+    "rule": "A City tree matches a Table 9-3 entry when genus_name and the first word of species_name match the Latin name (hybrid markers 'X' / '×' ignored); 'Watereri' and 'Endeavor' additionally require the cultivar. Cultivars of a listed species inherit the listing (e.g. Acer palmatum 'Bloodgood' is a Japanese Maple), which follows the table's own wording 'tree form varieties' for Acer palmatum only and is otherwise a PROJECT INTERPRETATION. Kwanzan cherry (Prunus serrulata) is NOT Tibetan cherry (Prunus serrula) and is not listed.",
+    "result_2026_09_28": "32 of 33 entries occur in the 2026-09-14 public-trees copy (Chinese Pistache: 0); 29,776 of 184,518 City trees belong to a listed species."
+  }
+}

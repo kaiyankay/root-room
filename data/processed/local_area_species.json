@@ -1,0 +1,222 @@
+{
+ "built_on": "2026-09-28",
+ "provenance": "DERIVED_CALCULATION",
+ "source": "public-trees (City Open Data, 2026-09-14 copy) \u00d7 EDM 2026 Table 9-3 via R17 lookup (rules 1.3); area names as the City's local_area field",
+ "boundaries": "data/raw/local-area-boundary.geojson (City Open Data)",
+ "measure": "share = trees of a Table 9-3 species / all public trees in the area (boulevard and park trees alike)",
+ "share_min": 0.0656,
+ "share_max": 0.2417,
+ "citywide": {
+  "trees": 184518,
+  "listed": 29776
+ },
+ "areas": {
+  "Arbutus Ridge": {
+   "trees": 6284,
+   "listed": 913,
+   "share": 0.1453,
+   "Small": 138,
+   "Medium": 401,
+   "Large": 374,
+   "unlisted": 5371
+  },
+  "Sunset": {
+   "trees": 9923,
+   "listed": 1968,
+   "share": 0.1983,
+   "Small": 283,
+   "Medium": 727,
+   "Large": 958,
+   "unlisted": 7955
+  },
+  "Renfrew-Collingwood": {
+   "trees": 13074,
+   "listed": 2952,
+   "share": 0.2258,
+   "Small": 642,
+   "Medium": 1013,
+   "Large": 1297,
+   "unlisted": 10122
+  },
+  "Strathcona": {
+   "trees": 3914,
+   "listed": 946,
+   "share": 0.2417,
+   "Small": 96,
+   "Medium": 318,
+   "Large": 532,
+   "unlisted": 2968
+  },
+  "Victoria-Fraserview": {
+   "trees": 9083,
+   "listed": 1992,
+   "share": 0.2193,
+   "Small": 300,
+   "Medium": 727,
+   "Large": 965,
+   "unlisted": 7091
+  },
+  "Oakridge": {
+   "trees": 7253,
+   "listed": 912,
+   "share": 0.1257,
+   "Small": 169,
+   "Medium": 289,
+   "Large": 454,
+   "unlisted": 6341
+  },
+  "Kerrisdale": {
+   "trees": 9905,
+   "listed": 820,
+   "share": 0.0828,
+   "Small": 114,
+   "Medium": 265,
+   "Large": 441,
+   "unlisted": 9085
+  },
+  "Kensington-Cedar Cottage": {
+   "trees": 13038,
+   "listed": 2554,
+   "share": 0.1959,
+   "Small": 452,
+   "Medium": 804,
+   "Large": 1298,
+   "unlisted": 10484
+  },
+  "Kitsilano": {
+   "trees": 9502,
+   "listed": 1184,
+   "share": 0.1246,
+   "Small": 342,
+   "Medium": 324,
+   "Large": 518,
+   "unlisted": 8318
+  },
+  "Hastings-Sunrise": {
+   "trees": 13648,
+   "listed": 2777,
+   "share": 0.2035,
+   "Small": 552,
+   "Medium": 972,
+   "Large": 1253,
+   "unlisted": 10871
+  },
+  "Mount Pleasant": {
+   "trees": 6434,
+   "listed": 1050,
+   "share": 0.1632,
+   "Small": 132,
+   "Medium": 369,
+   "Large": 549,
+   "unlisted": 5384
+  },
+  "Downtown": {
+   "trees": 7145,
+   "listed": 1631,
+   "share": 0.2283,
+   "Small": 126,
+   "Medium": 367,
+   "Large": 1138,
+   "unlisted": 5514
+  },
+  "Riley Park": {
+   "trees": 10109,
+   "listed": 1880,
+   "share": 0.186,
+   "Small": 379,
+   "Medium": 703,
+   "Large": 798,
+   "unlisted": 8229
+  },
+  "Killarney": {
+   "trees": 8403,
+   "listed": 1244,
+   "share": 0.148,
+   "Small": 241,
+   "Medium": 312,
+   "Large": 691,
+   "unlisted": 7159
+  },
+  "Shaughnessy": {
+   "trees": 9429,
+   "listed": 795,
+   "share": 0.0843,
+   "Small": 208,
+   "Medium": 319,
+   "Large": 268,
+   "unlisted": 8634
+  },
+  "South Cambie": {
+   "trees": 3907,
+   "listed": 504,
+   "share": 0.129,
+   "Small": 57,
+   "Medium": 185,
+   "Large": 262,
+   "unlisted": 3403
+  },
+  "Grandview-Woodland": {
+   "trees": 7091,
+   "listed": 1470,
+   "share": 0.2073,
+   "Small": 159,
+   "Medium": 516,
+   "Large": 795,
+   "unlisted": 5621
+  },
+  "Marpole": {
+   "trees": 7741,
+   "listed": 1289,
+   "share": 0.1665,
+   "Small": 194,
+   "Medium": 412,
+   "Large": 683,
+   "unlisted": 6452
+  },
+  "West End": {
+   "trees": 3984,
+   "listed": 520,
+   "share": 0.1305,
+   "Small": 74,
+   "Medium": 151,
+   "Large": 295,
+   "unlisted": 3464
+  },
+  "": {
+   "trees": 3904,
+   "listed": 305,
+   "share": 0.0781,
+   "Small": 134,
+   "Medium": 46,
+   "Large": 125,
+   "unlisted": 3599
+  },
+  "West Point Grey": {
+   "trees": 6544,
+   "listed": 429,
+   "share": 0.0656,
+   "Small": 181,
+   "Medium": 132,
+   "Large": 116,
+   "unlisted": 6115
+  },
+  "Dunbar-Southlands": {
+   "trees": 9661,
+   "listed": 898,
+   "share": 0.093,
+   "Small": 222,
+   "Medium": 428,
+   "Large": 248,
+   "unlisted": 8763
+  },
+  "Fairview": {
+   "trees": 4542,
+   "listed": 743,
+   "share": 0.1636,
+   "Small": 141,
+   "Medium": 225,
+   "Large": 377,
+   "unlisted": 3799
+  }
+ }
+}

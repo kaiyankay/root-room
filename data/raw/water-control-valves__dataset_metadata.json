@@ -1,0 +1,206 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "subsystem",
+   "description": "The subsystem where DSTR is distribution; TRNS is transmission; and DFPS is dedicated fire protection system",
+   "annotations": {
+    "facet": true
+   },
+   "label": "SUBSYSTEM",
+   "type": "text"
+  },
+  {
+   "name": "size",
+   "description": null,
+   "annotations": {
+    "facet": true
+   },
+   "label": "SIZE",
+   "type": "text"
+  },
+  {
+   "name": "open_ind",
+   "description": null,
+   "annotations": {
+    "facet": true
+   },
+   "label": "OPEN_IND",
+   "type": "text"
+  },
+  {
+   "name": "x_offset_from_prop_line_m",
+   "description": null,
+   "annotations": {},
+   "label": "X_OFFSET_FROM_PROP_LINE_M",
+   "type": "double"
+  },
+  {
+   "name": "x_offset_direction",
+   "description": null,
+   "annotations": {},
+   "label": "X_OFFSET_DIRECTION",
+   "type": "text"
+  },
+  {
+   "name": "y_offset_from_prop_line_m",
+   "description": null,
+   "annotations": {},
+   "label": "Y_OFFSET_FROM_PROP_LINE_M",
+   "type": "double"
+  },
+  {
+   "name": "y_offset_direction",
+   "description": null,
+   "annotations": {},
+   "label": "Y_OFFSET_DIRECTION",
+   "type": "text"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_local_area",
+   "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+   "annotations": {
+    "facet": true
+   },
+   "label": "Geo Local Area",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "water-control-valves",
+ "dataset_uid": "da_k7jq18",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "water_control_valvesdwg",
+   "title": "water_control_valves.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-control-valves/alternative_exports/water_control_valvesdwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Water control valves",
+   "description": "<div><p>Water control valves is one dataset among several that describe the water network. These are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Water abandoned mains</li><li>Water control valves</li><li>Water (fire) hydrants</li><li>Water pressure zones</li></ul><p>Commercial and residential connections to the mains  are not available. </p></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract on this website is updated weekly.</p></div> <h3>Data accuracy</h3><div>These features are generally created with survey accuracy.</div> <h3>Websites for further information</h3><div><ul><li>\u200b<a href=\"https://vancouver.ca/home-property-development/how-the-water-and-sewer-system-works.aspx\">How the water and sewer system works</a></li></ul></div>",
+   "theme": [
+    "Water and sewer"
+   ],
+   "keyword": [
+    "water"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-09-28T13:37:40+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-09-28T13:37:40+00:00",
+   "metadata_processed": "2026-10-02T13:48:04.715000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.0232500191778,
+        49.313039663247764
+       ],
+       [
+        -123.2237889803946,
+        49.313039663247764
+       ],
+       [
+        -123.2237889803946,
+        49.2008666228503
+       ],
+       [
+        -123.0232500191778,
+        49.2008666228503
+       ],
+       [
+        -123.0232500191778,
+        49.313039663247764
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 21323,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": null,
+   "change-log": null
+  }
+ }
+}

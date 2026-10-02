@@ -1,0 +1,4518 @@
+{
+ "site_id": "KE-198568",
+ "face": {
+  "site_id": "KE-198568",
+  "street_name": "W KING EDWARD AV",
+  "hblock": "400 W KING EDWARD AV",
+  "side": "north_side",
+  "frame": {
+   "origin_lonlat": [
+    -123.11341200047981,
+    49.24907499910901
+   ],
+   "bearing_deg_from_east": 358.48,
+   "along_unit_xy": [
+    0.999646,
+    -0.026601
+   ],
+   "property_unit_xy": [
+    0.026601,
+    0.999646
+   ],
+   "note": "local equirectangular metres at the selected tree's City point; u along the street (east-pointing), v across, positive toward the property; DERIVED_CALCULATION"
+  },
+  "tree": {
+   "u": 0.0,
+   "v": 0.0,
+   "dist_centreline_m": 13.16,
+   "property_line_offset_m": 3.74,
+   "property_line_from_centreline_m": 16.9
+  },
+  "block": {
+   "u_from": -129.36,
+   "u_to": 32.4,
+   "length_m": 161.76,
+   "cross_street_west": {
+    "hblock": "4000 CAMBIE ST",
+    "name": "CAMBIE ST",
+    "centreline_u": -144.58
+   },
+   "cross_street_east": {
+    "hblock": "4000 YUKON ST",
+    "name": "YUKON ST",
+    "centreline_u": 42.36
+   },
+   "outline_local_uv": [
+    [
+     -95.78,
+     100.63
+    ],
+    [
+     -132.29,
+     100.7
+    ],
+    [
+     -132.3,
+     87.86
+    ],
+    [
+     -132.3,
+     77.86
+    ],
+    [
+     -132.3,
+     67.86
+    ],
+    [
+     -132.31,
+     57.86
+    ],
+    [
+     -132.31,
+     47.86
+    ],
+    [
+     -132.32,
+     37.86
+    ],
+    [
+     -129.27,
+     37.85
+    ],
+    [
+     -129.29,
+     27.85
+    ],
+    [
+     -129.32,
+     17.85
+    ],
+    [
+     -129.36,
+     5.36
+    ],
+    [
+     -126.84,
+     2.89
+    ],
+    [
+     -95.87,
+     2.87
+    ],
+    [
+     -95.87,
+     3.69
+    ],
+    [
+     -91.38,
+     3.7
+    ],
+    [
+     -43.66,
+     3.72
+    ],
+    [
+     1.98,
+     3.74
+    ],
+    [
+     1.98,
+     2.99
+    ],
+    [
+     17.19,
+     3.0
+    ],
+    [
+     32.4,
+     3.01
+    ],
+    [
+     32.43,
+     49.51
+    ],
+    [
+     32.45,
+     55.57
+    ],
+    [
+     32.5,
+     100.56
+    ],
+    [
+     -17.67,
+     100.66
+    ],
+    [
+     -27.7,
+     100.68
+    ],
+    [
+     -37.73,
+     100.71
+    ],
+    [
+     -47.77,
+     100.73
+    ],
+    [
+     -57.8,
+     100.75
+    ],
+    [
+     -67.83,
+     100.77
+    ],
+    [
+     -77.87,
+     100.79
+    ],
+    [
+     -91.3,
+     100.82
+    ],
+    [
+     -95.78,
+     100.63
+    ]
+   ],
+   "frontage_source": "block-outlines",
+   "property_line_source": "block-outlines",
+   "note": "frontage extent on the property side (block-outline vertices within 2.5 m of the property-line offset, or chained parcel frontage edges); the band runs between these ends"
+  },
+  "trees": [
+   {
+    "site_id": "KE-198598",
+    "tree_id": "198598",
+    "u": -118.33,
+    "v": -0.38,
+    "genus": "ACER",
+    "species": "PLATANOIDES",
+    "cultivar": "COLUMNARE",
+    "install_date": "2004-01-12",
+    "height_m": 7.6,
+    "diameter_cm": 12.7,
+    "property_line_offset_m": 2.89,
+    "dist_centreline_m": 12.78,
+    "gap_west_m": null,
+    "gap_east_m": 10.77
+   },
+   {
+    "site_id": "KE-305835",
+    "tree_id": "305835",
+    "u": -107.56,
+    "v": -0.76,
+    "genus": "ACER",
+    "species": "PLATANOIDES",
+    "cultivar": "COLUMNARE",
+    "install_date": "2026-02-24",
+    "height_m": 3.0,
+    "diameter_cm": 7.6,
+    "property_line_offset_m": 2.88,
+    "dist_centreline_m": 12.4,
+    "gap_west_m": 10.77,
+    "gap_east_m": 29.87
+   },
+   {
+    "site_id": "KE-198578",
+    "tree_id": "198578",
+    "u": -77.69,
+    "v": -0.52,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-12",
+    "height_m": 7.6,
+    "diameter_cm": 8.9,
+    "property_line_offset_m": 3.7,
+    "dist_centreline_m": 12.65,
+    "gap_west_m": 29.87,
+    "gap_east_m": 9.58
+   },
+   {
+    "site_id": "KE-198577",
+    "tree_id": "198577",
+    "u": -68.11,
+    "v": -0.26,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-12",
+    "height_m": 7.6,
+    "diameter_cm": 7.6,
+    "property_line_offset_m": 3.71,
+    "dist_centreline_m": 12.9,
+    "gap_west_m": 9.58,
+    "gap_east_m": 10.84
+   },
+   {
+    "site_id": "KE-198576",
+    "tree_id": "198576",
+    "u": -57.27,
+    "v": -0.31,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-12",
+    "height_m": 7.6,
+    "diameter_cm": 19.1,
+    "property_line_offset_m": 3.71,
+    "dist_centreline_m": 12.86,
+    "gap_west_m": 10.84,
+    "gap_east_m": 14.61
+   },
+   {
+    "site_id": "KE-198573",
+    "tree_id": "198573",
+    "u": -42.66,
+    "v": -0.47,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 7.6,
+    "diameter_cm": 19.1,
+    "property_line_offset_m": 3.72,
+    "dist_centreline_m": 12.69,
+    "gap_west_m": 14.61,
+    "gap_east_m": 14.68
+   },
+   {
+    "site_id": "KE-198570",
+    "tree_id": "198570",
+    "u": -27.98,
+    "v": -0.08,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 7.6,
+    "diameter_cm": 21.6,
+    "property_line_offset_m": 3.72,
+    "dist_centreline_m": 13.08,
+    "gap_west_m": 14.68,
+    "gap_east_m": 14.4
+   },
+   {
+    "site_id": "KE-198571",
+    "tree_id": "198571",
+    "u": -13.58,
+    "v": -0.36,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 10.7,
+    "diameter_cm": 30.5,
+    "property_line_offset_m": 3.73,
+    "dist_centreline_m": 12.8,
+    "gap_west_m": 14.4,
+    "gap_east_m": 13.58
+   },
+   {
+    "site_id": "KE-198568",
+    "tree_id": "198568",
+    "u": 0.0,
+    "v": 0.0,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 7.6,
+    "diameter_cm": 21.6,
+    "property_line_offset_m": 3.74,
+    "dist_centreline_m": 13.16,
+    "gap_west_m": 13.58,
+    "gap_east_m": 15.42
+   },
+   {
+    "site_id": "KE-198566",
+    "tree_id": "198566",
+    "u": 15.42,
+    "v": -0.47,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 7.6,
+    "diameter_cm": 16.5,
+    "property_line_offset_m": 3.0,
+    "dist_centreline_m": 12.69,
+    "gap_west_m": 15.42,
+    "gap_east_m": 14.46
+   },
+   {
+    "site_id": "KE-198564",
+    "tree_id": "198564",
+    "u": 29.88,
+    "v": -0.09,
+    "genus": "ACER",
+    "species": "TRUNCATUM",
+    "cultivar": "PACIFIC SUNSET",
+    "install_date": "2004-01-09",
+    "height_m": 7.6,
+    "diameter_cm": 17.8,
+    "property_line_offset_m": 3.01,
+    "dist_centreline_m": 13.07,
+    "gap_west_m": 14.46,
+    "gap_east_m": null
+   }
+  ],
+  "row": {
+   "count": 11,
+   "gap_min_m": 9.58,
+   "gap_max_m": 29.87,
+   "gap_median_m": 14.46
+  },
+  "right_of_way": {
+   "width_as_published": "106",
+   "unit_published": null,
+   "width_m_if_feet": 32.31,
+   "u": 28.1,
+   "v": -13.29,
+   "note": "legal property-line-to-property-line width; NOT curb-to-curb, NOT boulevard width; unit not stated in City metadata (values read as feet)"
+  },
+  "utilities": [
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      8.55
+     ],
+     [
+      -132.66,
+      9.35
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2006-10-14"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      8.55
+     ],
+     [
+      -132.67,
+      3.88
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      -10.18
+     ],
+     [
+      -132.67,
+      -11.77
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      3.88
+     ],
+     [
+      -132.67,
+      2.28
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      -13.26
+     ],
+     [
+      -132.67,
+      -14.65
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      2.28
+     ],
+     [
+      -132.67,
+      -10.18
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -132.67,
+      -11.77
+     ],
+     [
+      -132.67,
+      -13.26
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -116.6,
+      -3.17
+     ],
+     [
+      -125.47,
+      -3.17
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -113.91,
+      -3.17
+     ],
+     [
+      -91.96,
+      -3.5
+     ],
+     [
+      -15.06,
+      -3.56
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -113.91,
+      -3.17
+     ],
+     [
+      -116.6,
+      -3.17
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -15.06,
+      -3.56
+     ],
+     [
+      157.76,
+      -3.7
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -125.47,
+      -3.17
+     ],
+     [
+      -125.49,
+      -36.34
+     ]
+    ],
+    "properties": {
+     "diameter_mm": 600,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -47.23,
+      -1.14
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "geometry": "point",
+    "local_uv": [
+     [
+      25.48,
+      -1.26
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -33.98,
+      -11.18
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -124.07,
+      -2.43
+     ],
+     [
+      -80.16,
+      -2.32
+     ]
+    ],
+    "properties": {
+     "wireset_type": "2-8"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -35.49,
+      -2.1
+     ],
+     [
+      7.46,
+      -1.81
+     ]
+    ],
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -133.84,
+      33.2
+     ],
+     [
+      -131.39,
+      4.37
+     ]
+    ],
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -133.84,
+      33.2
+     ],
+     [
+      -131.39,
+      4.37
+     ]
+    ],
+    "properties": {
+     "wireset_type": "1-8G"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      -80.16,
+      -2.32
+     ],
+     [
+      -35.49,
+      -2.1
+     ]
+    ],
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "geometry": "line",
+    "local_uv": [
+     [
+      7.46,
+      -1.81
+     ],
+     [
+      52.08,
+      -0.73
+     ]
+    ],
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -131.39,
+      6.86
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -36.81,
+      0.52
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "geometry": "point",
+    "local_uv": [
+     [
+      7.26,
+      0.27
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -83.86,
+      0.5
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "geometry": "point",
+    "local_uv": [
+     [
+      -125.25,
+      0.09
+     ]
+    ],
+    "properties": {},
+    "provenance": "CITY_DATA",
+    "note": "plan position as published; depth not published; catch basins 'location approximate'"
+   }
+  ],
+  "curb_hint": {
+   "catch_basin_offsets_from_centreline_m": [
+    11.9,
+    12.02
+   ],
+   "note": "City sewer-catch-basins on this face; the City labels them 'location approximate'. A hint for the curb knob only; the curb line itself is not in City Open Data."
+  },
+  "sources": {
+   "trees": "City of Vancouver Open Data public-trees (pilot extract, boulevard sites)",
+   "centreline": "public-streets",
+   "property_line": "block-outlines",
+   "right_of_way": "right-of-way-widths",
+   "utilities": [
+    "sewer-catch-basins",
+    "sewer-mains",
+    "street-lighting-conduits",
+    "street-lighting-poles",
+    "water-distribution-mains",
+    "water-transmission-mains"
+   ],
+   "provenance": "CITY_DATA read as published; every measured distance is DERIVED_CALCULATION; curb line, sidewalk, soil and utility depth are NOT in City data"
+  }
+ },
+ "knobs": {
+  "curb_offset_from_centreline_m": {
+   "value": 10.0,
+   "provenance": "DESIGN_ASSUMPTION",
+   "evidence": null,
+   "hint": {
+    "catch_basin_offsets_from_centreline_m": [
+     11.9,
+     12.02
+    ],
+    "note": "City sewer-catch-basins on this face; the City labels them 'location approximate'. A hint for the curb knob only; the curb line itself is not in City Open Data."
+   },
+   "note": "a site fact the City does not publish: DESIGN_ASSUMPTION until a measurement with evidence confirms it"
+  },
+  "soil_depth_m": {
+   "value": 0.9,
+   "provenance": "DESIGN_ASSUMPTION"
+  },
+  "target_tree_class": {
+   "value": "Medium",
+   "provenance": "USER_INPUT"
+  },
+  "soil_type": {
+   "value": "native_soil",
+   "provenance": "DESIGN_ASSUMPTION"
+  },
+  "spacing": "measured from City tree points; not editable",
+  "land_use": {
+   "value": "residential_detached",
+   "provenance": "SOURCE_RULE",
+   "note": "Table 8-3 row chosen by the user (R30); a category, not a numeric knob",
+   "options": [
+    "residential_detached",
+    "residential_low_rise",
+    "residential_mid_high_rise_ftn_greenway",
+    "commercial_mixed_use"
+   ]
+  },
+  "width_level": {
+   "value": "minimum",
+   "provenance": "SOURCE_RULE",
+   "note": "Table 8-3 / 8-4 column applied to sidewalk and back boulevard; default 'minimum'",
+   "options": [
+    "constrained",
+    "minimum",
+    "preferred"
+   ]
+  },
+  "extensions": {
+   "value": [],
+   "provenance": "USER_INPUT",
+   "note": "R31 engineered-soil zones beyond the front boulevard (fifth lever); each zone carries its own soil type and provenance"
+  },
+  "tree_state": {
+   "value": "existing_tree",
+   "provenance": "DERIVED_CALCULATION",
+   "note": "existing tree = the City tree as it stands (R20 benchmark); vacant_replacement = a new tree assumed at this position (R08/R09 eligibility)"
+  }
+ },
+ "notes": [
+  "The per-tree apportioning is a project interpretation (08_redefinition §2.4); the source gives a per-tree Shared / Row value and no scaling method, so R21 stays unresolved and is reported alongside every block-face result.",
+  "Spacing is measured; the tool never proposes a spacing.",
+  "The solitary-column comparison is retained for every selected tree.",
+  "The band is the front boulevard (EDM §8.4.6): between back of curb and sidewalk. Soil under the sidewalk or back boulevard is outside the design band; native soil under hardscape counts only if tested (GRI p.18, R29).",
+  "Applying a Table 2-2 tree clearance as a band interruption width is a project interpretation and is labelled as such in every result.",
+  "City utility layers give plan position only (catch basins 'location approximate'); depth is never inferred.",
+  "Service connections and third-party utilities are not in the City layers; absence of an interruption is not a clearance certificate.",
+  "Designer-entered utilities are USER_INPUT (typed) or CONFIRMED_SITE_DATA (evidence reference required) and are drawn in that grade.",
+  "Land use is a category the user chooses from the Table 8-3 rows; it is never inferred from zoning, address or building data, and it is not a numeric knob.",
+  "The width level (constrained / minimum / preferred) applies to both tables at once; 'minimum' is the default reading and is stated in every result.",
+  "Composing the two tables and the curb width into one band width is a PROJECT_INTERPRETATION; each width is SOURCE_RULE and is cited with its page.",
+  "The derived front boulevard is compared with the Table 8-4 front-boulevard column as reference information only; no verdict.",
+  "A band of zero or negative width is reported as such; the tool does not shrink the sidewalk or back boulevard to make room."
+ ],
+ "design": {
+  "available": true,
+  "band": {
+   "kind": "design",
+   "u_from": -129.36,
+   "u_to": 32.4,
+   "v_from": -3.01,
+   "v_to": 0.74,
+   "edge_description": "back of curb (curb face at 10.0 m from the centreline, knob, + 0.15 m curb) to the sidewalk edge (P/L − back boulevard 1.2 − sidewalk 1.8)",
+   "width_note": "design band = front boulevard (EDM §8.4.6 p.255: between back of curb and sidewalk); width = (P/L − curb face 6.9) − sidewalk 1.8 − back boulevard 1.2 − curb 0.15 = 3.75 m; land use 'residential_detached' chosen by the user, level 'minimum'"
+  },
+  "band_provenance": {
+   "value": 10.0,
+   "provenance": "DESIGN_ASSUMPTION",
+   "status": "KNOWN"
+  },
+  "strips": [
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2006-10-14"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-distribution-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 300,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2007-12-21"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -127.47,
+    "u1": -114.6,
+    "v0": -3.01,
+    "v1": -1.17,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -115.91,
+    "u1": -89.96,
+    "v0": -3.01,
+    "v1": -1.17,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -93.96,
+    "u1": -13.06,
+    "v0": -3.01,
+    "v1": -1.5,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -118.6,
+    "u1": -111.91,
+    "v0": -3.01,
+    "v1": -1.17,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 650,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -17.06,
+    "u1": 32.4,
+    "v0": -3.01,
+    "v1": -1.56,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "water-transmission-mains",
+    "kind": "water_main",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "diameter_mm": 600,
+     "material": "Ductile Iron Concrete Lined",
+     "installation_date": "2008-01-01"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -127.47,
+    "u1": -123.47,
+    "v0": -3.01,
+    "v1": -1.17,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": true,
+    "type": "crossing",
+    "u0": -49.23,
+    "u1": -45.23,
+    "v0": -3.01,
+    "v1": 0.74,
+    "reason": "clearance zone spans the full band width: the band is split here"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": true,
+    "type": "crossing",
+    "u0": 23.48,
+    "u1": 27.48,
+    "v0": -3.01,
+    "v1": 0.74,
+    "reason": "clearance zone spans the full band width: the band is split here"
+   },
+   {
+    "dataset": "sewer-catch-basins",
+    "kind": "sewer_catch_basin",
+    "clearance_m": 2.0,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "2-8"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -124.37,
+    "u1": -79.86,
+    "v0": -2.73,
+    "v1": -2.02,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -35.79,
+    "u1": 7.76,
+    "v0": -2.4,
+    "v1": -1.51,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "1-8G"
+    },
+    "applied": false,
+    "reason": "outside the band and its clearance zone"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": -80.46,
+    "u1": -35.19,
+    "v0": -2.62,
+    "v1": -1.8,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "street-lighting-conduits",
+    "kind": "electrical_conduit",
+    "clearance_m": 0.3,
+    "provenance": "CITY_DATA",
+    "properties": {
+     "wireset_type": "3-8"
+    },
+    "applied": true,
+    "type": "partial",
+    "u0": 7.16,
+    "u1": 32.4,
+    "v0": -2.11,
+    "v1": -0.9,
+    "reason": "removes band width on its u-range; soil beyond it counts only if still connected to the tree inside its cell"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "Table 2-2 gives no clearance from trees for this kind"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "Table 2-2 gives no clearance from trees for this kind"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "Table 2-2 gives no clearance from trees for this kind"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "Table 2-2 gives no clearance from trees for this kind"
+   },
+   {
+    "dataset": "street-lighting-poles",
+    "kind": "street_lighting_pole",
+    "clearance_m": null,
+    "provenance": "CITY_DATA",
+    "properties": {},
+    "applied": false,
+    "reason": "Table 2-2 gives no clearance from trees for this kind"
+   }
+  ],
+  "segments": [
+   {
+    "u_from": -129.36,
+    "u_to": -49.23
+   },
+   {
+    "u_from": -45.23,
+    "u_to": 23.48
+   },
+   {
+    "u_from": 27.48,
+    "u_to": 32.4
+   }
+  ],
+  "crossing_count": 2,
+  "partial_count": 10,
+  "trees": [
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 10.77,
+    "band_width_m": 3.75,
+    "soil_area_m2": 20.5708,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 18.51372,
+    "share_m3": 18.51372,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 3.5137199999999993,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198598",
+    "u": -118.33,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -123.72,
+     "u_to": -112.94,
+     "segment": {
+      "u_from": -129.36,
+      "u_to": -49.23
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 20.32,
+    "band_width_m": 3.75,
+    "soil_area_m2": 38.8111,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 34.929990000000004,
+    "share_m3": 34.929990000000004,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 19.929990000000004,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-305835",
+    "u": -107.56,
+    "height_m": 3.0,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -112.94,
+     "u_to": -92.62,
+     "segment": {
+      "u_from": -129.36,
+      "u_to": -49.23
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 19.72,
+    "band_width_m": 3.75,
+    "soil_area_m2": 43.3046,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 38.97414,
+    "share_m3": 38.97414,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 23.97414,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198578",
+    "u": -77.69,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -92.62,
+     "u_to": -72.9,
+     "segment": {
+      "u_from": -129.36,
+      "u_to": -49.23
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 10.21,
+    "band_width_m": 3.75,
+    "soil_area_m2": 22.8704,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 20.58336,
+    "share_m3": 20.58336,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 5.583359999999999,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198577",
+    "u": -68.11,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -72.9,
+     "u_to": -62.69,
+     "segment": {
+      "u_from": -129.36,
+      "u_to": -49.23
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 10.84,
+    "band_width_m": 3.75,
+    "soil_area_m2": 24.2816,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 21.853440000000003,
+    "share_m3": 21.853440000000003,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 6.853440000000003,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198576",
+    "u": -57.27,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -62.69,
+     "u_to": -51.85,
+     "segment": {
+      "u_from": -129.36,
+      "u_to": -49.23
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 9.91,
+    "band_width_m": 3.75,
+    "soil_area_m2": 22.1984,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 19.97856,
+    "share_m3": 19.97856,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 4.978560000000002,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198573",
+    "u": -42.66,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -45.23,
+     "u_to": -35.32,
+     "segment": {
+      "u_from": -45.23,
+      "u_to": 23.48
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 14.54,
+    "band_width_m": 3.75,
+    "soil_area_m2": 32.5696,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 29.312640000000002,
+    "share_m3": 29.312640000000002,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 14.312640000000002,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198570",
+    "u": -27.98,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -35.32,
+     "u_to": -20.78,
+     "segment": {
+      "u_from": -45.23,
+      "u_to": 23.48
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 13.99,
+    "band_width_m": 3.75,
+    "soil_area_m2": 31.4003,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 28.260270000000002,
+    "share_m3": 28.260270000000002,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 13.260270000000002,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198571",
+    "u": -13.58,
+    "height_m": 10.7,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -20.78,
+     "u_to": -6.79,
+     "segment": {
+      "u_from": -45.23,
+      "u_to": 23.48
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 14.5,
+    "band_width_m": 3.75,
+    "soil_area_m2": 32.2895,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 29.06055,
+    "share_m3": 29.06055,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 14.06055,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198568",
+    "u": 0.0,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": -6.79,
+     "u_to": 7.71,
+     "segment": {
+      "u_from": -45.23,
+      "u_to": 23.48
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 15.42,
+    "band_width_m": 3.75,
+    "soil_area_m2": 25.2888,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 22.759919999999997,
+    "share_m3": 22.759919999999997,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 7.7599199999999975,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198566",
+    "u": 15.42,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": 7.71,
+     "u_to": 23.13,
+     "segment": {
+      "u_from": -45.23,
+      "u_to": 23.48
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   },
+   {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 4.8,
+    "band_width_m": 3.75,
+    "soil_area_m2": 7.872,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 7.0848,
+    "share_m3": 7.0848,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": -7.9152,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "site_id": "KE-198564",
+    "u": 29.88,
+    "height_m": 7.6,
+    "genus": "ACER",
+    "cell": {
+     "u_from": 27.48,
+     "u_to": 32.28,
+     "segment": {
+      "u_from": 27.48,
+      "u_to": 32.4
+     },
+     "interrupted": true,
+     "utility_conflict_at_tree": false
+    }
+   }
+  ],
+  "selected": {
+   "site_id": "KE-198568",
+   "summary": {
+    "planting_condition": "shared_row",
+    "utility_conflict_at_tree": false,
+    "tree_outside_band": false,
+    "spacing_m": 14.5,
+    "band_width_m": 3.75,
+    "soil_area_m2": 32.2895,
+    "soil_depth_m": 0.9,
+    "soil_type": "native_soil",
+    "physical_soil_volume_m3": 29.06055,
+    "share_m3": 29.06055,
+    "share_status": "KNOWN",
+    "share_provenance": "DERIVED_CALCULATION",
+    "required_m3": 15,
+    "gap_m3": 14.06055,
+    "gap_status": "KNOWN",
+    "benchmark_classes": [
+     "Small",
+     "Medium",
+     "Columnar",
+     "Large"
+    ],
+    "refused": [],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "unresolved": [
+     "R21"
+    ],
+    "depends_on_design_assumption": true,
+    "solitary_comparison": {
+     "required_m3": 20,
+     "gap_m3": 9.06055,
+     "benchmark_classes": [
+      "Small",
+      "Medium",
+      "Columnar"
+     ]
+    },
+    "share_at_table_spacing_m3": {
+     "value": 16.03,
+     "status": "KNOWN",
+     "provenance": "DERIVED_CALCULATION",
+     "rule": "R02",
+     "rule_status": "reference_only",
+     "target_tree_class": "Medium",
+     "table_9_2_spacing_range_m": [
+      8.0,
+      10.0
+     ],
+     "spacing_used_m": 8.0,
+     "spacing_bound": "min",
+     "measured_spacing_m": 14.5,
+     "note": "R02 reference, not a judgement: the same band width x depth x credit factor at the Table 9-2 LOWER spacing bound for the target class (the lower bound, not the 9.0 m mid-point); the measured spacing is what the share uses",
+     "formula": "share_at_table_spacing = credit_factor x usable_width x depth x spacing_min",
+     "credit_factor": 1.0,
+     "usable_width_m": 2.227
+    }
+   },
+   "what_would_close_the_gap": {
+    "available": true,
+    "benchmark_m3": 15,
+    "share_m3": 29.06055,
+    "gap_m3": 14.06,
+    "credit_factor": 1.0,
+    "spacing_m": 14.5,
+    "spacing_note": "measured; not a knob",
+    "soil_depth_to_meet_m": 0.465,
+    "soil_depth_change_m": -0.435,
+    "usable_band_width_to_meet_m": 1.149,
+    "band_width_change_m": -1.077,
+    "curb_offset_from_centreline_to_meet_m": null,
+    "at_full_credit_share_m3": null,
+    "formulas": {
+     "share": "share = credit_factor × usable_area × depth (R05, R06/R07)",
+     "depth_to_meet": "depth = benchmark / (credit_factor × usable_width × spacing)",
+     "width_to_meet": "usable_width = benchmark / (credit_factor × depth × spacing)",
+     "curb_to_meet": "curb_offset = property_line_from_centreline - (sidewalk + back boulevard + curb, R30) - usable_width (only when no strip interrupts)"
+    },
+    "note": "arithmetic inversion of the Table 9-2 comparison; a design exploration prompt (R22), not a City requirement"
+   },
+   "target_box": {
+    "u0": -6.79,
+    "u1": 7.71,
+    "v0": -3.01,
+    "v1": 0.74,
+    "depth_m": 0.465,
+    "note": "ghost box: the selected tree's cell footprint at the depth that meets the benchmark"
+   },
+   "shared_row": {
+    "record": {
+     "site_id": "KE-198568",
+     "site_state": {
+      "value": "existing_tree",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "street_name": {
+      "value": "W KING EDWARD AV",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "tree_point": {
+      "value": {
+       "coordinates": [
+        -123.11341200047981,
+        49.24907499910901
+       ],
+       "type": "Point"
+      },
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "tree_id": {
+      "value": "198568",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "genus": {
+      "value": "ACER",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "species": {
+      "value": "TRUNCATUM",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "cultivar": {
+      "value": "PACIFIC SUNSET",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "install_date": {
+      "value": "2004-01-09",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "inventory_height": {
+      "value": 7.6,
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "inventory_diameter": {
+      "value": 21.6,
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "location_notes": {
+      "value": "Block 400 W KING EDWARD AV.  Side 3 in cell 6 ",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "missing_inputs": {
+      "value": [
+       "soil_geometry"
+      ],
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "boulevard_width_m": {
+      "value": 3.75,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "site_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_area_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_area_m2": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_condition": {
+      "value": "shared_row",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "soil_area_m2": {
+      "value": 32.2895,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_depth_m": {
+      "value": 0.9,
+      "provenance": "DESIGN_ASSUMPTION",
+      "status": "KNOWN"
+     },
+     "soil_type": {
+      "value": "native_soil",
+      "provenance": "DESIGN_ASSUMPTION",
+      "status": "KNOWN"
+     },
+     "target_tree_class": {
+      "value": "Medium",
+      "provenance": "USER_INPUT",
+      "status": "KNOWN"
+     },
+     "utility_conflict": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "aboveground_conflict": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "target_scenario": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "required_soil_volume_m3": {
+      "value": 15,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "physical_soil_volume_m3": {
+      "value": 29.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "credited_soil_volume_m3": {
+      "value": 29.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_volume_gap_m3": {
+      "value": 14.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_volume_benchmark_classes": {
+      "value": [
+       "Small",
+       "Medium",
+       "Columnar",
+       "Large"
+      ],
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     }
+    },
+    "rule_results": [
+     {
+      "rule_id": "R01",
+      "name": "Table 9-2 soil-volume benchmark lookup",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "Table 9-2 benchmark for Medium / shared_row = 15 m3 (soil-volume benchmark only)",
+      "inputs": {
+       "target_tree_class": "Medium",
+       "planting_condition": "shared_row"
+      },
+      "outputs": [
+       "required_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R02",
+      "name": "Table 9-2 average spacing ranges",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R03",
+      "name": "Native soil preference",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R04",
+      "name": "Measure qualifying soil footprint",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_output_pre_supplied",
+      "message": "output already supplied; inputs ['soil_geometry'] not KNOWN so not recomputed",
+      "inputs": {
+       "soil_geometry": null
+      },
+      "outputs": [
+       "soil_area_m2"
+      ],
+      "missing": [
+       "soil_geometry"
+      ]
+     },
+     {
+      "rule_id": "R05",
+      "name": "Calculate physical soil volume",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "physical_soil_volume_m3 = 32.2895 x 0.9 = 29.06055 (physical geometric volume)",
+      "inputs": {
+       "soil_area_m2": 32.2895,
+       "soil_depth_m": 0.9
+      },
+      "outputs": [
+       "physical_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R06",
+      "name": "Structural soil 50 percent credit",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == structural_soil' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R07",
+      "name": "Native soil physical volume used directly",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "credited_soil_volume_m3 = 29.06055 (native soil physical volume used directly)",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [
+       "credited_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R08",
+      "name": "Structural soil is limited to new-tree installation",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == structural_soil' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R09",
+      "name": "Soil cells are limited to new-tree installation",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == soil_cell' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R10",
+      "name": "Soil-cell additional source conditions",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": false,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == soil_cell' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil",
+       "utility_conflict": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R11",
+      "name": "Soil-cell credited-volume factor",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "not_triggered",
+      "message": "subject of this unresolved rule is not present in the record",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R12",
+      "name": "Soil-volume gap calculation",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "soil_volume_gap_m3 = 29.06055 - 15 = 14.06055 (soil-volume surplus relative to the selected benchmark)",
+      "inputs": {
+       "credited_soil_volume_m3": 29.06055,
+       "required_soil_volume_m3": 15
+      },
+      "outputs": [
+       "soil_volume_gap_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R13",
+      "name": "Solitary-tree soil-volume benchmark classes",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'planting_condition == solitary' not met (planting_condition = 'shared_row')",
+      "inputs": {
+       "planting_condition": "shared_row",
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R14",
+      "name": "Boulevard width is a relevant site variable",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "boulevard_width_m": 3.75
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R15",
+      "name": "Street-tree placement exclusions",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "site_geometry": null,
+       "aboveground_conflict": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R16",
+      "name": "Recommended species mature-size grouping",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "genus": "ACER",
+       "species": "TRUNCATUM",
+       "cultivar": "PACIFIC SUNSET"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R17",
+      "name": "Species-to-class lookup in Table 9-3 (reference only)",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "genus": "ACER",
+       "species": "TRUNCATUM",
+       "cultivar": "PACIFIC SUNSET"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R18",
+      "name": "New awning setback reference values",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "aboveground_conflict": null,
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R19",
+      "name": "Existing qualifying soil geometry must be confirmed",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "existing-tree site: qualifying soil geometry is not confirmed and stays UNKNOWN; it is not inferred from tree coordinates or inventory data",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_geometry": null
+      },
+      "outputs": [
+       "missing_inputs"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R20",
+      "name": "Existing-tree Table 9-2 use is a design benchmark",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "design benchmark / retrofit exploration result",
+      "inputs": {
+       "site_state": "existing_tree",
+       "required_soil_volume_m3": 15,
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R21",
+      "name": "Shared / Row multi-tree scaling",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "unresolved",
+      "message": "shared_row: Table 9-2 Shared / Row value is returned for the selected class only. Whether it applies per tree, per continuous shared soil system, or otherwise is UNRESOLVED; it is not multiplied or divided by tree count.",
+      "inputs": {
+       "planting_condition": "shared_row",
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R22",
+      "name": "Spatialize soil-volume deficit for design exploration",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_volume_gap_m3 < 0' not met (soil_volume_gap_m3 = 14.06055)",
+      "inputs": {
+       "soil_volume_gap_m3": 14.06055,
+       "site_geometry": null,
+       "soil_geometry": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R23",
+      "name": "Tree removal decision",
+      "status": "out_of_scope",
+      "status_meaning": "Explicitly excluded from V1.",
+      "automation": false,
+      "outcome": "out_of_scope",
+      "message": "The tool does not recommend, justify, or approve removal of an existing tree.",
+      "inputs": {
+       "site_state": "existing_tree"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R24",
+      "name": "Provenance and unknown-value preservation",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "all wrapped fields retain provenance and status; UNKNOWN and DESIGN_ASSUMPTION preserved",
+      "inputs": {},
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R25",
+      "name": "Undefined crediting rule for other soil type",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == other' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R26",
+      "name": "Block-face band share (per-tree apportioning of one continuous boulevard band)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['planting_condition', 'boulevard_width_m', 'soil_area_m2']",
+      "inputs": {},
+      "outputs": [
+       "planting_condition",
+       "boulevard_width_m",
+       "soil_area_m2"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R27",
+      "name": "Shared / Row soil-volume benchmark classes under the per-tree reading",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "shared_row soil-volume benchmark met for classes ['Small', 'Medium', 'Columnar', 'Large'] (soil volume only)",
+      "inputs": {
+       "planting_condition": "shared_row",
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [
+       "soil_volume_benchmark_classes"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R28",
+      "name": "Utility interruption of the soil band (GRI qualifying condition + Table 2-2 tree clearances)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['soil_area_m2']",
+      "inputs": {},
+      "outputs": [
+       "soil_area_m2"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R29",
+      "name": "Existing soil credit default: open planting strip only, hardscape-covered native soil excluded unless tested",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "not_triggered",
+      "message": "not applied in this evaluation (executed by src/block_face.py only)",
+      "inputs": {},
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R30",
+      "name": "Front boulevard band width from the pedestrian-realm cross-section (Table 8-3 sidewalk, Table 8-4 back boulevard, 0.15 m curb)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['boulevard_width_m']",
+      "inputs": {},
+      "outputs": [
+       "boulevard_width_m"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R31",
+      "name": "Engineered-soil extension zones beyond the front boulevard (fifth lever)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "not_triggered",
+      "message": "not applied in this evaluation (executed by src/block_face.py only)",
+      "inputs": {
+       "soil_area_m2": 32.2895,
+       "soil_depth_m": 0.9,
+       "soil_type": "native_soil",
+       "site_state": "existing_tree"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R32",
+      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "inventory_diameter": 21.6
+      },
+      "outputs": [],
+      "missing": []
+     }
+    ],
+    "warnings": [],
+    "unresolved": [
+     {
+      "rule_id": "R21",
+      "classification": "SOURCE_GAP",
+      "message": "shared_row: Table 9-2 Shared / Row value is returned for the selected class only. Whether it applies per tree, per continuous shared soil system, or otherwise is UNRESOLVED; it is not multiplied or divided by tree count.",
+      "guardrails": [
+       "R01 may return the Table 9-2 shared_row value for the selected tree class.",
+       "Do not infer whether the value is per tree, per continuous shared soil system, or another calculation basis.",
+       "Do not multiply or divide the value by number of trees."
+      ],
+      "outputs_left_unknown": []
+     }
+    ],
+    "manual_review": [],
+    "reference_info": [
+     {
+      "rule_id": "R02",
+      "name": "Table 9-2 average spacing ranges",
+      "category": "spacing",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "table": "9-2",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "target_tree_class": true
+      },
+      "content": {
+       "reference_table_m": {
+        "Large": {
+         "min": 9.0,
+         "max": 11.0
+        },
+        "Medium": {
+         "min": 8.0,
+         "max": 10.0
+        },
+        "Small": {
+         "min": 7.0,
+         "max": 10.0
+        },
+        "Columnar": {
+         "min": 7.0,
+         "max": 10.0
+        }
+       },
+       "notes": "V1 retains spacing as source context and does not perform spacing compliance checks."
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R03",
+      "name": "Native soil preference",
+      "category": "soil_method",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "soil_type": true
+      },
+      "content": {
+       "notes": "Good native soil is identified as the preferred method for achieving required soil volume."
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R14",
+      "name": "Boulevard width is a relevant site variable",
+      "category": "street_space",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1",
+       "pages": "349–350"
+      },
+      "guardrails": [
+       "The reviewed source does not provide a single formula converting boulevard width into overall site capacity."
+      ],
+      "inputs_present": {
+       "boulevard_width_m": true
+      },
+      "content": {},
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R15",
+      "name": "Street-tree placement exclusions",
+      "category": "placement",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "site_geometry": false,
+       "aboveground_conflict": false
+      },
+      "content": {
+       "excluded_locations": [
+        "over building encroachments under the sidewalk (areaways)",
+        "under existing canopies and overhead signs",
+        "between signal poles at an intersection"
+       ]
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R16",
+      "name": "Recommended species mature-size grouping",
+      "category": "species",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.4.1",
+       "table": "9-3",
+       "pages": "351–352"
+      },
+      "guardrails": [
+       "V1 does not provide a complete species-recommendation system.",
+       "The source says mature-size classifications are approximate.",
+       "The recommended species list is not comprehensive."
+      ],
+      "inputs_present": {
+       "genus": true,
+       "species": true,
+       "cultivar": true
+      },
+      "content": {},
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R17",
+      "name": "Species-to-class lookup in Table 9-3 (reference only)",
+      "category": "species",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.4.1",
+       "table": "9-3",
+       "pages": "351–352"
+      },
+      "guardrails": [
+       "The class Table 9-3 gives a species may be looked up and shown beside the target-class knob ('listed Medium in Table 9-3'); it never sets target_tree_class. The class is set only by the user, or by the user choosing a species card (11_redefinition §6).",
+       "Do not classify a species as Columnar: Table 9-3 has no Columnar column.",
+       "A species not in Table 9-3 is reported as not listed; no class is inferred from any other source (R16).",
+       "\"Tree size classifications are approximate and intended as guidelines\" (p.352)."
+      ],
+      "inputs_present": {
+       "genus": true,
+       "species": true,
+       "cultivar": true
+      },
+      "content": {
+       "table_9_3": {
+        "listed": false,
+        "class": null,
+        "message": "ACER TRUNCATUM is not in Table 9-3; no class inferred (R16 / R17)"
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R18",
+      "name": "New awning setback reference values",
+      "category": "aboveground",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.6",
+       "table": "9-4",
+       "page": 353
+      },
+      "guardrails": [
+       "V1 does not automatically perform awning/crown geometry compliance checks."
+      ],
+      "inputs_present": {
+       "aboveground_conflict": false,
+       "target_tree_class": true
+      },
+      "content": {
+       "reference_values_cm": {
+        "new_columnar_tree": 120,
+        "new_spreading_tree_large_medium_small": 180,
+        "existing_tree": {
+         "minimum": 180,
+         "note": "or more depending on size and shape of tree"
+        }
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R32",
+      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
+      "category": "tree_protection",
+      "source_reference": [
+       {
+        "document": "City of Vancouver Protection of Trees By-law No. 9958 (consolidated to December 9, 2025; amended to include By-law 14546 effective January 1, 2026)",
+        "prepared_extract": "9958c.pdf",
+        "sections": "§1.2 'protection barrier' and 'tree protection area' (pp.3–4), §2.2 (p.4), §7.5–7.8 (pp.14–15), §7.10 (p.15), Schedule A (PDF p.25)"
+       },
+       {
+        "document": "City of Vancouver Street Tree Guidelines for the Public Realm, 2011 revision",
+        "prepared_extract": "StreetTreeGuidelines.pdf",
+        "pages": "19–20 (table 'MINIMUM PROTECTION REQUIRED – parallel to curb', excerpted from By-law 9958)"
+       },
+       {
+        "document": "City of Vancouver Standard Detail Drawings, General Details",
+        "prepared_extract": "standard-detail-drawings-general-details.pdf",
+        "drawing": "G10.1 Protection of boulevard trees adjacent to construction sites (Sept 2018, rev. 2022-01-12)"
+       }
+      ],
+      "guardrails": [
+       "A protection barrier distance is a construction-site requirement (where a fence must stand before demolition, excavation or construction), not a root extent: it is drawn as a dashed ring around the trunk labelled 'protection radius (By-law 9958 Sch. A), not root extent' and never changes any credited volume or share.",
+       "The engine reports it in reference_info from the City's inventory_diameter (CITY_DATA); it is never applied to the record.",
+       "The By-law measures the barrier parallel to the curb; across the boulevard the barrier is bounded by the curb (0.6 m) and the sidewalk edge (0.3 m), so the drawn ring is cut at those lines."
+      ],
+      "inputs_present": {
+       "inventory_diameter": true
+      },
+      "content": {
+       "protection_barrier": {
+        "applies": true,
+        "distance_m": 1.5,
+        "dbh_cm": 21.6,
+        "row_cm": 25.0,
+        "cite": "By-law 9958 Schedule A: 25 cm → 1.5 m (barrier measured 1.4 m above grade, parallel to the curb)",
+        "offsets_m": {
+         "from_curb": 0.6,
+         "from_sidewalk_edge": 0.3,
+         "cite": "By-law 9958 §7.8(c)(iii)–(iv) p.15; Street Tree Guidelines 2011 p.19; Standard Detail G10.1 section A-A"
+        },
+        "message": "protection radius 1.5 m for a 21.6 cm trunk (Schedule A row 25 cm); a construction protection distance, not a root extent"
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     }
+    ],
+    "trace": {
+     "planting_condition": {
+      "rule_id": "R26",
+      "operation": "block_face_apportioning",
+      "formula": "soil_area_m2 = band width × tributary length; share_m3 = soil_area_m2 × soil_depth_m (R05) × credit (R06/R07)",
+      "inputs": {
+       "trees_on_face": 11
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1–9.3.3.2",
+       "table": "9-2",
+       "pages": "349–350",
+       "passages": [
+        "9.3.3.1: boulevard width is a fundamental design parameter that governs tree size, spacing, long-term health",
+        "9.3.3.1: protect continuous linear space for trees aligned with the centre of boulevards",
+        "Table 9-2: Shared / Row of Trees column and average spacing"
+       ]
+      },
+      "depends_on_design_assumption": false,
+      "note": "block-face mode: trees on one continuous band are a row (shared_row); a lone tree on its face is solitary",
+      "also_applied": []
+     },
+     "boulevard_width_m": {
+      "rule_id": "R30",
+      "operation": "front_boulevard_width",
+      "formula": "boulevard_width_m = (property line - curb face) - sidewalk_clear_width_m[land_use][level] - back_boulevard_width_m[table_8_4_row][level] - curb_width_m",
+      "inputs": {
+       "property_line_offset_m": {
+        "value": 3.74,
+        "provenance": "DERIVED_CALCULATION",
+        "source": "block-outlines"
+       },
+       "band_edge": "back of curb (curb face at 10.0 m from the centreline, knob, + 0.15 m curb) to the sidewalk edge (P/L − back boulevard 1.2 − sidewalk 1.8)",
+       "band_edge_provenance": "DESIGN_ASSUMPTION",
+       "sidewalk_clear_width_m": {
+        "value": 1.8,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-3 p.253, row 'Residential or Industrial (detached, duplex, multiplex, townhouse)', minimum"
+       },
+       "back_boulevard_width_m": {
+        "value": 1.2,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-4 p.255, row 'Residential', minimum"
+       },
+       "curb_width_m": {
+        "value": 0.15,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-4 note 7 p.256 (0.15 m)"
+       },
+       "land_use": "residential_detached",
+       "width_level": "minimum"
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "253–256",
+       "prepared_extract": "02d_supporting_source_extract_edm_8-4.pdf",
+       "sections": [
+        "8.4.3.1",
+        "8.4.6"
+       ],
+       "tables": [
+        "8-3",
+        "8-4"
+       ],
+       "passages": [
+        "p.253 §8.4.3.1: The pedestrian realm is the publicly accessible space between the back of curb and the property line … sidewalks, which provide clear space for walking; and front and back boulevards, which provide space for trees, utilities, and street furniture.",
+        "p.253 Table 8-3 note 2: Significant work should be made to retain trees in the front boulevard.",
+        "p.255 §8.4.6: Front boulevards, also referred to as utility strips or tree boulevards, are located between the back of curb or pavement edge and the sidewalk … Where widths are constrained, front boulevards take precedence over back boulevards.",
+        "p.256 Table 8-4 note 6: For street trees, achieving the minimum front boulevard should be prioritized over the minimum back boulevard.",
+        "p.256 Table 8-4 note 7: Boulevard widths exclude curb widths, which is currently an additional 0.15m."
+       ]
+      },
+      "depends_on_design_assumption": true,
+      "note": "design band = front boulevard (EDM §8.4.6 p.255: between back of curb and sidewalk); width = (P/L − curb face 6.9) − sidewalk 1.8 − back boulevard 1.2 − curb 0.15 = 3.75 m; land use 'residential_detached' chosen by the user, level 'minimum'",
+      "also_applied": [
+       "R26"
+      ]
+     },
+     "soil_area_m2": {
+      "rule_id": "R26",
+      "operation": "block_face_apportioning",
+      "formula": "soil_area_m2 = Σ (piece length × usable width) over the tree's cell",
+      "inputs": {
+       "spacing_m": {
+        "value": 14.5,
+        "provenance": "DERIVED_CALCULATION",
+        "source": "public-trees"
+       },
+       "band_width_m": {
+        "value": 3.75,
+        "provenance": "DERIVED_CALCULATION"
+       },
+       "pieces": [
+        {
+         "u0": -6.79,
+         "u1": 7.16,
+         "usable_v": [
+          [
+           -1.51,
+           0.74
+          ]
+         ],
+         "width_m": 2.25,
+         "area_m2": 31.3875,
+         "strips": [
+          "street-lighting-conduits",
+          "water-transmission-mains"
+         ],
+         "disconnected_v": []
+        },
+        {
+         "u0": 7.16,
+         "u1": 7.71,
+         "usable_v": [
+          [
+           -0.9,
+           0.74
+          ]
+         ],
+         "width_m": 1.64,
+         "area_m2": 0.902,
+         "strips": [
+          "street-lighting-conduits",
+          "water-transmission-mains"
+         ],
+         "disconnected_v": []
+        }
+       ],
+       "segment": {
+        "u_from": -45.23,
+        "u_to": 23.48
+       }
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1–9.3.3.2",
+       "table": "9-2",
+       "pages": "349–350",
+       "passages": [
+        "9.3.3.1: boulevard width is a fundamental design parameter that governs tree size, spacing, long-term health",
+        "9.3.3.1: protect continuous linear space for trees aligned with the centre of boulevards",
+        "Table 9-2: Shared / Row of Trees column and average spacing"
+       ]
+      },
+      "depends_on_design_assumption": true,
+      "note": "per-tree cell u -6.79..7.71 (tributary length 14.5 m) × usable band width; interrupted by utility clearance strips (R28)",
+      "also_applied": [
+       "R28"
+      ]
+     },
+     "required_soil_volume_m3": {
+      "rule_id": "R01",
+      "operation": "lookup",
+      "formula": null,
+      "inputs": {
+       "target_tree_class": {
+        "value": "Medium",
+        "provenance": "USER_INPUT",
+        "status": "KNOWN"
+       },
+       "planting_condition": {
+        "value": "shared_row",
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "table": "9-2",
+       "page": 350
+      },
+      "depends_on_design_assumption": false,
+      "note": "Table 9-2 Medium / shared_row benchmark"
+     },
+     "physical_soil_volume_m3": {
+      "rule_id": "R05",
+      "operation": "multiply",
+      "formula": "physical_soil_volume_m3 = soil_area_m2 * soil_depth_m",
+      "inputs": {
+       "soil_area_m2": {
+        "value": 32.2895,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "soil_depth_m": {
+        "value": 0.9,
+        "provenance": "DESIGN_ASSUMPTION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": null,
+      "depends_on_design_assumption": true,
+      "note": ""
+     },
+     "credited_soil_volume_m3": {
+      "rule_id": "R07",
+      "operation": "copy_value",
+      "formula": "credited_soil_volume_m3 = physical_soil_volume_m3",
+      "inputs": {
+       "soil_type": {
+        "value": "native_soil",
+        "provenance": "DESIGN_ASSUMPTION",
+        "status": "KNOWN"
+       },
+       "physical_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": {
+       "document": "03_source_interpretation.md",
+       "section": "Project Interpretation"
+      },
+      "depends_on_design_assumption": true,
+      "note": "This is the project's operational translation for confirmed qualifying native soil. It is not a separate numeric City credit factor."
+     },
+     "soil_volume_gap_m3": {
+      "rule_id": "R12",
+      "operation": "subtract",
+      "formula": "soil_volume_gap_m3 = credited_soil_volume_m3 - required_soil_volume_m3",
+      "inputs": {
+       "credited_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "required_soil_volume_m3": {
+        "value": 15,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": null,
+      "depends_on_design_assumption": true,
+      "note": ""
+     },
+     "soil_volume_benchmark_classes": {
+      "rule_id": "R27",
+      "operation": "return_classes_whose_shared_row_benchmark_is_met",
+      "formula": null,
+      "inputs": {
+       "planting_condition": {
+        "value": "shared_row",
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "credited_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "table": "9-2",
+       "pages": "349–350",
+       "page": 350
+      },
+      "depends_on_design_assumption": true,
+      "note": "shared_row soil-volume benchmarks met; not a complete suitability judgement; per-tree reading of the Shared / Row column is a project interpretation (R26); R21 unresolved"
+     }
+    },
+    "interpretation": [
+     {
+      "rule_id": "R20",
+      "label": "design benchmark / retrofit exploration result",
+      "message": "Existing-tree site: the Table 9-2 comparison is a design benchmark for site-capacity and retrofit exploration. It is not a retrospective City verdict on the existing tree."
+     }
+    ],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "soil_volume_summary": {
+     "required_soil_volume_m3": 15,
+     "credited_soil_volume_m3": 29.06055,
+     "soil_volume_gap_m3": 14.06055,
+     "relation": "positive",
+     "meaning": "soil-volume surplus relative to the selected benchmark",
+     "note": "soil-volume comparison against the selected Table 9-2 benchmark only; not a complete site verdict"
+    },
+    "global_guardrails": [
+     "Never convert UNKNOWN into a factual value without evidence.",
+     "Never present DESIGN_ASSUMPTION as SOURCE_RULE or CITY_DATA.",
+     "Do not infer existing qualifying soil geometry from tree coordinates or inventory data.",
+     "Do not treat a soil-volume benchmark as complete City approval or complete site suitability.",
+     "Do not silently resolve Shared / Row scaling.",
+     "Do not infer a species-to-Columnar mapping without explicit source support.",
+     "Do not invent a soil-cell credit factor.",
+     "Do not assume a curb position, a soil depth or an existing open-strip width; they are knobs or designer inputs, never defaults.",
+     "Utility positions are plan positions only; never imply a utility depth is known."
+    ]
+   },
+   "solitary": {
+    "record": {
+     "site_id": "KE-198568",
+     "site_state": {
+      "value": "existing_tree",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "street_name": {
+      "value": "W KING EDWARD AV",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "tree_point": {
+      "value": {
+       "coordinates": [
+        -123.11341200047981,
+        49.24907499910901
+       ],
+       "type": "Point"
+      },
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "tree_id": {
+      "value": "198568",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "genus": {
+      "value": "ACER",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "species": {
+      "value": "TRUNCATUM",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "cultivar": {
+      "value": "PACIFIC SUNSET",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "install_date": {
+      "value": "2004-01-09",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "inventory_height": {
+      "value": 7.6,
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "inventory_diameter": {
+      "value": 21.6,
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "location_notes": {
+      "value": "Block 400 W KING EDWARD AV.  Side 3 in cell 6 ",
+      "provenance": "CITY_DATA",
+      "status": "KNOWN"
+     },
+     "missing_inputs": {
+      "value": [
+       "soil_geometry"
+      ],
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "boulevard_width_m": {
+      "value": 3.75,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "site_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_area_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_area_m2": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "planting_condition": {
+      "value": "solitary",
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_geometry": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "soil_area_m2": {
+      "value": 32.2895,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_depth_m": {
+      "value": 0.9,
+      "provenance": "DESIGN_ASSUMPTION",
+      "status": "KNOWN"
+     },
+     "soil_type": {
+      "value": "native_soil",
+      "provenance": "DESIGN_ASSUMPTION",
+      "status": "KNOWN"
+     },
+     "target_tree_class": {
+      "value": "Medium",
+      "provenance": "USER_INPUT",
+      "status": "KNOWN"
+     },
+     "utility_conflict": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "aboveground_conflict": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "target_scenario": {
+      "value": null,
+      "provenance": "UNKNOWN",
+      "status": "UNKNOWN"
+     },
+     "physical_soil_volume_m3": {
+      "value": 29.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "credited_soil_volume_m3": {
+      "value": 29.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "required_soil_volume_m3": {
+      "value": 20,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_volume_gap_m3": {
+      "value": 9.06055,
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     },
+     "soil_volume_benchmark_classes": {
+      "value": [
+       "Small",
+       "Medium",
+       "Columnar"
+      ],
+      "provenance": "DERIVED_CALCULATION",
+      "status": "KNOWN"
+     }
+    },
+    "rule_results": [
+     {
+      "rule_id": "R01",
+      "name": "Table 9-2 soil-volume benchmark lookup",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "Table 9-2 benchmark for Medium / solitary = 20 m3 (soil-volume benchmark only)",
+      "inputs": {
+       "target_tree_class": "Medium",
+       "planting_condition": "solitary"
+      },
+      "outputs": [
+       "required_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R02",
+      "name": "Table 9-2 average spacing ranges",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R03",
+      "name": "Native soil preference",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R04",
+      "name": "Measure qualifying soil footprint",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_output_pre_supplied",
+      "message": "output already supplied; inputs ['soil_geometry'] not KNOWN so not recomputed",
+      "inputs": {
+       "soil_geometry": null
+      },
+      "outputs": [
+       "soil_area_m2"
+      ],
+      "missing": [
+       "soil_geometry"
+      ]
+     },
+     {
+      "rule_id": "R05",
+      "name": "Calculate physical soil volume",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "physical_soil_volume_m3 = 32.2895 x 0.9 = 29.06055 (physical geometric volume)",
+      "inputs": {
+       "soil_area_m2": 32.2895,
+       "soil_depth_m": 0.9
+      },
+      "outputs": [
+       "physical_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R06",
+      "name": "Structural soil 50 percent credit",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == structural_soil' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R07",
+      "name": "Native soil physical volume used directly",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "credited_soil_volume_m3 = 29.06055 (native soil physical volume used directly)",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [
+       "credited_soil_volume_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R08",
+      "name": "Structural soil is limited to new-tree installation",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == structural_soil' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R09",
+      "name": "Soil cells are limited to new-tree installation",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == soil_cell' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R10",
+      "name": "Soil-cell additional source conditions",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": false,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == soil_cell' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil",
+       "utility_conflict": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R11",
+      "name": "Soil-cell credited-volume factor",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "not_triggered",
+      "message": "subject of this unresolved rule is not present in the record",
+      "inputs": {
+       "soil_type": "native_soil",
+       "physical_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R12",
+      "name": "Soil-volume gap calculation",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "soil_volume_gap_m3 = 29.06055 - 20 = 9.06055 (soil-volume surplus relative to the selected benchmark)",
+      "inputs": {
+       "credited_soil_volume_m3": 29.06055,
+       "required_soil_volume_m3": 20
+      },
+      "outputs": [
+       "soil_volume_gap_m3"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R13",
+      "name": "Solitary-tree soil-volume benchmark classes",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "solitary soil-volume benchmark met for classes ['Small', 'Medium', 'Columnar'] (soil volume only)",
+      "inputs": {
+       "planting_condition": "solitary",
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [
+       "soil_volume_benchmark_classes"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R14",
+      "name": "Boulevard width is a relevant site variable",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "boulevard_width_m": 3.75
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R15",
+      "name": "Street-tree placement exclusions",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "site_geometry": null,
+       "aboveground_conflict": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R16",
+      "name": "Recommended species mature-size grouping",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "genus": "ACER",
+       "species": "TRUNCATUM",
+       "cultivar": "PACIFIC SUNSET"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R17",
+      "name": "Species-to-class lookup in Table 9-3 (reference only)",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "genus": "ACER",
+       "species": "TRUNCATUM",
+       "cultivar": "PACIFIC SUNSET"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R18",
+      "name": "New awning setback reference values",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "aboveground_conflict": null,
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R19",
+      "name": "Existing qualifying soil geometry must be confirmed",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "existing-tree site: qualifying soil geometry is not confirmed and stays UNKNOWN; it is not inferred from tree coordinates or inventory data",
+      "inputs": {
+       "site_state": "existing_tree",
+       "soil_geometry": null
+      },
+      "outputs": [
+       "missing_inputs"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R20",
+      "name": "Existing-tree Table 9-2 use is a design benchmark",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "design benchmark / retrofit exploration result",
+      "inputs": {
+       "site_state": "existing_tree",
+       "required_soil_volume_m3": 20,
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R21",
+      "name": "Shared / Row multi-tree scaling",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'planting_condition == shared_row' not met (planting_condition = 'solitary')",
+      "inputs": {
+       "planting_condition": "solitary",
+       "target_tree_class": "Medium"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R22",
+      "name": "Spatialize soil-volume deficit for design exploration",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_volume_gap_m3 < 0' not met (soil_volume_gap_m3 = 9.06055)",
+      "inputs": {
+       "soil_volume_gap_m3": 9.06055,
+       "site_geometry": null,
+       "soil_geometry": null
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R23",
+      "name": "Tree removal decision",
+      "status": "out_of_scope",
+      "status_meaning": "Explicitly excluded from V1.",
+      "automation": false,
+      "outcome": "out_of_scope",
+      "message": "The tool does not recommend, justify, or approve removal of an existing tree.",
+      "inputs": {
+       "site_state": "existing_tree"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R24",
+      "name": "Provenance and unknown-value preservation",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "executed",
+      "message": "all wrapped fields retain provenance and status; UNKNOWN and DESIGN_ASSUMPTION preserved",
+      "inputs": {},
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R25",
+      "name": "Undefined crediting rule for other soil type",
+      "status": "unresolved",
+      "status_meaning": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+      "automation": false,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'soil_type == other' not met (soil_type = 'native_soil')",
+      "inputs": {
+       "soil_type": "native_soil"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R26",
+      "name": "Block-face band share (per-tree apportioning of one continuous boulevard band)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['planting_condition', 'boulevard_width_m', 'soil_area_m2']",
+      "inputs": {},
+      "outputs": [
+       "planting_condition",
+       "boulevard_width_m",
+       "soil_area_m2"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R27",
+      "name": "Shared / Row soil-volume benchmark classes under the per-tree reading",
+      "status": "conditional",
+      "status_meaning": "May be applied only when stated source or project conditions are satisfied.",
+      "automation": true,
+      "outcome": "skipped_condition_not_met",
+      "message": "condition 'planting_condition == shared_row' not met (planting_condition = 'solitary')",
+      "inputs": {
+       "planting_condition": "solitary",
+       "credited_soil_volume_m3": 29.06055
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R28",
+      "name": "Utility interruption of the soil band (GRI qualifying condition + Table 2-2 tree clearances)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['soil_area_m2']",
+      "inputs": {},
+      "outputs": [
+       "soil_area_m2"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R29",
+      "name": "Existing soil credit default: open planting strip only, hardscape-covered native soil excluded unless tested",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "not_triggered",
+      "message": "not applied in this evaluation (executed by src/block_face.py only)",
+      "inputs": {},
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R30",
+      "name": "Front boulevard band width from the pedestrian-realm cross-section (Table 8-3 sidewalk, Table 8-4 back boulevard, 0.15 m curb)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": false,
+      "outcome": "applied_by_external_module",
+      "message": "applied by src/block_face.py; see trace of ['boulevard_width_m']",
+      "inputs": {},
+      "outputs": [
+       "boulevard_width_m"
+      ],
+      "missing": []
+     },
+     {
+      "rule_id": "R31",
+      "name": "Engineered-soil extension zones beyond the front boulevard (fifth lever)",
+      "status": "active",
+      "status_meaning": "May be executed automatically in V1 when required inputs are known.",
+      "automation": true,
+      "outcome": "not_triggered",
+      "message": "not applied in this evaluation (executed by src/block_face.py only)",
+      "inputs": {
+       "soil_area_m2": 32.2895,
+       "soil_depth_m": 0.9,
+       "soil_type": "native_soil",
+       "site_state": "existing_tree"
+      },
+      "outputs": [],
+      "missing": []
+     },
+     {
+      "rule_id": "R32",
+      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
+      "status": "reference_only",
+      "status_meaning": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+      "automation": false,
+      "outcome": "not_automated",
+      "message": "retained as reference information; no compliance check performed",
+      "inputs": {
+       "inventory_diameter": 21.6
+      },
+      "outputs": [],
+      "missing": []
+     }
+    ],
+    "warnings": [],
+    "unresolved": [],
+    "manual_review": [],
+    "reference_info": [
+     {
+      "rule_id": "R02",
+      "name": "Table 9-2 average spacing ranges",
+      "category": "spacing",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "table": "9-2",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "target_tree_class": true
+      },
+      "content": {
+       "reference_table_m": {
+        "Large": {
+         "min": 9.0,
+         "max": 11.0
+        },
+        "Medium": {
+         "min": 8.0,
+         "max": 10.0
+        },
+        "Small": {
+         "min": 7.0,
+         "max": 10.0
+        },
+        "Columnar": {
+         "min": 7.0,
+         "max": 10.0
+        }
+       },
+       "notes": "V1 retains spacing as source context and does not perform spacing compliance checks."
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R03",
+      "name": "Native soil preference",
+      "category": "soil_method",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "soil_type": true
+      },
+      "content": {
+       "notes": "Good native soil is identified as the preferred method for achieving required soil volume."
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R14",
+      "name": "Boulevard width is a relevant site variable",
+      "category": "street_space",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1",
+       "pages": "349–350"
+      },
+      "guardrails": [
+       "The reviewed source does not provide a single formula converting boulevard width into overall site capacity."
+      ],
+      "inputs_present": {
+       "boulevard_width_m": true
+      },
+      "content": {},
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R15",
+      "name": "Street-tree placement exclusions",
+      "category": "placement",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1",
+       "page": 350
+      },
+      "guardrails": [],
+      "inputs_present": {
+       "site_geometry": false,
+       "aboveground_conflict": false
+      },
+      "content": {
+       "excluded_locations": [
+        "over building encroachments under the sidewalk (areaways)",
+        "under existing canopies and overhead signs",
+        "between signal poles at an intersection"
+       ]
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R16",
+      "name": "Recommended species mature-size grouping",
+      "category": "species",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.4.1",
+       "table": "9-3",
+       "pages": "351–352"
+      },
+      "guardrails": [
+       "V1 does not provide a complete species-recommendation system.",
+       "The source says mature-size classifications are approximate.",
+       "The recommended species list is not comprehensive."
+      ],
+      "inputs_present": {
+       "genus": true,
+       "species": true,
+       "cultivar": true
+      },
+      "content": {},
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R17",
+      "name": "Species-to-class lookup in Table 9-3 (reference only)",
+      "category": "species",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.4.1",
+       "table": "9-3",
+       "pages": "351–352"
+      },
+      "guardrails": [
+       "The class Table 9-3 gives a species may be looked up and shown beside the target-class knob ('listed Medium in Table 9-3'); it never sets target_tree_class. The class is set only by the user, or by the user choosing a species card (11_redefinition §6).",
+       "Do not classify a species as Columnar: Table 9-3 has no Columnar column.",
+       "A species not in Table 9-3 is reported as not listed; no class is inferred from any other source (R16).",
+       "\"Tree size classifications are approximate and intended as guidelines\" (p.352)."
+      ],
+      "inputs_present": {
+       "genus": true,
+       "species": true,
+       "cultivar": true
+      },
+      "content": {
+       "table_9_3": {
+        "listed": false,
+        "class": null,
+        "message": "ACER TRUNCATUM is not in Table 9-3; no class inferred (R16 / R17)"
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R18",
+      "name": "New awning setback reference values",
+      "category": "aboveground",
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.6",
+       "table": "9-4",
+       "page": 353
+      },
+      "guardrails": [
+       "V1 does not automatically perform awning/crown geometry compliance checks."
+      ],
+      "inputs_present": {
+       "aboveground_conflict": false,
+       "target_tree_class": true
+      },
+      "content": {
+       "reference_values_cm": {
+        "new_columnar_tree": 120,
+        "new_spreading_tree_large_medium_small": 180,
+        "existing_tree": {
+         "minimum": 180,
+         "note": "or more depending on size and shape of tree"
+        }
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     },
+     {
+      "rule_id": "R32",
+      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
+      "category": "tree_protection",
+      "source_reference": [
+       {
+        "document": "City of Vancouver Protection of Trees By-law No. 9958 (consolidated to December 9, 2025; amended to include By-law 14546 effective January 1, 2026)",
+        "prepared_extract": "9958c.pdf",
+        "sections": "§1.2 'protection barrier' and 'tree protection area' (pp.3–4), §2.2 (p.4), §7.5–7.8 (pp.14–15), §7.10 (p.15), Schedule A (PDF p.25)"
+       },
+       {
+        "document": "City of Vancouver Street Tree Guidelines for the Public Realm, 2011 revision",
+        "prepared_extract": "StreetTreeGuidelines.pdf",
+        "pages": "19–20 (table 'MINIMUM PROTECTION REQUIRED – parallel to curb', excerpted from By-law 9958)"
+       },
+       {
+        "document": "City of Vancouver Standard Detail Drawings, General Details",
+        "prepared_extract": "standard-detail-drawings-general-details.pdf",
+        "drawing": "G10.1 Protection of boulevard trees adjacent to construction sites (Sept 2018, rev. 2022-01-12)"
+       }
+      ],
+      "guardrails": [
+       "A protection barrier distance is a construction-site requirement (where a fence must stand before demolition, excavation or construction), not a root extent: it is drawn as a dashed ring around the trunk labelled 'protection radius (By-law 9958 Sch. A), not root extent' and never changes any credited volume or share.",
+       "The engine reports it in reference_info from the City's inventory_diameter (CITY_DATA); it is never applied to the record.",
+       "The By-law measures the barrier parallel to the curb; across the boulevard the barrier is bounded by the curb (0.6 m) and the sidewalk edge (0.3 m), so the drawn ring is cut at those lines."
+      ],
+      "inputs_present": {
+       "inventory_diameter": true
+      },
+      "content": {
+       "protection_barrier": {
+        "applies": true,
+        "distance_m": 1.5,
+        "dbh_cm": 21.6,
+        "row_cm": 25.0,
+        "cite": "By-law 9958 Schedule A: 25 cm → 1.5 m (barrier measured 1.4 m above grade, parallel to the curb)",
+        "offsets_m": {
+         "from_curb": 0.6,
+         "from_sidewalk_edge": 0.3,
+         "cite": "By-law 9958 §7.8(c)(iii)–(iv) p.15; Street Tree Guidelines 2011 p.19; Standard Detail G10.1 section A-A"
+        },
+        "message": "protection radius 1.5 m for a 21.6 cm trunk (Schedule A row 25 cm); a construction protection distance, not a root extent"
+       }
+      },
+      "note": "reference information only; V1 does not judge this rule"
+     }
+    ],
+    "trace": {
+     "boulevard_width_m": {
+      "rule_id": "R30",
+      "operation": "front_boulevard_width",
+      "formula": "boulevard_width_m = (property line - curb face) - sidewalk_clear_width_m[land_use][level] - back_boulevard_width_m[table_8_4_row][level] - curb_width_m",
+      "inputs": {
+       "property_line_offset_m": {
+        "value": 3.74,
+        "provenance": "DERIVED_CALCULATION",
+        "source": "block-outlines"
+       },
+       "band_edge": "back of curb (curb face at 10.0 m from the centreline, knob, + 0.15 m curb) to the sidewalk edge (P/L − back boulevard 1.2 − sidewalk 1.8)",
+       "band_edge_provenance": "DESIGN_ASSUMPTION",
+       "sidewalk_clear_width_m": {
+        "value": 1.8,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-3 p.253, row 'Residential or Industrial (detached, duplex, multiplex, townhouse)', minimum"
+       },
+       "back_boulevard_width_m": {
+        "value": 1.2,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-4 p.255, row 'Residential', minimum"
+       },
+       "curb_width_m": {
+        "value": 0.15,
+        "provenance": "SOURCE_RULE",
+        "source": "EDM 2026 Table 8-4 note 7 p.256 (0.15 m)"
+       },
+       "land_use": "residential_detached",
+       "width_level": "minimum"
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "253–256",
+       "prepared_extract": "02d_supporting_source_extract_edm_8-4.pdf",
+       "sections": [
+        "8.4.3.1",
+        "8.4.6"
+       ],
+       "tables": [
+        "8-3",
+        "8-4"
+       ],
+       "passages": [
+        "p.253 §8.4.3.1: The pedestrian realm is the publicly accessible space between the back of curb and the property line … sidewalks, which provide clear space for walking; and front and back boulevards, which provide space for trees, utilities, and street furniture.",
+        "p.253 Table 8-3 note 2: Significant work should be made to retain trees in the front boulevard.",
+        "p.255 §8.4.6: Front boulevards, also referred to as utility strips or tree boulevards, are located between the back of curb or pavement edge and the sidewalk … Where widths are constrained, front boulevards take precedence over back boulevards.",
+        "p.256 Table 8-4 note 6: For street trees, achieving the minimum front boulevard should be prioritized over the minimum back boulevard.",
+        "p.256 Table 8-4 note 7: Boulevard widths exclude curb widths, which is currently an additional 0.15m."
+       ]
+      },
+      "depends_on_design_assumption": true,
+      "note": "design band = front boulevard (EDM §8.4.6 p.255: between back of curb and sidewalk); width = (P/L − curb face 6.9) − sidewalk 1.8 − back boulevard 1.2 − curb 0.15 = 3.75 m; land use 'residential_detached' chosen by the user, level 'minimum'",
+      "also_applied": [
+       "R26"
+      ]
+     },
+     "soil_area_m2": {
+      "rule_id": "R26",
+      "operation": "block_face_apportioning",
+      "formula": "soil_area_m2 = Σ (piece length × usable width) over the tree's cell",
+      "inputs": {
+       "spacing_m": {
+        "value": 14.5,
+        "provenance": "DERIVED_CALCULATION",
+        "source": "public-trees"
+       },
+       "band_width_m": {
+        "value": 3.75,
+        "provenance": "DERIVED_CALCULATION"
+       },
+       "pieces": [
+        {
+         "u0": -6.79,
+         "u1": 7.16,
+         "usable_v": [
+          [
+           -1.51,
+           0.74
+          ]
+         ],
+         "width_m": 2.25,
+         "area_m2": 31.3875,
+         "strips": [
+          "street-lighting-conduits",
+          "water-transmission-mains"
+         ],
+         "disconnected_v": []
+        },
+        {
+         "u0": 7.16,
+         "u1": 7.71,
+         "usable_v": [
+          [
+           -0.9,
+           0.74
+          ]
+         ],
+         "width_m": 1.64,
+         "area_m2": 0.902,
+         "strips": [
+          "street-lighting-conduits",
+          "water-transmission-mains"
+         ],
+         "disconnected_v": []
+        }
+       ],
+       "segment": {
+        "u_from": -45.23,
+        "u_to": 23.48
+       }
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1–9.3.3.2",
+       "table": "9-2",
+       "pages": "349–350",
+       "passages": [
+        "9.3.3.1: boulevard width is a fundamental design parameter that governs tree size, spacing, long-term health",
+        "9.3.3.1: protect continuous linear space for trees aligned with the centre of boulevards",
+        "Table 9-2: Shared / Row of Trees column and average spacing"
+       ]
+      },
+      "depends_on_design_assumption": true,
+      "note": "per-tree cell u -6.79..7.71 (tributary length 14.5 m) × usable band width; interrupted by utility clearance strips (R28)",
+      "also_applied": [
+       "R28"
+      ]
+     },
+     "planting_condition": {
+      "rule_id": "R26",
+      "operation": "block_face_apportioning",
+      "formula": "soil_area_m2 = band width × tributary length; share_m3 = soil_area_m2 × soil_depth_m (R05) × credit (R06/R07)",
+      "inputs": {},
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.1–9.3.3.2",
+       "table": "9-2",
+       "pages": "349–350",
+       "passages": [
+        "9.3.3.1: boulevard width is a fundamental design parameter that governs tree size, spacing, long-term health",
+        "9.3.3.1: protect continuous linear space for trees aligned with the centre of boulevards",
+        "Table 9-2: Shared / Row of Trees column and average spacing"
+       ]
+      },
+      "depends_on_design_assumption": false,
+      "note": "comparison only: the same cell read against the Solitary column",
+      "also_applied": []
+     },
+     "required_soil_volume_m3": {
+      "rule_id": "R01",
+      "operation": "lookup",
+      "formula": null,
+      "inputs": {
+       "target_tree_class": {
+        "value": "Medium",
+        "provenance": "USER_INPUT",
+        "status": "KNOWN"
+       },
+       "planting_condition": {
+        "value": "solitary",
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": {
+       "document": "City of Vancouver Engineering Design Manual",
+       "year": 2026,
+       "selected_pages": "349–356",
+       "prepared_extract": "02_source_extract.pdf",
+       "section": "9.3.3.2",
+       "table": "9-2",
+       "page": 350
+      },
+      "depends_on_design_assumption": false,
+      "note": "Table 9-2 Medium / solitary benchmark"
+     },
+     "physical_soil_volume_m3": {
+      "rule_id": "R05",
+      "operation": "multiply",
+      "formula": "physical_soil_volume_m3 = soil_area_m2 * soil_depth_m",
+      "inputs": {
+       "soil_area_m2": {
+        "value": 32.2895,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "soil_depth_m": {
+        "value": 0.9,
+        "provenance": "DESIGN_ASSUMPTION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": null,
+      "depends_on_design_assumption": true,
+      "note": "pre-supplied value 29.06055 confirmed by recomputation"
+     },
+     "credited_soil_volume_m3": {
+      "rule_id": "R07",
+      "operation": "copy_value",
+      "formula": "credited_soil_volume_m3 = physical_soil_volume_m3",
+      "inputs": {
+       "soil_type": {
+        "value": "native_soil",
+        "provenance": "DESIGN_ASSUMPTION",
+        "status": "KNOWN"
+       },
+       "physical_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": {
+       "document": "03_source_interpretation.md",
+       "section": "Project Interpretation"
+      },
+      "depends_on_design_assumption": true,
+      "note": "pre-supplied value 29.06055 confirmed by recomputation"
+     },
+     "soil_volume_gap_m3": {
+      "rule_id": "R12",
+      "operation": "subtract",
+      "formula": "soil_volume_gap_m3 = credited_soil_volume_m3 - required_soil_volume_m3",
+      "inputs": {
+       "credited_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "required_soil_volume_m3": {
+        "value": 20,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": null,
+      "depends_on_design_assumption": true,
+      "note": ""
+     },
+     "soil_volume_benchmark_classes": {
+      "rule_id": "R13",
+      "operation": "return_classes_whose_solitary_benchmark_is_met",
+      "formula": null,
+      "inputs": {
+       "planting_condition": {
+        "value": "solitary",
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       },
+       "credited_soil_volume_m3": {
+        "value": 29.06055,
+        "provenance": "DERIVED_CALCULATION",
+        "status": "KNOWN"
+       }
+      },
+      "source_reference": null,
+      "depends_on_design_assumption": true,
+      "note": "solitary soil-volume benchmarks met; not a complete suitability judgement"
+     }
+    },
+    "interpretation": [
+     {
+      "rule_id": "R20",
+      "label": "design benchmark / retrofit exploration result",
+      "message": "Existing-tree site: the Table 9-2 comparison is a design benchmark for site-capacity and retrofit exploration. It is not a retrospective City verdict on the existing tree."
+     }
+    ],
+    "missing_inputs": [
+     "soil_geometry"
+    ],
+    "soil_volume_summary": {
+     "required_soil_volume_m3": 20,
+     "credited_soil_volume_m3": 29.06055,
+     "soil_volume_gap_m3": 9.06055,
+     "relation": "positive",
+     "meaning": "soil-volume surplus relative to the selected benchmark",
+     "note": "soil-volume comparison against the selected Table 9-2 benchmark only; not a complete site verdict"
+    },
+    "global_guardrails": [
+     "Never convert UNKNOWN into a factual value without evidence.",
+     "Never present DESIGN_ASSUMPTION as SOURCE_RULE or CITY_DATA.",
+     "Do not infer existing qualifying soil geometry from tree coordinates or inventory data.",
+     "Do not treat a soil-volume benchmark as complete City approval or complete site suitability.",
+     "Do not silently resolve Shared / Row scaling.",
+     "Do not infer a species-to-Columnar mapping without explicit source support.",
+     "Do not invent a soil-cell credit factor.",
+     "Do not assume a curb position, a soil depth or an existing open-strip width; they are knobs or designer inputs, never defaults.",
+     "Utility positions are plan positions only; never imply a utility depth is known."
+    ]
+   }
+  },
+  "extensions": null,
+  "front_boulevard": {
+   "available": true,
+   "land_use": "residential_detached",
+   "table_8_3_row": "Residential or Industrial (detached, duplex, multiplex, townhouse)",
+   "table_8_4_row": "Residential",
+   "width_level": "minimum",
+   "curb_face_v": -3.16,
+   "back_of_curb_v": -3.01,
+   "sidewalk_road_edge_v": 0.74,
+   "sidewalk_property_edge_v": 2.54,
+   "property_line_v": 3.74,
+   "widths_m": {
+    "property_line_to_curb_face": 6.9,
+    "curb": 0.15,
+    "sidewalk_clear": 1.8,
+    "back_boulevard": 1.2,
+    "front_boulevard": 3.75
+   },
+   "sources": {
+    "curb": "EDM 2026 Table 8-4 note 7 p.256 (0.15 m)",
+    "sidewalk_clear": "EDM 2026 Table 8-3 p.253, row 'Residential or Industrial (detached, duplex, multiplex, townhouse)', minimum",
+    "back_boulevard": "EDM 2026 Table 8-4 p.255, row 'Residential', minimum",
+    "front_boulevard": "derived (R30); composition is a PROJECT_INTERPRETATION"
+   },
+   "front_boulevard_reference_m": {
+    "constrained": 1.2,
+    "minimum": 2.0,
+    "preferred": 2.0
+   },
+   "reference_note": "Table 8-4 front boulevard, Residential: constrained 1.2 · minimum 2.0 · preferred >2.0 m; derived front boulevard here 3.75 m (reference information, no verdict)",
+   "width_note": "design band = front boulevard (EDM §8.4.6 p.255: between back of curb and sidewalk); width = (P/L − curb face 6.9) − sidewalk 1.8 − back boulevard 1.2 − curb 0.15 = 3.75 m; land use 'residential_detached' chosen by the user, level 'minimum'"
+  }
+ },
+ "existing": {
+  "default": "Existing-state default: only the open planting strip counts toward existing credited volume; its width, depth and type are designer inputs in two grades (USER_INPUT typed / CONFIRMED_SITE_DATA with evidence). No 'typical Vancouver boulevard depth' exists in this tool; with no depth the existing share is UNKNOWN.",
+  "inputs": {
+   "soil_width_m": {
+    "value": null,
+    "provenance": "UNKNOWN",
+    "status": "UNKNOWN"
+   },
+   "soil_depth_m": {
+    "value": null,
+    "provenance": "UNKNOWN",
+    "status": "UNKNOWN"
+   },
+   "soil_type": {
+    "value": null,
+    "provenance": "UNKNOWN",
+    "status": "UNKNOWN"
+   }
+  },
+  "utility_note": null,
+  "grade": "nothing supplied",
+  "available": false,
+  "missing": [
+   "existing soil_width_m",
+   "existing soil_depth_m",
+   "existing soil_type"
+  ],
+  "share": {
+   "value": null,
+   "provenance": "UNKNOWN",
+   "status": "UNKNOWN"
+  },
+  "note": "existing open-strip width not supplied; existing share stays UNKNOWN (no default strip)"
+ },
+ "run": {
+  "script": "scripts/run_block_face.py",
+  "run_on": "2026-10-02",
+  "args": {
+   "site": "KE-198568",
+   "curb": 10.0,
+   "depth": 0.9,
+   "target": "Medium",
+   "soil": "native_soil",
+   "land_use": "residential_detached",
+   "width_level": "minimum",
+   "knob_provenance": "DESIGN_ASSUMPTION",
+   "curb_provenance": null,
+   "curb_evidence": null,
+   "existing_width": null,
+   "existing_depth": null,
+   "existing_soil": null,
+   "existing_provenance": "USER_INPUT",
+   "existing_evidence": null,
+   "utility_note": null,
+   "fixture_main_u": null,
+   "no_city_utilities": false,
+   "extend_property": null,
+   "extend_road": null,
+   "extension_evidence": null,
+   "replacement": false,
+   "out": null,
+   "sites": null
+  },
+  "rules": "sources/06_rules.json v1.4",
+  "definition": "sources/11_redefinition_2026-09-28.md (supersedes 08); test cases sources/09_block_face_test_cases.md",
+  "sites": "data/processed/king_edward_pilot_sites.json"
+ }
+}

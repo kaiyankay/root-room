@@ -1,0 +1,317 @@
+{
+ "site": "KE-198571",
+ "block": "400 W King Edward Av north side, Cambie\u2192Yukon",
+ "method": "features within 30 m of the polyline through the 11 face trees and within the block x-range; derived sewer depth = nearest manhole RIMELEV \u2212 mean(invert)",
+ "computed_on": "2026-09-28",
+ "layers": {
+  "water-distribution-mains": [
+   {
+    "dist_to_treeline_m": 15.2,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 15.3,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 1.2999999523162842,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2018-04-14"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 1.2999999523162842,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2018-04-14"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 0.6000000238418579,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-12-02"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 0.6000000238418579,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-12-02"
+   },
+   {
+    "dist_to_treeline_m": 15.4,
+    "DEPTH_OF_COVER_M": 0.6000000238418579,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-12-02"
+   },
+   {
+    "dist_to_treeline_m": 15.5,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 15.5,
+    "DEPTH_OF_COVER_M": 1.2999999523162842,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2018-04-14"
+   },
+   {
+    "dist_to_treeline_m": 15.5,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 22.2,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 22.2,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 22.2,
+    "DEPTH_OF_COVER_M": 1.2000000476837158,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2023-08-22"
+   },
+   {
+    "dist_to_treeline_m": 22.2,
+    "DEPTH_OF_COVER_M": 1.2000000476837158,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2023-08-22"
+   },
+   {
+    "dist_to_treeline_m": 22.2,
+    "DEPTH_OF_COVER_M": 1.2000000476837158,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2023-08-22"
+   },
+   {
+    "dist_to_treeline_m": 22.5,
+    "DEPTH_OF_COVER_M": 0.8999999761581421,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2007-12-21"
+   },
+   {
+    "dist_to_treeline_m": 22.5,
+    "DEPTH_OF_COVER_M": 0.8999999761581421,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2007-12-21"
+   },
+   {
+    "dist_to_treeline_m": 22.5,
+    "DEPTH_OF_COVER_M": 0.8999999761581421,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2007-12-21"
+   },
+   {
+    "dist_to_treeline_m": 22.5,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1930-01-01"
+   },
+   {
+    "dist_to_treeline_m": 22.5,
+    "DEPTH_OF_COVER_M": 0.9100000262260437,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Cast Iron",
+    "INSTALLATION_DATE_iso": "1965-01-01"
+   },
+   {
+    "dist_to_treeline_m": 22.6,
+    "DEPTH_OF_COVER_M": 0.8999999761581421,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2007-12-21"
+   },
+   {
+    "dist_to_treeline_m": 22.6,
+    "DEPTH_OF_COVER_M": 1,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-05-10"
+   },
+   {
+    "dist_to_treeline_m": 22.7,
+    "DEPTH_OF_COVER_M": 1,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-05-10"
+   },
+   {
+    "dist_to_treeline_m": 22.7,
+    "DEPTH_OF_COVER_M": 1,
+    "DIAMETER": "200 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2020-05-10"
+   },
+   {
+    "dist_to_treeline_m": 23.1,
+    "DIAMETER": "300 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2009-01-01"
+   }
+  ],
+  "water-transmission-mains": [
+   {
+    "dist_to_treeline_m": 2.0,
+    "DEPTH_OF_COVER_M": 1.2200000286102295,
+    "DIAMETER": "650 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2008-01-01"
+   },
+   {
+    "dist_to_treeline_m": 2.1,
+    "DEPTH_OF_COVER_M": 1.2200000286102295,
+    "DIAMETER": "650 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2008-01-01"
+   },
+   {
+    "dist_to_treeline_m": 2.2,
+    "DEPTH_OF_COVER_M": 1.2200000286102295,
+    "DIAMETER": "650 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2008-01-01"
+   },
+   {
+    "dist_to_treeline_m": 2.6,
+    "DEPTH_OF_COVER_M": 1.2200000286102295,
+    "DIAMETER": "650 mm",
+    "MATERIAL": "Ductile Iron Concrete Lined",
+    "INSTALLATION_DATE_iso": "2008-01-01"
+   }
+  ],
+  "abandoned-water-mains": [],
+  "sanitary-mains": [],
+  "storm-mains": [],
+  "combined-mains": [
+   {
+    "dist_to_treeline_m": 18.9,
+    "MATERIAL": "Vitrified Clay",
+    "UPSTREAM_INVERT": 63.11,
+    "DWNSTREAM_INVERT": 63.04,
+    "DIAMETER_INSIDE": 600,
+    "INSTALLDATE_iso": "1930-01-01",
+    "GRADE": 0.11,
+    "EFFLUENT_TYPE": "Combined",
+    "UPSTRM_INVERT_ESTIMATED": "No",
+    "DNSTRM_INVERT_ESTIMATED": "No",
+    "derived_depth_to_invert_m": 5.48,
+    "nearest_manhole_rim_m": 68.56,
+    "nearest_manhole_dist_m": 0.0
+   },
+   {
+    "dist_to_treeline_m": 19.5,
+    "MATERIAL": "Vitrified Clay",
+    "UPSTREAM_INVERT": 63.04,
+    "DWNSTREAM_INVERT": 62.45,
+    "DIAMETER_INSIDE": 600,
+    "INSTALLDATE_iso": "1930-01-01",
+    "GRADE": 0.38,
+    "EFFLUENT_TYPE": "Combined",
+    "UPSTRM_INVERT_ESTIMATED": "No",
+    "DNSTRM_INVERT_ESTIMATED": "No",
+    "derived_depth_to_invert_m": 5.08,
+    "nearest_manhole_rim_m": 67.83,
+    "nearest_manhole_dist_m": 57.8
+   },
+   {
+    "dist_to_treeline_m": 19.7,
+    "MATERIAL": "Vitrified Clay",
+    "UPSTREAM_INVERT": 68.34,
+    "DWNSTREAM_INVERT": 65.33,
+    "DIAMETER_INSIDE": 200,
+    "INSTALLDATE_iso": "1948-01-01",
+    "GRADE": 5.31,
+    "EFFLUENT_TYPE": "Combined",
+    "UPSTRM_INVERT_ESTIMATED": "No",
+    "DNSTRM_INVERT_ESTIMATED": "No",
+    "derived_depth_to_invert_m": 1.72,
+    "nearest_manhole_rim_m": 68.56,
+    "nearest_manhole_dist_m": 0.0
+   }
+  ],
+  "sewer-manholes": [
+   {
+    "dist_to_treeline_m": 19.7,
+    "RIMELEV": 68.56,
+    "EFLNTTYPE": "Combined",
+    "FACILITYID": "400219"
+   }
+  ],
+  "sewer-service-lines": [
+   {
+    "dist_to_treeline_m": 19.7,
+    "MATERIAL": "Polyvinyl Chloride",
+    "DIAMETER_INSIDE": 300,
+    "INSTALLDATE_iso": "2018-01-28",
+    "OFFSET_FROM_PL": 41.5,
+    "OFFSET_DIRECTION": "E of W",
+    "EFFLUENT_TYPE": "Storm"
+   },
+   {
+    "dist_to_treeline_m": 19.8,
+    "MATERIAL": "Polyvinyl Chloride",
+    "DIAMETER_INSIDE": 250,
+    "INSTALLDATE_iso": "2018-01-28",
+    "OFFSET_FROM_PL": 41.5,
+    "OFFSET_DIRECTION": "E of W",
+    "EFFLUENT_TYPE": "Sanitary"
+   }
+  ],
+  "street-lighting-conduits": [
+   {
+    "dist_to_treeline_m": 0.5,
+    "WIRESET_TYPE": "3-8"
+   },
+   {
+    "dist_to_treeline_m": 0.9,
+    "WIRESET_TYPE": "3-8"
+   },
+   {
+    "dist_to_treeline_m": 1.2,
+    "WIRESET_TYPE": "2-8"
+   },
+   {
+    "dist_to_treeline_m": 1.4,
+    "WIRESET_TYPE": "3-8"
+   }
+  ]
+ }
+}

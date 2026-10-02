@@ -1,0 +1,141 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "line",
+   "description": null,
+   "annotations": {},
+   "label": "LINE",
+   "type": "text"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  }
+ ],
+ "dataset_id": "rapid-transit-lines",
+ "dataset_uid": "da_3tbov6",
+ "has_records": true,
+ "features": [
+  "geo"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "rapid_transit_linedwg",
+   "title": "rapid_transit_line.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/rapid-transit-lines/alternative_exports/rapid_transit_linedwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Rapid transit lines",
+   "description": "<div><p>This dataset contains the three rapid transit lines. A separate dataset contains their stations.\u00a0Only those portions within the boundaries of the City of Vancouver are shown.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated as required in the normal course of business.  The extract on this website is updated weekly.  This dataset rarely if ever changes.</p></div> <h3>Data accuracy</h3><div><p>As most of the line locations are underground, their locations are approximate.</p></div> ",
+   "theme": [
+    "Streets and transportation"
+   ],
+   "keyword": [
+    "rapid transit"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2020-11-19T11:47:55+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2020-11-19T11:47:55+00:00",
+   "metadata_processed": "2026-10-02T13:47:53.316000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "LineString"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.01231280900538,
+        49.288106644526124
+       ],
+       [
+        -123.12503004446626,
+        49.288106644526124
+       ],
+       [
+        -123.12503004446626,
+        49.19687943533063
+       ],
+       [
+        -123.01231280900538,
+        49.19687943533063
+       ],
+       [
+        -123.01231280900538,
+        49.288106644526124
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 3,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": "skytrain",
+   "change-log": null
+  }
+ }
+}

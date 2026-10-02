@@ -1,0 +1,142 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "object_id",
+   "description": "Unique identifier for each footprint polygon",
+   "annotations": {},
+   "label": "Object ID",
+   "type": "int"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of specified footprint polygon",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "building-footprints-2015",
+ "dataset_uid": "da_ee9w0q",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Building Footprints 2015",
+   "description": "<div><p>\u200bThe building outlines is a 2D data set defined by the generalized outermost exterior outline of main building components generated from the City of Vancouver\u2019s 2015 orthophotos. Contiguous building outlines are split at parcel lines, where required, to reflect ownership. Also included are larger accessory buildings such as garages.</p></div> <h3>Note</h3><div><p>\u200bData are approximate. Care must be taken in using them because of the significant number of changes since collected year. They are best used for comparison purposes only.</p></div> <h3>Data currency</h3><div><p>\u200bThis dataset reflects conditions in 2015 and is not being updated.</p></div> <h3>Data accuracy</h3><div><p>\u200bThe dataset reflects the approximate building footprints in 2015 and are best used for comparison purposes only.</p></div> ",
+   "theme": [
+    "Property and development"
+   ],
+   "keyword": [
+    "building"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2022-06-09T12:02:05+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": false,
+   "data_processed": "2022-06-09T18:29:24+00:00",
+   "metadata_processed": "2026-10-02T13:49:35.639000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "MultiPolygon",
+    "Polygon"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02364765666425,
+        49.296082025393844
+       ],
+       [
+        -123.22460537776351,
+        49.296082025393844
+       ],
+       [
+        -123.22460537776351,
+        49.19982420746237
+       ],
+       [
+        -123.02364765666425,
+        49.19982420746237
+       ],
+       [
+        -123.02364765666425,
+        49.296082025393844
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 154124,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Technology Services - GIS and CADD Services"
+   ],
+   "search-term": null,
+   "change-log": "https://opendata.vancouver.ca/explore/dataset/open-data-change-log/log/?disjunctive.datasets&amp;sort=logdate&amp;refine.datasetids=building-footprints-2015"
+  }
+ }
+}

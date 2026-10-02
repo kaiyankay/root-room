@@ -1,0 +1,160 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "type",
+   "description": null,
+   "annotations": {
+    "facet": true
+   },
+   "label": "TYPE",
+   "type": "text"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_local_area",
+   "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+   "annotations": {
+    "facet": true
+   },
+   "label": "Geo Local Area",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "traffic-signals",
+ "dataset_uid": "da_git45d",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "traffic_signaldwg",
+   "title": "traffic_signal.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/traffic-signals/alternative_exports/traffic_signaldwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Traffic signals",
+   "description": "<div><p>This dataset contains the locations of the City's traffic  signals.</p></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of business, however priorities and resources determine how fast a  change in reality is reflected in the database.\u00a0  The extract on this website is updated weekly.\u00a0 </p></div> <h3>Data accuracy</h3><div><p>Traffic signal locations are in the approximate centre of the intersection.</p></div> ",
+   "theme": [
+    "Streets and transportation"
+   ],
+   "keyword": [
+    "traffic"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-08-03T13:35:50+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-08-03T13:35:50+00:00",
+   "metadata_processed": "2026-10-02T13:47:18.091000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02335848100483,
+        49.29424223955721
+       ],
+       [
+        -123.21541185490787,
+        49.29424223955721
+       ],
+       [
+        -123.21541185490787,
+        49.20316267758608
+       ],
+       [
+        -123.02335848100483,
+        49.20316267758608
+       ],
+       [
+        -123.02335848100483,
+        49.29424223955721
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 966,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": "light",
+   "change-log": null
+  }
+ }
+}

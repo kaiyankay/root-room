@@ -1,0 +1,198 @@
+{
+ "id": "fraxinus_pennsylvanica",
+ "genus": "FRAXINUS",
+ "species": "PENNSYLVANICA",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Patmore Ash",
+  "latin": "Fraxinus pennsylvanica",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == FRAXINUS and first species word == PENNSYLVANICA; hybrid marker 'X' ignored; any cultivar",
+  "count": 1824,
+  "height_m": {
+   "n": 1824,
+   "p50": 10.7,
+   "p90": 14.0,
+   "max": 26.0,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 1824,
+   "p50": 31.0,
+   "p90": 46.5,
+   "max": 158.8,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "PATMORE",
+    580
+   ],
+   [
+    "NONE",
+    380
+   ],
+   [
+    "SUMMIT",
+    329
+   ],
+   [
+    "BERGESON",
+    269
+   ],
+   [
+    "PRAIRIE SPIRE",
+    99
+   ],
+   [
+    "LEPRECHAUN",
+    80
+   ],
+   [
+    "HARLEQUIN",
+    35
+   ],
+   [
+    "VARIEGATA",
+    26
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Kensington-Cedar Cottage",
+    262
+   ],
+   [
+    "Marpole",
+    161
+   ],
+   [
+    "Renfrew-Collingwood",
+    149
+   ],
+   [
+    "Victoria-Fraserview",
+    147
+   ],
+   [
+    "Sunset",
+    137
+   ]
+  ],
+  "city_common_names": [
+   [
+    "PATMORE ASH",
+    580
+   ],
+   [
+    "GREEN ASH",
+    380
+   ],
+   [
+    "SUMMIT ASH",
+    329
+   ]
+  ]
+ },
+ "form": {
+  "value": "oval",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": null,
+  "ratio_of_height": 0.5,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.3,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "heart",
+  "depth_ratio_of_credited": 0.8,
+  "provenance": "NOMINAL",
+  "note": "root habit for the drawing only: roots are drawn to fill the soil the rule credits and are cut where the black or a clearance begins; never a measured extent",
+  "nearest_atlas_plates_same_genus": [
+   {
+    "item_id": "1414",
+    "title": "Fraxinus angustifolia",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1414"
+   },
+   {
+    "item_id": "1415",
+    "title": "Fraxinus angustifolia",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1415"
+   },
+   {
+    "item_id": "1416",
+    "title": "Fraxinus excelsior",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1416"
+   },
+   {
+    "item_id": "1417",
+    "title": "Fraxinus excelsior",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1417"
+   },
+   {
+    "item_id": "1418",
+    "title": "Fraxinus excelsior",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1418"
+   },
+   {
+    "item_id": "1419",
+    "title": "Fraxinus ornus",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1419"
+   }
+  ],
+  "atlas_note": "no plate of this species in the WUR root atlas; same-genus plates listed for orientation, habit stays NOMINAL"
+ },
+ "on_block_faces": {
+  "sites": [
+   "V-300390"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": false,
+  "provenance": "REFERENCE",
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14: not listed"
+ },
+ "drawn_height_m": {
+  "value": 14.0,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 1824 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/fraxinus_pennsylvanica.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 42,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

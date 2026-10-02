@@ -1,0 +1,44 @@
+{
+ "p1": {
+  "w": 1296,
+  "h": 216,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 1"
+ },
+ "p2": {
+  "w": 216,
+  "h": 216,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 2"
+ },
+ "p3": {
+  "w": 1296,
+  "h": 216,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 3"
+ },
+ "p4": {
+  "w": 783,
+  "h": 195,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 4"
+ },
+ "p5": {
+  "w": 216,
+  "h": 42,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 5"
+ },
+ "p6": {
+  "w": 216,
+  "h": 216,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 6"
+ },
+ "p7": {
+  "w": 864,
+  "h": 173,
+  "zoom": 3,
+  "source": "Vector Landscape p1 \u00b7 swatch 7"
+ }
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+# working files the page writes: scenario side files, screen captures
+data/processed/*_scenario.json
+reports/
+# windows fetched for streets beyond the pilot (re-fetchable from the City; see README)
+data/raw/*__wm123_*.geojson
+data/raw/vanmap/*__wm123_*.geojson
+data/processed/sites_wm123_*.json
+data/raw/**/*wm123*
+data/processed/*wm123*

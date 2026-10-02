@@ -1,0 +1,1411 @@
+{
+ "source": "data/raw/public-trees.csv (2026-09-14 copy, 184,518 records)",
+ "table": "EDM 2026 Table 9-3 pp.351-352",
+ "computed_on": "2026-09-28",
+ "species": [
+  {
+   "class": "Small",
+   "table_9_3_name": "Amelanchier 'Standing Ovation' / 'Obelisk'",
+   "genus": "AMELANCHIER",
+   "species": "ALNIFOLIA",
+   "cultivar_filter": null,
+   "city_count": 23,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    4.6
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    7.6,
+    7.6
+   ],
+   "top_local_areas": [
+    [
+     "Strathcona",
+     22
+    ],
+    [
+     "Riley Park",
+     1
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "ALNIFOLIA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Whitebeam",
+   "genus": "SORBUS",
+   "species": "ARIA",
+   "cultivar_filter": null,
+   "city_count": 631,
+   "height_m_min_median_max": [
+    1.5,
+    7.6,
+    29.0
+   ],
+   "diameter_cm_min_median_max": [
+    1.3,
+    17.8,
+    87.6
+   ],
+   "top_local_areas": [
+    [
+     "Oakridge",
+     76
+    ],
+    [
+     "Victoria-Fraserview",
+     64
+    ],
+    [
+     "Renfrew-Collingwood",
+     62
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "ARIA",
+     "AUREA"
+    ],
+    [
+     "ARIA",
+     "LUTESCENS"
+    ],
+    [
+     "ARIA",
+     "MAJESTICA"
+    ],
+    [
+     "ARIA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Watereri Scots Pine",
+   "genus": "PINUS",
+   "species": "SYLVESTRIS",
+   "cultivar_filter": "WATERERI",
+   "city_count": 1,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    4.6
+   ],
+   "diameter_cm_min_median_max": [
+    12.7,
+    12.7,
+    12.7
+   ],
+   "top_local_areas": [
+    [
+     "Shaughnessy",
+     1
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "SYLVESTRIS",
+     "WATERERI"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Japanese Black Pine",
+   "genus": "PINUS",
+   "species": "THUNBERGII",
+   "cultivar_filter": null,
+   "city_count": 7,
+   "height_m_min_median_max": [
+    7.6,
+    13.7,
+    19.8
+   ],
+   "diameter_cm_min_median_max": [
+    15.2,
+    46.0,
+    57.0
+   ],
+   "top_local_areas": [
+    [
+     "Shaughnessy",
+     2
+    ],
+    [
+     "Hastings-Sunrise",
+     2
+    ],
+    [
+     "Strathcona",
+     2
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "THUNBERGII",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Japanese Tree Lilac",
+   "genus": "SYRINGA",
+   "species": "RETICULATA",
+   "cultivar_filter": null,
+   "city_count": 1316,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    29.0
+   ],
+   "diameter_cm_min_median_max": [
+    1.3,
+    7.6,
+    50.8
+   ],
+   "top_local_areas": [
+    [
+     "Renfrew-Collingwood",
+     273
+    ],
+    [
+     "Hastings-Sunrise",
+     166
+    ],
+    [
+     "Victoria-Fraserview",
+     105
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "RETICULATA",
+     "IVORY SILK"
+    ],
+    [
+     "RETICULATA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Japanese Maple – tree form varieties",
+   "genus": "ACER",
+   "species": "PALMATUM",
+   "cultivar_filter": null,
+   "city_count": 1848,
+   "height_m_min_median_max": [
+    2.0,
+    7.6,
+    29.0
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    17.8,
+    160.0
+   ],
+   "top_local_areas": [
+    [
+     "Riley Park",
+     247
+    ],
+    [
+     "Kitsilano",
+     216
+    ],
+    [
+     "Renfrew-Collingwood",
+     176
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "PALMATUM",
+     "ACONITIFOLIUM"
+    ],
+    [
+     "PALMATUM",
+     "AKA-SHIGITATSU-SAWA"
+    ],
+    [
+     "PALMATUM",
+     "AKA-SHIME-NO-UCHI"
+    ],
+    [
+     "PALMATUM",
+     "AOYAGI"
+    ],
+    [
+     "PALMATUM",
+     "ATROPURPUREUM"
+    ],
+    [
+     "PALMATUM",
+     "AUREUM"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Lavallée Hawthorn",
+   "genus": "CRATAEGUS",
+   "species": "LAVALLEI",
+   "cultivar_filter": null,
+   "city_count": 1350,
+   "height_m_min_median_max": [
+    3.0,
+    7.6,
+    25.9
+   ],
+   "diameter_cm_min_median_max": [
+    4.4,
+    12.7,
+    58.0
+   ],
+   "top_local_areas": [
+    [
+     "Hastings-Sunrise",
+     275
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     152
+    ],
+    [
+     "Renfrew-Collingwood",
+     127
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "LAVALLEI  X",
+     "CARIERREI"
+    ],
+    [
+     "LAVALLEI  X",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Seven-Son Flower",
+   "genus": "HEPTACODIUM",
+   "species": "MICONIOIDES",
+   "cultivar_filter": null,
+   "city_count": 24,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    7.6
+   ],
+   "diameter_cm_min_median_max": [
+    7.6,
+    7.6,
+    20.3
+   ],
+   "top_local_areas": [
+    [
+     "Strathcona",
+     8
+    ],
+    [
+     "Sunset",
+     4
+    ],
+    [
+     "Riley Park",
+     3
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "MICONIOIDES",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Amur Maackia",
+   "genus": "MAACKIA",
+   "species": "AMURENSIS",
+   "cultivar_filter": null,
+   "city_count": 57,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    10.7
+   ],
+   "diameter_cm_min_median_max": [
+    4.0,
+    7.6,
+    17.8
+   ],
+   "top_local_areas": [
+    [
+     "Victoria-Fraserview",
+     20
+    ],
+    [
+     "Strathcona",
+     8
+    ],
+    [
+     "Killarney",
+     6
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "AMURENSIS",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Strawberry Tree",
+   "genus": "ARBUTUS",
+   "species": "UNEDO",
+   "cultivar_filter": null,
+   "city_count": 45,
+   "height_m_min_median_max": [
+    4.6,
+    7.6,
+    10.7
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    20.3,
+    99.1
+   ],
+   "top_local_areas": [
+    [
+     "Downtown",
+     12
+    ],
+    [
+     "Shaughnessy",
+     11
+    ],
+    [
+     "West Point Grey",
+     6
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "UNEDO",
+     "KILLARNEY"
+    ],
+    [
+     "UNEDO",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Small",
+   "table_9_3_name": "Tibetan Cherry",
+   "genus": "PRUNUS",
+   "species": "SERRULA",
+   "cultivar_filter": null,
+   "city_count": 34,
+   "height_m_min_median_max": [
+    4.6,
+    10.7,
+    16.8
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    25.4,
+    78.7
+   ],
+   "top_local_areas": [
+    [
+     "Kitsilano",
+     8
+    ],
+    [
+     "Marpole",
+     6
+    ],
+    [
+     "Shaughnessy",
+     4
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "SERRULA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Black Tupelo",
+   "genus": "NYSSA",
+   "species": "SYLVATICA",
+   "cultivar_filter": null,
+   "city_count": 1715,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    22.9
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    7.6,
+    52.1
+   ],
+   "top_local_areas": [
+    [
+     "Hastings-Sunrise",
+     169
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     163
+    ],
+    [
+     "Renfrew-Collingwood",
+     149
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "SYLVATICA",
+     "GREEN GABLE"
+    ],
+    [
+     "SYLVATICA",
+     "HAYMANRED RED RAGE"
+    ],
+    [
+     "SYLVATICA",
+     "NONE"
+    ],
+    [
+     "SYLVATICA",
+     "RED RAGE"
+    ],
+    [
+     "SYLVATICA",
+     "TUPELO TOWER"
+    ],
+    [
+     "SYLVATICA",
+     "WILDFIRE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Chinese Pistache",
+   "genus": "PISTACIA",
+   "species": "CHINENSIS",
+   "cultivar_filter": null,
+   "city_count": 0,
+   "height_m_min_median_max": null,
+   "diameter_cm_min_median_max": null,
+   "top_local_areas": [],
+   "city_species_strings": []
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Golden Rain Tree",
+   "genus": "KOELREUTERIA",
+   "species": "PANICULATA",
+   "cultivar_filter": null,
+   "city_count": 176,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    10.7
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    7.6,
+    61.0
+   ],
+   "top_local_areas": [
+    [
+     "Hastings-Sunrise",
+     27
+    ],
+    [
+     "Victoria-Fraserview",
+     25
+    ],
+    [
+     "Renfrew-Collingwood",
+     20
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "PANICULATA",
+     "GOLDEN CANDLE"
+    ],
+    [
+     "PANICULATA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Hedge Maple",
+   "genus": "ACER",
+   "species": "CAMPESTRE",
+   "cultivar_filter": null,
+   "city_count": 3736,
+   "height_m_min_median_max": [
+    1.5,
+    7.6,
+    29.0
+   ],
+   "diameter_cm_min_median_max": [
+    0.6,
+    21.6,
+    106.7
+   ],
+   "top_local_areas": [
+    [
+     "Hastings-Sunrise",
+     401
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     358
+    ],
+    [
+     "Renfrew-Collingwood",
+     327
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "CAMPESTRE",
+     "EVELYN"
+    ],
+    [
+     "CAMPESTRE",
+     "NONE"
+    ],
+    [
+     "CAMPESTRE",
+     "PANACEK"
+    ],
+    [
+     "CAMPESTRE",
+     "QUEEN ELIZABETH"
+    ],
+    [
+     "CAMPESTRE",
+     "RED SHINE"
+    ],
+    [
+     "CAMPESTRE",
+     "STREETSIDE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Hackberry",
+   "genus": "CELTIS",
+   "species": "OCCIDENTALIS",
+   "cultivar_filter": null,
+   "city_count": 366,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    19.8
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    7.6,
+    41.3
+   ],
+   "top_local_areas": [
+    [
+     "Renfrew-Collingwood",
+     90
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     37
+    ],
+    [
+     "Hastings-Sunrise",
+     34
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "OCCIDENTALIS",
+     "NONE"
+    ],
+    [
+     "OCCIDENTALIS",
+     "PRAIRIE PRIDE"
+    ],
+    [
+     "OCCIDENTALIS",
+     "PRAIRIE SENTINEL"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Hardy Rubber Tree",
+   "genus": "EUCOMMIA",
+   "species": "ULMOIDES",
+   "cultivar_filter": null,
+   "city_count": 20,
+   "height_m_min_median_max": [
+    4.6,
+    7.6,
+    19.8
+   ],
+   "diameter_cm_min_median_max": [
+    7.6,
+    17.15,
+    40.6
+   ],
+   "top_local_areas": [
+    [
+     "Sunset",
+     10
+    ],
+    [
+     "South Cambie",
+     6
+    ],
+    [
+     "",
+     1
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "ULMOIDES",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Japanese Zelkova",
+   "genus": "ZELKOVA",
+   "species": "SERRATA",
+   "cultivar_filter": null,
+   "city_count": 699,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    19.8
+   ],
+   "diameter_cm_min_median_max": [
+    4.4,
+    7.6,
+    94.0
+   ],
+   "top_local_areas": [
+    [
+     "Victoria-Fraserview",
+     94
+    ],
+    [
+     "Hastings-Sunrise",
+     80
+    ],
+    [
+     "Sunset",
+     77
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "SERRATA",
+     "GREEN VASE"
+    ],
+    [
+     "SERRATA",
+     "NONE"
+    ],
+    [
+     "SERRATA",
+     "VILLAGE GREEN"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Persian Ironwood",
+   "genus": "PARROTIA",
+   "species": "PERSICA",
+   "cultivar_filter": null,
+   "city_count": 3005,
+   "height_m_min_median_max": [
+    1.0,
+    4.6,
+    25.9
+   ],
+   "diameter_cm_min_median_max": [
+    4.4,
+    7.6,
+    71.1
+   ],
+   "top_local_areas": [
+    [
+     "Renfrew-Collingwood",
+     334
+    ],
+    [
+     "Riley Park",
+     244
+    ],
+    [
+     "Hastings-Sunrise",
+     233
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "PERSICA",
+     "INGES RUBY VASE"
+    ],
+    [
+     "PERSICA",
+     "NONE"
+    ],
+    [
+     "PERSICA",
+     "PERSIAN SPIRE"
+    ],
+    [
+     "PERSICA",
+     "UPRIGHT"
+    ],
+    [
+     "PERSICA",
+     "VANESSA"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "American Hophornbeam",
+   "genus": "OSTRYA",
+   "species": "VIRGINIANA",
+   "cultivar_filter": null,
+   "city_count": 132,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    25.9
+   ],
+   "diameter_cm_min_median_max": [
+    7.6,
+    7.6,
+    71.1
+   ],
+   "top_local_areas": [
+    [
+     "Sunset",
+     29
+    ],
+    [
+     "Hastings-Sunrise",
+     23
+    ],
+    [
+     "Grandview-Woodland",
+     14
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "VIRGINIANA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Turkish Hazel",
+   "genus": "CORYLUS",
+   "species": "COLURNA",
+   "cultivar_filter": null,
+   "city_count": 57,
+   "height_m_min_median_max": [
+    4.6,
+    10.7,
+    16.8
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    27.9,
+    61.0
+   ],
+   "top_local_areas": [
+    [
+     "Sunset",
+     18
+    ],
+    [
+     "Renfrew-Collingwood",
+     13
+    ],
+    [
+     "West End",
+     10
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "COLURNA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Medium",
+   "table_9_3_name": "Yellowwood",
+   "genus": "CLADRASTIS",
+   "species": "KENTUKEA",
+   "cultivar_filter": null,
+   "city_count": 99,
+   "height_m_min_median_max": [
+    3.0,
+    4.6,
+    13.7
+   ],
+   "diameter_cm_min_median_max": [
+    7.6,
+    7.6,
+    54.6
+   ],
+   "top_local_areas": [
+    [
+     "Victoria-Fraserview",
+     27
+    ],
+    [
+     "Sunset",
+     22
+    ],
+    [
+     "Mount Pleasant",
+     9
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "KENTUKEA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "European Beech",
+   "genus": "FAGUS",
+   "species": "SYLVATICA",
+   "cultivar_filter": null,
+   "city_count": 6034,
+   "height_m_min_median_max": [
+    1.5,
+    7.6,
+    32.0
+   ],
+   "diameter_cm_min_median_max": [
+    1.3,
+    15.2,
+    226.1
+   ],
+   "top_local_areas": [
+    [
+     "Renfrew-Collingwood",
+     606
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     567
+    ],
+    [
+     "Victoria-Fraserview",
+     552
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "SYLVATICA",
+     "ALBOMARGINATA"
+    ],
+    [
+     "SYLVATICA",
+     "ALBOVARIEGATA"
+    ],
+    [
+     "SYLVATICA",
+     "ASPLENIFOLIA"
+    ],
+    [
+     "SYLVATICA",
+     "ATROPUNICEA"
+    ],
+    [
+     "SYLVATICA",
+     "BORNYENSIS"
+    ],
+    [
+     "SYLVATICA",
+     "CRISTATA"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "European Hornbeam",
+   "genus": "CARPINUS",
+   "species": "BETULUS",
+   "cultivar_filter": null,
+   "city_count": 5908,
+   "height_m_min_median_max": [
+    1.5,
+    7.6,
+    70.0
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    21.6,
+    147.3
+   ],
+   "top_local_areas": [
+    [
+     "Hastings-Sunrise",
+     678
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     575
+    ],
+    [
+     "Renfrew-Collingwood",
+     506
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "BETULUS",
+     "EMERALD AVENUE"
+    ],
+    [
+     "BETULUS",
+     "FASTIGIATA"
+    ],
+    [
+     "BETULUS",
+     "FRANS FONTAINE"
+    ],
+    [
+     "BETULUS",
+     "GLOBOSA"
+    ],
+    [
+     "BETULUS",
+     "LUCAS"
+    ],
+    [
+     "BETULUS",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Garry Oak",
+   "genus": "QUERCUS",
+   "species": "GARRYANA",
+   "cultivar_filter": null,
+   "city_count": 89,
+   "height_m_min_median_max": [
+    4.6,
+    7.6,
+    22.9
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    10.2,
+    86.4
+   ],
+   "top_local_areas": [
+    [
+     "Shaughnessy",
+     21
+    ],
+    [
+     "Strathcona",
+     14
+    ],
+    [
+     "Arbutus Ridge",
+     9
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "GARRYANA",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Hungarian Oak",
+   "genus": "QUERCUS",
+   "species": "FRAINETTO",
+   "cultivar_filter": null,
+   "city_count": 290,
+   "height_m_min_median_max": [
+    2.0,
+    4.6,
+    22.9
+   ],
+   "diameter_cm_min_median_max": [
+    4.0,
+    7.6,
+    71.0
+   ],
+   "top_local_areas": [
+    [
+     "Downtown",
+     56
+    ],
+    [
+     "Marpole",
+     44
+    ],
+    [
+     "Riley Park",
+     27
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "FRAINETTO",
+     "FOREST GREEN"
+    ],
+    [
+     "FRAINETTO",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Incense Cedar",
+   "genus": "CALOCEDRUS",
+   "species": "DECURRENS",
+   "cultivar_filter": null,
+   "city_count": 106,
+   "height_m_min_median_max": [
+    3.0,
+    12.2,
+    32.0
+   ],
+   "diameter_cm_min_median_max": [
+    5.7,
+    33.0,
+    101.6
+   ],
+   "top_local_areas": [
+    [
+     "Shaughnessy",
+     21
+    ],
+    [
+     "Riley Park",
+     14
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     12
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "DECURRENS",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Kentucky Coffeetree",
+   "genus": "GYMNOCLADUS",
+   "species": "DIOICUS",
+   "cultivar_filter": null,
+   "city_count": 264,
+   "height_m_min_median_max": [
+    3.0,
+    4.6,
+    16.8
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    7.6,
+    38.1
+   ],
+   "top_local_areas": [
+    [
+     "Victoria-Fraserview",
+     44
+    ],
+    [
+     "Hastings-Sunrise",
+     27
+    ],
+    [
+     "Sunset",
+     26
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "DIOICUS",
+     "ESPRESSO"
+    ],
+    [
+     "DIOICUS",
+     "NONE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Elm 'Endeavor'",
+   "genus": "ULMUS",
+   "species": null,
+   "cultivar_filter": "ENDEAVOR",
+   "city_count": 6,
+   "height_m_min_median_max": [
+    3.0,
+    3.0,
+    3.0
+   ],
+   "diameter_cm_min_median_max": [
+    8.0,
+    8.0,
+    8.0
+   ],
+   "top_local_areas": [
+    [
+     "Downtown",
+     3
+    ],
+    [
+     "Hastings-Sunrise",
+     3
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "XX",
+     "ENDEAVOR"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Ginkgo",
+   "genus": "GINKGO",
+   "species": "BILOBA",
+   "cultivar_filter": null,
+   "city_count": 570,
+   "height_m_min_median_max": [
+    2.0,
+    4.6,
+    22.9
+   ],
+   "diameter_cm_min_median_max": [
+    2.5,
+    7.6,
+    81.0
+   ],
+   "top_local_areas": [
+    [
+     "Downtown",
+     84
+    ],
+    [
+     "Oakridge",
+     60
+    ],
+    [
+     "Hastings-Sunrise",
+     50
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "BILOBA",
+     "AUTUMN GOLD"
+    ],
+    [
+     "BILOBA",
+     "FASTIGIATA"
+    ],
+    [
+     "BILOBA",
+     "GOLDEN COLONNADE"
+    ],
+    [
+     "BILOBA",
+     "NONE"
+    ],
+    [
+     "BILOBA",
+     "PENDULA"
+    ],
+    [
+     "BILOBA",
+     "PRINCETON SENTRY"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Heritage Oak",
+   "genus": "QUERCUS",
+   "species": "MACDANIELII",
+   "cultivar_filter": null,
+   "city_count": 11,
+   "height_m_min_median_max": [
+    4.6,
+    4.6,
+    4.6
+   ],
+   "diameter_cm_min_median_max": [
+    5.1,
+    7.6,
+    7.6
+   ],
+   "top_local_areas": [
+    [
+     "Oakridge",
+     6
+    ],
+    [
+     "Riley Park",
+     3
+    ],
+    [
+     "Kerrisdale",
+     2
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "MACDANIELII",
+     "HERITAGE"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Scarlet Oak",
+   "genus": "QUERCUS",
+   "species": "COCCINEA",
+   "cultivar_filter": null,
+   "city_count": 599,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    29.0
+   ],
+   "diameter_cm_min_median_max": [
+    4.4,
+    10.8,
+    140.0
+   ],
+   "top_local_areas": [
+    [
+     "Downtown",
+     108
+    ],
+    [
+     "Kensington-Cedar Cottage",
+     60
+    ],
+    [
+     "Kerrisdale",
+     57
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "COCCINEA",
+     "NONE"
+    ],
+    [
+     "COCCINEA",
+     "SPLENDENS"
+    ]
+   ]
+  },
+  {
+   "class": "Large",
+   "table_9_3_name": "Willow Oak",
+   "genus": "QUERCUS",
+   "species": "PHELLOS",
+   "cultivar_filter": null,
+   "city_count": 558,
+   "height_m_min_median_max": [
+    1.5,
+    4.6,
+    19.8
+   ],
+   "diameter_cm_min_median_max": [
+    4.1,
+    12.7,
+    774.7
+   ],
+   "top_local_areas": [
+    [
+     "Oakridge",
+     83
+    ],
+    [
+     "Renfrew-Collingwood",
+     63
+    ],
+    [
+     "Marpole",
+     36
+    ]
+   ],
+   "city_species_strings": [
+    [
+     "PHELLOS",
+     "NONE"
+    ]
+   ]
+  }
+ ]
+}

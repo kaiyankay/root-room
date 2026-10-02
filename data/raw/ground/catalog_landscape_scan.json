@@ -1,0 +1,2629 @@
+{
+ "scanned_on": "2026-09-28",
+ "datasets_total": 200,
+ "keywords": [
+  "tree",
+  "canopy",
+  "green",
+  "soil",
+  "boulevard",
+  "garden",
+  "horticult",
+  "impervious",
+  "pervious",
+  "rain",
+  "storm",
+  "catchment",
+  "watershed",
+  "sidewalk",
+  "landscape",
+  "park",
+  "planting",
+  "vegetation",
+  "natural",
+  "shoreline",
+  "creek",
+  "elevation",
+  "lidar",
+  "orthophoto",
+  "contour",
+  "geolog",
+  "peat",
+  "ground",
+  "surface",
+  "lane",
+  "curb",
+  "street"
+ ],
+ "datasets": [
+  {
+   "dataset_id": "olympic-transportation-plan-venue-closure-roads",
+   "title": "Olympic transportation plan venue closure roads",
+   "records": 29,
+   "modified": "2019-06-21T16:42:19+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the venue closure roads as part of the 2010 Olympic Transportation Plan. </p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area. </p></div> <h3>Data accuracy</h3><div><p>​Transportation Plan componen"
+  },
+  {
+   "dataset_id": "pavement-condition-rating-2023",
+   "title": "Pavement condition rating 2023",
+   "records": 8470,
+   "modified": "2026-09-15T18:15:12+00:00",
+   "keywords_hit": [
+    "surface",
+    "lane"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>Pavement Condition data collected in 2023, is used to report the overall pavement condition (PCI) at the network level and expresses the overall condition of a pavement segment by considering surface and structural distresses.</p><p>Data was collected using a semi-automated process by an ext"
+  },
+  {
+   "dataset_id": "census-local-area-profiles-2011",
+   "title": "Census local area profiles 2011",
+   "records": 0,
+   "modified": "2013-11-13T18:00:00+00:00",
+   "keywords_hit": [
+    "park",
+    "creek"
+   ],
+   "themes": [
+    "Demographics"
+   ],
+   "description": "<div><p>The census is Canada's largest and most comprehensive data source conducted by Statistics Canada every five years. The Census of Population collects demographic and linguistic information on every man, woman and child living in Canada.</p><p>The data shown here is provided by Statistics Cana"
+  },
+  {
+   "dataset_id": "census-local-area-profiles-2016",
+   "title": "Census local area profiles 2016",
+   "records": 0,
+   "modified": "2018-04-10T22:00:00+00:00",
+   "keywords_hit": [
+    "park",
+    "creek"
+   ],
+   "themes": [
+    "Demographics"
+   ],
+   "description": "<div><p>The 2016 Census provides statistical information about the population, age and sex, type of dwelling, families, households and marital status, language, income, immigration and ethnocultural diversity, housing, Aboriginal peoples, education, labour, journey to work, language of work and mobi"
+  },
+  {
+   "dataset_id": "council-meeting-minutes-archival",
+   "title": "Council meeting minutes - archival",
+   "records": 0,
+   "modified": "2014-03-28T23:00:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p> This dataset contains City Council meeting minutes and the reports filed with them for all of the Regular, Special and Inaugural Council meetings held in the 1970s. They are presented in the order in which they were originally paginated, which may not always coincide with date order. Typogr"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-truck-routes",
+   "title": "Olympic transportation plan truck routes",
+   "records": 0,
+   "modified": "2016-02-11T16:07:15+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div class=\"ExternalClassBAD32CC3FDDF47749CF90FB60672481A\"><p>This dataset contains the truck routes as part of the 2010 Olympic Transportation Plan.</p><h3 class=\"ExternalClassB465DBBE88724232B784010C4AA26448\">Data access</h3><p class=\"ExternalClassB465DBBE88724232B784010C4AA26448\">This dataset has"
+  },
+  {
+   "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+   "title": "2024 Multi-Year Capital Project Budget requests and Capital Expenditure Budget",
+   "records": 592,
+   "modified": "2024-04-17T16:49:39+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\">This dataset includes the new 2024 Capital Project Budget requests from the 2023-2026 Capital Plan (broken down by funding sources), forecast spending of previously approved multi-year capital project budgets through 2023, and forecasted expenditures over 2024-2028 from the available pro"
+  },
+  {
+   "dataset_id": "2025-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+   "title": "2025 Multi-Year Capital Project Budget requests and Capital Expenditure Budget",
+   "records": 740,
+   "modified": "2024-12-12T08:05:24+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\" style=\"font-family: sans-serif;\">This dataset includes the new 2025 Capital Project Budget requests from the 2023-2026 Capital Plan (broken down by funding sources), forecast spending of previously approved multi-year capital project budgets through 2024, and forecasted expenditures over"
+  },
+  {
+   "dataset_id": "2021-new-multi-year-capital-budget-requests-and-2021-capital-expenditure-budget",
+   "title": "2021 new Multi-Year Capital Budget requests and 2021 Capital Expenditure Budget",
+   "records": 496,
+   "modified": "2021-02-03T18:00:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p>​This dataset includes the 2021 Multi-Year Capital Budget, 2021 Capital Expenditure Budget and the expenditure forecasts for the following 4 years from 2022 to 2025.</p> <h3>Data currency</h3><p>​​The dataset on this website reflects information as of the time when 2021 capital budget was approve"
+  },
+  {
+   "dataset_id": "voting-places-2011",
+   "title": "Voting places 2011",
+   "records": 142,
+   "modified": "2019-07-04T17:52:48+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div class=\"ExternalClass574CEF0F73C84159A135A5A57C106C30\"><p>This dataset includes all of the voting places available to voters for the 2011 general election.</p><p>Prior to the 2014 municipal election, the city was divided into voting divisions and voters were required to vote at a designated voti"
+  },
+  {
+   "dataset_id": "bike-lane-statistics-for-burrard-bridge-2009-2010",
+   "title": "Bike lane statistics for Burrard Bridge 2009-2010",
+   "records": 579,
+   "modified": "2011-03-02T08:00:00+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset comes from the Burrard Bridge Lane Reallocation Trial and provides a summary of the data collected between June 2009 and December 2010. </p><h3>Measuring Bicycles and Pedestrians</h3><p>On the Burrard Bridge, and at several other locations in the city, bicycles are counted using"
+  },
+  {
+   "dataset_id": "dog-off-leash-parks",
+   "title": "Dog off leash parks",
+   "records": 54,
+   "modified": "2026-08-10T13:31:10+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>The dog off-leash parks dataset is one of several that describe Public places. </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business.  The extract on this website is updated weekly.  These data features do not change often.</p></div> <"
+  },
+  {
+   "dataset_id": "olympic-venues",
+   "title": "Olympic venues",
+   "records": 10,
+   "modified": "2019-06-21T16:42:25+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>​This dataset contains the locations of Olympic Venues.</p></div> <h3>Data accuracy</h3><div><p>Venues are address based so locations are approximate.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"https://vancouver.ca/news-calendar/host-city-of-the-2010-winter-game"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-no-stopping-areas",
+   "title": "Olympic transportation plan no stopping areas",
+   "records": 64,
+   "modified": "2019-06-21T16:42:22+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the no-stopping areas as part of the 2010 Olympic Transportation Plan. </p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area. </p></div> <h3>Data accuracy</h3><div><p>Transportation Plan components "
+  },
+  {
+   "dataset_id": "2026-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+   "title": "2026 Multi-Year Capital Project Budget requests and Capital Expenditure Budget",
+   "records": 630,
+   "modified": "2026-04-14T18:45:39+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\">This dataset includes the new 2026 Capital Project Budget requests from the 2023-2026 Capital Plan (broken down by funding sources), forecast spending of previously approved multi-year capital project budgets through 2025, and forecasted expenditures over 2026-2030 from the available pro"
+  },
+  {
+   "dataset_id": "service-metrics",
+   "title": "Service metrics",
+   "records": 328,
+   "modified": "2022-06-17T11:00:40+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​The City of Vancouver measures an extensive set of metrics to track how well we are delivering key services and track progress against goals.</p> <p>​This dataset provides a list of the service metrics across departments and services.</p><p>Data includes actuals for historic years and for t"
+  },
+  {
+   "dataset_id": "rapid-transit-lines",
+   "title": "Rapid transit lines",
+   "records": 3,
+   "modified": "2020-11-19T11:47:55+00:00",
+   "keywords_hit": [
+    "ground"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the three rapid transit lines. A separate dataset contains their stations. Only those portions within the boundaries of the City of Vancouver are shown.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated as required in the normal course of busi"
+  },
+  {
+   "dataset_id": "property-tie-lines",
+   "title": "Property tie lines",
+   "records": 3151,
+   "modified": "2024-04-29T12:27:14+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>Property tie lines are graphical indicators that two or more lots are being treated by the BC Assessment Authority as one large parcel (these lots will have the same owner and share one assessment roll number).  Property tie lines is one dataset among many that provide information about prop"
+  },
+  {
+   "dataset_id": "street-lighting-abandoned-conduits",
+   "title": "Street lighting abandoned conduits",
+   "records": 774,
+   "modified": "2024-11-18T14:16:49+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The City's Street Lighting network includes: </p><ul><li>street lighting poles (nodes)</li><li>conduits (ducts)</li><li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of busi"
+  },
+  {
+   "dataset_id": "2022-new-multi-year-capital-budget-requests-and-2022-capital-expenditure-budget",
+   "title": "2022 new Multi-Year Capital Budget requests and 2022 Capital Expenditure Budget",
+   "records": 548,
+   "modified": "2024-06-11T13:00:21+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset includes the 2022 Multi-Year Capital Budget, 2022 Capital Expenditure Budget and the expenditure forecasts for the following 4 years from 2023 to 2026. </p></div> <h3>Note</h3><div><p>​The 2022 Multi-Year Capital Budget and 2022 Capital Expenditure Budget, as approved by Counci"
+  },
+  {
+   "dataset_id": "railways",
+   "title": "Railways",
+   "records": 936,
+   "modified": "2020-11-19T11:52:07+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset shows the alignments of the railway tracks including Crane Container, Burlington Northern, Canadian National, Canadian Pacific, Downtown Historical, VIA and Wisconsin Central Railways.</p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There"
+  },
+  {
+   "dataset_id": "city-owned-properties",
+   "title": "City-owned properties",
+   "records": 4455,
+   "modified": "2026-09-28T13:07:18+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset contains the locations of properties owned by the City.  </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database.  The ext"
+  },
+  {
+   "dataset_id": "greenways",
+   "title": "Greenways",
+   "records": 24,
+   "modified": "2026-08-27T19:32:12+00:00",
+   "keywords_hit": [
+    "tree",
+    "green",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This data set contains the City's dedicated greenways.  </p></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of business, however priorities and resources determine how fast a  change in reality is reflected in the database.   The extract on this web"
+  },
+  {
+   "dataset_id": "lidar-2018",
+   "title": "LiDAR 2018",
+   "records": 181,
+   "modified": "2019-11-20T17:10:55+00:00",
+   "keywords_hit": [
+    "watershed",
+    "vegetation",
+    "lidar",
+    "geolog",
+    "ground",
+    "surface"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p> LiDAR (Light Detection and Ranging) data collected in 2018 of the City of Vancouver and UBC Endowment Lands with an Area of Interest (AOI) covering a total of 134 square kilometers.​</p><p>Data products include \"bare earth\" ground surface and of the upper most surface defined by vegetation "
+  },
+  {
+   "dataset_id": "voting-places-2017",
+   "title": "Voting places 2017",
+   "records": 52,
+   "modified": "2019-07-12T18:18:44+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset includes all of the voting places available to voters for the 2017 by-election. Since 2014, voters can vote at any voting place within the City. </p><p>Prior to the 2014 municipal election, the city was divided into voting divisions and voters were required to vote at a designat"
+  },
+  {
+   "dataset_id": "digital-elevation-model",
+   "title": "Digital elevation model",
+   "records": 0,
+   "modified": "2015-08-18T21:00:00+00:00",
+   "keywords_hit": [
+    "elevation",
+    "lidar"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>Digital elevation model (DEM) data generated from LiDAR data collected in 2013 with coverage up to extents of City of Vancouver’s legal jurisdiction. Resolution of cells is approximately 1 meter.</p><h3>Data access</h3><p>This dataset is only available in TIF format, which is not compatible "
+  },
+  {
+   "dataset_id": "business-improvement-areas-bia",
+   "title": "Business improvement areas (BIA)",
+   "records": 24,
+   "modified": "2026-05-23T13:30:18+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>The Business Improvement Area layer includes the boundary areas for the City's BIAs.  Business Improvement Areas or BIAs are non-profit associations of property owners and business tenants who join together to promote and improve the commercial viability of their business district.</p></div>"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-olympic-lanes",
+   "title": "Olympic transportation plan olympic lanes",
+   "records": 10,
+   "modified": "2019-06-21T16:42:21+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the Olympic lanes as part of the 2010 Olympic Transportation Plan.</p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area.</p></div> <h3>Data accuracy</h3><div><p>Transportation Plan components follow"
+  },
+  {
+   "dataset_id": "elevation-points",
+   "title": "Elevation points",
+   "records": 0,
+   "modified": "2010-06-30T16:00:00+00:00",
+   "keywords_hit": [
+    "rain",
+    "elevation",
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This file of elevation points contains the location (X and Y) as well as elevation (Z).  These points were created for the acquisition of the City's 2002 orthophotos and have been marginally modified since then (in 2004, 2006 and 2008).  Modifications occurred in some, but probably not all, "
+  },
+  {
+   "dataset_id": "property-use-inspection-districts",
+   "title": "Property use inspection districts",
+   "records": 23,
+   "modified": "2021-10-02T10:33:35+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Property and development",
+    "Safety"
+   ],
+   "description": "<div><p>The Property Use Inspections Branch enforces a number of bylaws. In addition, inspectors serve on \"Neighbourhood Integrated Service Teams\", and also enforce a number of other programs, such as the Secondary Suite Program. The division has come to be a catch-all for solving community problems"
+  },
+  {
+   "dataset_id": "development-cost-levy-dcl-areas",
+   "title": "Development Cost Levy (DCL) areas",
+   "records": 7,
+   "modified": "2026-09-15T19:40:41+00:00",
+   "keywords_hit": [
+    "rain",
+    "park"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><div style=\"margin-top:14px;margin-bottom:14px;\">Development Cost Levies (DCLs) are collected from new development requiring a Building Permit. DCLs help pay for new infrastructure and facilities (e.g. utilities, transportation, parks, fire, housing, and childcare) needed to service new develop"
+  },
+  {
+   "dataset_id": "2023-2026-capital-plan-and-2025-capital-budget-with-proposed-four-year-capital-0",
+   "title": "2023-2026 Capital Plan and 2025 Capital Budget with proposed four-year Capital Plan allocations",
+   "records": 362,
+   "modified": "2024-11-14T20:05:07+00:00",
+   "keywords_hit": [
+    "ground"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\">This dataset includes the details of 2023-2026 Capital Plan – original plan, updates, funding sources and planned allocations over 2023-2026. This dataset also links new 2025 Capital Project Budget requests to the previously approved multi-year Capital Project Budgets from prior Capital "
+  },
+  {
+   "dataset_id": "district-lot-numbers",
+   "title": "District lot numbers",
+   "records": 3786,
+   "modified": "2026-05-23T13:30:46+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>District lot numbers are one among many that provide information about property. Other related datasets can be found by     <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">filtering on the              <em>Property </em>keyword</a>. </p></div> <h3>Data currency</h3><"
+  },
+  {
+   "dataset_id": "water-distribution-mains",
+   "title": "Water distribution mains",
+   "records": 67613,
+   "modified": "2026-09-28T13:38:24+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>The water distribution mains dataset is one of several in the water network. Others include:</p><ul><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Water abandoned mains</li><li>Water control valves</li><li>Water (fire) hydrants</li><li>Water pres"
+  },
+  {
+   "dataset_id": "legal-lot-numbers",
+   "title": "Legal lot numbers",
+   "records": 111978,
+   "modified": "2026-09-28T13:33:40+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>Legal lot numbers are one among many that provide information about property. Other related datasets can be found by        <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">filtering on the           <em>Property </em>keyword</a>. </p></div> <h3>Data currency</h3><div"
+  },
+  {
+   "dataset_id": "street-lighting-service-panels",
+   "title": "Street lighting service panels",
+   "records": 1455,
+   "modified": "2026-09-28T13:36:50+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The City's Street Lighting network includes: </p><ul><li>street lighting poles (nodes)</li><li>conduits (ducts)</li><li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of busi"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-venue-closure-areas",
+   "title": "Olympic transportation plan venue closure areas",
+   "records": 7,
+   "modified": "2019-06-21T16:42:18+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the venue closure areas as part of the 2010 Olympic Transportation Plan. </p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area. </p></div> <h3>Data accuracy</h3><div><p>​Transportation Plan componen"
+  },
+  {
+   "dataset_id": "block-numbers",
+   "title": "Block numbers",
+   "records": 5806,
+   "modified": "2024-05-06T12:24:05+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>Block numbers are one dataset among many that provide information about property. Other related datasets can be found by <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\"><span style=\"text-decoration:underline;\">filtering on the <em>Property </em>keyword</span></a>. </"
+  },
+  {
+   "dataset_id": "greenest-city-projects",
+   "title": "Greenest City projects",
+   "records": 324,
+   "modified": "2026-06-03T17:39:54+00:00",
+   "keywords_hit": [
+    "tree",
+    "green",
+    "garden"
+   ],
+   "themes": [
+    "Sustainability"
+   ],
+   "description": "<div><p> The dataset is a list of projects that are part of the initiatives under the Greenest City 2020 Action Plan. There are 4 categories of projects: City projects, City Studio projects, Greenest City Fund projects and Private projects. All projects are also categorized by one of the ten Greenes"
+  },
+  {
+   "dataset_id": "food-vendors",
+   "title": "Food Vendors",
+   "records": 91,
+   "modified": "2020-11-19T11:54:36+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>The dataset contains location and information of food vendors on Vancouver streets.  It does not include business with roaming food vending permit.</p></div> <h3>Data currency</h3><div><p>This data is updated in June and in the normal course of business as new information is available, howev"
+  },
+  {
+   "dataset_id": "district-lot-outlines",
+   "title": "District lot outlines",
+   "records": 689,
+   "modified": "2024-02-05T13:03:20+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>District lot outlines are one among many that provide information about property. Other related datasets can be found by <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\"><span style=\"text-decoration:underline;\"><font color=\"#0066cc\">filtering on the <em>Property </em>"
+  },
+  {
+   "dataset_id": "wayfinding-map-stands",
+   "title": "Wayfinding map stands",
+   "records": 216,
+   "modified": "2020-11-19T11:54:46+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The dataset contains the locations and information about the pedestrian-oriented wayfinding map stands on Vancouver streets.</p></div> <h3>Data currency</h3><div><p style=\"color:red;\">*This dataset is currently out of date and is under review.<br></p><p style=\"color:red;\"><span style=\"color:"
+  },
+  {
+   "dataset_id": "traffic-signals",
+   "title": "Traffic signals",
+   "records": 966,
+   "modified": "2026-08-03T13:35:50+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the locations of the City's traffic  signals.</p></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of business, however priorities and resources determine how fast a  change in reality is reflected in the database.   The extract "
+  },
+  {
+   "dataset_id": "lidar-2013",
+   "title": "LiDAR 2013",
+   "records": 168,
+   "modified": "2019-05-16T15:44:58+00:00",
+   "keywords_hit": [
+    "vegetation",
+    "lidar",
+    "ground",
+    "surface"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>LiDAR (Light Detection and Ranging) data collected in 2013 with coverage up to extents of City of Vancouver’s legal jurisdiction.</p><p> Data products include \"bare earth\" ground surface and of the upper most surface defined by vegetation cover, buildings and other structures.</p></div> <h3>"
+  },
+  {
+   "dataset_id": "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+   "title": "2023 Multi-Year Capital Project Budget requests and Capital Expenditure Budget",
+   "records": 777,
+   "modified": "2023-02-22T13:00:57+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p>This dataset includes the new 2023 Capital Project Budget requests from the 2023-2026 Capital Plan (broken down by funding sources), forecast spending of previously approved multi-year capital project budgets through 2022, and forecasted expenditures over 2023-2027 from the available project budg"
+  },
+  {
+   "dataset_id": "view-cones",
+   "title": "View cones",
+   "records": 24,
+   "modified": "2026-09-28T13:37:01+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset contains the boundaries of the City's protected views.  Development within the polygons is limited in height to maintain these public views. </p><p> <strong>Note:</strong> To understand view cone implications on individual sites, please email <a href=\"mailto:views@vancouver.cavi"
+  },
+  {
+   "dataset_id": "intersection-traffic-movement-counts",
+   "title": "Intersection traffic movement counts",
+   "records": 659,
+   "modified": "2020-11-19T12:00:24+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the locations of intersections with traffic counts and links to collected data. </p><p>Information on traffic counts is collected by staff at intersections and includes detailed  information by lane and direction. </p><p>Traffic information is also collected by automate"
+  },
+  {
+   "dataset_id": "voting-places-2026",
+   "title": "Voting places 2026",
+   "records": 147,
+   "modified": "2026-08-20T18:25:19+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\">This dataset includes all of the voting places available to voters for the 2026 general election. The City of Vancouver uses a Vote-Anywhere model. Since 2014, Vancouver voters can vote at any voting place within the City.</p><p>The City operates an at-large voting system.</p><p>Advance "
+  },
+  {
+   "dataset_id": "city-project-package-street",
+   "title": "City project package - Street",
+   "records": 290,
+   "modified": "2026-09-21T13:30:41+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation",
+    "Property and development"
+   ],
+   "description": "<div><p>The City Projects package is divided into two datasets (site- and street-based) and provides information about City initiatives, projects, development proposals, and construction and roadwork.  These include projects that are of a public interest or projects that affect others. </p></div> <h"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-pedestrian-corridors",
+   "title": "Olympic transportation plan pedestrian corridors",
+   "records": 5,
+   "modified": "2019-06-21T16:42:23+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the pedestrian corridors as part of the 2010 Olympic Transportation Plan. </p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area. </p></div> <h3>Data accuracy</h3><div><p>​Transportation Plan compone"
+  },
+  {
+   "dataset_id": "animal-control-inventory-deceased-animal",
+   "title": "Animal control inventory - deceased animal",
+   "records": 8724,
+   "modified": "2026-09-28T13:07:37+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><div><p> The deceased animals provides information on domestic deceased pets picked up by City staff.  It is one of 3 datasets that provide a record of animals that have come into the custody of the Vancouver Animal Control Office: </p><ol><li>Deceased Animals - this dataset.</li><li> <a href=\""
+  },
+  {
+   "dataset_id": "graffiti",
+   "title": "Graffiti",
+   "records": 7683,
+   "modified": "2026-05-23T13:30:57+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Safety"
+   ],
+   "description": "<div><p>This data set provides information on the location of sites with graffiti as identified by City staff.  </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is r"
+  },
+  {
+   "dataset_id": "olympic-city-sites",
+   "title": "Olympic City sites",
+   "records": 5,
+   "modified": "2019-06-21T16:42:24+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>​This dataset provides information on the locations of City Olympic Sites. </p></div> <h3>Data accuracy</h3><div><p>​Sites and venues are address based so locations are approximate. </p></div> <h3>Websites for further information</h3><div><ul><li> <a href=\"https://vancouver.ca/news-calendar/"
+  },
+  {
+   "dataset_id": "free-and-low-cost-food-programs",
+   "title": "Free and low cost food programs",
+   "records": 77,
+   "modified": "2026-08-31T13:49:38+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Food and housing"
+   ],
+   "description": "<div><p>​Find out where you can access free or low cost food programs including meals, grocery hampers, food bank programs, low cost groceries, or grocery vouchers in the City of Vancouver.<br></p> </div> <h3>Note</h3><div><p>​City staff updates this data on a regular basis in consultation wit​h org"
+  },
+  {
+   "dataset_id": "block-outlines",
+   "title": "Block outlines",
+   "records": 4633,
+   "modified": "2026-05-23T13:30:34+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>Block outlines are one dataset among many that provide information about property. Other related datasets can be found by     <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">      filtering on the              <em>Property</em> keyword</a>. </p></div> <h3>Data curren"
+  },
+  {
+   "dataset_id": "property-tax-report-2011-2015",
+   "title": "Property tax report 2011-2015",
+   "records": 976762,
+   "modified": "2021-05-08T10:07:38+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset contains information on properties from BC Assessment (BCA) and City sources from 2011 to 2015.</p></div><div><br></div><p>To limit the size of individual datasets, we segmented the property tax data into multiple datasets.  See ​<a href=\"https://opendata.vancouver.ca/explore/?q"
+  },
+  {
+   "dataset_id": "community-food-markets-and-farmers-markets",
+   "title": "Community food markets and farmers markets",
+   "records": 91,
+   "modified": "2019-05-24T20:04:50+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Food and housing"
+   ],
+   "description": "<div><p> This dataset contains locations and attributes of community food markets and farmers markets (CFM) in the City of Vancouver.</p><p> <strong> Community food markets</strong> are small markets for the sale of fresh, healthy and/or locally-prepared fruits and vegetables, aimed at making nutrit"
+  },
+  {
+   "dataset_id": "elected-officials-contact-information",
+   "title": "Elected officials contact information",
+   "records": 18,
+   "modified": "2023-02-24T13:26:05+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p> Provides contact information for mayor, councillors and park board commissioners serving during the current term.</p></div> <h3>Data currency</h3><div><p>Data updated at the beginning of each term or as necessary.</p></div> <h3>Data accuracy</h3><div><p>No known error.</p></div> <h3>Website"
+  },
+  {
+   "dataset_id": "indicator-data",
+   "title": "Indicator Data",
+   "records": 2280,
+   "modified": "2026-01-12T20:06:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "History of indicator values including targets. These are the data presented in our dashboards. For a user-friendly view of this data please visit <a href=\"https://opendata.vancouver.ca/pages/VanDashboard\">VanDashboard</a> or the <a href=\"https://opendata.vancouver.ca/pages/healthy-city-dashboard\">He"
+  },
+  {
+   "dataset_id": "rental-standards-current-issues",
+   "title": "Rental standards - current issues",
+   "records": 474,
+   "modified": "2026-09-26T13:08:16+00:00",
+   "keywords_hit": [
+    "tree"
+   ],
+   "themes": [
+    "Food and housing"
+   ],
+   "description": "<div><p>This dataset contains data of licensed rental properties with 5 or more units that have current (unresolved) by-law issues. These issues relate to the enforcement of the:</p><ul><li> Building By-law<br></li><li>Electrical By-law</li><li>Gas Fitting By-law</li><li>Plumbing Services (Building "
+  },
+  {
+   "dataset_id": "local-area-boundary",
+   "title": "Local area boundary",
+   "records": 22,
+   "modified": "2023-06-24T12:22:11+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This data set contains the boundaries for the City's 22 local areas (also known as local planning areas).</p></div> <h3>Data currency</h3><div><p>These boundaries do not change.</p></div> <h3>Data accuracy</h3><div><p>Local area boundaries generally follow street centrelines; centrelines are"
+  },
+  {
+   "dataset_id": "lidar-2022",
+   "title": "LiDAR 2022",
+   "records": 181,
+   "modified": "2023-04-18T16:48:31+00:00",
+   "keywords_hit": [
+    "rain",
+    "storm",
+    "watershed",
+    "vegetation",
+    "lidar",
+    "ground",
+    "surface"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>LiDAR (Light Detection and Ranging) data of the City of Vancouver and UBC Endowment Lands with an Area of Interest (AOI) covering a total of 134 square kilometers.​<br></p><p>Data products includes a classification that defines \"bare earth\" ground surface, water and of the upper most surface"
+  },
+  {
+   "dataset_id": "garbage-collection-schedule-zones-for-multi-unit-residential-buildings",
+   "title": "Garbage collection schedule zones for multi-unit residential buildings",
+   "records": 0,
+   "modified": "2019-03-10T08:00:00+00:00",
+   "keywords_hit": [
+    "green"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset includes the boundaries and pick up schedule of the Garbage and Green Bin Collection calendars for Multi-Unit Residential Buildings. A separate dataset provides information on single family homes and duplexes.</p><p> Town homes and row houses are collected as follows:</p><div><u"
+  },
+  {
+   "dataset_id": "garbage-collection-schedule-zones-for-single-family-homes-and-duplexes",
+   "title": "Garbage collection schedule zones for single family homes and duplexes",
+   "records": 0,
+   "modified": "2019-05-19T07:00:00+00:00",
+   "keywords_hit": [
+    "green"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset includes the boundaries and pick up schedule of Garbage and Green Bin Collection for Single Family Homes and Duplexes. A separate dataset provides information on Multi-Unit Residential Buildings.</p><p>Town homes and row houses are collected as follows:</p><div><ul><ul><li>Where"
+  },
+  {
+   "dataset_id": "voting-places-2022",
+   "title": "Voting places 2022",
+   "records": 104,
+   "modified": "2022-10-20T21:14:38+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset includes all of the voting places available to voters for the 2022 general election. The City of Vancouver uses a Vote-Anywhere model.​​ Since 2014, voters can vote at any voting place within the City.​​<br></p><p>​The City operates an at-large ​​voting system.​​<br></p><p>​​​​A"
+  },
+  {
+   "dataset_id": "property-tax-report",
+   "title": "Property tax report",
+   "records": 1553454,
+   "modified": "2026-09-28T14:22:42+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset contains information on properties from BC Assessment (BCA) and City sources from 2020.</p><p>To limit the size of individual datasets, we segmented the property tax data into multiple datasets.  See ​all ​<a href=\"https://opendata.vancouver.ca/explore/?q=property+tax\" style=\"t"
+  },
+  {
+   "dataset_id": "right-of-way-widths",
+   "title": "Right-of-way widths",
+   "records": 26860,
+   "modified": "2026-09-28T13:35:10+00:00",
+   "keywords_hit": [
+    "tree",
+    "curb",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the widths of City rights-of-way.  The street right-of-way widths are the legal, property-line-to-property-line widths of City-owned road. Note this is NOT the physically constructed curb-to-curb distance.</p></div> <h3>Data currency</h3><div><p>The extract for this dat"
+  },
+  {
+   "dataset_id": "council-budget-and-expenses",
+   "title": "Council budget and expenses",
+   "records": 27,
+   "modified": "2026-06-22T15:00:49+00:00",
+   "keywords_hit": [
+    "rain",
+    "lane"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><div><p>The City is committed to an open and transparent government. Consistent with this commitment, Council has posted its office budgets and the expenses that each member has incurred while conducting business on behalf of the City.</p><p>Office of the Mayor budget:</p><ul><li>Consists of 3 "
+  },
+  {
+   "dataset_id": "dedicated-fire-protection-systems-dfps-water-mains",
+   "title": "Dedicated fire protection systems (DFPS) water mains",
+   "records": 245,
+   "modified": "2024-01-15T13:14:01+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>The dedicated fire protection system water mains dataset is one among several that describe the water network. Others are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li> <li>Water abandoned mains</li><li>Water control valves</li><li>Water (fire) hydrants</li><li"
+  },
+  {
+   "dataset_id": "public-trees",
+   "title": "Public trees",
+   "records": 184422,
+   "modified": "2026-09-28T13:51:53+00:00",
+   "keywords_hit": [
+    "tree",
+    "boulevard",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p> The public tree dataset includes a listing of public trees on boulevards and public trees in parks, in the City of Vancouver and provides data on tree coordinates, species and other related characteristics. Private trees are not included in the inventory.</p><p>Tree records that do not have"
+  },
+  {
+   "dataset_id": "libraries",
+   "title": "Libraries",
+   "records": 22,
+   "modified": "2020-11-19T11:33:47+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Culture and education"
+   ],
+   "description": "<div><p>This data set contains the name, address and  latitude and longitude of each of the City's public libraries. The extract on this website is updated weekly.</p></div> <h3>Data currency</h3><div><p>This data was updated in July 2009.</p></div> <h3>Data accuracy</h3><div><p>This data is taken f"
+  },
+  {
+   "dataset_id": "road-ahead-upcoming-projects",
+   "title": "Road Ahead upcoming projects",
+   "records": 199,
+   "modified": "2026-09-17T13:31:48+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City. This dataset describes upcoming projects. The others are for projects currently under construction, and current road closures. All will affect the flo"
+  },
+  {
+   "dataset_id": "community-centres",
+   "title": "Community centres",
+   "records": 27,
+   "modified": "2020-11-19T11:36:16+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>This dataset contains the names and  addresses of all of the Parks Board community centres in the City.  It also includes the Carnegie Centre which is  administered by the Community Services Group rather than Parks and Recreation.</p></div> <h3>Data accuracy</h3><div><p>The location provided"
+  },
+  {
+   "dataset_id": "business-licences",
+   "title": "Business licences",
+   "records": 206115,
+   "modified": "2026-09-28T13:51:45+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>This dataset includes business licence records from 2024 onwards with the new categories (BusinessType).</p><p>Under Licence By-Law No.4450, a valid business licence is required in order to operate a business in the City of Vancouver. A business licence can be obtained from the City's Licenc"
+  },
+  {
+   "dataset_id": "issued-operating-permits-water-systems-",
+   "title": "Issued operating permits – water systems",
+   "records": 1240,
+   "modified": "2026-09-28T13:09:06+00:00",
+   "keywords_hit": [
+    "rain"
+   ],
+   "themes": [
+    "Property and development",
+    "Safety"
+   ],
+   "description": "<div><div><p>This dataset encompasses all issued permits since the start of the operating permit program (2019-present). Operating permits are required for new and existing cooling towers, decorative water features, building water treatment systems and rainwater harvesting/non-​potable water systems"
+  },
+  {
+   "dataset_id": "sewer-mains",
+   "title": "Sewer mains",
+   "records": 39920,
+   "modified": "2026-09-28T21:57:09+00:00",
+   "keywords_hit": [
+    "storm"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>This dataset consists of sewer mains. The types of mains (Sanitary, Storm, Combined, Sanitary Force) are distinguished by attributes. </p><p>Related datasets include: </p><ul><li>GVRD (Metro Vancouver) trunk </li><li>​Sewers manholes​<br></li><li>Sewer catch basins</li></ul><p>Commercial and"
+  },
+  {
+   "dataset_id": "water-hydrants",
+   "title": "Water hydrants",
+   "records": 6613,
+   "modified": "2026-09-28T13:37:39+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div class=\"ExternalClass0C55DCD677664592BC82BF06C7FAC63F\"><p> This data set includes all in service water (fire) hydrants on the Dedicated Fire Protection, Distribution, and Transmission water subsystems.  Some hydrants maybe out of commission and this is indicated on the data set.</p></div> <h3>Da"
+  },
+  {
+   "dataset_id": "storefronts-inventory",
+   "title": "Storefronts inventory",
+   "records": 61640,
+   "modified": "2026-09-14T22:41:26+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>The annual Storefronts inventory documents change and conditions of storefronts in the City of Vancouver to monitor retail health. </p></div> <h3>Note</h3><div><p>All inventory years are shown in one layer. To consider only the latest data, filter on the latest “Year Recorded” field.</p></di"
+  },
+  {
+   "dataset_id": "subdivision-category-areas",
+   "title": "Subdivision category areas",
+   "records": 388,
+   "modified": "2024-06-25T16:07:29+00:00",
+   "keywords_hit": [
+    "tree",
+    "storm",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><div><p>This dataset contains subdivision categories that apply to these single family zones, namely RS-1, RS-3, RS-3A, RS-5, and RS-6 zoning districts.</p><p>Subdivision is the division of land into two or more parcels. It can also include a plan to consolidate two or more parcels into a singl"
+  },
+  {
+   "dataset_id": "truck-routes",
+   "title": "Truck routes",
+   "records": 2,
+   "modified": "2019-03-13T13:44:31+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset indicates where designated truck routes exist in the City.</p></div> <h3>Data currency</h3><div><p>This data does not change often.</p></div> <h3>Data accuracy</h3><div><p>Truck routes generally follow street centrelines; centrelines are in the approximate centre of streets.</p>"
+  },
+  {
+   "dataset_id": "dashboard-cards",
+   "title": "Dashboard Cards",
+   "records": 23,
+   "modified": "2026-01-12T20:08:07+00:00",
+   "keywords_hit": [],
+   "themes": null,
+   "description": "Data representing cards on dashboard pages. For a user-friendly view of this data please explore our dashboards <a href=\"https://opendata.vancouver.ca/pages/dashboards\">landing page</a>."
+  },
+  {
+   "dataset_id": "dashboard-pages-and-categories",
+   "title": "Dashboard Pages and Categories",
+   "records": 12,
+   "modified": "2026-01-12T20:04:01+00:00",
+   "keywords_hit": [],
+   "themes": null,
+   "description": "Data to build dashboard pages. For a user-friendly view of this data please explore our dashboards <a href=\"https://opendata.vancouver.ca/pages/dashboards\">landing page</a>."
+  },
+  {
+   "dataset_id": "3-1-1-service-requests-2009-2021",
+   "title": "3-1-1 service requests 2009-2021",
+   "records": 2083091,
+   "modified": "2024-04-24T20:08:41+00:00",
+   "keywords_hit": [
+    "vegetation",
+    "ground"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Customer initiated service requests received by 3-1-1 Contact Centre from 2009 to 2021. Service requests refer only to those call types that generate a request to a City of Vancouver department to provide service. </p><p>This dataset contains location information such as address or intersect"
+  },
+  {
+   "dataset_id": "parking-tickets-2017-2019",
+   "title": "Parking tickets 2017-2019",
+   "records": 1318735,
+   "modified": "2025-07-15T13:12:21+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from 2017 to 2019. </p><p>Due to platform limitation, records from other years need "
+  },
+  {
+   "dataset_id": "bikeways",
+   "title": "Bikeways",
+   "records": 3763,
+   "modified": "2026-09-21T13:30:24+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains information about bikeways in City of Vancouver.  </p></div> <h3>Note</h3><div><p>Some fields may be blank or have zero values if the information is not available.</p></div> <h3>Data currency</h3><div><p>This data are updated frequently in the normal course of business,"
+  },
+  {
+   "dataset_id": "non-market-housing",
+   "title": "Non-market housing",
+   "records": 641,
+   "modified": "2026-09-01T13:31:14+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Food and housing"
+   ],
+   "description": "<div><p>This dataset contains data of non-market housing projects - both the buildings owned by City of Vancouver, and the buildings provided by other agencies.</p><p> Non-market housing is for low and moderate income singles and families, often subsidized through a variety of ways, including senior"
+  },
+  {
+   "dataset_id": "indicator-details",
+   "title": "Indicator Details",
+   "records": 23,
+   "modified": "2026-01-12T20:09:46+00:00",
+   "keywords_hit": [],
+   "themes": null,
+   "description": "Data in this dataset drive indicator detail pages accessible from dashboards. For a user-friendly view of this data please explore our dashboards <a href=\"https://opendata.vancouver.ca/pages/dashboards\">landing page</a>."
+  },
+  {
+   "dataset_id": "road-ahead-projects-under-construction",
+   "title": "Road Ahead projects under construction",
+   "records": 68,
+   "modified": "2026-09-17T13:31:46+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City. This dataset describes projects currently under construction. The others are for current road closures, and upcoming projects. All will affect the flo"
+  },
+  {
+   "dataset_id": "street-lighting-poles",
+   "title": "Street lighting poles",
+   "records": 57999,
+   "modified": "2026-09-28T13:37:48+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The City's Street Lighting network includes: </p><ul><li>street lighting poles (nodes)</li><li>conduits (ducts)</li><li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of busi"
+  },
+  {
+   "dataset_id": "awarded-contracts",
+   "title": "Awarded contracts",
+   "records": 6414,
+   "modified": "2026-07-23T20:17:08+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div class=\"ExternalClassEF3624EC93BA492BA4EC1612BEE2651D\"><p> Contracts that have been posted publically and awarded to the supplier community to purchase goods and/or services for the Vancouver Group (City of Vancouver, Vancouver Park Board, Vancouver Police Board, and Vancouver Library)</p></div>"
+  },
+  {
+   "dataset_id": "animal-control-inventory-register",
+   "title": "Animal control inventory - register",
+   "records": 26661,
+   "modified": "2026-09-28T13:16:15+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><div><p>The animal control register provides a general record of each animal that has come into the custody of Vancouver Animal Control and includes such things as medical status, breed, color and any known history on the animal. It is one of 3 datasets that provide a record of animals that hav"
+  },
+  {
+   "dataset_id": "noise-control-areas",
+   "title": "Noise control areas",
+   "records": 3,
+   "modified": "2020-11-19T11:34:00+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Safety"
+   ],
+   "description": "<div><p>This dataset contains the boundaries of areas where noise levels are limited by City bylaws.</p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may be no change in data content from one week to the next because there is no change in source data.  P"
+  },
+  {
+   "dataset_id": "shared-e-scooter-stations-lime-docking-stations",
+   "title": "Shared e-scooter stations (Lime docking stations)",
+   "records": 250,
+   "modified": "2026-09-14T22:40:35+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<p class=\"\">This dataset displays the station locations for the Shared E-Scooter System in Vancouver operated by Lime Technology Inc. </p><h3>Note</h3><p>The City of Vancouver (COV) reserves all rights in the GIS database and any data contained therein, and the end user’s use of the data does not co"
+  },
+  {
+   "dataset_id": "census-local-area-profiles-2001",
+   "title": "Census local area profiles 2001",
+   "records": 0,
+   "modified": "2013-03-25T23:00:00+00:00",
+   "keywords_hit": [
+    "park",
+    "creek"
+   ],
+   "themes": [
+    "Demographics"
+   ],
+   "description": "<div><div><p>The census is Canada's largest and most comprehensive data source conducted by Statistics Canada every five years. The Census of Population collects demographics and linguistic information on every man, woman and child living in Canada.</p><p> The data shown here is provided by Statisti"
+  },
+  {
+   "dataset_id": "census-local-area-profiles-2006",
+   "title": "Census local area profiles 2006",
+   "records": 0,
+   "modified": "2013-03-25T23:00:00+00:00",
+   "keywords_hit": [
+    "park",
+    "creek"
+   ],
+   "themes": [
+    "Demographics"
+   ],
+   "description": "<div><p>The census is Canada's largest and most comprehensive data source conducted by Statistics Canada every five years. The Census of Population collects demographics and linguistic information on every man, woman and child living in Canada.</p><p> The data shown here is provided by Statistics Ca"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2011",
+   "title": "Orthophoto imagery 2011",
+   "records": 0,
+   "modified": "2013-07-25T15:00:00+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>The City's orthophoto coverage includes the City, UBC, and the University Endowment Lands and parts of Richmond and the Vancouver International Airport (YVR) as well.  As such, it exceeds the area defined by the City's facet grid (see        <a href=\"https://opendata.vancouver.ca/explore/dat"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2008",
+   "title": "Orthophoto imagery 2008",
+   "records": 0,
+   "modified": "2010-08-04T21:00:00+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>The City's orthophoto coverage includes the City, UBC, and the University Endowment Lands and parts of Richmond and the Vancouver International Airport (YVR) as well.  As such, it exceeds the area defined by the City's facet grid (see        <a href=\"https://opendata.vancouver.ca/explore/dat"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2009",
+   "title": "Orthophoto imagery 2009",
+   "records": 0,
+   "modified": "2010-08-04T21:00:00+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>The City's orthophoto coverage includes the City, UBC, and the University Endowment Lands and parts of Richmond and the Vancouver International Airport (YVR) as well.  As such, it exceeds the area defined by the City's facet grid (see    <a href=\"https://opendata.vancouver.ca/explore/dataset"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2006",
+   "title": "Orthophoto imagery 2006",
+   "records": 0,
+   "modified": "2010-07-13T17:00:00+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>The City's orthophoto coverage includes the City, UBC, and the University Endowment Lands and parts of Richmond, the Vancouver International Airport (YVR) and the North Shore.  As such, it exceeds the area defined by the City's facet grid (see     <a href=\"https://opendata.vancouver.ca/explo"
+  },
+  {
+   "dataset_id": "icis-data-package",
+   "title": "ICIS data package",
+   "records": 0,
+   "modified": "2019-07-09T07:00:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><div><p>Two datasets have been specifically extracted for           <a href=\"http://www.icisociety.ca/\">ICIS</a> (Integrated Cadastral Information Society).  All of the data available are available in other datasets; however these are formatted specifically for ICIS.</p><ol><li> <a class=\"file-"
+  },
+  {
+   "dataset_id": "2023-2026-capital-plan-and-2024-capital-budget-with-proposed-four-year-capital-0",
+   "title": "2023-2026 Capital Plan and 2024 Capital Budget with proposed four-year Capital Plan allocations",
+   "records": 349,
+   "modified": "2024-04-17T17:00:42+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p>This dataset includes the details of 2023-2026 Capital Plan – original plan, updates, funding sources and planned allocations over 2023-2026. This dataset also links new 2024 Capital Project Budget requests to the previously approved multi-year Capital Project Budgets from prior Capital Plans.</p"
+  },
+  {
+   "dataset_id": "voting-division-boundaries-2011",
+   "title": "Voting division boundaries 2011",
+   "records": 135,
+   "modified": "2011-05-19T07:00:00+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Voting division boundaries for the city’s 2011 municipal elections.</p><p>Prior to the 2014 municipal election, the City was divided into voting divisions and voters were required to vote at a designated voting place within their assigned voting division.</p><p> The City operates an at-large"
+  },
+  {
+   "dataset_id": "voting-places-2018",
+   "title": "Voting places 2018",
+   "records": 126,
+   "modified": "2022-10-20T16:33:33+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset includes all of the voting places available to voters for the 2018 general election. The City of Vancouver uses a Vote-Anywhere model. Since 2014, voters can vote at any voting place within the City. </p> <p>The City operates an at-large voting system. </p><p> <strong>Note:</str"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2015",
+   "title": "Orthophoto imagery 2015",
+   "records": 463,
+   "modified": "2019-07-26T23:23:52+00:00",
+   "keywords_hit": [
+    "rain",
+    "landscape",
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>An orthophoto is an aerial photograph that has been processed (via a scanning and rectification process) in such a way as to eliminate image displacement due to camera tilt and terrain relief, so that it represents every object as if viewed directly from above, as in a map which is usually i"
+  },
+  {
+   "dataset_id": "parking-tickets-2010-2013",
+   "title": "Parking tickets 2010-2013",
+   "records": 1091149,
+   "modified": "2019-08-07T18:17:45+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch from 2010 to 2013.</p><p>Due to platform limitation, records from other years need to"
+  },
+  {
+   "dataset_id": "voting-division-boundaries-2008",
+   "title": "Voting division boundaries 2008",
+   "records": 133,
+   "modified": "2014-09-05T07:00:00+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Voting division boundaries for the city’s 2008 municipal elections.</p><p>Prior to the 2014 municipal election, the City was divided into voting divisions and voters were required to vote at a designated voting place within their assigned voting division.</p><p> The City operates an at-large"
+  },
+  {
+   "dataset_id": "voting-places-2025",
+   "title": "Voting places 2025",
+   "records": 26,
+   "modified": "2025-03-13T20:04:39+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p>This dataset includes all of the voting places available to voters for the 2025 general election. The City of Vancouver uses a Vote-Anywhere model.​​ Since 2014, voters can vote at any voting place within the City.​​</p><p>​The City operates an at-large ​​voting system.​​</p><p>​​​​Advance voting"
+  },
+  {
+   "dataset_id": "parking-tickets-2014-2016",
+   "title": "Parking tickets 2014-2016",
+   "records": 1169233,
+   "modified": "2019-08-06T14:25:17+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from year 2014 to 2016</p><p>Due to platform limitation, records from other years ne"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2013",
+   "title": "Orthophoto imagery 2013",
+   "records": 527,
+   "modified": "2019-07-26T23:23:51+00:00",
+   "keywords_hit": [
+    "rain",
+    "landscape",
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>An orthophoto is an aerial photograph that has been processed (via a scanning and rectification process) in such a way as to eliminate image displacement due to camera tilt and terrain relief, so that it represents every object as if viewed directly from above, as in a map which is usually i"
+  },
+  {
+   "dataset_id": "bike-lane-statistics-for-hornby-dunsmuir-and-burrard-2009-2012",
+   "title": "Bike lane statistics for Hornby, Dunsmuir and Burrard 2009-2012",
+   "records": 1005,
+   "modified": "2012-04-23T07:00:00+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset provides daily bike volume data from Burrard Bridge, Dunsmuir Viaduct and locations on Hornby and Dunsmuir streets between 2009 and 2012.</p><h3>Measuring travel times</h3><p>Vehicle travel time data collection involves City staff driving a passenger vehicle along a study corrid"
+  },
+  {
+   "dataset_id": "2023-2026-capital-plan-and-2026-capital-budget-with-proposed-four-year-capital-plan-allocations",
+   "title": "2023-2026 Capital Plan and 2026 Capital Budget with proposed four-year Capital Plan allocations",
+   "records": 395,
+   "modified": "2026-04-14T19:31:09+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<p class=\"\">This dataset includes the details of 2023-2026 Capital Plan – original plan, updates, funding sources and planned allocations over 2023-2026. This dataset also links new 2026 Capital Project Budget requests to the previously approved multi-year Capital Project Budgets from prior Capital "
+  },
+  {
+   "dataset_id": "parking-tickets-2020-2025",
+   "title": "Parking tickets 2020-2025",
+   "records": 2472917,
+   "modified": "2026-06-01T23:08:21+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from 2020 to 2025. </p><p>Due to platform limitation, records from other years need "
+  },
+  {
+   "dataset_id": "street-lighting-junction-boxes",
+   "title": "Street lighting junction boxes",
+   "records": 7962,
+   "modified": "2026-09-28T13:36:29+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The City's Street Lighting network includes: </p><ul><li>street lighting poles (nodes)</li><li>conduits (ducts)</li><li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of busi"
+  },
+  {
+   "dataset_id": "elevation-contour-lines-10-metre-contours",
+   "title": "Elevation contour lines - 10-metre contours",
+   "records": 811,
+   "modified": "2019-05-22T16:08:37+00:00",
+   "keywords_hit": [
+    "elevation",
+    "orthophoto",
+    "contour"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This dataset has elevation contours at 10-metre intervals. Two other datasets provide 1-m and 2-m contours.</p><p>​The 1 metre contours were generated from data acquired as part of the acquisition of orthophotos in 2002.  The 2 and 10 metre contours were interpolated from 1999 orthophotos. A"
+  },
+  {
+   "dataset_id": "2019-2022-capital-plan-and-2021-budget-and-funding",
+   "title": "2019-2022 Capital Plan and 2021 Budget and funding",
+   "records": 238,
+   "modified": "2021-02-03T18:43:31+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset includes details of the 2019-2022 Capital Plan followed by the 2021 Capital Budget for various service categories. The Capital Plan component comprises of the recalibrated capital plan, approved changes till date and the changes resulting from the 2021 Capital Budget, and the 2"
+  },
+  {
+   "dataset_id": "building-lines",
+   "title": "Building lines",
+   "records": 1640,
+   "modified": "2026-08-31T13:46:34+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>Building lines, as described in Schedule \"E\" of the Zoning and Development Bylaw, regulate building placement on affected lots to allow for potential long-term street widening or, in some cases, preservation of open spaces. Generally, development is prohibited within that portion of the lot "
+  },
+  {
+   "dataset_id": "pavement-condition-rating-major-road-network-2023",
+   "title": "Pavement condition rating - major road network 2023",
+   "records": 5404,
+   "modified": "2026-09-15T16:24:01+00:00",
+   "keywords_hit": [
+    "surface",
+    "lane"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<p>MRN PCI data is provided by TransLink. This data was collected at a maximum interval of 50m, on 1 lane in each direction. Pavement Condition data collected in 2023, is used to report the overall pavement condition (PCI) at the network level by considering surface distresses. The pavement distress"
+  },
+  {
+   "dataset_id": "2023-2026-capital-plan-and-2023-capital-budget-with-proposed-four-year-capital-p",
+   "title": "2023-2026 Capital Plan and 2023 Capital Budget with proposed four-year Capital Plan allocations",
+   "records": 336,
+   "modified": "2023-02-22T13:00:54+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset includes the details of 2023-2026 Capital Plan – original plan, updates, funding sources and planned allocations over 2023-2026. This dataset also links new 2023 Capital Project Budget requests to the previously approved multi-year Capital Project Budgets from prior Capital Pla"
+  },
+  {
+   "dataset_id": "3-1-1-contact-centre-metrics",
+   "title": "3-1-1 contact centre metrics",
+   "records": 6284,
+   "modified": "2026-09-01T13:49:01+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Contact Centre Metrics refer to the number of calls presented, handled, and abandoned at the Centre, as well as the average speed of answer by Customer Service Representatives (CSRs), the combination of which service level percentages are derived.</p></div> <h3>Note</h3><div><p>The 3-1-1 pro"
+  },
+  {
+   "dataset_id": "3-1-1-inquiry-volume",
+   "title": "3-1-1 inquiry volume",
+   "records": 65566,
+   "modified": "2026-09-01T13:51:37+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​Volume of inquiries that come into the 3-1-1 Contact Centre via many channels.<br></p></div> <h3>Note</h3><div><p>​​Caller may have ​​more than one inquiry during a call. </p><p>The 3-1-1 case management system started collecting inquiry data on February 16, 2009.​<br></p></div> <h3>Data cu"
+  },
+  {
+   "dataset_id": "water-transmission-mains",
+   "title": "Water transmission mains",
+   "records": 3023,
+   "modified": "2026-08-31T13:14:22+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>Water transmission  mains are one dataset among several that describe the water network. Others are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Abandoned water mains</li><li>Water control valves</li><l"
+  },
+  {
+   "dataset_id": "water-pressure-zones",
+   "title": "Water pressure zones",
+   "records": 9,
+   "modified": "2026-08-17T13:36:10+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>Water pressure zones are one dataset among several that describe the water network. Others are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Water abandoned mains</li><li>Water control valves</li><li>Wat"
+  },
+  {
+   "dataset_id": "pavement-condition-rating",
+   "title": "Pavement condition rating 2020",
+   "records": 9016,
+   "modified": "2026-09-15T13:50:35+00:00",
+   "keywords_hit": [
+    "surface",
+    "lane"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>Pavement Condition data collected in 2020, is used to report the overall pavement condition (PCI) at the network level and expresses the overall condition of a pavement segment by considering surface and structural distresses. </p><p>Data was collected using a semi-automated process by an ex"
+  },
+  {
+   "dataset_id": "motorcycle-parking",
+   "title": "Motorcycle parking",
+   "records": 225,
+   "modified": "2026-09-28T13:31:25+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This data shows the approximate locations of on-street parking for motorcycles.  </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the databas"
+  },
+  {
+   "dataset_id": "abandoned-water-mains",
+   "title": "Abandoned water mains",
+   "records": 13139,
+   "modified": "2026-09-28T13:37:15+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>Abandoned water mains is one dataset among several that describe the water network. Others are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Water abandoned mains</li><li>Water control valves</li><li>Wat"
+  },
+  {
+   "dataset_id": "shoreline-2002",
+   "title": "Shoreline 2002",
+   "records": 2,
+   "modified": "2020-11-19T11:58:30+00:00",
+   "keywords_hit": [
+    "shoreline",
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>The dataset reflects the approximate shoreline in 2002 as digitized from 2002 orthophotos.  It is not exact and has not been updated.</p></div> <h3>Data currency</h3><div><p>This dataset reflects conditions in 2002 and is not being updated.</p></div> <h3>Data accuracy</h3><div><p>The dataset"
+  },
+  {
+   "dataset_id": "street-intersections",
+   "title": "Street intersections",
+   "records": 6125,
+   "modified": "2026-07-27T13:35:47+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The street intersections dataset is one of several that describe city streets. The others are:</p><div><ul><li>Lanes</li><li>Non-City streets</li><li>One way streets</li><li>Public streets</li><li>Right-of-way widths</li></ul></div><p>          Street  centerline and names are included.  The"
+  },
+  {
+   "dataset_id": "sewer-catch-basins",
+   "title": "Sewer catch basins",
+   "records": 44975,
+   "modified": "2026-09-28T13:36:35+00:00",
+   "keywords_hit": [
+    "storm"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>Sewer catch basins is one dataset among several that describe the sewer network. Others are:</p><ul><li>Sanitary network (mains and manholes)</li><li>Storm network (mains and manholes)</li><li>Combined network (mains and manholes)</li><li>City force mains (mans and manholes)</li><li>GVRD (Me"
+  },
+  {
+   "dataset_id": "sidewalk-condition-rating",
+   "title": "Sidewalk condition rating 2021",
+   "records": 15580,
+   "modified": "2025-07-28T13:14:34+00:00",
+   "keywords_hit": [
+    "sidewalk",
+    "surface"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>Sidewalk condition data, collected in 2021, is used to report the overall sidewalk condition index (SCI) at the network level and expresses the overall condition of a sidewalk segment by considering surface distresses identified manually in the field.</p><p>Distresses were collected as point"
+  },
+  {
+   "dataset_id": "directional-traffic-count-locations",
+   "title": "Directional traffic count locations",
+   "records": 6680,
+   "modified": "2020-11-19T12:50:49+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>​This dataset contains the locations of automated counters where directional traffic volume data was collected between 2004 to 2013.</p></div> <h3>Note</h3><div>The counts are available for viewing only in     <a href=\"https://vanmapp.vancouver.ca/pubvanmap_net/default.aspx\">Legacy VanMap   "
+  },
+  {
+   "dataset_id": "pavement-condition-rating-major-road-network",
+   "title": "Pavement condition rating - major road network 2021",
+   "records": 5404,
+   "modified": "2026-09-15T13:50:32+00:00",
+   "keywords_hit": [
+    "surface",
+    "lane"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<p>Major Road Network (MRN) PCI data is provided by Translink. This data was collected between 2020-2021 at a maximum interval of 50m, on 1 lane in each direction. </p><p>Pavement Condition data collected between 2020-2021, is used to report the overall pavement condition (PCI) at the network level "
+  },
+  {
+   "dataset_id": "fire-halls",
+   "title": "Fire halls",
+   "records": 20,
+   "modified": "2026-05-23T13:30:51+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Safety"
+   ],
+   "description": "<div><p>This dataset contains the name, address and location of each of the City's fire halls including one in the  University Endowment Lands that serves the UEL and UBC.</p></div> <h3>Data currency</h3><div><p>This data was provided by Fire and Rescue Department in July 2009. The extract on this w"
+  },
+  {
+   "dataset_id": "one-way-streets",
+   "title": "One way streets",
+   "records": 314,
+   "modified": "2026-04-27T13:31:27+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The one-way streets dataset is one of several that describe streets in Vancouver. The others are:</p><ul><li>Lanes</li><li>Non-City streets</li> <li>Public streets</li><li>Right-of-way widths</li><li>Street intersections</li></ul><p>          Street  centerline and names are included.  The  "
+  },
+  {
+   "dataset_id": "homeless-shelter-locations",
+   "title": "Homeless shelter locations",
+   "records": 17,
+   "modified": "2026-09-28T13:31:17+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Food and housing"
+   ],
+   "description": "<div><p>This dataset consists of the locations of homeless shelters.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated as needed in the normal course of business,  however priorities and resources determine how fast a change in reality is   reflected in the database. The e"
+  },
+  {
+   "dataset_id": "snow-removal-routes",
+   "title": "Snow removal routes",
+   "records": 454,
+   "modified": "2026-09-28T16:48:41+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>These are priority routes for Streets Operations drivers to salt/brine and clear snow from City streets and bike lanes in winter weather conditions.​​</p> </div><p><h3>Note</h3></p><p>This dataset is for information only. Routes are subject to change and may not reflect current operational c"
+  },
+  {
+   "dataset_id": "parking-tickets",
+   "title": "Parking tickets",
+   "records": 237792,
+   "modified": "2026-07-15T13:50:32+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, starting from 2020. </p><p>Due to platform limitation, records from previous years n"
+  },
+  {
+   "dataset_id": "anonymous-ballot-marking",
+   "title": "Anonymous ballot marking",
+   "records": 4,
+   "modified": "2025-07-08T20:00:47+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​Anonymous ballot markings of each ballot cast during election starting from 2017.<br></p><h3>Data access</h3><p>       This dataset has not yet been converted to a format compatible with our new platform. The data table provided contains links to access the files from our legacy site.</p><h"
+  },
+  {
+   "dataset_id": "city-boundary",
+   "title": "City boundary",
+   "records": 1,
+   "modified": "2021-09-27T10:02:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset contains a line defining the edges of the City's legal jurisdiction.  </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated frequently in the normal course of business, however priorities and resources determine how fast a change in reality is reflected i"
+  },
+  {
+   "dataset_id": "building-footprints-1999",
+   "title": "Building footprints 1999",
+   "records": 3259,
+   "modified": "2019-05-07T15:45:41+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p><strong>Building footprints 1999</strong> - includes approximate building footprints for the downtown peninsula in 1999 as digitized from 1999 orthophotos.</p><p> <span class=\"note\">Note:</span> Data are approximate.  Care must be taken in using them because of the significant number of chan"
+  },
+  {
+   "dataset_id": "parks-special-features",
+   "title": "Parks special features",
+   "records": 26,
+   "modified": "2020-11-19T11:34:31+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>The Vancouver Board of Parks and Recreation maintains over 220 parks and 40 major facilities throughout the City of Vancouver.  This dataset provides a list of special features in the parks. </p></div> <h3>Data currency</h3><div><p>The extract on this website is updated weekly.</p></div>  "
+  },
+  {
+   "dataset_id": "property-cadastral-boundaries",
+   "title": "Property cadastral boundaries",
+   "records": 321762,
+   "modified": "2026-09-28T13:36:52+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>The property cadastral boundaries include lot lines, property lines and their dimensions (lengths). Other related datasets can be found by        <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=property\"> filtering on the           <em>property </em>keyword</a>. </p></div> <h3"
+  },
+  {
+   "dataset_id": "film-office-work-areas",
+   "title": "Film office work areas",
+   "records": 22,
+   "modified": "2021-09-27T10:33:42+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>Film office work areas are colour-coded groups of community neighbourhoods used by the Film and Special Event Office to track and monitor filming and special event activities within the City. </p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may "
+  },
+  {
+   "dataset_id": "facet-grid-boundaries",
+   "title": "Facet grid boundaries",
+   "records": 621,
+   "modified": "2020-11-19T11:58:16+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>Facet is the name given to a grid of 500 metre  by 800 metre rectangles covering the entire City as well as UBC and the University Endowment Lands. These boundaries are often used when paper  maps are plotted. They are also used for  the delivery of orthophotos so that file sizes are managea"
+  },
+  {
+   "dataset_id": "public-art-artists",
+   "title": "Public art - Artists",
+   "records": 638,
+   "modified": "2026-09-28T13:15:52+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Culture and education"
+   ],
+   "description": "<div><p>This dataset contains information on the artists associated with public art in the City. </p></div> <h3>Note</h3><div><p>​See also <a href=\"https://opendata.vancouver.ca/explore/dataset/public-art/information/\">Public art</a> dataset<br></p></div> <h3>Data currency</h3><div><p>This data in C"
+  },
+  {
+   "dataset_id": "non-city-streets",
+   "title": "Non-City streets",
+   "records": 953,
+   "modified": "2026-05-04T13:31:20+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The non-City streets dataset is one of several that describe streets in Vancouver. The others are:</p><div><ul><li>Lanes</li> <li>One way streets</li><li>Public streets</li><li>Right-of-way widths</li><li>Street intersections</li></ul><p>          Street  centerline and names are included.  "
+  },
+  {
+   "dataset_id": "heritage-sites",
+   "title": "Heritage sites",
+   "records": 2495,
+   "modified": "2023-03-23T16:15:25+00:00",
+   "keywords_hit": [
+    "tree",
+    "landscape",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p> The Heritage Sites dataset is a listing of buildings and structures, streetscapes, landscape resources (parks and landscapes, trees, monuments, public works) which have been deemed to have heritage value.</p><p>This dataset contains data on sites listed on the Vancouver Heritage Register by"
+  },
+  {
+   "dataset_id": "city-projects-package-site",
+   "title": "City projects package - Site",
+   "records": 936,
+   "modified": "2026-05-23T13:30:36+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation",
+    "Property and development"
+   ],
+   "description": "<div><p>The City Projects layer (site- and street-based) provides information about City initiatives, projects, development proposals, and construction and roadwork.  These include projects that are of a public interest or projects that affect others.  </p></div> <h3>Note</h3><div><p>​See also <a hr"
+  },
+  {
+   "dataset_id": "downtown-historic-railway",
+   "title": "Downtown Historic Railway",
+   "records": 14,
+   "modified": "2026-06-03T17:39:47+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset describes the alignment of the Downtown Historical Railway.</p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may be no change in data content from one week to the next because there is no change in source data.  Priorities and resour"
+  },
+  {
+   "dataset_id": "voting-places-2014",
+   "title": "Voting places 2014",
+   "records": 125,
+   "modified": "2019-07-04T17:52:48+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset includes all of the voting places available to voters for the 2014 general election. This was the first election using a Vote-Anywhere model. Voters can vote at any voting place within the City. </p><p>Prior to the 2014 municipal election, the city was divided into voting divisi"
+  },
+  {
+   "dataset_id": "property-easements",
+   "title": "Property easements",
+   "records": 13159,
+   "modified": "2026-09-21T13:31:09+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div class=\"ExternalClass74CC3D173A3C4CE3B8A9EFD078DAE5B4\"><p>The property easements dataset is one dataset among many that provide information about property. Other related datasets can be found by        <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">          filtering o"
+  },
+  {
+   "dataset_id": "property-tax-report-2006-2010",
+   "title": "Property tax report 2006-2010",
+   "records": 892028,
+   "modified": "2021-05-08T10:05:26+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset contains information on properties from BC Assessment (BCA) and City sources from 2006 to 2010.</p><p>To limit the size of individual datasets, we segmented the property tax data into multiple datasets.  See ​<a href=\"https://opendata.vancouver.ca/explore/?q=property+tax\" style="
+  },
+  {
+   "dataset_id": "business-licences-1997-to-2012",
+   "title": "Business licences 1997 to 2012",
+   "records": 958899,
+   "modified": "2018-04-12T12:05:46+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><p>This dataset includes business licence records from 1997 to 2012 with original categories (BusinessType).​</p><p>Under Licence By-Law No.4450, a valid business licence is required in order to operate a business in the City of Vancouver. A business licence can be obtained from the City's Lice"
+  },
+  {
+   "dataset_id": "gvrd-sewer-trunk-mains",
+   "title": "GVRD sewer trunk mains",
+   "records": 1657,
+   "modified": "2026-09-27T13:31:17+00:00",
+   "keywords_hit": [
+    "storm"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>This dataset consists of the GVRD (Metro Vancouver) trunk sewer mains. Related datasets include: </p><ul><li>Sanitary network (mains and manholes)</li><li>Storm network (mains and manholes)</li><li>Combined network (mains and manholes)</li><li>City force mains (mains and manholes)</li><li>GV"
+  },
+  {
+   "dataset_id": "workforce-pay-rates-and-gender",
+   "title": "Workforce pay rates and sex",
+   "records": 6344,
+   "modified": "2023-05-23T22:25:44+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset provides the ranges of hourly rates of pay for all City job classifications, corresponding job titles and the breakdown of staff by sex within these classifications. The dataset does not include information from the Vancouver Public Library and the Vancouver Police Department.<"
+  },
+  {
+   "dataset_id": "goads-fire-insurance-map-1912-georectified",
+   "title": "Goad's Fire Insurance Map 1912 (georectified)",
+   "records": 100,
+   "modified": "2019-06-24T17:23:03+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "shoreline",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This map shows the location, building materials and footprint of buildings; the original water line where it differs from the 1912 shoreline; some proposed developments; electoral wards; legal land descriptions; lot sizes; street and lane widths; and old street names that had been recently c"
+  },
+  {
+   "dataset_id": "street-operations-district-maintenance-areas",
+   "title": "Street operations district maintenance areas",
+   "records": 2,
+   "modified": "2020-11-19T11:35:13+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This data set contains the boundaries of administrative areas for managing street operations. </p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may be no change in data content from one week to the next because there is no change in source data. "
+  },
+  {
+   "dataset_id": "bike-racks",
+   "title": "Bike racks",
+   "records": 1731,
+   "modified": "2021-04-30T10:00:43+00:00",
+   "keywords_hit": [
+    "tree",
+    "sidewalk",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains locations of installed bike racks on City property.  It also includes street use permit locations issued to commercial tenants, Business Improvement Associations (BIA), building owners and development companies, etc.<br></p></div> <h3>Data currency</h3><div><p style=\"co"
+  },
+  {
+   "dataset_id": "false-creek-navigable-channel",
+   "title": "False Creek navigable channel",
+   "records": 1,
+   "modified": "2026-06-03T17:39:50+00:00",
+   "keywords_hit": [
+    "tree",
+    "creek",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset shows the location of the navigable portions of False Creek where no moorage, anchorage or any other uses that may impede navigation is allowed.</p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may be no change in data content from o"
+  },
+  {
+   "dataset_id": "designated-floodplain",
+   "title": "Designated floodplain",
+   "records": 8,
+   "modified": "2026-08-27T19:41:21+00:00",
+   "keywords_hit": [
+    "green",
+    "storm",
+    "shoreline",
+    "creek"
+   ],
+   "themes": [
+    "Sustainability",
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This dataset includes the coastal floodplain and Still Creek floodplain within the City of Vancouver. A floodplain is a lowland area that is susceptible to flooding from an adjoining watercourse, ocean, lake or other body of water.</p><p>Sea level has increased over the last century and is e"
+  },
+  {
+   "dataset_id": "parking-meters",
+   "title": "Parking meters",
+   "records": 3642,
+   "modified": "2026-09-28T13:32:54+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains information on the rates and time limits for parking meters in the City.  Information is shown at the block level rather than for the individual meter.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however"
+  },
+  {
+   "dataset_id": "water-control-valves",
+   "title": "Water control valves",
+   "records": 21323,
+   "modified": "2026-09-28T13:37:40+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>Water control valves is one dataset among several that describe the water network. These are:</p><ul><li>Water distribution  mains</li><li>Water transmission  mains </li><li>Dedicated Fire protection network DFPS mains </li><li>Water abandoned mains</li><li>Water control valves</li><li>Water"
+  },
+  {
+   "dataset_id": "parks-polygon-representation",
+   "title": "Parks - polygon representation",
+   "records": 254,
+   "modified": "2026-09-28T13:32:55+00:00",
+   "keywords_hit": [
+    "green",
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>This data set provides information on the names and locations of City parks.  The data may be displayed as point features (a single point representing the location of the park; this is unlikely to be the geometric centroid of the park) or polygon features (a polygon or area coloured green to"
+  },
+  {
+   "dataset_id": "olympic-transportation-plan-parking-restrictions",
+   "title": "Olympic transportation plan parking restrictions",
+   "records": 25,
+   "modified": "2016-06-26T09:30:08+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the parking restriction areas as part of the 2010 Olympic Transportation Plan.</p><p>​The Olympic Transportation Plan areas are only in effect for the Olympic period—specific dates vary from area to area.</p></div> <h3>Data accuracy</h3><div><p>​Transportation Plan comp"
+  },
+  {
+   "dataset_id": "zoning-districts-and-labels",
+   "title": "Zoning districts and labels",
+   "records": 1621,
+   "modified": "2026-06-29T13:47:51+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>This dataset consists of zoning polygons throughout the City  and labels describing them.<br></p><p>Zoning regulates the development of property in Vancouver by encouraging land use and building in accordance with community goals and visions for the future of Vancouver and its neighbourhoods"
+  },
+  {
+   "dataset_id": "property-addresses",
+   "title": "Property addresses",
+   "records": 99743,
+   "modified": "2026-09-28T13:35:32+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>The property addresses dataset contains addresses       used for parcel polygon display. <span class=\"boldText\">Please note</span>: these addresses are the primary addresses displayed in VanMap and do not represent a complete set of all addresses.  Some addresses are duplicated because they "
+  },
+  {
+   "dataset_id": "business-licences-2013-to-2024",
+   "title": "Business licences 2013 to 2024",
+   "records": 782330,
+   "modified": "2024-05-04T17:29:08+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Business and economy"
+   ],
+   "description": "<div><div><div dir=\"ltr\" style=\"text-align:left;\"><p>This dataset includes business licence records from 2013 to May 3, 2024 with original categories (BusinessType).</p><p>​Under Licence By-Law No.4450, a valid business licence is required in order to operate a business in the City of Vancouver. A b"
+  },
+  {
+   "dataset_id": "public-art",
+   "title": "Public art",
+   "records": 751,
+   "modified": "2026-09-28T13:15:54+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Culture and education"
+   ],
+   "description": "<div><p>This package contains information on the location of public art and corresponding artist(s) in the City.</p></div> <h3>Note</h3><div><p>​See also <a href=\"https://opendata.vancouver.ca/explore/dataset/public-art-artists/information/\">Public ​art - Artists​</a><br></p></div> <h3>Data currency"
+  },
+  {
+   "dataset_id": "downtown-district-sub-areas",
+   "title": "Downtown district sub areas",
+   "records": 29,
+   "modified": "2019-03-11T20:49:21+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>The Downtown District or \"DD\" is an area zoned as a Comprehensive Development District. Within this overall district are smaller areas with specific regulations relating to land use and density which are displayed on this layer.</p></div> <h3>Data currency</h3><div><p>This data in City syste"
+  },
+  {
+   "dataset_id": "disability-parking",
+   "title": "Accessible parking",
+   "records": 163,
+   "modified": "2026-08-24T13:30:39+00:00",
+   "keywords_hit": [
+    "tree",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><div> </div><div><p>Designated accessibility parking zones and accessibility meter spaces are located in commercial districts and high-density residential areas throughout Vancouver, with new spaces being added every year. In deciding where to install accessibility zones, we look for spaces or "
+  },
+  {
+   "dataset_id": "property-tax-report-2016-2019",
+   "title": "Property tax report 2016-2019",
+   "records": 832969,
+   "modified": "2021-05-08T10:10:39+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​This dataset contains information on properties from BC Assessment (BCA) and City sources from 2016 to 2019.<br></p><p>To limit the size of individual datasets, we segmented the property tax data into multiple datasets.  See ​<a href=\"https://opendata.vancouver.ca/explore/?q=property+tax\" s"
+  },
+  {
+   "dataset_id": "road-ahead-current-road-closures",
+   "title": "Road Ahead current road closures",
+   "records": 23,
+   "modified": "2026-09-17T13:31:44+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City.  This dataset describes current road closures. The others are for projects currently under construction, and upcoming projects. All will affect the fl"
+  },
+  {
+   "dataset_id": "issued-building-permits",
+   "title": "Issued building permits",
+   "records": 52176,
+   "modified": "2026-09-28T13:57:51+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>​Building permits are required for new buildings, additions or alterations to existing buildings, and for demolitions or salvage and abatement work.</p><p>As permit application processing is a collaboration between the customer / applicant and the City, this dataset has been updated with the"
+  },
+  {
+   "dataset_id": "public-washrooms",
+   "title": "Public washrooms",
+   "records": 147,
+   "modified": "2026-09-26T13:48:41+00:00",
+   "keywords_hit": [
+    "tree",
+    "sidewalk",
+    "park",
+    "street"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>This dataset contains locations and attributes of all public washrooms that are on city streets and in public parks.</p></div> <h3>Data currency</h3><div><p style=\"color:red;\"><span style=\"color:rgb(50, 49, 48);\">​This data set is scheduled to be updated daily.​</span></p></div> <h3>Data acc"
+  },
+  {
+   "dataset_id": "open-data-change-log",
+   "title": "Open data change log",
+   "records": 204,
+   "modified": "2026-09-16T13:49:24+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>​Significant changes to the open data catalogue, including new datasets added, datasets renamed or retired, quarterly or annual updates to high-impact datasets, changes to data structure or definition. Smaller changes, such as adding or editing records or renaming a field in an existing data"
+  },
+  {
+   "dataset_id": "parks",
+   "title": "Parks",
+   "records": 218,
+   "modified": "2025-09-22T13:47:09+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>The Vancouver Board of Parks and Recreation maintains over 220 parks and 40 major facilities throughout the City of Vancouver.  This dataset provides information of the parks and facilities that are available in them. Additional details are found in related datasets: </p><div><ul><li>Parks w"
+  },
+  {
+   "dataset_id": "schools",
+   "title": "Schools",
+   "records": 194,
+   "modified": "2023-07-01T12:06:05+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Culture and education"
+   ],
+   "description": "<div><p>This dataset includes the name, address, location and category of schools in Vancouver.</p></div> <h3>Data currency</h3><div><p>The source data is updated by the BC Ministry of  Education on an ongoing basis as changes occur.   The school data available through the City's site was extracted "
+  },
+  {
+   "dataset_id": "street-lighting-conduits",
+   "title": "Street lighting conduits",
+   "records": 65458,
+   "modified": "2026-09-28T13:37:29+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The street light conduits (ducts) dataset represents part of the City's Street Lighting network, which also includes: </p><ul><li>street lighting poles (nodes)</li> <li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is"
+  },
+  {
+   "dataset_id": "elevation-contour-lines-1-metre-contours",
+   "title": "Elevation contour lines - 1-metre contours",
+   "records": 5929,
+   "modified": "2019-05-22T16:09:46+00:00",
+   "keywords_hit": [
+    "elevation",
+    "orthophoto",
+    "contour"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>​The 1 metre contours were generated from data acquired as part of the acquisition of orthophotos in 2002. Contours at 2 and 10 metre intervals are available as separate datasets. They have not been updated since they were created and do not reflect changes that  have occurred since they wer"
+  },
+  {
+   "dataset_id": "orthophoto-imagery-2022",
+   "title": "Orthophoto imagery 2022",
+   "records": 470,
+   "modified": "2024-05-08T16:59:54+00:00",
+   "keywords_hit": [
+    "rain",
+    "landscape",
+    "orthophoto"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This dataset provides links to aerial imagery (orthophoto) taken in 2022 as individual tiled areas over the City of Vancouver.<br></p><p>An orthophoto is an aerial photograph that has been processed (via a scanning and rectification process) in such a way as to eliminate image displacement d"
+  },
+  {
+   "dataset_id": "lanes",
+   "title": "Lanes",
+   "records": 7856,
+   "modified": "2026-07-27T13:31:05+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The Lanes (alleyways) dataset is one of several that describe streets in Vancouver.  The others are:</p><div><ul><li>Non-City streets</li><li>One way streets</li><li>Public streets</li><li>Right-of-way widths</li><li>Street intersections</li></ul></div><p>Street  centerline and names are inc"
+  },
+  {
+   "dataset_id": "drinking-fountains",
+   "title": "Drinking fountains",
+   "records": 278,
+   "modified": "2022-06-27T12:04:11+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>This dataset includes locations of permanent and temporary public drinking fountains (and bottle filling station) in the City that are managed by Parks and Recreation and Engineering Services Water Design departments.</p></div> <h3>Note</h3><div><p>Field may be blank if related information i"
+  },
+  {
+   "dataset_id": "3-1-1-service-requests",
+   "title": "3-1-1 service requests",
+   "records": 1297198,
+   "modified": "2026-09-28T14:21:52+00:00",
+   "keywords_hit": [
+    "vegetation",
+    "ground"
+   ],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Customer initiated service requests received by 3-1-1 Contact Centre from 2022. Service requests refer only to those call types that generate a requ​​es​​t to a City of Vancouver department to provide service.</p><p>This dataset contains location information such as address or intersection w"
+  },
+  {
+   "dataset_id": "web-cam-url-links",
+   "title": "Web Cam (URL links)",
+   "records": 219,
+   "modified": "2026-09-21T13:47:24+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>The dataset includes only official publicly-available web cams focusing mostly on traffic cameras.  The dataset contains links to these cameras and we do not control what is displayed by the cameras.</p></div> <h3>Data currency</h3><div><p>The data for web cam locations is updated from time "
+  },
+  {
+   "dataset_id": "sewer-manholes",
+   "title": "Sewer manholes",
+   "records": 36043,
+   "modified": "2026-09-28T13:36:36+00:00",
+   "keywords_hit": [
+    "storm"
+   ],
+   "themes": [
+    "Water and sewer"
+   ],
+   "description": "<div><p>This dataset consists of sewer manholes. The types of mains (Storm, Sanitary, or Combined) are distinguished by the Type attribute. </p><p>Related datasets include: </p><ul><li>Sewer Mains</li><li>GVRD (Metro Vancouver) trunk sewers </li><li>Sewer catch basins</li></ul><p>Commercial and resi"
+  },
+  {
+   "dataset_id": "cultural-spaces",
+   "title": "Cultural Spaces",
+   "records": 1942,
+   "modified": "2022-06-09T12:03:30+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Culture and education"
+   ],
+   "description": "<div><p> This data set provides locations and attributes of cultural spaces in the City of Vancouver, University Endowment Lands and Musqueam Community.</p><p> The majority of cultural spaces are privately-owned.</p><p> Office spaces are excluded for privacy reasons.</p><p> This data set is maintain"
+  },
+  {
+   "dataset_id": "operating-permits-water-systems-water-quality-reports",
+   "title": "Operating permits - water systems — water quality reports",
+   "records": 36307,
+   "modified": "2026-09-28T13:58:58+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development",
+    "Safety"
+   ],
+   "description": "<div><p>This dataset encompasses all operating permits issued since the start of the operating perm​it program (2019-present). It includes a complete history of water quality reports. Operating permits are req​uire​d for new and existing cooling towers, decorative water features, building water trea"
+  },
+  {
+   "dataset_id": "rapid-transit-stations",
+   "title": "Rapid transit stations",
+   "records": 22,
+   "modified": "2023-02-22T13:22:23+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset contains the stations of the three rapid transit lines.  Only those portions within the boundaries of the City of Vancouver are shown.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated as required in the normal course of business.  The extract on this "
+  },
+  {
+   "dataset_id": "public-streets",
+   "title": "Public streets",
+   "records": 17072,
+   "modified": "2026-07-27T13:32:20+00:00",
+   "keywords_hit": [
+    "tree",
+    "lane",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><div><p>The public streets dataset is one of several that describe streets in Vancouver. The others are:</p><ul><li>Lanes</li><li>Non-City streets</li><li>One way streets</li><li>Right-of-way widths</li><li>Street intersections</li></ul><p>Street  centerline and names are included. The street c"
+  },
+  {
+   "dataset_id": "parks-facilities",
+   "title": "Parks facilities",
+   "records": 645,
+   "modified": "2026-07-30T18:42:14+00:00",
+   "keywords_hit": [
+    "park"
+   ],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p>The Vancouver Board of Parks and Recreation maintains over 220 parks and 40 major facilities throughout the City of Vancouver.  This dataset provides information of the parks and facilities that are available in them. </p><p>Park washrooms and special features are found in separate datasets."
+  },
+  {
+   "dataset_id": "property-parcel-polygons",
+   "title": "Property parcel polygons",
+   "records": 99700,
+   "modified": "2026-09-28T13:35:32+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>The property parcel polygons are assessment based land polygons. Other related datasets can be found by        <a href=\"https://opendata.vancouver.ca/explore/?refine.keyword=Property\">filtering on the                 <em>Property </em>keyword</a>. </p></div> <h3>Data currency</h3><div><p>Thi"
+  },
+  {
+   "dataset_id": "electric-vehicle-charging-stations",
+   "title": "Electric vehicle charging stations",
+   "records": 54,
+   "modified": "2026-09-28T21:35:36+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Streets and transportation"
+   ],
+   "description": "<div><p>This dataset shows the locations of electric vehicle charging stations. </p></div><p><h3>Note</h3><div></div></p><p>This dataset is for information only. Data is subject to change and may not reflect current infrastructure. <br></p><p><h3>Data currency</h3></p><div><p>The extract for this da"
+  },
+  {
+   "dataset_id": "employee-remuneration-and-expenses-earning-over-75000",
+   "title": "Employee remuneration and expenses (earning over $75,000)",
+   "records": 49742,
+   "modified": "2026-04-16T16:30:45+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>This dataset includes remuneration and expenses from employees earning over $75,000/year.</p></div> <h3>Note</h3><div><p>Amounts are in Canadian dollars. </p><p>Asterisk (*) next to the employee name in Year 2012 and 2013 indicates exempt employee who received optional lump sum gratuity and "
+  },
+  {
+   "dataset_id": "council-voting-records",
+   "title": "Council voting records",
+   "records": 80722,
+   "modified": "2026-05-08T13:49:00+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>The posting of voting records for City of Vancouver Council members is part of the City's ongoing commitment to open, transparent and proactive disclosure of data. In 2016, City Council began using an electronic voting system which has enabled the City to capture individual Council member vo"
+  },
+  {
+   "dataset_id": "building-footprints-2015",
+   "title": "Building Footprints 2015",
+   "records": 154124,
+   "modified": "2022-06-09T12:02:05+00:00",
+   "keywords_hit": [
+    "orthophoto"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p>​The building outlines is a 2D data set defined by the generalized outermost exterior outline of main building components generated from the City of Vancouver’s 2015 orthophotos. Contiguous building outlines are split at parcel lines, where required, to reflect ownership. Also included are l"
+  },
+  {
+   "dataset_id": "building-footprints-2009",
+   "title": "Building footprints 2009",
+   "records": 124181,
+   "modified": "2019-05-07T15:46:05+00:00",
+   "keywords_hit": [
+    "lidar"
+   ],
+   "themes": [
+    "Property and development"
+   ],
+   "description": "<div><p><strong>Building footprints 2009</strong> includes generalized building footprints of the city generated from 2009 LiDAR data.</p><p><span class=\"note\">Note:</span> Data are approximate.  Care must be taken in using them because of the significant number of changes since collected year. They"
+  },
+  {
+   "dataset_id": "mountain-view-cemetery-burial-index",
+   "title": "Mountain View Cemetery burial index",
+   "records": 150086,
+   "modified": "2026-09-28T13:35:14+00:00",
+   "keywords_hit": [
+    "tree",
+    "street"
+   ],
+   "themes": [
+    "Demographics"
+   ],
+   "description": "<div><p> This dataset lists the name and grave location of those buried at the Mountain View Cemetery. The cemetery is owned and operated by the City of Vancouver since 1887. It is made up of 106 acres of land and it is located west of Fraser Street between 31st and 43rd Avenues.</p></div> <h3>Note<"
+  },
+  {
+   "dataset_id": "elevation-contour-lines-2-metre-contours",
+   "title": "Elevation contour lines - 2-metre contours",
+   "records": 2093,
+   "modified": "2019-05-22T16:09:52+00:00",
+   "keywords_hit": [
+    "elevation",
+    "orthophoto",
+    "contour"
+   ],
+   "themes": [
+    "Geography and imagery"
+   ],
+   "description": "<div><p>This dataset has elevation contours at 2-metre intervals. Two other datasets provide 1-m and 10-m contours.</p><p>​The 1 metre contours were generated from data acquired as part of the acquisition of orthophotos in 2002.  The 2 and 10 metre contours were interpolated from 1999 orthophotos. A"
+  },
+  {
+   "dataset_id": "community-gardens-and-food-trees",
+   "title": "Community gardens and food trees",
+   "records": 170,
+   "modified": "2026-07-14T17:29:27+00:00",
+   "keywords_hit": [
+    "tree",
+    "garden",
+    "park"
+   ],
+   "themes": [
+    "Food and housing",
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><p> This dataset contains locations and attributes of community gardens and food trees in the City of Vancouver.  While these community food assets are located within city boundaries, and some on City and Park Board lands, the vast majority are not administered by the City.</p><p> This dataset "
+  },
+  {
+   "dataset_id": "animal-control-inventory-lost-and-found",
+   "title": "Animal control inventory - lost and found",
+   "records": 18438,
+   "modified": "2026-09-28T13:48:13+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Parks, recreation, and pets"
+   ],
+   "description": "<div><div><p>The Animal Control Lost and Found dataset provides information on animals that are reported lost. It is one of 3 datasets that provide a record of animals that have come into the custody of the Vancouver Animal Control Office: </p><ol><li> <a href=\"https://opendata.vancouver.ca/explore/"
+  },
+  {
+   "dataset_id": "municipal-election-results",
+   "title": "Municipal election results",
+   "records": 13,
+   "modified": "2025-04-09T23:00:48+00:00",
+   "keywords_hit": [],
+   "themes": [
+    "Government and finance"
+   ],
+   "description": "<div><p>Official result for each municipal election since 1996, including results for the Olympic plebiscite (2003) and City’s electoral system reform plebiscite (2004).</p><h3>Data Access</h3><p>This dataset has not yet been converted to a format compatible with our new platform. The data table pro"
+  }
+ ]
+}

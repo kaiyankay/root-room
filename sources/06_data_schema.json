@@ -1,0 +1,583 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "street-tree-site-tool/06_data_schema.json",
+  "title": "Street-Tree Site Capacity Tool — V1 Data Schema",
+  "description": "Machine-readable V1 schema for boulevard planting-site records. It separates City data, confirmed site data, user input, source rules, derived calculations, design assumptions, and unknown values.",
+  "x-schema-version": "1.1",
+  "x-revision-notes": [
+    "Added planting_condition because Table 9-2 soil-volume lookup depends on tree class + planting condition.",
+    "Added Columnar to the tree-class enum because Table 9-2 contains four categories.",
+    "Replaced ambiguous soil_volume_m3 with physical_soil_volume_m3 and credited_soil_volume_m3.",
+    "Replaced supported_tree_class with soil_volume_benchmark_classes to avoid treating soil volume alone as full site suitability.",
+    "Changed standard_soil terminology to native_soil to match the reviewed source language.",
+    "Round 1.1: corrected required_for_physical_soil_volume to use soil_area_m2 + soil_depth_m. soil_geometry is an optional upstream source for soil_area_m2 via R04, not a direct requirement for R05."
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "site_id",
+    "site_state",
+    "street_name",
+    "missing_inputs"
+  ],
+  "properties": {
+    "site_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project-level unique identifier for the analysed site."
+    },
+    "site_state": {
+      "$ref": "#/$defs/siteStateField"
+    },
+    "street_name": {
+      "$ref": "#/$defs/stringField"
+    },
+    "tree_point": {
+      "$ref": "#/$defs/geometryField"
+    },
+    "tree_id": {
+      "$ref": "#/$defs/stringField"
+    },
+    "genus": {
+      "$ref": "#/$defs/stringField"
+    },
+    "species": {
+      "$ref": "#/$defs/stringField"
+    },
+    "cultivar": {
+      "$ref": "#/$defs/stringField"
+    },
+    "site_geometry": {
+      "$ref": "#/$defs/geometryField"
+    },
+    "boulevard_width_m": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "planting_area_geometry": {
+      "$ref": "#/$defs/geometryField"
+    },
+    "planting_area_m2": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "planting_condition": {
+      "$ref": "#/$defs/plantingConditionField"
+    },
+    "soil_geometry": {
+      "$ref": "#/$defs/geometryField"
+    },
+    "soil_area_m2": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "soil_depth_m": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "soil_type": {
+      "$ref": "#/$defs/soilTypeField"
+    },
+    "physical_soil_volume_m3": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "credited_soil_volume_m3": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "target_tree_class": {
+      "$ref": "#/$defs/treeClassField"
+    },
+    "required_soil_volume_m3": {
+      "$ref": "#/$defs/nonNegativeNumberField"
+    },
+    "soil_volume_gap_m3": {
+      "$ref": "#/$defs/numberField"
+    },
+    "soil_volume_benchmark_classes": {
+      "$ref": "#/$defs/treeClassArrayField"
+    },
+    "missing_inputs": {
+      "$ref": "#/$defs/stringArrayField"
+    },
+    "install_date": {
+      "$ref": "#/$defs/dateField"
+    },
+    "inventory_height": {
+      "$ref": "#/$defs/rawInventoryField"
+    },
+    "inventory_diameter": {
+      "$ref": "#/$defs/rawInventoryField"
+    },
+    "location_notes": {
+      "$ref": "#/$defs/stringField"
+    },
+    "utility_conflict": {
+      "$ref": "#/$defs/constraintField"
+    },
+    "aboveground_conflict": {
+      "$ref": "#/$defs/constraintField"
+    },
+    "target_scenario": {
+      "$ref": "#/$defs/stringField"
+    },
+    "design_response": {
+      "$ref": "#/$defs/stringArrayField"
+    }
+  },
+  "$defs": {
+    "provenance": {
+      "type": "string",
+      "enum": [
+        "SOURCE_RULE",
+        "CITY_DATA",
+        "USER_INPUT",
+        "CONFIRMED_SITE_DATA",
+        "DERIVED_CALCULATION",
+        "DESIGN_ASSUMPTION",
+        "UNKNOWN"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "KNOWN",
+        "UNKNOWN",
+        "NOT_APPLICABLE",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "fieldBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "provenance",
+        "status"
+      ],
+      "properties": {
+        "value": {},
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "stringField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "dateField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "numberField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nonNegativeNumberField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "stringArrayField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "treeClassArrayField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Small",
+                      "Medium",
+                      "Large",
+                      "Columnar"
+                    ]
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "siteStateField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "existing_tree",
+                    "vacant_replacement",
+                    "proposed_new"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "plantingConditionField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "solitary",
+                    "shared_row"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "treeClassField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "Columnar"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "soilTypeField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "native_soil",
+                    "structural_soil",
+                    "soil_cell",
+                    "other"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "constraintField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "none_confirmed",
+                    "conflict_confirmed",
+                    "unknown"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "rawInventoryField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "description": "Display/reference only in V1. Raw City inventory values may include class or legacy-coded values and must not drive V1 calculations without separate validation."
+    },
+    "geometryField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fieldBase"
+        },
+        {
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/geojsonGeometry"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "geojsonGeometry": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "MultiPoint",
+            "LineString",
+            "MultiLineString",
+            "Polygon",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {}
+      }
+    }
+  },
+  "x-v1-field-groups": {
+    "core": [
+      "site_id",
+      "site_state",
+      "street_name",
+      "tree_point",
+      "tree_id",
+      "genus",
+      "species",
+      "cultivar",
+      "site_geometry",
+      "boulevard_width_m",
+      "planting_area_geometry",
+      "planting_area_m2",
+      "planting_condition",
+      "soil_geometry",
+      "soil_area_m2",
+      "soil_depth_m",
+      "soil_type",
+      "physical_soil_volume_m3",
+      "credited_soil_volume_m3",
+      "target_tree_class",
+      "required_soil_volume_m3",
+      "soil_volume_gap_m3",
+      "soil_volume_benchmark_classes",
+      "missing_inputs"
+    ],
+    "optional_supporting": [
+      "install_date",
+      "inventory_height",
+      "inventory_diameter",
+      "location_notes",
+      "utility_conflict",
+      "aboveground_conflict",
+      "target_scenario",
+      "design_response"
+    ]
+  },
+  "x-v1-field-logic": {
+    "required_for_record": [
+      "site_id",
+      "site_state",
+      "street_name",
+      "missing_inputs"
+    ],
+    "required_for_table_9_2_lookup": [
+      "target_tree_class",
+      "planting_condition"
+    ],
+    "required_for_physical_soil_volume": [
+      "soil_area_m2",
+      "soil_depth_m"
+    ],
+    "required_for_target_comparison": [
+      "target_tree_class",
+      "planting_condition",
+      "credited_soil_volume_m3"
+    ],
+    "derived_fields": [
+      "planting_area_m2",
+      "soil_area_m2",
+      "physical_soil_volume_m3",
+      "credited_soil_volume_m3",
+      "required_soil_volume_m3",
+      "soil_volume_gap_m3",
+      "soil_volume_benchmark_classes",
+      "missing_inputs",
+      "design_response"
+    ],
+    "display_or_reference_only_in_v1": [
+      "install_date",
+      "inventory_height",
+      "inventory_diameter",
+      "location_notes",
+      "utility_conflict",
+      "aboveground_conflict"
+    ]
+  },
+  "x-v1-rules": [
+    "A site record may exist even when calculation inputs are missing.",
+    "Missing numeric or geometry values use null; they are not replaced by guessed values.",
+    "UNKNOWN and DESIGN_ASSUMPTION must never be presented as confirmed City or site facts.",
+    "DERIVED_CALCULATION outputs must remain traceable to their input values.",
+    "Existing tree inventory does not by itself prove present-day site compliance.",
+    "soil_volume_benchmark_classes reports soil-volume benchmarks only; it is not a complete site-suitability verdict.",
+    "Median, park, lane, private-property, tree-removal, full utility, and full above-ground automation are outside V1."
+  ]
+}

@@ -1,0 +1,184 @@
+{
+ "id": "fraxinus_ornus",
+ "genus": "FRAXINUS",
+ "species": "ORNUS",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Flowering Ash",
+  "latin": "Fraxinus ornus",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == FRAXINUS and first species word == ORNUS; hybrid marker 'X' ignored; any cultivar",
+  "count": 1419,
+  "height_m": {
+   "n": 1419,
+   "p50": 7.6,
+   "p90": 13.7,
+   "max": 35.0,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 1419,
+   "p50": 25.0,
+   "p90": 55.1,
+   "max": 106.4,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "NONE",
+    714
+   ],
+   [
+    "ARIE PETERS",
+    705
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Hastings-Sunrise",
+    215
+   ],
+   [
+    "Kensington-Cedar Cottage",
+    184
+   ],
+   [
+    "Victoria-Fraserview",
+    135
+   ],
+   [
+    "Killarney",
+    101
+   ],
+   [
+    "Renfrew-Collingwood",
+    93
+   ]
+  ],
+  "city_common_names": [
+   [
+    "FLOWERING ASH",
+    1419
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Medium",
+   "definition_as_printed": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk.",
+   "height_ft": [
+    25,
+    50
+   ],
+   "height_m": [
+    7.62,
+    15.24
+   ],
+   "width_ft": null,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "flat",
+  "depth_ratio_of_credited": 0.5,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1419,
+     "figure": "179",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1419",
+     "excavated_plant": {
+      "height_cm": 712.0,
+      "root_depth_cm": 81.0,
+      "root_system_diameter_cm": 1600.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.051,
+    "plates_used": 1
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "heart",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [
+   "V-300390"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Medium",
+    "botanical_as_printed": "Fraxinus Ornus",
+    "common_as_printed": "Flowering Ash"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Medium)",
+  "class_definitions": {
+   "Medium": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk."
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": null
+ },
+ "drawn_height_m": {
+  "value": 13.7,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 1419 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/fraxinus_ornus.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 40,
+  "hull_faces": 76,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

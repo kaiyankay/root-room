@@ -1,0 +1,144 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "elevation",
+   "description": "Elevation",
+   "annotations": {
+    "facet": true,
+    "facetsort": "num",
+    "unit": "m",
+    "decimals": 2
+   },
+   "label": "ELEVATION",
+   "type": "double"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "elevation-contour-lines-1-metre-contours",
+ "dataset_uid": "da_6uy3a9",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Elevation contour lines - 1-metre contours",
+   "description": "<div><p>\u200bThe 1 metre contours were generated from data acquired as part of the acquisition of orthophotos in 2002.\u00a0Contours at 2 and 10 metre intervals are available as separate datasets. They have not been updated since they were created and do not reflect changes that  have occurred since they were created.</p></div> <h3>Note</h3><div><p>\u200bThis dataset was created in 2002 and reflects conditions in\u00a02002.\u00a0 This data has not changed</p></div> <h3>Data accuracy</h3><div><p>\u200bThese must be considered as approximate because  they were digitized from orthophotos rather than being created using survey  techniques.</p></div> ",
+   "theme": [
+    "Geography and imagery"
+   ],
+   "keyword": null,
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2019-05-22T16:09:46+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": false,
+   "data_processed": "2023-07-28T22:54:34+00:00",
+   "metadata_processed": "2026-10-02T13:48:40.862000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "LineString"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02330366335809,
+        49.31407968979329
+       ],
+       [
+        -123.26635957695544,
+        49.31407968979329
+       ],
+       [
+        -123.26635957695544,
+        49.19972475618124
+       ],
+       [
+        -123.02330366335809,
+        49.19972475618124
+       ],
+       [
+        -123.02330366335809,
+        49.31407968979329
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 5929,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": null,
+   "change-log": null
+  }
+ }
+}

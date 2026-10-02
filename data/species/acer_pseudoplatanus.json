@@ -1,0 +1,205 @@
+{
+ "id": "acer_pseudoplatanus",
+ "genus": "ACER",
+ "species": "PSEUDOPLATANUS",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Sycamore Maple",
+  "latin": "Acer pseudoplatanus",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == ACER and first species word == PSEUDOPLATANUS; hybrid marker 'X' ignored; any cultivar",
+  "count": 2171,
+  "height_m": {
+   "n": 2171,
+   "p50": 13.7,
+   "p90": 16.8,
+   "max": 29.0,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 2171,
+   "p50": 40.6,
+   "p90": 61.0,
+   "max": 157.5,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "NONE",
+    1872
+   ],
+   [
+    "ATROPURPUREA",
+    171
+   ],
+   [
+    "LEOPOLDII",
+    123
+   ],
+   [
+    "PURPUREUM",
+    2
+   ],
+   [
+    "ERYTHROCARPUM",
+    1
+   ],
+   [
+    "NEGENIA",
+    1
+   ],
+   [
+    "PRINZ HANDJERY",
+    1
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Kitsilano",
+    250
+   ],
+   [
+    "Hastings-Sunrise",
+    247
+   ],
+   [
+    "Dunbar-Southlands",
+    246
+   ],
+   [
+    "Grandview-Woodland",
+    202
+   ],
+   [
+    "Riley Park",
+    149
+   ]
+  ],
+  "city_common_names": [
+   [
+    "SYCAMORE MAPLE",
+    1873
+   ],
+   [
+    "PURPLE LEAF SYCAMORE MAPLE",
+    171
+   ],
+   [
+    "VARIEGATED SYCAMORE MAPLE",
+    123
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": null,
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "flat",
+  "depth_ratio_of_credited": 0.5,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1389,
+     "figure": "150",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1389",
+     "excavated_plant": {
+      "height_cm": 612.0,
+      "root_depth_cm": 190.0,
+      "root_system_diameter_cm": 1637.0
+     }
+    },
+    {
+     "item_id": 1390,
+     "figure": "151",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1390",
+     "excavated_plant": {
+      "height_cm": 675.0,
+      "root_depth_cm": 180.0,
+      "root_system_diameter_cm": 1500.0
+     }
+    },
+    {
+     "item_id": 1391,
+     "figure": "152",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1391",
+     "excavated_plant": {
+      "height_cm": 726.0,
+      "root_depth_cm": 96.0,
+      "root_system_diameter_cm": 1659.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.098,
+    "plates_used": 3
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "heart",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [
+   "V-332826"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": false,
+  "provenance": "REFERENCE",
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14: not listed"
+ },
+ "drawn_height_m": {
+  "value": 16.8,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 2171 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/acer_pseudoplatanus.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 42,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

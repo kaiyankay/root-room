@@ -1,0 +1,232 @@
+{
+ "id": "acer_platanoides",
+ "genus": "ACER",
+ "species": "PLATANOIDES",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Norway Maple",
+  "latin": "Acer platanoides",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == ACER and first species word == PLATANOIDES; hybrid marker 'X' ignored; any cultivar",
+  "count": 12734,
+  "height_m": {
+   "n": 12734,
+   "p50": 10.7,
+   "p90": 19.8,
+   "max": 29.0,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 12731,
+   "p50": 33.0,
+   "p90": 73.0,
+   "max": 137.2,
+   "flagged_outliers": [
+    396.2,
+    408.9,
+    538.5
+   ]
+  },
+  "cultivars": [
+   [
+    "NONE",
+    6186
+   ],
+   [
+    "COLUMNARE",
+    1771
+   ],
+   [
+    "GLOBOSUM",
+    1356
+   ],
+   [
+    "EMERALD QUEEN",
+    789
+   ],
+   [
+    "PRINCETON GOLD",
+    705
+   ],
+   [
+    "DRUMMONDII",
+    367
+   ],
+   [
+    "SCHWEDLERI",
+    363
+   ],
+   [
+    "CRIMSON KING",
+    341
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Kerrisdale",
+    1213
+   ],
+   [
+    "Kitsilano",
+    1196
+   ],
+   [
+    "Shaughnessy",
+    1125
+   ],
+   [
+    "Dunbar-Southlands",
+    1108
+   ],
+   [
+    "Hastings-Sunrise",
+    865
+   ]
+  ],
+  "city_common_names": [
+   [
+    "NORWAY MAPLE",
+    6186
+   ],
+   [
+    "COLUMNAR NORWAY MAPLE",
+    1771
+   ],
+   [
+    "GLOBEHEAD NORWAY MAPLE",
+    1356
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {
+   "COLUMNARE": "columnar"
+  }
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Large",
+   "definition_as_printed": "Trees over 50 ' in height and 25 ' in width. Suitable for boulevards with no overhead obstructions and > 10 ' of width.",
+   "height_ft_min": 50,
+   "width_ft_min": 25,
+   "width_m_min": 7.62,
+   "height_m_min": 15.24,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "flat",
+  "depth_ratio_of_credited": 0.5,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1392,
+     "figure": "153",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1392",
+     "excavated_plant": {
+      "height_cm": 1206.0,
+      "root_depth_cm": 285.0,
+      "root_system_diameter_cm": 1965.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "flat",
+    "mean_depth_over_diameter": 0.145,
+    "plates_used": 1
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "heart",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [
+   "KE-198571",
+   "KE-198578",
+   "KE-198598",
+   "V-10880"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Large",
+    "botanical_as_printed": "Acer Platanoides",
+    "common_as_printed": "Norway Maple"
+   },
+   {
+    "class": "Small",
+    "botanical_as_printed": "Acer Platanoides 'Globosum'",
+    "common_as_printed": "Globe Maple"
+   },
+   {
+    "class": "Columnar",
+    "botanical_as_printed": "Acer Platanoides 'Columnar' 'olmstead' 'Crimson Sentry' 'Cleveland'",
+    "common_as_printed": "Columnar Norway Maple"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Columnar, Large, Small)",
+  "class_definitions": {
+   "Large": "Trees over 50 ' in height and 25 ' in width. Suitable for boulevards with no overhead obstructions and > 10 ' of width.",
+   "Small": "Trees maturing twenty-five (25) feet. Suitable for locating at or below overhead electrical conductors",
+   "Columnar": "Trees exhibiting a distinct upright branch arrangement. Suitable for locating in confined situations or on tree lawns offset from overhead electrical conductors."
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": null
+ },
+ "drawn_height_m": {
+  "value": 19.8,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 12734 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/acer_platanoides.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 50,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

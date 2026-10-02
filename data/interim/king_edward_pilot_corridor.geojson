@@ -1,0 +1,1710 @@
+{
+ "type": "FeatureCollection",
+ "pilot_metadata": {
+  "extracted_on": "2026-09-15",
+  "corridor": "W KING EDWARD AV, HEATHER ST to ONTARIO ST",
+  "corridor_hblocks": [
+   "0 W KING EDWARD AV",
+   "100 W KING EDWARD AV",
+   "200-300 W KING EDWARD AV",
+   "400 W KING EDWARD AV",
+   "500 W KING EDWARD AV",
+   "600 W KING EDWARD AV"
+  ],
+  "west_endpoint_chainage_m": 0.0,
+  "east_endpoint_chainage_m": 1118.7,
+  "corridor_length_m": 1118.7,
+  "cross_street_chainage_m": {
+   "HEATHER ST": [
+    0.0
+   ],
+   "ASH ST": [
+    141.4
+   ],
+   "CAMBIE ST": [
+    360.8
+   ],
+   "YUKON ST": [
+    547.8,
+    594.4
+   ],
+   "COLUMBIA ST": [
+    750.3
+   ],
+   "MANITOBA ST": [
+    939.9
+   ],
+   "ONTARIO ST": [
+    1118.7
+   ]
+  },
+  "parameters": {
+   "candidate_halfwidth_m": 40.0,
+   "candidate_end_margin_m": 40.0,
+   "ke_max_perp_m": 17.0,
+   "endpoint_zone_m": 20.0,
+   "end_tolerance_m": 5.0,
+   "median_max_m": 3.0
+  },
+  "sources": [
+   "data/raw/public-trees.geojson",
+   "data/raw/vanmap-environment-trees-layer32/page_*.geojson",
+   "data/raw/public-streets.geojson"
+  ]
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11470458703292,
+      49.24897825217147
+     ],
+     [
+      -123.11540605835667,
+      49.24899087552693
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "400 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11505532269479,
+     "lat": 49.248984563849206
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1121923698447,
+      49.2489345016024
+     ],
+     [
+      -123.11283439525985,
+      49.248945804023876
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "400 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11251338255228,
+     "lat": 49.248940152813134
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11283439525985,
+      49.248945804023876
+     ],
+     [
+      -123.11431388648144,
+      49.24897167710695
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "400 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11357414087064,
+     "lat": 49.24895874056541
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10744904673567,
+      49.248888655161906
+     ],
+     [
+      -123.10990726782256,
+      49.248931094030404
+     ],
+     [
+      -123.11004822417173,
+      49.248896616065345
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "100 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.10875058715415,
+     "lat": 49.24891009643835
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1161068416539,
+      49.249002919620104
+     ],
+     [
+      -123.11649447928028,
+      49.24900980654286
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "500 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11630066046709,
+     "lat": 49.249006363081484
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11842499985548,
+      49.249043428931984
+     ],
+     [
+      -123.12036974492658,
+      49.2490771931433
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "600 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11939737239103,
+     "lat": 49.24906031103764
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11004822417173,
+      49.248896616065345
+     ],
+     [
+      -123.1121923698447,
+      49.2489345016024
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "200-300 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11112029700823,
+     "lat": 49.24891555883387
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10498909784886,
+      49.24884586871686
+     ],
+     [
+      -123.10744904673567,
+      49.248888655161906
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "0 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.10621907229226,
+     "lat": 49.24886726193938
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11649447928028,
+      49.24900980654286
+     ],
+     [
+      -123.11842499985548,
+      49.249043428931984
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "500 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11745973956788,
+     "lat": 49.24902661773742
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11540605835667,
+      49.24899087552693
+     ],
+     [
+      -123.1161068416539,
+      49.249002919620104
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "500 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11575645000528,
+     "lat": 49.24899689757353
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11431388648144,
+      49.24897167710695
+     ],
+     [
+      -123.11470458703292,
+      49.24897825217147
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "400 W KING EDWARD AV",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11450923675719,
+     "lat": 49.24897496463921
+    },
+    "role": "ke_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.12036974492658,
+     49.2490771931433
+    ]
+   },
+   "properties": {
+    "role": "west_endpoint",
+    "streets": [
+     "600 W KING EDWARD AV",
+     "4000 HEATHER ST"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.10498909784886,
+     49.24884586871686
+    ]
+   },
+   "properties": {
+    "role": "east_endpoint",
+    "streets": [
+     "0 W KING EDWARD AV",
+     "4100 ONTARIO ST"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1203364029604,
+      49.250080519690584
+     ],
+     [
+      -123.12035257696996,
+      49.24960610350506
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12034448996519,
+     "lat": 49.24984331159782
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1203933021477,
+      49.2484919029644
+     ],
+     [
+      -123.1204121388418,
+      49.248033657289746
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12040272049475,
+     "lat": 49.24826278012708
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.12036974492658,
+      49.2490771931433
+     ],
+     [
+      -123.1203933021477,
+      49.2484919029644
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12038152353712,
+     "lat": 49.24878454805385
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.12028172537241,
+      49.25158391287084
+     ],
+     [
+      -123.12031450265896,
+      49.250680982918
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12029811401568,
+     "lat": 49.25113244789442
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.12031450265896,
+      49.250680982918
+     ],
+     [
+      -123.1203364029604,
+      49.250080519690584
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3900 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12032545280968,
+     "lat": 49.25038075130429
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.12043160179351,
+      49.2475731711099
+     ],
+     [
+      -123.1204504305344,
+      49.247111938946716
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12044101616397,
+     "lat": 49.24734255502831
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1204121388418,
+      49.248033657289746
+     ],
+     [
+      -123.12043160179351,
+      49.2475731711099
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12042187031766,
+     "lat": 49.24780341419982
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.12035257696996,
+      49.24960610350506
+     ],
+     [
+      -123.12036974492658,
+      49.2490771931433
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 HEATHER ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.12036116094828,
+     "lat": 49.249341648324176
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11846784579801,
+      49.24799941658599
+     ],
+     [
+      -123.11848540365327,
+      49.247539121589405
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11847662472564,
+     "lat": 49.2477692690877
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11839062948354,
+      49.2500468908958
+     ],
+     [
+      -123.1184068493077,
+      49.24957234900465
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11839873939562,
+     "lat": 49.24980961995023
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11842499985548,
+      49.249043428931984
+     ],
+     [
+      -123.1184497226112,
+      49.24845901948986
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11843736123333,
+     "lat": 49.24875122421092
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11836940397886,
+      49.25064634559488
+     ],
+     [
+      -123.11839062948354,
+      49.2500468908958
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3900 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11838001673121,
+     "lat": 49.250346618245345
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11848540365327,
+      49.247539121589405
+     ],
+     [
+      -123.1185054896297,
+      49.24707894089804
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11849544664148,
+     "lat": 49.247309031243724
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1183528630962,
+      49.25109608788252
+     ],
+     [
+      -123.11836940397886,
+      49.25064634559488
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11836113353753,
+     "lat": 49.2508712167387
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11833779294255,
+      49.251546125468536
+     ],
+     [
+      -123.1183528630962,
+      49.25109608788252
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11834532801939,
+     "lat": 49.25132110667553
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1184497226112,
+      49.24845901948986
+     ],
+     [
+      -123.11846784579801,
+      49.24799941658599
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.1184587842046,
+     "lat": 49.24822921803792
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1184068493077,
+      49.24957234900465
+     ],
+     [
+      -123.11842499985548,
+      49.249043428931984
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 ASH ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.1184159245816,
+     "lat": 49.24930788896832
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11540605835667,
+      49.24899087552693
+     ],
+     [
+      -123.11544888586953,
+      49.24794703523522
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 CAMBIE ST",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.1154274721131,
+     "lat": 49.24846895538107
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11531269753132,
+      49.25120010667636
+     ],
+     [
+      -123.11535912021056,
+      49.25009353951042
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 CAMBIE ST",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11533590887096,
+     "lat": 49.25064682309339
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11535912021056,
+      49.25009353951042
+     ],
+     [
+      -123.11540605835667,
+      49.24899087552693
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 CAMBIE ST",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.11538258928361,
+     "lat": 49.24954220751867
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11544888586953,
+      49.24794703523522
+     ],
+     [
+      -123.11550934711167,
+      49.2470240370515
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 CAMBIE ST",
+    "streetuse": "Arterial",
+    "geo_point_2d": {
+     "lon": -123.1154791164906,
+     "lat": 49.24748553614336
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11278633288693,
+      49.25006263553755
+     ],
+     [
+      -123.11280904566594,
+      49.24953757990193
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11279768927643,
+     "lat": 49.24980010771974
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11276339785417,
+      49.25058684578627
+     ],
+     [
+      -123.11278633288693,
+      49.25006263553755
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11277486537053,
+     "lat": 49.25032474066191
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11221499417924,
+      49.24842242618477
+     ],
+     [
+      -123.1122386610578,
+      49.247885549852775
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11222682761851,
+     "lat": 49.24815398801877
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11274065517149,
+      49.251111253689785
+     ],
+     [
+      -123.11276339785417,
+      49.25058684578627
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11275202651282,
+     "lat": 49.25084904973803
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1122386610578,
+      49.247885549852775
+     ],
+     [
+      -123.1122600558609,
+      49.247425494951514
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11224935845935,
+     "lat": 49.24765552240214
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11280904566594,
+      49.24953757990193
+     ],
+     [
+      -123.11283439525985,
+      49.248945804023876
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.1128217204629,
+     "lat": 49.24924169196291
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1122600558609,
+      49.247425494951514
+     ],
+     [
+      -123.11227757816418,
+      49.2469605143856
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11226881701253,
+     "lat": 49.24719300466856
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1121923698447,
+      49.2489345016024
+     ],
+     [
+      -123.11221499417924,
+      49.24842242618477
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 YUKON ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11220368201197,
+     "lat": 49.24867846389358
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11002166562743,
+      49.24948492032214
+     ],
+     [
+      -123.11004822417173,
+      49.248896616065345
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11003494489957,
+     "lat": 49.24919076819374
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11006856318356,
+      49.2483849480323
+     ],
+     [
+      -123.1100800279406,
+      49.247942326801635
+     ],
+     [
+      -123.11008995186266,
+      49.24784499794421
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11007623092718,
+     "lat": 49.24811477976911
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10999890909063,
+      49.25000975956351
+     ],
+     [
+      -123.11002166562743,
+      49.24948492032214
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11001028735903,
+     "lat": 49.24974733994283
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.11004822417173,
+      49.248896616065345
+     ],
+     [
+      -123.11005426708905,
+      49.24877166657466
+     ],
+     [
+      -123.11006856318356,
+      49.2483849480323
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.11005893082887,
+     "lat": 49.248640804965795
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10995403961024,
+      49.25105906847198
+     ],
+     [
+      -123.1099766184341,
+      49.2505342205094
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10996532902217,
+     "lat": 49.25079664449069
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.1099766184341,
+      49.2505342205094
+     ],
+     [
+      -123.10999890909063,
+      49.25000975956351
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 COLUMBIA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10998776376239,
+     "lat": 49.25027199003645
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10735618449162,
+      49.25100986108675
+     ],
+     [
+      -123.10737952006063,
+      49.25048545369676
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10736785227613,
+     "lat": 49.250747657391756
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10742526792778,
+      49.24943609090834
+     ],
+     [
+      -123.10744904673567,
+      49.248888655161906
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10743715733172,
+     "lat": 49.24916237303512
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10749472582427,
+      49.24779628591963
+     ],
+     [
+      -123.10752692164968,
+      49.24706345943712
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10751082373697,
+     "lat": 49.247429872678374
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10740264778333,
+      49.24996047075276
+     ],
+     [
+      -123.10742526792778,
+      49.24943609090834
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10741395785556,
+     "lat": 49.24969828083055
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10747094361403,
+      49.248341688860926
+     ],
+     [
+      -123.10749472582427,
+      49.24779628591963
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10748283471915,
+     "lat": 49.248068987390276
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10753430773889,
+      49.24689617722725
+     ],
+     [
+      -123.10754932811827,
+      49.2468847123149
+     ],
+     [
+      -123.10759888651384,
+      49.24684598667087
+     ],
+     [
+      -123.1076474131247,
+      49.24680670426227
+     ],
+     [
+      -123.10769489423134,
+      49.24676687409844
+     ],
+     [
+      -123.10774130237445,
+      49.24672650520149
+     ],
+     [
+      -123.1077866238544,
+      49.24668561557592
+     ],
+     [
+      -123.10783084495218,
+      49.24664421423107
+     ],
+     [
+      -123.10787396568878,
+      49.2466023101634
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10770728764433,
+     "lat": 49.2467528808324
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10737952006063,
+      49.25048545369676
+     ],
+     [
+      -123.10740264778333,
+      49.24996047075276
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10739108392197,
+     "lat": 49.25022296222476
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10752692164968,
+      49.24706345943712
+     ],
+     [
+      -123.10753430773889,
+      49.24689617722725
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10753061469428,
+     "lat": 49.246979818332186
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10744904673567,
+      49.248888655161906
+     ],
+     [
+      -123.10747094361403,
+      49.248341688860926
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 MANITOBA ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10745999517485,
+     "lat": 49.24861517201141
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10496495375223,
+      49.24938937337185
+     ],
+     [
+      -123.10498909784886,
+      49.24884586871686
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10497702580054,
+     "lat": 49.249117621044356
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10503772363565,
+      49.24775033145156
+     ],
+     [
+      -123.10505097144139,
+      49.2473109923201
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4200 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10504434753852,
+     "lat": 49.24753066188583
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10498909784886,
+      49.24884586871686
+     ],
+     [
+      -123.10500969218036,
+      49.248300370290835
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10499939501462,
+     "lat": 49.248573119503845
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10491706504224,
+      49.25043868315514
+     ],
+     [
+      -123.10494092074137,
+      49.24991422176789
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.1049289928918,
+     "lat": 49.25017645246152
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10494092074137,
+      49.24991422176789
+     ],
+     [
+      -123.10495700069721,
+      49.24956570505713
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3900 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10494896071928,
+     "lat": 49.24973996341251
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10489437670532,
+      49.25096308046306
+     ],
+     [
+      -123.10491706504224,
+      49.25043868315514
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "3800 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10490572087376,
+     "lat": 49.250700881809095
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10500969218036,
+      49.248300370290835
+     ],
+     [
+      -123.10502352543361,
+      49.24807856232917
+     ],
+     [
+      -123.10503772363565,
+      49.24775033145156
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4100 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10502496917589,
+     "lat": 49.24802541747436
+    },
+    "role": "cross_street_centreline"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "coordinates": [
+     [
+      -123.10495700069721,
+      49.24956570505713
+     ],
+     [
+      -123.10496495375223,
+      49.24938937337185
+     ]
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "hblock": "4000 ONTARIO ST",
+    "streetuse": "Residential",
+    "geo_point_2d": {
+     "lon": -123.10496097722472,
+     "lat": 49.24947753921449
+    },
+    "role": "cross_street_centreline"
+   }
+  }
+ ]
+}

@@ -1,0 +1,153 @@
+{
+ "sidewalk-condition-rating": {
+  "dataset_id": "sidewalk-condition-rating",
+  "title": "Sidewalk condition rating 2021",
+  "records_count": 15580,
+  "data_modified": "2025-07-28T13:14:34+00:00",
+  "data_processed": "2026-08-28T13:50:38+00:00",
+  "licence": "Open Government Licence - Vancouver",
+  "publisher": "City of Vancouver",
+  "fields": [
+   "object_id",
+   "hundred_block",
+   "sidewalk_condition_index_rating",
+   "geom",
+   "geo_point_2d"
+  ],
+  "description": "<div><p>Sidewalk condition data, collected in 2021, is used to report the overall sidewalk condition index (SCI) at the network level and expresses the overall condition of a sidewalk segment by considering surface distresses identified manually in the field.</p><p>Distresses were collected as point data. Distress points were averaged to reflect the overall SCI for the entire width and length of the sidewalk segment.</p><p>The City plans to collect sidewalk condition data every 4 years.</p><p>The City used American Society of Testing Materials (ASTM) D6433 standard as a reference and customize",
+  "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/sidewalk-condition-rating/exports/geojson",
+  "features_saved": 15580,
+  "saved_as": "data/raw/ground/sidewalk-condition-rating.geojson",
+  "rating_counts": {
+   "Very Good": 8631,
+   "Very Poor": 808,
+   "Good": 3527,
+   "Fair": 1793,
+   "Poor": 821
+  },
+  "grade": "CITY_DATA",
+  "survey_year": 2021,
+  "note": "Sidewalk Condition Index per hundred-block segment; a surface-distress rating, not a cause",
+  "fetched_on": "2026-09-28"
+ },
+ "311_2022_on": {
+  "dataset_id": "3-1-1-service-requests",
+  "title": "3-1-1 service requests",
+  "records_count": 1297198,
+  "data_modified": "2026-09-28T14:21:52+00:00",
+  "data_processed": "2026-09-28T14:21:52+00:00",
+  "licence": "Open Government Licence - Vancouver",
+  "publisher": "City of Vancouver",
+  "fields": [
+   "department",
+   "service_request_type",
+   "status",
+   "closure_reason",
+   "service_request_open_timestamp",
+   "service_request_close_date",
+   "last_modified_timestamp",
+   "address",
+   "local_area",
+   "channel",
+   "latitude",
+   "longitude",
+   "geom"
+  ],
+  "description": "<div><p>Customer initiated service requests received by 3-1-1 Contact Centre from 2022. Service requests refer only to those call types that generate a requ​​es​​t to a City of Vancouver department to provide service.</p><p>This dataset contains location information such as address or intersection where service was requested and the local area corresponding to the case (incident) location. ​<br></p><p>Due to the volume of records, we segmented the service requests data into multiple datasets. See <a href=\"https://opendata.vancouver.ca/explore/dataset/3-1-1-service-requests-2009-2021/informatio",
+  "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/3-1-1-service-requests/exports/csv?where=service_request_type+in+%28%22City+and+Park+Trees+Maintenance+Case%22%2C%22Boulevard+Maintenance+Case%22%2C%22External+Utility+Concern+Case%22%29+and+latitude+is+not+null&delimiter=%3B",
+  "where": "service_request_type in (\"City and Park Trees Maintenance Case\",\"Boulevard Maintenance Case\",\"External Utility Concern Case\") and latitude is not null",
+  "rows_saved": 55730,
+  "saved_as": "data/raw/ground/311_2022_on.csv",
+  "type_counts": {
+   "City and Park Trees Maintenance Case": 52014,
+   "Boulevard Maintenance Case": 2652,
+   "External Utility Concern Case": 1064
+  },
+  "grade": "CITY_DATA",
+  "note": "case counts only; closure reasons are administrative, not diagnoses; addresses geolocated by the City",
+  "fetched_on": "2026-09-28"
+ },
+ "311_2009_2021": {
+  "dataset_id": "3-1-1-service-requests-2009-2021",
+  "title": "3-1-1 service requests 2009-2021",
+  "records_count": 2083091,
+  "data_modified": "2024-04-24T20:08:41+00:00",
+  "data_processed": "2024-04-24T22:32:28+00:00",
+  "licence": "Open Government Licence - Vancouver",
+  "publisher": "City of Vancouver",
+  "fields": [
+   "department",
+   "service_request_type",
+   "status",
+   "closure_reason",
+   "service_request_open_timestamp",
+   "service_request_close_date",
+   "last_modified_timestamp",
+   "address",
+   "local_area",
+   "channel",
+   "latitude",
+   "longitude",
+   "geom"
+  ],
+  "description": "<div><p>Customer initiated service requests received by 3-1-1 Contact Centre from 2009 to 2021. Service requests refer only to those call types that generate a request to a City of Vancouver department to provide service. </p><p>This dataset contains location information such as address or intersection where service was requested and the local area corresponding to the case (incident) location.​<br></p><p>Due to the volume of records, we segmented the service requests data into multiple datasets. See <a href=\"https://opendata.vancouver.ca/explore/dataset/3-1-1-service-requests/information/\">3-",
+  "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/3-1-1-service-requests-2009-2021/exports/csv?where=service_request_type+in+%28%22City+and+Park+Trees+Maintenance+Case%22%2C%22Boulevard+Maintenance+Case%22%2C%22External+Utility+Concern+Case%22%29+and+latitude+is+not+null&delimiter=%3B",
+  "where": "service_request_type in (\"City and Park Trees Maintenance Case\",\"Boulevard Maintenance Case\",\"External Utility Concern Case\") and latitude is not null",
+  "rows_saved": 90985,
+  "saved_as": "data/raw/ground/311_2009_2021.csv",
+  "type_counts": {
+   "City and Park Trees Maintenance Case": 84947,
+   "Boulevard Maintenance Case": 6038
+  },
+  "grade": "CITY_DATA",
+  "note": "case counts only; closure reasons are administrative, not diagnoses; addresses geolocated by the City",
+  "fetched_on": "2026-09-28"
+ },
+ "gwells": {
+  "source": "Province of British Columbia, GWELLS (Groundwater Wells and Aquifers) REST API v1",
+  "api": "https://apps.nrs.gov.bc.ca/gwells/api/v1",
+  "bbox": {
+   "sw_lat": 49.195,
+   "sw_long": -123.23,
+   "ne_lat": 49.32,
+   "ne_long": -123.02
+  },
+  "wells_saved": 323,
+  "wells_with_lithology": 158,
+  "saved_as": "data/raw/ground/gwells_vancouver.geojson",
+  "licence": "Open Government Licence – British Columbia (data.gov.bc.ca)",
+  "grade": "PROVINCIAL_RECORD",
+  "fields_kept": [
+   "well_tag_number",
+   "well_class",
+   "well_subclass",
+   "intended_water_use",
+   "well_status",
+   "street_address",
+   "city",
+   "latitude",
+   "longitude",
+   "coordinate_acquisition_code",
+   "ground_elevation",
+   "ground_elevation_method",
+   "construction_start_date",
+   "construction_end_date",
+   "finished_well_depth",
+   "total_depth_drilled",
+   "static_water_level",
+   "drilling_methods",
+   "well_location_description",
+   "legal_district_lot",
+   "lithology[start,end,lithology_raw_data,lithology_colour,lithology_hardness,...]"
+  ],
+  "units": "lithology start/end as served (GWELLS stores feet in these fields; see data dictionary); coordinates WGS84",
+  "note": "a logged well is a point record at a distance; the tool names the nearest one and its distance and never interpolates",
+  "fetched_on": "2026-09-28"
+ },
+ "catalog_scan": {
+  "datasets_total": 200,
+  "saved_as": "data/raw/ground/catalog_landscape_scan.json",
+  "with_keyword_hit": 121,
+  "fetched_on": "2026-09-28"
+ }
+}

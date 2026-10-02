@@ -1,0 +1,38 @@
+{
+  "dataset": "king_edward_pilot_user_inputs",
+  "schema": "sources/06_data_schema.json",
+  "schema_version": "1.1",
+  "layer_note": "User / designer input layer for Round 2B. Values here are layered onto Round 2A SITE records by src/site_inputs.py; they never overwrite City-derived fields. Only USER_INPUT or CONFIRMED_SITE_DATA provenance is accepted in `inputs`. CONFIRMED_SITE_DATA requires an evidence reference in `evidence`.",
+  "illustrative_note": "The inputs for KE-198571 are ILLUSTRATIVE ONLY. They are not confirmed site data, were not measured on site, and must not be used as defaults for any other site.",
+  "sites": [
+    {
+      "site_id": "KE-198571",
+      "entered_by": "project designer (illustrative example)",
+      "entered_on": "2026-09-16",
+      "evidence": "none — illustrative values for the Round 2B worked example; no survey or drawing reference",
+      "inputs": {
+        "planting_condition": {"value": "solitary", "provenance": "USER_INPUT", "status": "KNOWN"},
+        "soil_area_m2": {"value": 12, "provenance": "USER_INPUT", "status": "KNOWN"},
+        "soil_depth_m": {"value": 0.9, "provenance": "USER_INPUT", "status": "KNOWN"},
+        "soil_type": {"value": "native_soil", "provenance": "USER_INPUT", "status": "KNOWN"},
+        "target_tree_class": {"value": "Medium", "provenance": "USER_INPUT", "status": "KNOWN"}
+      },
+      "input_notes": {
+        "target_tree_class": "User-selected benchmark class for the soil-volume comparison. Not inferred from the species (Acer truncatum 'Pacific Sunset'); R17 remains unresolved for species-to-class mapping.",
+        "soil_area_m2": "Confirmed numeric input for Round 2B; not measured from geometry (R04 not used)."
+      },
+      "design_scenarios": [
+        {
+          "name": "Scenario A — wider soil footprint",
+          "overrides": {"soil_area_m2": 18, "soil_depth_m": 0.9},
+          "note": "Test fixture: expand footprint at the same depth. Overrides are applied as DESIGN_ASSUMPTION by the engine."
+        },
+        {
+          "name": "Scenario B — wider footprint and deeper soil",
+          "overrides": {"soil_area_m2": 18, "soil_depth_m": 1.2},
+          "note": "Test fixture: expand footprint and depth. Overrides are applied as DESIGN_ASSUMPTION by the engine."
+        }
+      ]
+    }
+  ]
+}

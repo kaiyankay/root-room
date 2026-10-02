@@ -1,0 +1,151 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {},
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "width",
+   "description": null,
+   "annotations": {
+    "facetsort": "-count",
+    "sortable": true,
+    "facet": true
+   },
+   "label": "Width",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "right-of-way-widths",
+ "dataset_uid": "da_8peh21",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "right_of_way_widthsdwg",
+   "title": "right-of-way_widths.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/right-of-way-widths/alternative_exports/right_of_way_widthsdwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Right-of-way widths",
+   "description": "<div><p>This dataset contains the widths of City rights-of-way.  The street right-of-way widths are the legal, property-line-to-property-line widths of City-owned road. Note this is NOT the physically constructed curb-to-curb distance.</p></div> <h3>Data currency</h3><div><p>The extract for this dataset is updated weekly.  There may be no change in data content from one week to the next because there is no change in source data.  Priorities and resources will also determine how fast a change in reality is reflected in the database.</p></div> <h3>Data accuracy</h3><div><p>These widths should be considered as approximate, however, they should be very close to the true width.</p></div> ",
+   "theme": [
+    "Streets and transportation"
+   ],
+   "keyword": [
+    "street"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-09-28T13:35:10+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-09-28T13:35:10+00:00",
+   "metadata_processed": "2026-10-02T13:47:14.836000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.01240123808384,
+        49.294414445757866
+       ],
+       [
+        -123.22385645471513,
+        49.294414445757866
+       ],
+       [
+        -123.22385645471513,
+        49.20055205002427
+       ],
+       [
+        -123.01240123808384,
+        49.20055205002427
+       ],
+       [
+        -123.01240123808384,
+        49.294414445757866
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 26860,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": "right, way, ROW",
+   "change-log": "https://opendata.vancouver.ca/explore/dataset/open-data-change-log/log/?disjunctive.datasets&amp;sort=logdate&amp;refine.datasetids=right-of-way-widths"
+  }
+ }
+}

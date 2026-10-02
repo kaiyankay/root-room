@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"coordinates": [-123.11533610484715, 49.24912287838039], "type": "Point"}, "properties": {"station": "King Edward", "geo_local_area": "Riley Park", "geo_point_2d": {"lon": -123.11533610484715, "lat": 49.24912287838039}}}]}

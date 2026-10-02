@@ -1,0 +1,577 @@
+{
+ "built_on": "2026-09-29",
+ "built_by": "scripts/batch_faces.py",
+ "source": "data/processed/citywide_faces.json",
+ "measure": "per local area: sample block faces run with the batch knobs; 'largest_class_fits' counts faces; review_share = trees whose share is REVIEW_REQUIRED / trees on the run faces",
+ "provenance": "DERIVED_CALCULATION on DESIGN_ASSUMPTION knobs (batch); not a City record",
+ "areas": {
+  "Arbutus Ridge": {
+   "faces_attempted": 16,
+   "faces_run": 8,
+   "windows": [
+    "wm123_156_p49_252",
+    "wm123_160_p49_248",
+    "wm123_160_p49_252",
+    "wm123_164_p49_240"
+   ],
+   "largest_class_fits": {
+    "Large": 0,
+    "Medium": 0,
+    "Small": 3,
+    "none": 0,
+    "unknown": 5
+   },
+   "trees": 100,
+   "trees_review": 79,
+   "review_share": 0.79,
+   "front_boulevard_median_m": 3.16,
+   "large_fits_share": 0.0,
+   "failures": {
+    "face not measurable": 7,
+    "no catch basin on this face": 1
+   }
+  },
+  "Downtown": {
+   "faces_attempted": 14,
+   "faces_run": 9,
+   "windows": [
+    "wm123_120_p49_288",
+    "wm123_124_p49_272",
+    "wm123_124_p49_288",
+    "wm123_128_p49_272"
+   ],
+   "largest_class_fits": {
+    "Large": 0,
+    "Medium": 0,
+    "Small": 5,
+    "none": 1,
+    "unknown": 3
+   },
+   "trees": 96,
+   "trees_review": 68,
+   "review_share": 0.708,
+   "front_boulevard_median_m": 1.45,
+   "large_fits_share": 0.0,
+   "failures": {
+    "face not measurable": 4,
+    "no catch basin on this face": 1
+   }
+  },
+  "Dunbar-Southlands": {
+   "faces_attempted": 15,
+   "faces_run": 10,
+   "windows": [
+    "wm123_180_p49_252",
+    "wm123_188_p49_244",
+    "wm123_188_p49_252",
+    "wm123_192_p49_244"
+   ],
+   "largest_class_fits": {
+    "Large": 2,
+    "Medium": 1,
+    "Small": 2,
+    "none": 2,
+    "unknown": 3
+   },
+   "trees": 164,
+   "trees_review": 110,
+   "review_share": 0.671,
+   "front_boulevard_median_m": 3.41,
+   "large_fits_share": 0.2,
+   "failures": {
+    "no catch basin on this face": 2,
+    "face not measurable": 3
+   }
+  },
+  "Fairview": {
+   "faces_attempted": 11,
+   "faces_run": 10,
+   "windows": [
+    "wm123_120_p49_264",
+    "wm123_136_p49_268",
+    "wm123_140_p49_268",
+    "wm123_144_p49_260"
+   ],
+   "largest_class_fits": {
+    "Large": 1,
+    "Medium": 3,
+    "Small": 1,
+    "none": 1,
+    "unknown": 4
+   },
+   "trees": 113,
+   "trees_review": 87,
+   "review_share": 0.77,
+   "front_boulevard_median_m": 2.46,
+   "large_fits_share": 0.1,
+   "failures": {
+    "no catch basin on this face": 1
+   }
+  },
+  "Grandview-Woodland": {
+   "faces_attempted": 15,
+   "faces_run": 10,
+   "windows": [
+    "wm123_060_p49_272",
+    "wm123_064_p49_264",
+    "wm123_064_p49_268",
+    "wm123_068_p49_272"
+   ],
+   "largest_class_fits": {
+    "Large": 3,
+    "Medium": 1,
+    "Small": 2,
+    "none": 2,
+    "unknown": 2
+   },
+   "trees": 102,
+   "trees_review": 63,
+   "review_share": 0.618,
+   "front_boulevard_median_m": 2.98,
+   "large_fits_share": 0.3,
+   "failures": {
+    "face not measurable": 1,
+    "no catch basin on this face": 4
+   }
+  },
+  "Hastings-Sunrise": {
+   "faces_attempted": 15,
+   "faces_run": 10,
+   "windows": [
+    "wm123_028_p49_272",
+    "wm123_032_p49_272",
+    "wm123_032_p49_284",
+    "wm123_044_p49_284"
+   ],
+   "largest_class_fits": {
+    "Large": 3,
+    "Medium": 2,
+    "Small": 0,
+    "none": 0,
+    "unknown": 5
+   },
+   "trees": 116,
+   "trees_review": 62,
+   "review_share": 0.534,
+   "front_boulevard_median_m": 2.87,
+   "large_fits_share": 0.3,
+   "failures": {
+    "face not measurable": 2,
+    "no catch basin on this face": 3
+   }
+  },
+  "Kensington-Cedar Cottage": {
+   "faces_attempted": 12,
+   "faces_run": 10,
+   "windows": [
+    "wm123_060_p49_260",
+    "wm123_068_p49_236",
+    "wm123_084_p49_240"
+   ],
+   "largest_class_fits": {
+    "Large": 3,
+    "Medium": 2,
+    "Small": 2,
+    "none": 0,
+    "unknown": 3
+   },
+   "trees": 145,
+   "trees_review": 70,
+   "review_share": 0.483,
+   "front_boulevard_median_m": 2.36,
+   "large_fits_share": 0.3,
+   "failures": {
+    "no catch basin on this face": 1,
+    "face not measurable": 1
+   }
+  },
+  "Kerrisdale": {
+   "faces_attempted": 12,
+   "faces_run": 2,
+   "windows": [
+    "wm123_152_p49_208",
+    "wm123_160_p49_224",
+    "wm123_168_p49_220",
+    "wm123_172_p49_220"
+   ],
+   "largest_class_fits": {
+    "Large": 0,
+    "Medium": 0,
+    "Small": 0,
+    "none": 0,
+    "unknown": 2
+   },
+   "trees": 44,
+   "trees_review": 44,
+   "review_share": 1.0,
+   "front_boulevard_median_m": 1.83,
+   "large_fits_share": 0.0,
+   "failures": {
+    "face not measurable": 6,
+    "no catch basin on this face": 4
+   }
+  },
+  "Killarney": {
+   "faces_attempted": 12,
+   "faces_run": 7,
+   "windows": [
+    "wm123_040_p49_224",
+    "wm123_044_p49_228",
+    "wm123_048_p49_208",
+    "wm123_052_p49_212"
+   ],
+   "largest_class_fits": {
+    "Large": 5,
+    "Medium": 0,
+    "Small": 1,
+    "none": 0,
+    "unknown": 1
+   },
+   "trees": 73,
+   "trees_review": 20,
+   "review_share": 0.274,
+   "front_boulevard_median_m": 2.94,
+   "large_fits_share": 0.714,
+   "failures": {
+    "face not measurable": 3,
+    "no catch basin on this face": 2
+   }
+  },
+  "Kitsilano": {
+   "faces_attempted": 16,
+   "faces_run": 9,
+   "windows": [
+    "wm123_152_p49_260",
+    "wm123_156_p49_260",
+    "wm123_156_p49_264",
+    "wm123_176_p49_260"
+   ],
+   "largest_class_fits": {
+    "Large": 4,
+    "Medium": 0,
+    "Small": 2,
+    "none": 1,
+    "unknown": 2
+   },
+   "trees": 87,
+   "trees_review": 51,
+   "review_share": 0.586,
+   "front_boulevard_median_m": 2.94,
+   "large_fits_share": 0.444,
+   "failures": {
+    "face not measurable": 6,
+    "no catch basin on this face": 1
+   }
+  },
+  "Marpole": {
+   "faces_attempted": 13,
+   "faces_run": 10,
+   "windows": [
+    "wm123_116_p49_216",
+    "wm123_128_p49_216",
+    "wm123_136_p49_212",
+    "wm123_148_p49_212"
+   ],
+   "largest_class_fits": {
+    "Large": 1,
+    "Medium": 0,
+    "Small": 2,
+    "none": 0,
+    "unknown": 7
+   },
+   "trees": 123,
+   "trees_review": 112,
+   "review_share": 0.911,
+   "front_boulevard_median_m": 2.75,
+   "large_fits_share": 0.1,
+   "failures": {
+    "face not measurable": 2,
+    "no catch basin on this face": 1
+   }
+  },
+  "Mount Pleasant": {
+   "faces_attempted": 16,
+   "faces_run": 7,
+   "windows": [
+    "wm123_084_p49_264",
+    "wm123_088_p49_264",
+    "wm123_092_p49_260",
+    "wm123_108_p49_272"
+   ],
+   "largest_class_fits": {
+    "Large": 2,
+    "Medium": 0,
+    "Small": 1,
+    "none": 0,
+    "unknown": 4
+   },
+   "trees": 51,
+   "trees_review": 33,
+   "review_share": 0.647,
+   "front_boulevard_median_m": 1.69,
+   "large_fits_share": 0.286,
+   "failures": {
+    "face not measurable": 5,
+    "no catch basin on this face": 4
+   }
+  },
+  "Oakridge": {
+   "faces_attempted": 12,
+   "faces_run": 4,
+   "windows": [
+    "wm123_108_p49_220",
+    "wm123_112_p49_224",
+    "wm123_116_p49_220",
+    "wm123_120_p49_228"
+   ],
+   "largest_class_fits": {
+    "Large": 1,
+    "Medium": 1,
+    "Small": 1,
+    "none": 0,
+    "unknown": 1
+   },
+   "trees": 70,
+   "trees_review": 36,
+   "review_share": 0.514,
+   "front_boulevard_median_m": 1.72,
+   "large_fits_share": 0.25,
+   "failures": {
+    "face not measurable": 8
+   }
+  },
+  "Renfrew-Collingwood": {
+   "faces_attempted": 12,
+   "faces_run": 10,
+   "windows": [
+    "wm123_028_p49_236",
+    "wm123_028_p49_256",
+    "wm123_032_p49_248"
+   ],
+   "largest_class_fits": {
+    "Large": 7,
+    "Medium": 0,
+    "Small": 1,
+    "none": 0,
+    "unknown": 2
+   },
+   "trees": 156,
+   "trees_review": 76,
+   "review_share": 0.487,
+   "front_boulevard_median_m": 3.07,
+   "large_fits_share": 0.7,
+   "failures": {
+    "face not measurable": 2
+   }
+  },
+  "Riley Park": {
+   "faces_attempted": 10,
+   "faces_run": 6,
+   "windows": [
+    "wm123_108_p49_240",
+    "wm123_112_p49_244",
+    "wm123_116_p49_240",
+    "wm123_116_p49_244"
+   ],
+   "largest_class_fits": {
+    "Large": 2,
+    "Medium": 0,
+    "Small": 3,
+    "none": 0,
+    "unknown": 1
+   },
+   "trees": 71,
+   "trees_review": 24,
+   "review_share": 0.338,
+   "front_boulevard_median_m": 2.34,
+   "large_fits_share": 0.333,
+   "failures": {
+    "face not measurable": 2,
+    "no catch basin on this face": 1,
+    "front boulevard not available": 1
+   }
+  },
+  "Shaughnessy": {
+   "faces_attempted": 15,
+   "faces_run": 6,
+   "windows": [
+    "wm123_132_p49_236",
+    "wm123_132_p49_240",
+    "wm123_136_p49_240",
+    "wm123_144_p49_240"
+   ],
+   "largest_class_fits": {
+    "Large": 1,
+    "Medium": 0,
+    "Small": 0,
+    "none": 0,
+    "unknown": 5
+   },
+   "trees": 121,
+   "trees_review": 113,
+   "review_share": 0.934,
+   "front_boulevard_median_m": 3.28,
+   "large_fits_share": 0.167,
+   "failures": {
+    "no catch basin on this face": 5,
+    "face not measurable": 4
+   }
+  },
+  "South Cambie": {
+   "faces_attempted": 13,
+   "faces_run": 8,
+   "windows": [
+    "wm123_120_p49_248",
+    "wm123_120_p49_252",
+    "wm123_124_p49_252",
+    "wm123_128_p49_240"
+   ],
+   "largest_class_fits": {
+    "Large": 3,
+    "Medium": 1,
+    "Small": 2,
+    "none": 0,
+    "unknown": 2
+   },
+   "trees": 101,
+   "trees_review": 50,
+   "review_share": 0.495,
+   "front_boulevard_median_m": 2.65,
+   "large_fits_share": 0.375,
+   "failures": {
+    "face not measurable": 3,
+    "no catch basin on this face": 2
+   }
+  },
+  "Strathcona": {
+   "faces_attempted": 16,
+   "faces_run": 6,
+   "windows": [
+    "wm123_084_p49_276",
+    "wm123_088_p49_276",
+    "wm123_088_p49_280",
+    "wm123_092_p49_276"
+   ],
+   "largest_class_fits": {
+    "Large": 0,
+    "Medium": 0,
+    "Small": 2,
+    "none": 0,
+    "unknown": 4
+   },
+   "trees": 55,
+   "trees_review": 51,
+   "review_share": 0.927,
+   "front_boulevard_median_m": 2.18,
+   "large_fits_share": 0.0,
+   "failures": {
+    "no catch basin on this face": 5,
+    "face not measurable": 4,
+    "front boulevard not available": 1
+   }
+  },
+  "Sunset": {
+   "faces_attempted": 13,
+   "faces_run": 10,
+   "windows": [
+    "wm123_084_p49_228",
+    "wm123_084_p49_232",
+    "wm123_088_p49_228",
+    "wm123_096_p49_224"
+   ],
+   "largest_class_fits": {
+    "Large": 4,
+    "Medium": 1,
+    "Small": 3,
+    "none": 0,
+    "unknown": 2
+   },
+   "trees": 115,
+   "trees_review": 53,
+   "review_share": 0.461,
+   "front_boulevard_median_m": 2.95,
+   "large_fits_share": 0.4,
+   "failures": {
+    "no catch basin on this face": 2,
+    "face not measurable": 1
+   }
+  },
+  "Victoria-Fraserview": {
+   "faces_attempted": 13,
+   "faces_run": 10,
+   "windows": [
+    "wm123_056_p49_216",
+    "wm123_056_p49_228",
+    "wm123_068_p49_228",
+    "wm123_072_p49_220"
+   ],
+   "largest_class_fits": {
+    "Large": 2,
+    "Medium": 2,
+    "Small": 4,
+    "none": 0,
+    "unknown": 2
+   },
+   "trees": 112,
+   "trees_review": 50,
+   "review_share": 0.446,
+   "front_boulevard_median_m": 2.86,
+   "large_fits_share": 0.2,
+   "failures": {
+    "face not measurable": 2,
+    "no catch basin on this face": 1
+   }
+  },
+  "West End": {
+   "faces_attempted": 15,
+   "faces_run": 10,
+   "windows": [
+    "wm123_128_p49_284",
+    "wm123_132_p49_284",
+    "wm123_132_p49_288",
+    "wm123_136_p49_288"
+   ],
+   "largest_class_fits": {
+    "Large": 1,
+    "Medium": 1,
+    "Small": 2,
+    "none": 0,
+    "unknown": 6
+   },
+   "trees": 103,
+   "trees_review": 70,
+   "review_share": 0.68,
+   "front_boulevard_median_m": 2.93,
+   "large_fits_share": 0.1,
+   "failures": {
+    "no catch basin on this face": 2,
+    "face not measurable": 3
+   }
+  },
+  "West Point Grey": {
+   "faces_attempted": 16,
+   "faces_run": 10,
+   "windows": [
+    "wm123_196_p49_260",
+    "wm123_204_p49_260",
+    "wm123_204_p49_272",
+    "wm123_208_p49_260"
+   ],
+   "largest_class_fits": {
+    "Large": 4,
+    "Medium": 1,
+    "Small": 4,
+    "none": 0,
+    "unknown": 1
+   },
+   "trees": 128,
+   "trees_review": 50,
+   "review_share": 0.391,
+   "front_boulevard_median_m": 3.17,
+   "large_fits_share": 0.4,
+   "failures": {
+    "face not measurable": 6
+   }
+  }
+ }
+}

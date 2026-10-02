@@ -1,0 +1,224 @@
+{
+ "id": "pinus_sylvestris_watereri",
+ "genus": "PINUS",
+ "species": "SYLVESTRIS",
+ "cultivar_filter": "WATERERI",
+ "name": {
+  "common": "Watereri Scots Pine",
+  "latin": "Pinus sylvestris 'Watereri'",
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.4.1 Table 9-3 p.351, row 3, column Small Trees"
+ },
+ "table_9_3": {
+  "listed": true,
+  "class": "Small",
+  "row": 3,
+  "page": 351,
+  "provenance": "SOURCE_RULE",
+  "note": "\"Tree size classifications are approximate and intended as guidelines\" (p.352); Columnar is never assigned from this table"
+ },
+ "volume_m3": {
+  "solitary": 10,
+  "shared_row": 5,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R01)"
+ },
+ "spacing_m": {
+  "min": 7.0,
+  "max": 10.0,
+  "provenance": "SOURCE_RULE",
+  "cite": "EDM 2026 §9.3.3.2 Table 9-2 p.350 (R02, reference only)"
+ },
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == PINUS and first species word == SYLVESTRIS and cultivar == WATERERI",
+  "count": 1,
+  "height_m": {
+   "n": 1,
+   "p50": 4.6,
+   "p90": 4.6,
+   "max": 4.6,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 1,
+   "p50": 12.7,
+   "p90": 12.7,
+   "max": 12.7,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "WATERERI",
+    1
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Shaughnessy",
+    1
+   ]
+  ],
+  "city_common_names": [
+   [
+    "WEEPING SCOTS PINE",
+    1
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": null,
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form (round .6, oval .5, vase .7, columnar .3, conical .45, weeping .8) until a cited value replaces it"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "tap",
+  "depth_ratio_of_credited": 1.0,
+  "provenance": "REFERENCE",
+  "reference": {
+   "collection": "Root System Drawings (Wageningen University & Research, Image Collections)",
+   "publication": "Kutschera, L.; Lichtenegger, E., Wurzelatlas mitteleuropäischer Waldbäume und Sträucher. Graz, Stuttgart: Leopold Stocker Verlag, 2002 (2. Aufl. 2013), 604 p.",
+   "plates": [
+    {
+     "item_id": 1267,
+     "figure": "27",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1267",
+     "excavated_plant": {
+      "height_cm": 225.0,
+      "root_depth_cm": 346.0,
+      "root_system_diameter_cm": 415.0
+     }
+    },
+    {
+     "item_id": 1268,
+     "figure": "28",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1268",
+     "excavated_plant": {
+      "height_cm": 368.0,
+      "root_depth_cm": 403.0,
+      "root_system_diameter_cm": 1087.0
+     }
+    },
+    {
+     "item_id": 1269,
+     "figure": "29",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1269",
+     "excavated_plant": {
+      "height_cm": 230.0,
+      "root_depth_cm": 186.0,
+      "root_system_diameter_cm": 651.0
+     }
+    },
+    {
+     "item_id": 1270,
+     "figure": "30",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1270",
+     "excavated_plant": {
+      "height_cm": 1173.0,
+      "root_depth_cm": 180.0,
+      "root_system_diameter_cm": 1340.0
+     }
+    },
+    {
+     "item_id": 1271,
+     "figure": "31",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1271",
+     "excavated_plant": {
+      "height_cm": 87.0,
+      "root_depth_cm": 174.0,
+      "root_system_diameter_cm": 653.0
+     }
+    },
+    {
+     "item_id": 1272,
+     "figure": "32",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1272",
+     "excavated_plant": {
+      "height_cm": 575.0,
+      "root_depth_cm": 950.0,
+      "root_system_diameter_cm": 1380.0
+     }
+    },
+    {
+     "item_id": 1273,
+     "figure": "33",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1273",
+     "excavated_plant": {
+      "height_cm": null,
+      "root_depth_cm": 218.0,
+      "root_system_diameter_cm": 657.0
+     }
+    },
+    {
+     "item_id": 1274,
+     "figure": "34",
+     "url": "https://images.wur.nl/digital/collection/coll13/id/1274",
+     "excavated_plant": {
+      "height_cm": 217.0,
+      "root_depth_cm": 94.0,
+      "root_system_diameter_cm": 663.0
+     }
+    }
+   ],
+   "reading": {
+    "form": "tap",
+    "mean_depth_over_diameter": 0.411,
+    "plates_used": 2
+   },
+   "reading_rule": "per plate the atlas records the excavated plant's root depth (D root) and root-system diameter; the mean ratio depth / diameter over plates of plants at least 5 m tall (all plates when none is) gives the drawn habit: >= 0.40 tap, 0.15–0.40 heart, < 0.15 flat",
+   "rights": "CC BY-NC-ND 4.0 for the Wurzelatlas information and illustrations (source quoted in full, non-commercial, publisher informed); the scans of the original drawings need the heirs' permission (wurzelforschung.at)"
+  },
+  "nominal_before": "tap",
+  "note": "root habit read from the atlas plates (Kutschera & Lichtenegger 2002) for the drawing only; the plates are excavated Central-European specimens: not a measured extent on the site; roots are still drawn only in the soil the rule credits"
+ },
+ "on_block_faces": {
+  "sites": [],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": false,
+  "provenance": "REFERENCE",
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14: not listed"
+ },
+ "drawn_height_m": {
+  "value": 4.6,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 1 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/pinus_sylvestris_watereri.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 42,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": {
+   "section": {
+    "width_m": 2.58,
+    "depth_m": 0.9,
+    "source": "V-10880 (2819 W 11th Av, Kitsilano) front boulevard under R30, an ordinary 20 m residential section; reference only"
+   },
+   "note": "reference only; on a site the box takes the site's band section"
+  },
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

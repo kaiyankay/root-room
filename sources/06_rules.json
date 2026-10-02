@@ -1,0 +1,1213 @@
+{
+  "title": "Street-Tree Site Capacity Tool — V1 Rules",
+  "version": "1.4",
+  "schema_dependency": "06_data_schema.json",
+  "purpose": "Translate reviewed source rules and explicit project interpretations into machine-readable operations while preserving unresolved issues and V1 boundaries.",
+  "rule_statuses": {
+    "active": "May be executed automatically in V1 when required inputs are known.",
+    "conditional": "May be applied only when stated source or project conditions are satisfied.",
+    "reference_only": "Source-supported information retained for context or later automation; V1 does not automatically judge it.",
+    "unresolved": "The reviewed source does not support a complete automated interpretation. Do not infer the missing relationship.",
+    "out_of_scope": "Explicitly excluded from V1."
+  },
+  "source_basis": [
+    {
+      "id": "SRC_EDM_2026",
+      "document": "City of Vancouver Engineering Design Manual",
+      "year": 2026,
+      "selected_pages": "349–356",
+      "prepared_extract": "02_source_extract.pdf",
+      "role": "Primary regulatory / technical source."
+    },
+    {
+      "id": "SRC_INTERPRETATION",
+      "document": "03_source_interpretation.md",
+      "role": "Project interpretation and guardrails. Project-developed operations are not to be presented as additional City requirements."
+    },
+    {
+      "id": "SRC_GRI_P18",
+      "document": "City of Vancouver Planting Guidelines for Green Rainwater Infrastructure",
+      "selected_pages": "18",
+      "prepared_extract": "02b_supporting_source_extract.pdf",
+      "role": "Supporting guidance: what soil counts toward the required volume (qualifying condition, 50 % engineered-soil credit, hardscape exclusion)."
+    },
+    {
+      "id": "SRC_EDM_2026_2_2_5",
+      "document": "City of Vancouver Engineering Design Manual",
+      "year": 2026,
+      "selected_pages": "31–33",
+      "prepared_extract": "02c_supporting_source_extract_edm_2-2-5.pdf",
+      "role": "Section 2.2.5 Table 2-2 utility and asset clearances, referred to by §9.3.3.3; supplies the tree clearances used as band interruption widths."
+    },
+    {
+      "id": "SRC_REDEFINITION_08",
+      "document": "08_redefinition_2026-09-22.md",
+      "role": "Project redefinition: block-face analysis unit, four knobs, three underground layers, test cases. Wins over 03/04/05 where they conflict."
+    },
+    {
+      "id": "SRC_EDM_2026_8_4",
+      "document": "City of Vancouver Engineering Design Manual",
+      "year": 2026,
+      "selected_pages": "253–256",
+      "prepared_extract": "02d_supporting_source_extract_edm_8-4.pdf",
+      "role": "Section 8.4.3.1 Table 8-3 sidewalk clear widths, 8.4.6 Table 8-4 boulevard widths and note 7 (curb 0.15 m): defines the front boulevard, which is the soil band of this tool."
+    }
+  ],
+  "global_guardrails": [
+    "Never convert UNKNOWN into a factual value without evidence.",
+    "Never present DESIGN_ASSUMPTION as SOURCE_RULE or CITY_DATA.",
+    "Do not infer existing qualifying soil geometry from tree coordinates or inventory data.",
+    "Do not treat a soil-volume benchmark as complete City approval or complete site suitability.",
+    "Do not silently resolve Shared / Row scaling.",
+    "Do not infer a species-to-Columnar mapping without explicit source support.",
+    "Do not invent a soil-cell credit factor.",
+    "Do not assume a curb position, a soil depth or an existing open-strip width; they are knobs or designer inputs, never defaults.",
+    "Utility positions are plan positions only; never imply a utility depth is known."
+  ],
+  "rules": [
+    {
+      "rule_id": "R01",
+      "name": "Table 9-2 soil-volume benchmark lookup",
+      "category": "soil_volume",
+      "origin": "SOURCE_RULE",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "target_tree_class",
+        "planting_condition"
+      ],
+      "schema_outputs": [
+        "required_soil_volume_m3"
+      ],
+      "operation": "lookup",
+      "lookup_table_m3": {
+        "Large": {
+          "solitary": 30,
+          "shared_row": 20
+        },
+        "Medium": {
+          "solitary": 20,
+          "shared_row": 15
+        },
+        "Small": {
+          "solitary": 10,
+          "shared_row": 5
+        },
+        "Columnar": {
+          "solitary": 20,
+          "shared_row": 15
+        }
+      },
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "table": "9-2",
+        "page": 350
+      },
+      "guardrails": [
+        "For shared_row, return the table value associated with the selected category.",
+        "Do not multiply or divide the shared_row value by tree count.",
+        "Do not claim the shared_row value is the total volume of an entire continuous system."
+      ]
+    },
+    {
+      "rule_id": "R02",
+      "name": "Table 9-2 average spacing ranges",
+      "category": "spacing",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "target_tree_class"
+      ],
+      "schema_outputs": [],
+      "operation": "reference_lookup",
+      "reference_table_m": {
+        "Large": {
+          "min": 9.0,
+          "max": 11.0
+        },
+        "Medium": {
+          "min": 8.0,
+          "max": 10.0
+        },
+        "Small": {
+          "min": 7.0,
+          "max": 10.0
+        },
+        "Columnar": {
+          "min": 7.0,
+          "max": 10.0
+        }
+      },
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "table": "9-2",
+        "page": 350
+      },
+      "notes": "V1 retains spacing as source context and does not perform spacing compliance checks."
+    },
+    {
+      "rule_id": "R03",
+      "name": "Native soil preference",
+      "category": "soil_method",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "soil_type"
+      ],
+      "schema_outputs": [],
+      "operation": "display_guidance",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      },
+      "notes": "Good native soil is identified as the preferred method for achieving required soil volume."
+    },
+    {
+      "rule_id": "R04",
+      "name": "Measure qualifying soil footprint",
+      "category": "geometry",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "soil_geometry"
+      ],
+      "schema_outputs": [
+        "soil_area_m2"
+      ],
+      "operation": "measure_polygon_area",
+      "conditions": [
+        "soil_geometry must be confirmed or explicitly user-defined.",
+        "soil_geometry must represent qualifying soil rather than generic underground space."
+      ],
+      "source_reference": {
+        "document": "03_source_interpretation.md",
+        "section": "Project-Developed Spatial Translation"
+      },
+      "guardrails": [
+        "Do not fabricate existing soil geometry.",
+        "The measured area is a derived geometric value, not a regulatory value."
+      ]
+    },
+    {
+      "rule_id": "R05",
+      "name": "Calculate physical soil volume",
+      "category": "soil_volume",
+      "origin": "DERIVED_CALCULATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "soil_area_m2",
+        "soil_depth_m"
+      ],
+      "schema_outputs": [
+        "physical_soil_volume_m3"
+      ],
+      "operation": "multiply",
+      "formula": "physical_soil_volume_m3 = soil_area_m2 * soil_depth_m",
+      "guardrails": [
+        "Both area and depth must be KNOWN.",
+        "The result is geometric physical volume, not automatically credited soil volume."
+      ]
+    },
+    {
+      "rule_id": "R06",
+      "name": "Structural soil 50 percent credit",
+      "category": "soil_credit",
+      "origin": "SOURCE_RULE",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "soil_type",
+        "physical_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "credited_soil_volume_m3"
+      ],
+      "conditions": [
+        "soil_type == structural_soil"
+      ],
+      "operation": "multiply_by_factor",
+      "factor": 0.5,
+      "formula": "credited_soil_volume_m3 = physical_soil_volume_m3 * 0.50",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      }
+    },
+    {
+      "rule_id": "R07",
+      "name": "Native soil physical volume used directly",
+      "category": "soil_credit",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "soil_type",
+        "physical_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "credited_soil_volume_m3"
+      ],
+      "conditions": [
+        "soil_type == native_soil"
+      ],
+      "operation": "copy_value",
+      "formula": "credited_soil_volume_m3 = physical_soil_volume_m3",
+      "source_reference": {
+        "document": "03_source_interpretation.md",
+        "section": "Project Interpretation"
+      },
+      "notes": "This is the project's operational translation for confirmed qualifying native soil. It is not a separate numeric City credit factor."
+    },
+    {
+      "rule_id": "R08",
+      "name": "Structural soil is limited to new-tree installation",
+      "category": "soil_method_eligibility",
+      "origin": "SOURCE_RULE",
+      "status": "conditional",
+      "automation": true,
+      "schema_inputs": [
+        "site_state",
+        "soil_type"
+      ],
+      "schema_outputs": [
+        "missing_inputs"
+      ],
+      "conditions": [
+        "soil_type == structural_soil"
+      ],
+      "operation": "eligibility_check",
+      "eligible_site_states": [
+        "vacant_replacement",
+        "proposed_new"
+      ],
+      "ineligible_or_unconfirmed_site_states": [
+        "existing_tree"
+      ],
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      },
+      "guardrails": [
+        "Passing this check does not constitute City approval.",
+        "For an existing_tree site, do not present structural soil as generally permissible under this rule."
+      ]
+    },
+    {
+      "rule_id": "R09",
+      "name": "Soil cells are limited to new-tree installation",
+      "category": "soil_method_eligibility",
+      "origin": "SOURCE_RULE",
+      "status": "conditional",
+      "automation": true,
+      "schema_inputs": [
+        "site_state",
+        "soil_type"
+      ],
+      "schema_outputs": [
+        "missing_inputs"
+      ],
+      "conditions": [
+        "soil_type == soil_cell"
+      ],
+      "operation": "eligibility_check",
+      "eligible_site_states": [
+        "vacant_replacement",
+        "proposed_new"
+      ],
+      "ineligible_or_unconfirmed_site_states": [
+        "existing_tree"
+      ],
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      }
+    },
+    {
+      "rule_id": "R10",
+      "name": "Soil-cell additional source conditions",
+      "category": "soil_method_eligibility",
+      "origin": "SOURCE_RULE",
+      "status": "conditional",
+      "automation": false,
+      "schema_inputs": [
+        "soil_type",
+        "utility_conflict"
+      ],
+      "schema_outputs": [
+        "missing_inputs"
+      ],
+      "conditions": [
+        "soil_type == soil_cell"
+      ],
+      "operation": "manual_condition_check",
+      "manual_conditions": [
+        "new road construction",
+        "utilities will not be impacted",
+        "no native soil is available due to extenuating circumstances",
+        "City Engineer approval",
+        "appropriate City loading requirements"
+      ],
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      },
+      "guardrails": [
+        "V1 must not claim that soil-cell use is approved.",
+        "Unknown manual conditions remain unresolved."
+      ]
+    },
+    {
+      "rule_id": "R11",
+      "name": "Soil-cell credited-volume factor",
+      "category": "soil_credit",
+      "origin": "SOURCE_GAP",
+      "status": "unresolved",
+      "automation": false,
+      "schema_inputs": [
+        "soil_type",
+        "physical_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "credited_soil_volume_m3"
+      ],
+      "operation": null,
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "page": 350
+      },
+      "guardrails": [
+        "The reviewed Engineering Design Manual extract does not provide a numeric soil-cell credit factor.",
+        "Do not assume soil cells receive 100 percent credit without an explicit supporting rule."
+      ]
+    },
+    {
+      "rule_id": "R12",
+      "name": "Soil-volume gap calculation",
+      "category": "site_capacity",
+      "origin": "DERIVED_CALCULATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "credited_soil_volume_m3",
+        "required_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "soil_volume_gap_m3"
+      ],
+      "operation": "subtract",
+      "formula": "soil_volume_gap_m3 = credited_soil_volume_m3 - required_soil_volume_m3",
+      "interpretation": {
+        "positive": "soil-volume surplus relative to the selected benchmark",
+        "zero": "exactly equal to the selected benchmark",
+        "negative": "soil-volume deficit relative to the selected benchmark"
+      },
+      "guardrails": [
+        "The result is a soil-volume comparison, not a complete compliance verdict."
+      ]
+    },
+    {
+      "rule_id": "R13",
+      "name": "Solitary-tree soil-volume benchmark classes",
+      "category": "site_capacity",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "conditional",
+      "automation": true,
+      "schema_inputs": [
+        "planting_condition",
+        "credited_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "soil_volume_benchmark_classes"
+      ],
+      "conditions": [
+        "planting_condition == solitary"
+      ],
+      "operation": "return_classes_whose_solitary_benchmark_is_met",
+      "solitary_thresholds_m3": {
+        "Small": 10,
+        "Medium": 20,
+        "Columnar": 20,
+        "Large": 30
+      },
+      "guardrails": [
+        "This output reports only soil-volume benchmarks.",
+        "It must not be labelled as complete tree suitability, approval, or overall site capacity.",
+        "Do not execute this rule for shared_row until the shared-soil interpretation is resolved."
+      ]
+    },
+    {
+      "rule_id": "R14",
+      "name": "Boulevard width is a relevant site variable",
+      "category": "street_space",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "boulevard_width_m"
+      ],
+      "schema_outputs": [],
+      "operation": "display_guidance",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.1",
+        "pages": "349–350"
+      },
+      "guardrails": [
+        "The reviewed source does not provide a single formula converting boulevard width into overall site capacity."
+      ]
+    },
+    {
+      "rule_id": "R15",
+      "name": "Street-tree placement exclusions",
+      "category": "placement",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "site_geometry",
+        "aboveground_conflict"
+      ],
+      "schema_outputs": [],
+      "operation": "display_warning",
+      "excluded_locations": [
+        "over building encroachments under the sidewalk (areaways)",
+        "under existing canopies and overhead signs",
+        "between signal poles at an intersection"
+      ],
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.1",
+        "page": 350
+      }
+    },
+    {
+      "rule_id": "R16",
+      "name": "Recommended species mature-size grouping",
+      "category": "species",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "genus",
+        "species",
+        "cultivar"
+      ],
+      "schema_outputs": [],
+      "operation": "reference_only",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.4.1",
+        "table": "9-3",
+        "pages": "351–352"
+      },
+      "guardrails": [
+        "V1 does not provide a complete species-recommendation system.",
+        "The source says mature-size classifications are approximate.",
+        "The recommended species list is not comprehensive."
+      ]
+    },
+    {
+      "rule_id": "R17",
+      "name": "Species-to-class lookup in Table 9-3 (reference only)",
+      "category": "species",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "genus",
+        "species",
+        "cultivar"
+      ],
+      "schema_outputs": [],
+      "operation": "lookup_table_9_3",
+      "guardrails": [
+        "The class Table 9-3 gives a species may be looked up and shown beside the target-class knob ('listed Medium in Table 9-3'); it never sets target_tree_class. The class is set only by the user, or by the user choosing a species card (11_redefinition §6).",
+        "Do not classify a species as Columnar: Table 9-3 has no Columnar column.",
+        "A species not in Table 9-3 is reported as not listed; no class is inferred from any other source (R16).",
+        "\"Tree size classifications are approximate and intended as guidelines\" (p.352)."
+      ],
+      "lookup_source": "sources/12_species_table_9-3.json",
+      "lookup_rule": "genus + first word of the species (hybrid marker ignored; Table 9-3 spelling 'lavalleei' = City 'lavallei'); a cultivar is required only where Table 9-3 names one ('Watereri', 'Endeavor'). Returns the column the species stands in (Small / Medium / Large) or 'not listed'.",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.4.1",
+        "table": "9-3",
+        "pages": "351–352"
+      }
+    },
+    {
+      "rule_id": "R18",
+      "name": "New awning setback reference values",
+      "category": "aboveground",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "aboveground_conflict",
+        "target_tree_class"
+      ],
+      "schema_outputs": [],
+      "operation": "reference_lookup",
+      "reference_values_cm": {
+        "new_columnar_tree": 120,
+        "new_spreading_tree_large_medium_small": 180,
+        "existing_tree": {
+          "minimum": 180,
+          "note": "or more depending on size and shape of tree"
+        }
+      },
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.6",
+        "table": "9-4",
+        "page": 353
+      },
+      "guardrails": [
+        "V1 does not automatically perform awning/crown geometry compliance checks."
+      ]
+    },
+    {
+      "rule_id": "R19",
+      "name": "Existing qualifying soil geometry must be confirmed",
+      "category": "data_guardrail",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "site_state",
+        "soil_geometry"
+      ],
+      "schema_outputs": [
+        "missing_inputs"
+      ],
+      "conditions": [
+        "site_state == existing_tree"
+      ],
+      "operation": "unknown_guardrail",
+      "guardrails": [
+        "If soil_geometry is UNKNOWN, keep it UNKNOWN.",
+        "Do not infer qualifying soil geometry from City tree coordinates or inventory data."
+      ]
+    },
+    {
+      "rule_id": "R20",
+      "name": "Existing-tree Table 9-2 use is a design benchmark",
+      "category": "interpretation_guardrail",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "site_state",
+        "required_soil_volume_m3",
+        "credited_soil_volume_m3"
+      ],
+      "schema_outputs": [],
+      "conditions": [
+        "site_state == existing_tree"
+      ],
+      "operation": "label_result_as_benchmark",
+      "guardrails": [
+        "Do not declare an existing tree City-compliant or non-compliant solely from Table 9-2.",
+        "Use the soil-volume comparison as a design benchmark for site-capacity or retrofit exploration."
+      ]
+    },
+    {
+      "rule_id": "R21",
+      "name": "Shared / Row multi-tree scaling",
+      "category": "soil_volume",
+      "origin": "SOURCE_GAP",
+      "status": "unresolved",
+      "automation": false,
+      "schema_inputs": [
+        "planting_condition",
+        "target_tree_class"
+      ],
+      "schema_outputs": [],
+      "conditions": [
+        "planting_condition == shared_row"
+      ],
+      "operation": null,
+      "guardrails": [
+        "R01 may return the Table 9-2 shared_row value for the selected tree class.",
+        "Do not infer whether the value is per tree, per continuous shared soil system, or another calculation basis.",
+        "Do not multiply or divide the value by number of trees."
+      ]
+    },
+    {
+      "rule_id": "R22",
+      "name": "Spatialize soil-volume deficit for design exploration",
+      "category": "design_exploration",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [
+        "soil_volume_gap_m3",
+        "site_geometry",
+        "soil_geometry"
+      ],
+      "schema_outputs": [
+        "design_response"
+      ],
+      "conditions": [
+        "soil_volume_gap_m3 < 0"
+      ],
+      "operation": "generate_exploration_prompt",
+      "guardrails": [
+        "May show where additional growing space could be explored.",
+        "Must not claim that a particular spatial solution is required by the Manual."
+      ]
+    },
+    {
+      "rule_id": "R23",
+      "name": "Tree removal decision",
+      "category": "scope",
+      "origin": "PROJECT_SCOPE",
+      "status": "out_of_scope",
+      "automation": false,
+      "schema_inputs": [
+        "site_state"
+      ],
+      "schema_outputs": [],
+      "operation": null,
+      "guardrails": [
+        "The tool does not recommend, justify, or approve removal of an existing tree."
+      ]
+    },
+    {
+      "rule_id": "R24",
+      "name": "Provenance and unknown-value preservation",
+      "category": "system_guardrail",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "schema_inputs": [],
+      "schema_outputs": [],
+      "operation": "enforce_provenance",
+      "requirements": [
+        "Every wrapped field retains provenance and status.",
+        "UNKNOWN remains UNKNOWN until evidence or explicit input is supplied.",
+        "DESIGN_ASSUMPTION is never relabelled as SOURCE_RULE or CITY_DATA.",
+        "DERIVED_CALCULATION remains traceable to its inputs."
+      ]
+    },
+    {
+      "rule_id": "R25",
+      "name": "Undefined crediting rule for other soil type",
+      "category": "soil_credit",
+      "origin": "SOURCE_GAP",
+      "status": "unresolved",
+      "automation": false,
+      "schema_inputs": [
+        "soil_type"
+      ],
+      "schema_outputs": [
+        "credited_soil_volume_m3"
+      ],
+      "conditions": [
+        "soil_type == other"
+      ],
+      "operation": null,
+      "guardrails": [
+        "No source-supported crediting rule is defined for soil_type = other.",
+        "Keep credited_soil_volume_m3 UNKNOWN unless an explicit reviewed source or confirmed project rule is added.",
+        "Do not assign a default credit factor."
+      ]
+    },
+    {
+      "rule_id": "R26",
+      "name": "Block-face band share (per-tree apportioning of one continuous boulevard band)",
+      "category": "soil_volume",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": false,
+      "executed_by": "src/block_face.py",
+      "schema_inputs": [],
+      "schema_outputs": [
+        "planting_condition",
+        "boulevard_width_m",
+        "soil_area_m2"
+      ],
+      "operation": "block_face_apportioning",
+      "formula": "soil_area_m2 = band width × tributary length; share_m3 = soil_area_m2 × soil_depth_m (R05) × credit (R06/R07)",
+      "definitions": {
+        "block_face": "the boulevard on one side of the street between two cross streets (City block outline frontage), treated as one continuous soil band",
+        "band_width": "front boulevard width from R30: property line → curb face, minus the Table 8-3 sidewalk clear width and the Table 8-4 back boulevard for the chosen land use, minus the 0.15 m curb; measured on the perpendicular through each tree; the existing state uses the designer's open-strip width instead",
+        "tributary_length": "interior tree: midpoint to the west neighbour to midpoint to the east neighbour; end-of-row tree: the outer half equals the inner half (symmetric cell), cut back to the band / segment end if that is nearer; a lone tree in a segment: symmetric about the tree to the nearer segment end",
+        "planting_condition": "two or more trees on the face → shared_row (Table 9-2 Shared / Row column); a lone tree on its face → solitary"
+      },
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.1–9.3.3.2",
+        "table": "9-2",
+        "pages": "349–350",
+        "passages": [
+          "9.3.3.1: boulevard width is a fundamental design parameter that governs tree size, spacing, long-term health",
+          "9.3.3.1: protect continuous linear space for trees aligned with the centre of boulevards",
+          "Table 9-2: Shared / Row of Trees column and average spacing"
+        ]
+      },
+      "guardrails": [
+        "The per-tree apportioning is a project interpretation (08_redefinition §2.4); the source gives a per-tree Shared / Row value and no scaling method, so R21 stays unresolved and is reported alongside every block-face result.",
+        "Spacing is measured; the tool never proposes a spacing.",
+        "The solitary-column comparison is retained for every selected tree.",
+        "The band is the front boulevard (EDM §8.4.6): between back of curb and sidewalk. Soil under the sidewalk or back boulevard is outside the design band; native soil under hardscape counts only if tested (GRI p.18, R29)."
+      ],
+      "measured_inputs": [
+        "tree points on the face (public-trees)",
+        "block outline / parcel frontage (property line)",
+        "curb knob (curb face from the centreline)",
+        "land use category (Table 8-3 row) and width level for R30",
+        "street centreline (public-streets)"
+      ],
+      "notes": "schema_inputs is empty on purpose: the inputs are geometry measured outside the record by src/block_face.py and listed in the trace; keeping them out of schema_inputs prevents the scenario mechanism from treating measured fields as downstream of themselves."
+    },
+    {
+      "rule_id": "R27",
+      "name": "Shared / Row soil-volume benchmark classes under the per-tree reading",
+      "category": "site_capacity",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "conditional",
+      "automation": true,
+      "schema_inputs": [
+        "planting_condition",
+        "credited_soil_volume_m3"
+      ],
+      "schema_outputs": [
+        "soil_volume_benchmark_classes"
+      ],
+      "conditions": [
+        "planting_condition == shared_row"
+      ],
+      "operation": "return_classes_whose_shared_row_benchmark_is_met",
+      "shared_row_thresholds_m3": {
+        "Small": 5,
+        "Medium": 15,
+        "Columnar": 15,
+        "Large": 20
+      },
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "349–356",
+        "prepared_extract": "02_source_extract.pdf",
+        "section": "9.3.3.2",
+        "table": "9-2",
+        "pages": "349–350",
+        "page": 350
+      },
+      "guardrails": [
+        "Reads the Shared / Row column per tree, which is the project interpretation of R26; R21 remains unresolved.",
+        "Reports soil-volume benchmarks only; not tree suitability, approval, or overall site capacity.",
+        "R13 (solitary classes) stays limited to solitary records; this rule never runs for them."
+      ]
+    },
+    {
+      "rule_id": "R28",
+      "name": "Utility interruption of the soil band (GRI qualifying condition + Table 2-2 tree clearances)",
+      "category": "soil_credit",
+      "origin": "SOURCE_RULE",
+      "status": "active",
+      "automation": false,
+      "executed_by": "src/block_face.py",
+      "schema_inputs": [],
+      "schema_outputs": [
+        "soil_area_m2",
+        "utility_conflict"
+      ],
+      "operation": "band_interruption",
+      "clearance_from_trees_m": {
+        "water_main": {
+          "value": 2.0,
+          "source": "Table 2-2, City Water Infrastructure: 'Minimum 2.0m clearance from trees'",
+          "page": 32
+        },
+        "sewer_main": {
+          "value": 2.0,
+          "source": "Table 2-2, City Sewer Infrastructure: 'Minimum 2.0m clearance from trees'",
+          "page": 32
+        },
+        "sewer_catch_basin": {
+          "value": 2.0,
+          "source": "Table 2-2, City Sewer Infrastructure 'including … catchbasins and catchbasin leads': 'Minimum 2.0m clearance from trees'",
+          "page": 32
+        },
+        "electrical_conduit": {
+          "value": 0.3,
+          "source": "Table 2-2, City Electrical Infrastructure: 'The minimum clearance between edge of tree trunk and conduits shall be 0.3m'",
+          "page": 33
+        },
+        "street_lighting_pole": {
+          "value": null,
+          "source": "Table 2-2 gives 0.3 m from pole bases for utilities and 1.5 m at intersections for signal poles; no clearance from trees is stated",
+          "page": 33
+        }
+      },
+      "city_datasets": {
+        "water-distribution-mains": "water_main",
+        "water-transmission-mains": "water_main",
+        "sewer-mains": "sewer_main",
+        "sewer-catch-basins": "sewer_catch_basin",
+        "street-lighting-conduits": "electrical_conduit",
+        "street-lighting-poles": "street_lighting_pole"
+      },
+      "source_reference": {
+        "documents": [
+          {
+            "document": "Vancouver GRI Planting Guidelines",
+            "page": 18,
+            "prepared_extract": "02b_supporting_source_extract.pdf",
+            "passage": "The soil that contributes to a given trees soil volume requirement must be directly adjacent to the tree and not interrupted by any utility conflicts."
+          },
+          {
+            "document": "City of Vancouver Engineering Design Manual",
+            "year": 2026,
+            "section": "2.2.5",
+            "table": "2-2",
+            "pages": "31–33",
+            "prepared_extract": "02c_supporting_source_extract_edm_2-2-5.pdf"
+          }
+        ]
+      },
+      "interpretation": {
+        "strip": "each utility within the band (or within its clearance of the band) removes a strip of the band: the bounding extent of the utility inside the band grown by the clearance on every side (PROJECT_INTERPRETATION: a Table 2-2 tree clearance read as a soil-band interruption width)",
+        "crossing": "a strip spanning the full band width splits the band into segments; tributary lengths are recomputed inside each segment",
+        "partial": "a strip not spanning the full width removes band width on its length, on the far side of the tree",
+        "tree_inside_strip": "the tree itself lies within the clearance: share not computed, utility_conflict = conflict_confirmed with status REVIEW_REQUIRED; the tool does not judge the existing condition"
+      },
+      "guardrails": [
+        "Applying a Table 2-2 tree clearance as a band interruption width is a project interpretation and is labelled as such in every result.",
+        "City utility layers give plan position only (catch basins 'location approximate'); depth is never inferred.",
+        "Service connections and third-party utilities are not in the City layers; absence of an interruption is not a clearance certificate.",
+        "Designer-entered utilities are USER_INPUT (typed) or CONFIRMED_SITE_DATA (evidence reference required) and are drawn in that grade."
+      ],
+      "measured_inputs": [
+        "City utility layers listed in city_datasets (plan position)",
+        "designer-entered utilities (USER_INPUT / CONFIRMED_SITE_DATA)",
+        "the band rectangle and per-tree cells from R26"
+      ]
+    },
+    {
+      "rule_id": "R29",
+      "name": "Existing soil credit default: open planting strip only, hardscape-covered native soil excluded unless tested",
+      "category": "soil_credit",
+      "origin": "SOURCE_RULE",
+      "status": "active",
+      "automation": false,
+      "executed_by": "src/block_face.py",
+      "schema_inputs": [],
+      "schema_outputs": [
+        "soil_area_m2"
+      ],
+      "operation": "existing_credit_default",
+      "source_reference": {
+        "document": "Vancouver GRI Planting Guidelines",
+        "page": 18,
+        "prepared_extract": "02b_supporting_source_extract.pdf",
+        "passages": [
+          "native soil underneath the hardscape surrounding the GI system should generally not be considered as contributing to the required soil volume for the tree",
+          "Native fill may be considered acceptable soil volume for trees if tests are conducted that demonstrate that the soil has acceptable properties … and is not excessively compacted"
+        ]
+      },
+      "notes": "Existing-state default: only the open planting strip counts toward existing credited volume; its width, depth and type are designer inputs in two grades (USER_INPUT typed / CONFIRMED_SITE_DATA with evidence). No 'typical Vancouver boulevard depth' exists in this tool; with no depth the existing share is UNKNOWN.",
+      "guardrails": [
+        "Never default the existing strip width, depth or soil type.",
+        "A typed (USER_INPUT) existing value yields a result phrased 'based on your inputs' and drawn hatched; only CONFIRMED_SITE_DATA is drawn solid.",
+        "Soil under sidewalk or road is not credited in the existing state; a design state may propose soil there under R06–R11."
+      ],
+      "measured_inputs": [
+        "designer's existing open-strip width, depth and soil type (two grades)"
+      ]
+    },
+    {
+      "rule_id": "R30",
+      "name": "Front boulevard band width from the pedestrian-realm cross-section (Table 8-3 sidewalk, Table 8-4 back boulevard, 0.15 m curb)",
+      "category": "street_space",
+      "origin": "SOURCE_RULE",
+      "status": "active",
+      "automation": false,
+      "executed_by": "src/block_face.py",
+      "schema_inputs": [],
+      "schema_outputs": [
+        "boulevard_width_m"
+      ],
+      "measured_inputs": [
+        "property line offset (block-outlines / parcels)",
+        "curb face position (knob)",
+        "land use category chosen by the user (Table 8-3 row)",
+        "width level: constrained / minimum / preferred (default minimum)"
+      ],
+      "operation": "front_boulevard_width",
+      "formula": "boulevard_width_m = (property line - curb face) - sidewalk_clear_width_m[land_use][level] - back_boulevard_width_m[table_8_4_row][level] - curb_width_m",
+      "land_use_rows": {
+        "residential_detached": {
+          "table_8_3": "Residential or Industrial (detached, duplex, multiplex, townhouse)",
+          "table_8_4": "Residential"
+        },
+        "residential_low_rise": {
+          "table_8_3": "Residential (low-rise)",
+          "table_8_4": "Residential"
+        },
+        "residential_mid_high_rise_ftn_greenway": {
+          "table_8_3": "Residential (mid-rise, high-rise), FTN and/or Greenway",
+          "table_8_4": "Residential"
+        },
+        "commercial_mixed_use": {
+          "table_8_3": "Commercial and/or Mixed-Use",
+          "table_8_4": "Commercial"
+        }
+      },
+      "sidewalk_clear_width_m": {
+        "residential_detached": {
+          "constrained": 1.8,
+          "minimum": 1.8,
+          "preferred": 2.4
+        },
+        "residential_low_rise": {
+          "constrained": 1.8,
+          "minimum": 2.1,
+          "preferred": 2.4
+        },
+        "residential_mid_high_rise_ftn_greenway": {
+          "constrained": 2.4,
+          "minimum": 2.4,
+          "preferred": 3.0
+        },
+        "commercial_mixed_use": {
+          "constrained": 2.4,
+          "minimum": 3.0,
+          "preferred": null,
+          "preferred_note": "depends on volume (Table 8-3); UNKNOWN in this tool"
+        }
+      },
+      "back_boulevard_width_m": {
+        "Residential": {
+          "constrained": 0.3,
+          "minimum": 1.2,
+          "preferred": 1.5
+        },
+        "Commercial": {
+          "constrained": 1.0,
+          "minimum": 1.8,
+          "preferred": 2.5,
+          "preferred_note": "≥2.5m"
+        }
+      },
+      "front_boulevard_reference_m": {
+        "Residential": {
+          "constrained": 1.2,
+          "minimum": 2.0,
+          "preferred": 2.0,
+          "preferred_note": ">2.0"
+        },
+        "Commercial": {
+          "constrained": 1.2,
+          "minimum": 1.5,
+          "preferred": 2.0,
+          "preferred_note": "≥2.0"
+        }
+      },
+      "curb_width_m": 0.15,
+      "default_width_level": "minimum",
+      "source_reference": {
+        "document": "City of Vancouver Engineering Design Manual",
+        "year": 2026,
+        "selected_pages": "253–256",
+        "prepared_extract": "02d_supporting_source_extract_edm_8-4.pdf",
+        "sections": [
+          "8.4.3.1",
+          "8.4.6"
+        ],
+        "tables": [
+          "8-3",
+          "8-4"
+        ],
+        "passages": [
+          "p.253 §8.4.3.1: The pedestrian realm is the publicly accessible space between the back of curb and the property line … sidewalks, which provide clear space for walking; and front and back boulevards, which provide space for trees, utilities, and street furniture.",
+          "p.253 Table 8-3 note 2: Significant work should be made to retain trees in the front boulevard.",
+          "p.255 §8.4.6: Front boulevards, also referred to as utility strips or tree boulevards, are located between the back of curb or pavement edge and the sidewalk … Where widths are constrained, front boulevards take precedence over back boulevards.",
+          "p.256 Table 8-4 note 6: For street trees, achieving the minimum front boulevard should be prioritized over the minimum back boulevard.",
+          "p.256 Table 8-4 note 7: Boulevard widths exclude curb widths, which is currently an additional 0.15m."
+        ]
+      },
+      "guardrails": [
+        "Land use is a category the user chooses from the Table 8-3 rows; it is never inferred from zoning, address or building data, and it is not a numeric knob.",
+        "The width level (constrained / minimum / preferred) applies to both tables at once; 'minimum' is the default reading and is stated in every result.",
+        "Composing the two tables and the curb width into one band width is a PROJECT_INTERPRETATION; each width is SOURCE_RULE and is cited with its page.",
+        "The derived front boulevard is compared with the Table 8-4 front-boulevard column as reference information only; no verdict.",
+        "A band of zero or negative width is reported as such; the tool does not shrink the sidewalk or back boulevard to make room."
+      ]
+    },
+    {
+      "rule_id": "R31",
+      "name": "Engineered-soil extension zones beyond the front boulevard (fifth lever)",
+      "category": "soil_volume",
+      "origin": "PROJECT_INTERPRETATION",
+      "status": "active",
+      "automation": true,
+      "executed_by": "src/block_face.py",
+      "schema_inputs": [
+        "soil_area_m2",
+        "soil_depth_m",
+        "soil_type",
+        "site_state"
+      ],
+      "schema_outputs": [
+        "credited_soil_volume_m3"
+      ],
+      "operation": "zone_share_sum",
+      "formula": "share_total_m3 = band credited_soil_volume_m3 + Σ zone credited_soil_volume_m3 (KNOWN zones only)",
+      "definitions": {
+        "zone": "a rectangle of engineered soil the designer draws adjacent to the front boulevard: side 'property' (from the sidewalk edge toward the property line, under the sidewalk and back boulevard) or side 'road' (from the back of curb toward the centreline, under the curb and parking lane); one zone per side; clipped at the property line / centreline",
+        "connectivity": "zone soil counts only where it is still connected to the tree's band cell after the Table 2-2 interruption strips (R28) are applied to band + zones together (GRI p.18: directly adjacent, not interrupted)",
+        "crediting": "each zone is evaluated as its own record with its own soil_type, depth and provenance: native_soil under hardscape only when CONFIRMED_SITE_DATA with evidence (R29, GRI p.18), structural_soil 50 % (R06) and only for a new tree (R08), soil_cell never yields a number (R11) and lists the R10 manual conditions, other stays unresolved (R25)",
+        "tree_state": "a zone that needs a new tree (R08/R09) is credited only when the design is run as vacant_replacement (DESIGN_ASSUMPTION); for the existing tree it is REFUSED with the passage"
+      },
+      "source_reference": [
+        {
+          "document": "Vancouver GRI Planting Guidelines",
+          "page": 18,
+          "prepared_extract": "02b_supporting_source_extract.pdf",
+          "passages": [
+            "directly adjacent to the tree and not interrupted",
+            "native soil underneath the hardscape ... should generally not be considered"
+          ]
+        },
+        {
+          "document": "City of Vancouver Engineering Design Manual",
+          "year": 2026,
+          "section": "9.3.3.2",
+          "page": 350,
+          "prepared_extract": "02_source_extract.pdf",
+          "passages": [
+            "structural soil ... calculated at 50% volume",
+            "only permissible when installing new trees"
+          ]
+        }
+      ],
+      "guardrails": [
+        "Summing zone shares with the band share is a project interpretation, reported as DERIVED_CALCULATION with R31 in the trace; the source gives per-tree volumes, not a composition rule.",
+        "Zones are always drawn hatched (design assumption) unless CONFIRMED_SITE_DATA; they never change the band, the spacing or the Table 9-2 benchmark.",
+        "A zone never yields a credited value for soil_type = soil_cell or other.",
+        "Depth in a zone is the designer's number; the tool does not know what is under the sidewalk or the road beyond the City utility plan positions."
+      ],
+      "notes": "R31 extension zones: engineered soil drawn beyond the front boulevard, credited per zone by the existing crediting rules and added to the band share (PROJECT_INTERPRETATION)."
+    },
+    {
+      "rule_id": "R32",
+      "name": "Tree protection barrier distance by trunk diameter (By-law 9958 Schedule A; reference only)",
+      "category": "tree_protection",
+      "origin": "SOURCE_RULE",
+      "status": "reference_only",
+      "automation": false,
+      "schema_inputs": [
+        "inventory_diameter"
+      ],
+      "schema_outputs": [],
+      "operation": "lookup_protection_barrier",
+      "schedule_a_m": {
+        "20": 1.2,
+        "25": 1.5,
+        "30": 1.8,
+        "35": 2.1,
+        "40": 2.4,
+        "45": 2.7,
+        "50": 3.0,
+        "55": 3.3,
+        "60": 3.6,
+        "75": 4.5,
+        "90": 5.0,
+        "100": 6.0
+      },
+      "lookup_rule": "trunk diameter measured 1.4 m above grade (By-law §1.2 'protection barrier' (b), §2.2); the distance of the smallest Schedule A row at or above the diameter; below 20 cm the By-law does not apply (§2.2 exemption for small trees, except replacement trees and hedges); above 100 cm the last row (6.0 m) is reported with a note. Standard Detail G10.1 draws the same requirement as '6 × trunk Ø measured at 1.4 m height' parallel to the curb.",
+      "boulevard_offsets_m": {
+        "from_curb": 0.6,
+        "from_sidewalk_edge": 0.3,
+        "cite": "By-law 9958 §7.8(c)(iii)–(iv) p.15; Street Tree Guidelines 2011 p.19; Standard Detail G10.1 section A-A"
+      },
+      "guardrails": [
+        "A protection barrier distance is a construction-site requirement (where a fence must stand before demolition, excavation or construction), not a root extent: it is drawn as a dashed ring around the trunk labelled 'protection radius (By-law 9958 Sch. A), not root extent' and never changes any credited volume or share.",
+        "The engine reports it in reference_info from the City's inventory_diameter (CITY_DATA); it is never applied to the record.",
+        "The By-law measures the barrier parallel to the curb; across the boulevard the barrier is bounded by the curb (0.6 m) and the sidewalk edge (0.3 m), so the drawn ring is cut at those lines."
+      ],
+      "source_reference": [
+        {
+          "document": "City of Vancouver Protection of Trees By-law No. 9958 (consolidated to December 9, 2025; amended to include By-law 14546 effective January 1, 2026)",
+          "prepared_extract": "9958c.pdf",
+          "sections": "§1.2 'protection barrier' and 'tree protection area' (pp.3–4), §2.2 (p.4), §7.5–7.8 (pp.14–15), §7.10 (p.15), Schedule A (PDF p.25)"
+        },
+        {
+          "document": "City of Vancouver Street Tree Guidelines for the Public Realm, 2011 revision",
+          "prepared_extract": "StreetTreeGuidelines.pdf",
+          "pages": "19–20 (table 'MINIMUM PROTECTION REQUIRED – parallel to curb', excerpted from By-law 9958)"
+        },
+        {
+          "document": "City of Vancouver Standard Detail Drawings, General Details",
+          "prepared_extract": "standard-detail-drawings-general-details.pdf",
+          "drawing": "G10.1 Protection of boulevard trees adjacent to construction sites (Sept 2018, rev. 2022-01-12)"
+        }
+      ]
+    }
+  ],
+  "revision_notes": [
+    "Round 1.1: added R25 so soil_type = other produces an explicit unresolved crediting state instead of a silent UNKNOWN.",
+    "Round 8 (08_redefinition_2026-09-22): added R26 block-face band share, R27 Shared / Row classes under the per-tree reading, R28 utility interruption (GRI p.18 + Table 2-2), R29 existing-credit default (GRI p.18); source basis extended with 02b, 02c and 08; two global guardrails on knobs and utility depth.",
+    "Round 8 step 2 (2026-09-24): band = front boulevard. R30 added from EDM §8.4 pp.253–256 (02d); R26 definitions updated (front boulevard band, symmetric end-of-row cells).",
+    "Phase 3 (2026-09-28, 11_redefinition §8): added R31 extension zones (the fifth lever): designer-drawn engineered-soil rectangles beyond the front boulevard on the property or road side, credited per zone by R06/R07/R08/R09/R10/R11/R25/R29 and summed with the band share; design may be run as vacant_replacement (DESIGN_ASSUMPTION) so that R08/R09 eligibility can be tested for a new tree.",
+    "Phase 4 (2026-09-28, 11_redefinition §6): R17 re-scoped from unresolved (SOURCE_GAP) to reference_only lookup: the engine reads Table 9-3 (12_species_table_9-3.json) for the record's genus / species / cultivar and reports the listed class in reference_info; target_tree_class is never set by it. Version 1.3.",
+    "Night of 2026-09-28 (task 0.5 / 3): added R32, the By-law 9958 Schedule A protection-barrier distance by trunk diameter, as a reference_only lookup from inventory_diameter (CITY_DATA). It is drawn as a protection radius beside the nominal roots and labelled as such; it is never a root extent and never enters a share. Version 1.4."
+  ]
+}

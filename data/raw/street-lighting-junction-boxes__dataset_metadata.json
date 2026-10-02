@@ -1,0 +1,160 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {
+    "facetsort": "-count"
+   },
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "material",
+   "description": null,
+   "annotations": {
+    "facet": true
+   },
+   "label": "MATERIAL",
+   "type": "text"
+  },
+  {
+   "name": "geo_local_area",
+   "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+   "annotations": {
+    "facet": true
+   },
+   "label": "Geo Local Area",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "street-lighting-junction-boxes",
+ "dataset_uid": "da_lnsuf5",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "street_lighting_junction_boxesdwg",
+   "title": "street_lighting_junction_boxes.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-junction-boxes/alternative_exports/street_lighting_junction_boxesdwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Street lighting junction boxes",
+   "description": "<div><p>The City's Street Lighting network includes: </p><ul><li>street lighting poles (nodes)</li><li>conduits (ducts)</li><li>abandoned conduits</li><li>junction boxes</li><li>service panels</li></ul></div> <h3>Data currency</h3><div><p>This data is updated frequently in the normal  course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract of this website is updated weekly.</p></div> <h3>Data accuracy</h3><div><p>Street lighting features are generally created with survey accuracy.</p></div> ",
+   "theme": [
+    "Streets and transportation"
+   ],
+   "keyword": [
+    "street lighting"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-09-28T13:36:29+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-09-28T13:36:29+00:00",
+   "metadata_processed": "2026-10-02T13:48:18.688000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02325613796711,
+        89.99999995809048
+       ],
+       [
+        -150.7091035041958,
+        89.99999995809048
+       ],
+       [
+        -150.7091035041958,
+        49.20346061233431
+       ],
+       [
+        -123.02325613796711,
+        49.20346061233431
+       ],
+       [
+        -123.02325613796711,
+        89.99999995809048
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 7962,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services"
+   ],
+   "search-term": null,
+   "change-log": null
+  }
+ }
+}

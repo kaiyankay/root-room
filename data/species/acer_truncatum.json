@@ -1,0 +1,210 @@
+{
+ "id": "acer_truncatum",
+ "genus": "ACER",
+ "species": "TRUNCATUM",
+ "cultivar_filter": null,
+ "name": {
+  "common": "Pacific Sunset Maple",
+  "latin": "Acer truncatum",
+  "provenance": "CITY_DATA",
+  "cite": "public-trees common_name (most frequent)"
+ },
+ "table_9_3": {
+  "listed": false,
+  "class": "UNKNOWN",
+  "provenance": "SOURCE_GAP",
+  "note": "not in EDM 2026 Table 9-3; a class is never inferred (R16 / R17); drawn grey, no need-box"
+ },
+ "volume_m3": null,
+ "spacing_m": null,
+ "city": {
+  "provenance": "CITY_DATA",
+  "dataset": "public-trees",
+  "copy_date": "2026-09-14",
+  "match_rule": "genus == ACER and first species word == TRUNCATUM; hybrid marker 'X' ignored; any cultivar",
+  "count": 2049,
+  "height_m": {
+   "n": 2049,
+   "p50": 4.6,
+   "p90": 10.7,
+   "max": 22.9,
+   "note": "City height_m values are class midpoints (4.6, 7.6, 10.7 …), not measurements",
+   "flagged_outliers": []
+  },
+  "diameter_cm": {
+   "n": 2049,
+   "p50": 14.6,
+   "p90": 30.5,
+   "max": 167.6,
+   "flagged_outliers": []
+  },
+  "cultivars": [
+   [
+    "PACIFIC SUNSET",
+    1735
+   ],
+   [
+    "NORWEGIAN SUNSET",
+    188
+   ],
+   [
+    "CRIMSON SUNSET",
+    63
+   ],
+   [
+    "NONE",
+    37
+   ],
+   [
+    "URBAN SUNSET",
+    26
+   ]
+  ],
+  "top_local_areas": [
+   [
+    "Riley Park",
+    239
+   ],
+   [
+    "Oakridge",
+    149
+   ],
+   [
+    "Renfrew-Collingwood",
+    132
+   ],
+   [
+    "Shaughnessy",
+    123
+   ],
+   [
+    "Hastings-Sunrise",
+    121
+   ]
+  ],
+  "city_common_names": [
+   [
+    "PACIFIC SUNSET MAPLE",
+    1735
+   ],
+   [
+    "NORWEGIAN SUNSET MAPLE",
+    188
+   ],
+   [
+    "CRIMSON SUNSET MAPLE",
+    63
+   ]
+  ]
+ },
+ "form": {
+  "value": "round",
+  "provenance": "NOMINAL",
+  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "cultivar_overrides": {}
+ },
+ "crown_width": {
+  "grade": "nominal",
+  "literature": {
+   "source": "City of Vancouver Street Tree Guidelines 2011, pp.12–14",
+   "provenance": "REFERENCE",
+   "class_2011": "Medium",
+   "definition_as_printed": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk.",
+   "height_ft": [
+    25,
+    50
+   ],
+   "height_m": [
+    7.62,
+    15.24
+   ],
+   "width_ft": null,
+   "note": "a class threshold, not a per-species value: the drawn crown still uses the nominal ratio; the only width the City prints is 'over 25 ft' for Large"
+  },
+  "ratio_of_height": 0.6,
+  "provenance": "NOMINAL",
+  "note": "crown spread is not published by the City; ratio by form until a cited value replaces it; Guidelines 2011 give only a class threshold (see literature), so the ratio stays nominal"
+ },
+ "branch_height": {
+  "ratio_of_height": 0.35,
+  "provenance": "NOMINAL"
+ },
+ "root_form": {
+  "value": "heart",
+  "depth_ratio_of_credited": 0.8,
+  "provenance": "NOMINAL",
+  "note": "root habit for the drawing only: roots are drawn to fill the soil the rule credits and are cut where the black or a clearance begins; never a measured extent",
+  "nearest_atlas_plates_same_genus": [
+   {
+    "item_id": "1392",
+    "title": "Acer platanoides",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1392"
+   },
+   {
+    "item_id": "1393",
+    "title": "Acer campestre",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1393"
+   },
+   {
+    "item_id": "1389",
+    "title": "Acer pseudoplatanus",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1389"
+   },
+   {
+    "item_id": "1390",
+    "title": "Acer pseudoplatanus",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1390"
+   },
+   {
+    "item_id": "1391",
+    "title": "Acer pseudoplatanus",
+    "url": "https://images.wur.nl/digital/collection/coll13/id/1391"
+   }
+  ],
+  "atlas_note": "no plate of this species in the WUR root atlas; same-genus plates listed for orientation, habit stays NOMINAL"
+ },
+ "on_block_faces": {
+  "sites": [
+   "KE-198571",
+   "KE-198578",
+   "KE-198598"
+  ],
+  "provenance": "DERIVED_CALCULATION"
+ },
+ "guidelines_2011": {
+  "listed": true,
+  "provenance": "REFERENCE",
+  "entries": [
+   {
+    "class": "Medium",
+    "botanical_as_printed": "Acer Truncatum",
+    "common_as_printed": "Truncatum Maple"
+   }
+  ],
+  "cite": "City of Vancouver Street Tree Guidelines 2011, Preferred Street Tree Species List pp.12–14 (Medium)",
+  "class_definitions": {
+   "Medium": "Trees maturing between twenty-five (25) and fifty (50) feet are generally suitable for situating on a blockside tree lawn three (3) feet or greater between curb and sidewalk."
+  },
+  "note": "a 2011 City guideline list (species-level cultivars as printed); EDM 2026 Table 9-3 is the rule the tool applies",
+  "agrees_with_table_9_3": null
+ },
+ "drawn_height_m": {
+  "value": 10.7,
+  "provenance": "CITY_DATA",
+  "basis": "p90 of City height_m over 2049 trees of this species",
+  "note": "nine in ten City trees of this species are this tall or shorter; class midpoints, not a mature size"
+ },
+ "model": {
+  "file": "web/models/acer_truncatum.json",
+  "status": "generated",
+  "generated_on": "2026-09-28",
+  "tool": "Rhino 8.35.26251.13002 via RhinoAI MCP, scripts/rhino_species_models.py",
+  "hull_vertices": 46,
+  "hull_faces": 80,
+  "library_3dm": "data/processed/species_library.3dm",
+  "need_box_in_library": null,
+  "note": "trunk cylinder + faceted crown hull, no branching; normalized to height 1.0 and scaled by the tree's height on the page"
+ },
+ "built_on": "2026-09-28",
+ "builder": "scripts/build_species_library.py"
+}

@@ -1,0 +1,385 @@
+{
+ "visibility": "domain",
+ "fields": [
+  {
+   "name": "id",
+   "description": "hydrant identifier in the format WH-A99-999 where WH stands for Water Hydrant, A99 is the grid, and the first of the last three numbers is 0 for distribution or transmission subsystem, 1 for Dedicated Fire Protection, 8 for Musqueam owned, and 9 for a private hydrant.  The last two 9's are a sequence number.",
+   "annotations": {},
+   "label": "ID",
+   "type": "text"
+  },
+  {
+   "name": "subsystem",
+   "description": "the subsystem where DSTR is distribution; TRNS is transmission; and DFPS is dedicated fire protection",
+   "annotations": {
+    "facet": true
+   },
+   "label": "SUBSYSTEM",
+   "type": "text"
+  },
+  {
+   "name": "code",
+   "description": "is the manufacturer",
+   "annotations": {},
+   "label": "CODE",
+   "type": "text"
+  },
+  {
+   "name": "covwaterhydrantunittype",
+   "description": "hydrant model",
+   "annotations": {},
+   "label": "COVWATERHYDRANTUNITTYPE",
+   "type": "text"
+  },
+  {
+   "name": "distancefromcorner",
+   "description": "distance in meters to the nearest street corner",
+   "annotations": {},
+   "label": "DISTANCEFROMCORNER",
+   "type": "double"
+  },
+  {
+   "name": "feederlen",
+   "description": "distance in meters from the hydrant to the hydrant control valve",
+   "annotations": {
+    "unit": "m"
+   },
+   "label": "FEEDERLEN",
+   "type": "double"
+  },
+  {
+   "name": "dir",
+   "description": "direction of hydrant lateral",
+   "annotations": {},
+   "label": "DIR",
+   "type": "text"
+  },
+  {
+   "name": "line",
+   "description": "direction of hydrant lateral",
+   "annotations": {},
+   "label": "LINE",
+   "type": "text"
+  },
+  {
+   "name": "color",
+   "description": "Red indicates < 500 Imperial Gallons Per Minute (GPM); Yellow indicates 500 - 1000 IMPERIAL GPM; Green indicates 1000 - 1500 IMPERIAL GPM; Blue indicates > 1500 IMPERIAL GPM; White indicates a PRIVATE HYDRANT",
+   "annotations": {
+    "facet": true
+   },
+   "label": "COLOR",
+   "type": "text"
+  },
+  {
+   "name": "incomm",
+   "description": "in commission yes or no",
+   "annotations": {
+    "facet": true
+   },
+   "label": "INCOMM",
+   "type": "text"
+  },
+  {
+   "name": "chr0",
+   "description": "contains no data",
+   "annotations": {},
+   "label": "CHR0",
+   "type": "text"
+  },
+  {
+   "name": "chr1",
+   "description": "contains no data",
+   "annotations": {},
+   "label": "CHR1",
+   "type": "text"
+  },
+  {
+   "name": "street_number",
+   "description": "Number assigned to the street where the hydrant is located",
+   "annotations": {},
+   "label": "STREET_NUMBER",
+   "type": "text"
+  },
+  {
+   "name": "street",
+   "description": "location plus address or intersection. For example WS 123 Madeup Street means west side in front of 123 Madeup Street; if an intersection it will be the corner and the street and cross street for example NEC Madeup Street & Madeup Drive which means north east corner on Madeup Street where the cross street is Madeup Drive",
+   "annotations": {},
+   "label": "STREET",
+   "type": "text"
+  },
+  {
+   "name": "oldhydnum",
+   "description": "old hydrant number",
+   "annotations": {},
+   "label": "OLDHYDNUM",
+   "type": "text"
+  },
+  {
+   "name": "castsub",
+   "description": "sub designation for example Stanley Park",
+   "annotations": {
+    "facet": true
+   },
+   "label": "CASTSUB",
+   "type": "text"
+  },
+  {
+   "name": "oocdate",
+   "description": "last out of commission date",
+   "annotations": {
+    "facet": true
+   },
+   "label": "OOCDATE",
+   "type": "date"
+  },
+  {
+   "name": "oocnotes",
+   "description": "last out of commission notes",
+   "annotations": {},
+   "label": "OOCNOTES",
+   "type": "text"
+  },
+  {
+   "name": "instdate1",
+   "description": "date hydrant was installed",
+   "annotations": {
+    "facet": true,
+    "timerangeFilter": true
+   },
+   "label": "INSTDATE1",
+   "type": "date"
+  },
+  {
+   "name": "oracleid",
+   "description": "identifier in Oracle database",
+   "annotations": {},
+   "label": "ORACLEID",
+   "type": "text"
+  },
+  {
+   "name": "active",
+   "description": "all hydrants in this dataset are in service",
+   "annotations": {
+    "facet": true
+   },
+   "label": "ACTIVE",
+   "type": "text"
+  },
+  {
+   "name": "remarks",
+   "description": "any special notes",
+   "annotations": {
+    "facet": true
+   },
+   "label": "REMARKS",
+   "type": "text"
+  },
+  {
+   "name": "fireuseonly",
+   "description": "a 'Y' (yes) means not available for special use due to a special condition such as releasing water from the hydrant will set off fire alarms at nearby schools, etc.",
+   "annotations": {
+    "facet": true
+   },
+   "label": "FIREUSEONLY",
+   "type": "text"
+  },
+  {
+   "name": "status",
+   "description": "all hydrants in this dataset are in service",
+   "annotations": {
+    "facet": true
+   },
+   "label": "STATUS",
+   "type": "text"
+  },
+  {
+   "name": "compression",
+   "description": "'Yes' means this is a compression valve type hydrant\n 'N' means a gate valve type hydrant",
+   "annotations": {
+    "facet": true
+   },
+   "label": "COMPRESSION",
+   "type": "text"
+  },
+  {
+   "name": "adddttm",
+   "description": "the date the hydrant was added to the database",
+   "annotations": {},
+   "label": "ADDDTTM",
+   "type": "datetime"
+  },
+  {
+   "name": "addby",
+   "description": "the person or operation that added the hydrant",
+   "annotations": {},
+   "label": "ADDBY",
+   "type": "text"
+  },
+  {
+   "name": "modby",
+   "description": "the last person/operation that modified the record",
+   "annotations": {},
+   "label": "MODBY",
+   "type": "text"
+  },
+  {
+   "name": "feature_id",
+   "description": "GIS internal number",
+   "annotations": {},
+   "label": "FEATURE_ID",
+   "type": "int"
+  },
+  {
+   "name": "unitid",
+   "description": "Infrastructure management internal number",
+   "annotations": {},
+   "label": "UNITID",
+   "type": "int"
+  },
+  {
+   "name": "geom",
+   "description": "Spatial representation of feature",
+   "annotations": {},
+   "label": "Geom",
+   "type": "geo_shape"
+  },
+  {
+   "name": "geo_local_area",
+   "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+   "annotations": {
+    "facet": true
+   },
+   "label": "Geo Local Area",
+   "type": "text"
+  },
+  {
+   "name": "geo_point_2d",
+   "description": null,
+   "annotations": {},
+   "label": "geo_point_2d",
+   "type": "geo_point_2d"
+  }
+ ],
+ "dataset_id": "water-hydrants",
+ "dataset_uid": "da_kkwkgq",
+ "has_records": true,
+ "features": [
+  "geo",
+  "analyze",
+  "timeserie"
+ ],
+ "attachments": [],
+ "alternative_exports": [
+  {
+   "id": "water_hydrantsdwg",
+   "title": "water_hydrants.dwg",
+   "description": "",
+   "mimetype": "application/octet-stream",
+   "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-hydrants/alternative_exports/water_hydrantsdwg"
+  }
+ ],
+ "data_visible": true,
+ "metas": {
+  "dcat": {
+   "created": null,
+   "issued": null,
+   "creator": null,
+   "contributor": null,
+   "contact_name": null,
+   "contact_email": null,
+   "accrualperiodicity": null,
+   "spatial": null,
+   "temporal": null,
+   "granularity": null,
+   "dataquality": null,
+   "publisher_type": null,
+   "conforms_to": null,
+   "temporal_coverage_start": null,
+   "temporal_coverage_end": null,
+   "accessRights": null,
+   "relation": null
+  },
+  "default": {
+   "title": "Water hydrants",
+   "description": "<div class=\"ExternalClass0C55DCD677664592BC82BF06C7FAC63F\"><p> This data set includes all in service water (fire) hydrants on the Dedicated Fire Protection, Distribution, and Transmission water subsystems.  Some hydrants maybe out of commission and this is indicated on the data set.</p></div> <h3>Data currency</h3><div class=\"ExternalClassEE29D05CC63F4DDEB92453FABF25E176\"><p>The extract on this website is updated weekly.</p></div> <h3>Data accuracy</h3><div class=\"ExternalClass6A21D0461BAF456288652050E3B12794\"><p>Data is accurate at the time of data extract to the best of record keeping ability.</p></div>",
+   "theme": [
+    "Water and sewer"
+   ],
+   "keyword": [
+    "water"
+   ],
+   "license": "Open Government Licence - Vancouver",
+   "license_url": "https://opendata.vancouver.ca/pages/licence/",
+   "language": "en",
+   "metadata_languages": [
+    "en"
+   ],
+   "timezone": null,
+   "modified": "2026-09-28T13:37:39+00:00",
+   "modified_updates_on_metadata_change": false,
+   "modified_updates_on_data_change": true,
+   "data_processed": "2026-09-28T13:37:39+00:00",
+   "metadata_processed": "2026-10-02T13:47:21.319000+00:00",
+   "geographic_reference": null,
+   "geographic_reference_auto": null,
+   "territory": null,
+   "geometry_types": [
+    "Point"
+   ],
+   "bbox": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      [
+       [
+        -123.02356484346092,
+        49.311967282556
+       ],
+       [
+        -123.22375268675387,
+        49.311967282556
+       ],
+       [
+        -123.22375268675387,
+        49.200863521546125
+       ],
+       [
+        -123.02356484346092,
+        49.200863521546125
+       ],
+       [
+        -123.02356484346092,
+        49.311967282556
+       ]
+      ]
+     ],
+     "type": "Polygon"
+    },
+    "properties": {}
+   },
+   "publisher": "City of Vancouver",
+   "references": null,
+   "records_count": 6613,
+   "attributions": null,
+   "source_domain": null,
+   "source_domain_title": null,
+   "source_domain_address": null,
+   "source_dataset": null,
+   "shared_catalog": null,
+   "federated": false,
+   "parent_domain": null,
+   "update_frequency": null
+  },
+  "custom": {
+   "note": null,
+   "data-owner": [
+    "City of Vancouver"
+   ],
+   "data-team": [
+    "Engineering Services - Water Design"
+   ],
+   "search-term": "fire",
+   "change-log": "https://opendata.vancouver.ca/explore/dataset/open-data-change-log/log/?disjunctive.datasets&amp;sort=logdate&amp;refine.datasetids=water-hydrants"
+  }
+ }
+}
