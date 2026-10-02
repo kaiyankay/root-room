@@ -112,7 +112,7 @@ def bbox_of(path: pathlib.Path) -> Optional[List[float]]:
     except OSError:
         return [-180.0, -90.0, 180.0, 90.0]
     ent = idx.get(key)
-    if ent and ent.get("size") == st.st_size and ent.get("mtime") == int(st.st_mtime_ns):
+    if ent and ent.get("size") == st.st_size and (_SIZE_ONLY or ent.get("mtime") == int(st.st_mtime_ns)):
         return ent.get("bbox")
     try:
         box = measure(path)
@@ -143,6 +143,7 @@ def select(paths: Iterable[pathlib.Path], bbox: Optional[BBox]) -> List[pathlib.
 
 _JSON: "OrderedDict[str, tuple]" = OrderedDict()   # path -> (size, mtime_ns, parsed, bytes)
 _JSON_BYTES = 0
+_SIZE_ONLY = os.environ.get("ROOT_ROOM_INDEX_SIZE_ONLY") == "1"   # a bundle unpacked elsewhere (the browser's engine): file times change, sizes do not
 JSON_CACHE_BYTES = int(os.environ.get("ROOT_ROOM_JSON_CACHE_MB", "192")) * 1024 * 1024   # the parsed window files kept between runs in one process (a street's set is ~40 MB); smaller on a small host
 
 

@@ -9,6 +9,7 @@
 // Every number is read from the scene file; the page computes only geometry.
 import * as THREE from 'three';
 import { Scene, loadModels, MODELS, COL } from './scene.js';
+import { STATIC, makeStaticApi } from './static-api.js';   /* GitHub Pages: the same page, the engine in the browser */
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -299,14 +300,15 @@ class One extends Scene {
 
 // ---------- data ----------
 const api = { freezeScenario: (p) => fetch('/api/scenario/freeze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) }).then(asJson), listScenarios: (site) => fetch(`/api/scenario/list?site=${encodeURIComponent(site)}`).then(asJson), addresses: () => fetch('/api/address_index').then(asJson), treesNear: (lon, lat) => fetch(`/api/trees_near?lon=${lon}&lat=${lat}&r=60`).then(asJson), runSite: (p) => fetch('/api/site/run', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) }).then(asJson), scene: (s) => fetch(`/api/scene/${encodeURIComponent(s)}`).then(asJson), evaluate: (p) => fetch('/api/scene/evaluate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) }).then(asJson), tree: (id) => fetch(`/api/tree?asset_id=${id}`).then(asJson), rules: () => fetch('/api/rules').then(asJson) };
+if (STATIC) Object.assign(api, makeStaticApi({ onStage: runStage }));   /* static host: GETs from the build's files, runs in this browser */
 async function cityData() {
   if (app.city) return app.city;
   const [trees, areas, parks, streets, shares] = await Promise.all([
-    fetch('/api/trees_all').then((r) => r.json()), fetch('/data/local-area-boundary.geojson').then((r) => r.ok ? r.json() : null).catch(() => null),
-    fetch('/data/parks-polygon-representation.geojson').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('/data/public-streets.geojson').then((r) => r.ok ? r.json() : null).catch(() => null),
-    fetch('/data/local_area_species.json').then((r) => r.ok ? r.json() : null).catch(() => null)]);
-  const regionBlocks = await fetch('/data/region_blocks.json').then((r) => r.ok ? r.json() : null).catch(() => null);
-  const [capacity, faces, region, blocks] = await Promise.all([fetch('/data/local_area_capacity.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('/data/citywide_faces.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('/data/region_base.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('/data/city_blocks.json').then((r) => r.ok ? r.json() : null).catch(() => null)]);
+    fetch(STATIC ? 'api/trees_all.json' : '/api/trees_all').then((r) => r.json()), fetch('data/local-area-boundary.geojson').then((r) => r.ok ? r.json() : null).catch(() => null),
+    fetch('data/parks-polygon-representation.geojson').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('data/public-streets.geojson').then((r) => r.ok ? r.json() : null).catch(() => null),
+    fetch('data/local_area_species.json').then((r) => r.ok ? r.json() : null).catch(() => null)]);
+  const regionBlocks = await fetch('data/region_blocks.json').then((r) => r.ok ? r.json() : null).catch(() => null);
+  const [capacity, faces, region, blocks] = await Promise.all([fetch('data/local_area_capacity.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('data/citywide_faces.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('data/region_base.json').then((r) => r.ok ? r.json() : null).catch(() => null), fetch('data/city_blocks.json').then((r) => r.ok ? r.json() : null).catch(() => null)]);
   app.city = { trees, areas, parks, streets, shares, capacity, faces, region, blocks, regionBlocks }; return app.city;
 }
 function knobs(S) { const k = S.knobs; return { site_id: S.site_id.split('_')[0], curb: k.curb_offset_from_centreline_m && k.curb_offset_from_centreline_m.value, depth: k.soil_depth_m && k.soil_depth_m.value, target: k.target_tree_class && k.target_tree_class.value, soil: k.soil_type && k.soil_type.value, land_use: k.land_use && k.land_use.value, width_level: k.width_level && k.width_level.value, replacement: !!(k.tree_state && k.tree_state.value === 'vacant_replacement'), extensions: (S.band.zones || []).map((z) => ({ side: z.side, width_m: z.width_applied_m, soil_type: z.soil_type, provenance: z.provenance, status: z.status })), candidate: S.candidate ? S.candidate.id : null, curb_provenance: k.curb_offset_from_centreline_m && k.curb_offset_from_centreline_m.provenance === 'CONFIRMED_SITE_DATA' ? 'CONFIRMED_SITE_DATA' : null, curb_evidence: k.curb_offset_from_centreline_m && k.curb_offset_from_centreline_m.provenance === 'CONFIRMED_SITE_DATA' ? k.curb_offset_from_centreline_m.evidence : null }; }
@@ -430,9 +432,11 @@ function runStart(kind, label) {
   b.style.transition = `width ${Math.round(eta * 1.2)}ms cubic-bezier(.15,.55,.35,1)`; b.style.width = '92%'; $('fixed').classList.add('busy');
   clearInterval(app.runT); app.runT = setInterval(runTick, 500); runTick();
 }
+/* a run's label can change while it waits (a static host: the engine starting in the browser first); null restores it */
+function runStage(label, noLearn) { const r = app.run; if (!r) return; if (r.label0 == null) r.label0 = r.label; r.label = label || r.label0; if (noLearn) r.noLearn = true; runTick(); }
 function runTick() { const r = app.run; if (!r) return; const s = Math.round((performance.now() - r.t0) / 1000); const m = $('q-mode'); m.textContent = `${r.label} · ${s} s`; m.className = 'mode run'; }
 function runEnd(ok = true) {
-  const r = app.run; if (!r) return; const dt = performance.now() - r.t0; if (ok) { try { localStorage.setItem('rr_eta_' + r.kind, String(Math.round(dt))); } catch (e) { /* no storage: the default stays */ } }
+  const r = app.run; if (!r) return; const dt = performance.now() - r.t0; if (ok && !r.noLearn) { try { localStorage.setItem('rr_eta_' + r.kind, String(Math.round(dt))); } catch (e) { /* no storage: the default stays */ } }
   app.run = null; clearInterval(app.runT); app.runT = null; $('fixed').classList.remove('busy'); if (app.S) question();   /* the tag goes back to the stage's */
   const b = $('prog'); b.style.transition = 'width 220ms ease-out'; b.style.width = '100%'; b.className = 'prog on' + (ok ? '' : ' fail');
   setTimeout(() => { if (!app.run) { b.style.transition = 'opacity 400ms ease'; b.className = 'prog'; setTimeout(() => { if (!app.run) { b.style.transition = 'none'; b.style.width = '0%'; } }, 420); } }, ok ? 500 : 1600);
@@ -1570,6 +1574,7 @@ window.addEventListener('resize', () => { if (app.S) { app.scene._resize(); app.
   Promise.all([loadTreeArt(), loadGroundArt()]).then(() => { if (app.S && app.scene.needsArtRebuild) { app.scene.needsArtRebuild = false; app.scene.build(app.S); app.scene.setStop(app.t); } if (app.S) draw(); });   /* a block built before the tree art arrived is rebuilt with it */
   r30().catch(() => null);                                                                              // the land-use rows' widths (R30) for the inputs panel
   await load(app.site);
+  if (STATIC && api.warm) setTimeout(() => api.warm(), 2500);   /* a static host: the browser's engine starts while the visitor reads the map */
   if (params.get('scenario')) { try { const S2 = await api.scene(app.site.split('_')[0] + '_scenario'); app.scenario = S2; await loadModels([...new Set(S2.trees.filter((x) => x.species_ref).map((x) => x.species_ref.model).concat(S2.candidate ? [S2.candidate.model] : []))]); if (params.get('scenario') === 'saved') { app.S = S2; saveScenario(); app.S = app.existing; } } catch (e) { /* no scenario side file yet */ } }   // reviewer links and captures: the last scenario side file as the working scenario (&scenario=saved also saves it as A)
   if (params.get('t')) { const total = document.body.scrollHeight - window.innerHeight; window.scrollTo(0, Math.min(SCROLL, +params.get('t')) / SCROLL * total); }
   onScroll(); app.t = app.tTarget || 0; syncScene(); app.scene.setStop(app.t); draw(); question();   /* no glide on arrival */
@@ -1588,7 +1593,7 @@ async function capture(name, download = false) {
     const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)], { type: 'image/svg+xml' })); const img = new Image();
     await new Promise((res) => { img.onload = res; img.onerror = res; img.src = url; }); g.globalAlpha = id === 'osec' ? Math.max(0, Math.min(1, +src.style.opacity || 1)) : 1; g.drawImage(img, 0, 0, W, H); g.globalAlpha = 1; URL.revokeObjectURL(url); }
   // the question line, the rail, the result panel and the gate: rasterized as the page shows them (html2canvas, cdnjs); hand-drawn text if it cannot load
-  if (await rasterHtml(g)) { const data_url0 = out.toDataURL('image/png'); const r0 = await fetch('/api/capture', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, data_url: data_url0 }) }).then((x) => x.json()); document.title = 'captured:' + (r0.saved || r0.error); status(download ? 'saved ' + (r0.saved || r0.error) : ''); if (download) { const a = document.createElement('a'); a.href = data_url0; a.download = name + '.png'; a.click(); await sheetPdf(name, data_url0, W, H); } return; }
+  if (await rasterHtml(g)) { const data_url0 = out.toDataURL('image/png'); const r0 = STATIC ? { saved: name + '.png' } : await fetch('/api/capture', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, data_url: data_url0 }) }).then((x) => x.json());   /* a static host keeps nothing: the download is the copy */ document.title = 'captured:' + (r0.saved || r0.error); status(download ? 'saved ' + (r0.saved || r0.error) : ''); if (download) { const a = document.createElement('a'); a.href = data_url0; a.download = name + '.png'; a.click(); await sheetPdf(name, data_url0, W, H); } return; }
   g.fillStyle = '#F7F4EC'; g.fillRect(0, 0, W, 46); g.fillStyle = '#000'; g.font = '600 24px "Barlow Condensed", "Arial Narrow", sans-serif'; g.fillText($('q-text').textContent, 250, 32);
   const v = $('q-verdict'); g.font = '600 15px "Barlow Condensed", sans-serif'; const vw = g.measureText(v.textContent).width + 20; g.fillStyle = v.classList.contains('yes') ? '#557F52' : v.classList.contains('no') ? '#B0413E' : '#000'; g.fillRect(W - vw - 22, 10, vw, 24); g.fillStyle = '#fff'; g.fillText(v.textContent, W - vw - 12, 27);
   let y = 40; g.font = '600 15px "Barlow Condensed", sans-serif';

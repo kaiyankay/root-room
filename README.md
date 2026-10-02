@@ -4,6 +4,8 @@
 
 ARCH 540 · Assignment 1 · Making Design Knowledge Interactive
 
+**[Open the live demo →](https://kaiyankay.github.io/root-room/)** · a desktop browser, 1500 × 800 or larger
+
 ![Root Room · a saved scenario as an exploded axonometric: the credited soil lifted as a planter with the roots inside, the mains at their depth, the native ground drawn as a convention](docs/readme_cover.png)
 
 ## Purpose
@@ -22,7 +24,9 @@ Root Room starts from a real public street tree, reads the City's data about the
 
 ## Run the demo
 
-Python 3.10+ and one package. The page loads three.js and jsPDF from a CDN, so the browser needs internet access.
+**Online.** [kaiyankay.github.io/root-room](https://kaiyankay.github.io/root-room/) runs the whole tool on the pilot street, the 400 block of West King Edward Avenue, with nothing to install. The page is static; the rule engine runs inside your browser (Python compiled to WebAssembly with [Pyodide](https://pyodide.org)), the same code as the local server, so the numbers are the engine's, not an approximation. Clicking a tree is instant. The first change of the ground takes about 15 to 20 seconds while the engine loads; after that a change takes about three seconds. Saved scenarios last as long as the browser tab.
+
+**On your own machine,** for any street in the City. Python 3.10+ and one package. The page loads three.js and jsPDF from a CDN, so the browser needs internet access.
 
 ```bash
 pip install jsonschema
@@ -31,7 +35,7 @@ python3 scripts/serve_web.py --port 8767
 
 Open **http://127.0.0.1:8767/** in a desktop browser (composed for 1500 × 800 and up). The pilot street, the 400 block of West King Edward Avenue, is ready to use: this repository carries its City data. Any other street works too; its City data is fetched on first use and kept (about two minutes the first time). The engine and the exporter run inside the server: the first run after a start takes about six seconds, after that a tree click answers in four to five seconds and a ground change in two to three.
 
-To put it online for others, the repository carries a `Dockerfile` (Hugging Face Spaces with the Docker SDK, port 7860, or any container host) and a `render.yaml` (a Render free web service); both start the same server.
+The online version is built by `scripts/build_static.py` and published by GitHub Actions (`.github/workflows/pages.yml`) at every push to `main`. To host the full server instead, the repository carries a `Dockerfile` (any container host) and a `render.yaml` (Render).
 
 ## The six stages
 
@@ -133,7 +137,7 @@ City data is used under the City of Vancouver Open Government Licence.
 
 ## Status and limits
 
-- The pilot street is ready; any other City tree runs from the City's data on first visit (about two minutes, with the fetch).
+- Online, the pilot street works in full; another street asks you to run the tool locally, where any City tree runs from the City's data on first visit (about two minutes, with the fetch).
 - The existing soil has no City record anywhere; the page shows NO RECORD and counts nothing for today. A measured existing soil can be typed with evidence on the command line, not yet on the page.
 - Species are drawn as the library's line-art billboards; Rhino species models are parked.
 - The Rhino model is built on the author's machine from the saved file; the public hosting of the demo, and with it how the Rhino build reports back to the page, is not decided.

@@ -12,3 +12,6 @@ data/raw/**/*wm123*
 data/processed/*wm123*
 # the window bounding-box index: derived from data/raw, rebuilt lazily (src/window_index.py)
 data/processed/window_bbox_index.json
+
+# the static build (scripts/build_static.py); GitHub Actions publishes it
+_site/
