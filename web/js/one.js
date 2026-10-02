@@ -1539,13 +1539,15 @@ function curbHint(S) { const k = S.knobs && S.knobs.curb_offset_from_centreline_
 function goTree(q) { if (app.busy) return; const asset = q[2]; app.goto = { u: q[0], v: q[1] }; planOnly(); draw(); status('opening tree ' + asset + ' …'); goTo(String(asset), () => { if (!app.needCurb) status('could not open tree ' + asset); }, STOP_T[1]).then(() => { app.goto = null; draw(); }); }   /* the busy ring sits on the chosen tree while its street loads or the engine runs */
 /* a checked street, from the map or from the rail's list: its scene loads and the camera flies down to the plan (02) */
 function goFace(siteId) {
-  if (app.busy || !app.S) return; const here = app.S.site_id.split('_')[0]; if (siteId === here) { scrollToT(1.5); return; }
+  if (app.busy || !app.S) return; const here = app.S.site_id.split('_')[0]; if (siteId === here) { goStage(1); return; }
   const it = app.scene.faceUV ? app.scene.faceUV.find((x) => x.f.site_id === siteId) : null; if (it) { app.goto = { u: (it.a[0] + it.b[0]) / 2, v: (it.a[1] + it.b[1]) / 2 }; draw(); }
-  status('going to ' + (it ? it.f.hblock : siteId) + ' …'); load(siteId).then((ok) => { app.goto = null; app.area = null; app.ctlKey = ''; draw(); if (ok) { scrollToT(1.5); return; }
+  status('going to ' + (it ? it.f.hblock : siteId) + ' …'); load(siteId).then((ok) => { app.goto = null; app.area = null; app.ctlKey = ''; draw(); if (ok) { goStage(1); return; }
     const f = it ? it.f : (app.city && app.city.faces ? app.city.faces.faces.find((q) => q.site_id === siteId) : null); if (f && f.asset_id) { status(`${f.hblock}: not exported on this server · fetching the street and running the engine, about two minutes …`); goTo(String(f.asset_id), () => status('could not open ' + f.hblock), 1.5); } });   /* a checked street without its scene file here (a fresh clone): run it from the City's data */
 }
 // the rail: six stages, each a place on the one scroll
-$('steps').onclick = (e) => { const li = e.target.closest('li[data-s]'); if (!li) return; scrollToT(STOP_T[+li.dataset.s]); };
+$('steps').onclick = (e) => { const li = e.target.closest('li[data-s]'); if (!li) return; goStage(+li.dataset.s); };
+/* every way to a stage (the rail, keys 1–6, arrows): 02 is always the whole street as one plan, its section closed */
+function goStage(s) { if (s === 1) { planOnly(); app.scene._pf = null; if (app.S) { app.scene.setStop(app.t); draw(); } } scrollToT(STOP_T[s]); }
 
 // ---------- scroll -> t ----------
 function onScroll() { if (app.report) return; const total = document.body.scrollHeight - window.innerHeight; app.tTarget = total > 0 ? Math.min(SCROLL, Math.max(0, window.scrollY / total * SCROLL)) : 0; if (!app.easing) { app.easing = true; requestAnimationFrame(ease); }
@@ -1571,10 +1573,10 @@ function startPan(e, sc) {
 function planOnly() { app.sectionOpen = false; app.secK = 0; app.secAnim = false; }
 function openSection() { app.sectionOpen = true; if (!app.secAnim) { app.secAnim = true; requestAnimationFrame(secTick); } }
 function secTick() { const target = app.sectionOpen ? 1 : 0; const d = target - app.secK; if (Math.abs(d) < 0.01) { app.secK = target; app.secAnim = false; } else app.secK += d * 0.2; app.scene._pf = null; app.scene.setStop(app.t); draw(); if (app.secAnim) requestAnimationFrame(secTick); }
-function stepTo(t) { const was = stage(app.t); app.t = t; if (t >= diveT().ts) { $('tip').classList.remove('on'); app.hotArea = null; } if (t < 0.68 || t >= 3) app.hotTree = null; if (app.menuOpen) closeMenu(); if (app.S) { syncScene(); app.scene.setStop(t); draw(); if (was !== stage(t)) question(); } }
+function stepTo(t) { const was = stage(app.t); app.t = t; if (was >= 2 && stage(t) === 1 && app.sectionOpen) { planOnly(); app.scene._pf = null; }   /* scrolled back up to 02: the plan again, not the section */ if (t >= diveT().ts) { $('tip').classList.remove('on'); app.hotArea = null; } if (t < 0.68 || t >= 3) app.hotTree = null; if (app.menuOpen) closeMenu(); if (app.S) { syncScene(); app.scene.setStop(t); draw(); if (was !== stage(t)) question(); } }
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('keydown', (e) => { const tag = (e.target && e.target.tagName) || ''; if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.metaKey || e.ctrlKey || e.altKey || app.report) return;
-  if (/^[1-6]$/.test(e.key)) { e.preventDefault(); scrollToT(STOP_T[+e.key - 1]); } else if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); scrollToT(STOP_T[Math.min(5, stage(app.t) + 1)]); } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); scrollToT(STOP_T[Math.max(0, stage(app.t) - 1)]); } });   /* the stages are places: 1–6 or the arrows go there */
+  if (/^[1-6]$/.test(e.key)) { e.preventDefault(); goStage(+e.key - 1); } else if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goStage(Math.min(5, stage(app.t) + 1)); } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goStage(Math.max(0, stage(app.t) - 1)); } });   /* the stages are places: 1–6 or the arrows go there */
 window.addEventListener('resize', () => { if (app.S) { app.scene._resize(); app.scene.setStop(app.t); draw(); } });
 
 (async function boot() {
