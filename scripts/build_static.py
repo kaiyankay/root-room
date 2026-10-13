@@ -52,13 +52,26 @@ def window_name(rel: str):
 
 
 def window_logs(work: pathlib.Path, names) -> dict:
+    """Each window's centre and radius: from its Open Data fetch log, else its VanMap log (the same fields), else the box of
+    its block-outlines file (a checkout that carries the layers without their logs)."""
     out = {}
+    raw = work / "data" / "raw"
     for n in names:
-        log = work / "data" / "raw" / f"{n}__fetch_log.json"
+        for log in (raw / f"{n}__fetch_log.json", raw / "vanmap" / f"{n}__vanmap_fetch_log.json"):
+            try:
+                d = json.loads(log.read_text(encoding="utf-8")); c = d["centre"]
+                out[n] = {"name": n, "lon": c["lon"], "lat": c["lat"], "r": float(d["radius_m"])}; break
+            except (OSError, KeyError, ValueError, TypeError):
+                continue
+        if n in out:
+            continue
         try:
-            d = json.loads(log.read_text(encoding="utf-8")); c = d["centre"]
-            out[n] = {"name": n, "lon": c["lon"], "lat": c["lat"], "r": float(d["radius_m"])}
-        except (OSError, KeyError, ValueError, TypeError):
+            import math
+            pts = [c for f in json.loads((raw / f"block-outlines__{n}.geojson").read_text(encoding="utf-8")).get("features", []) for c in _coords(f.get("geometry"))]
+            lo0, lo1 = min(p[0] for p in pts), max(p[0] for p in pts); la0, la1 = min(p[1] for p in pts), max(p[1] for p in pts)
+            lat = (la0 + la1) / 2; kx = 111_320.0 * math.cos(math.radians(lat))
+            out[n] = {"name": n, "lon": (lo0 + lo1) / 2, "lat": lat, "r": min((lo1 - lo0) * kx, (la1 - la0) * 111_320.0) / 2}
+        except (OSError, ValueError, TypeError):
             continue
     return out
 

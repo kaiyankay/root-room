@@ -1,0 +1,245 @@
+{
+ "datasets": [
+  {
+   "dataset_id": "abandoned-water-mains",
+   "title": "Abandoned water mains",
+   "records_in_dataset": 13139,
+   "data_modified": "2026-09-28T13:37:15+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/abandoned-water-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 356,
+   "saved_as": "data/raw/abandoned-water-mains__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "dedicated-fire-protection-systems-dfps-water-mains",
+   "title": "Dedicated fire protection systems (DFPS) water mains",
+   "records_in_dataset": 245,
+   "data_modified": "2024-01-15T13:14:01+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/dedicated-fire-protection-systems-dfps-water-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 0,
+   "saved_as": "data/raw/dedicated-fire-protection-systems-dfps-water-mains__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "gvrd-sewer-trunk-mains",
+   "title": "GVRD sewer trunk mains",
+   "records_in_dataset": 1657,
+   "data_modified": "2026-09-27T13:31:17+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/gvrd-sewer-trunk-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 8,
+   "saved_as": "data/raw/gvrd-sewer-trunk-mains__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "property-addresses",
+   "title": "Property addresses",
+   "records_in_dataset": 99743,
+   "data_modified": "2026-09-28T13:35:32+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-addresses/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 2302,
+   "saved_as": "data/raw/property-addresses__king_edward_window.geojson",
+   "layer_group": "address"
+  },
+  {
+   "dataset_id": "property-easements",
+   "title": "Property easements",
+   "records_in_dataset": 13159,
+   "data_modified": "2026-09-21T13:31:09+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-easements/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 124,
+   "saved_as": "data/raw/property-easements__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "rapid-transit-lines",
+   "title": "Rapid transit lines",
+   "records_in_dataset": 3,
+   "data_modified": "2020-11-19T11:47:55+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/rapid-transit-lines/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1,
+   "saved_as": "data/raw/rapid-transit-lines__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "rapid-transit-stations",
+   "title": "Rapid transit stations",
+   "records_in_dataset": 22,
+   "data_modified": "2023-02-22T13:22:23+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/rapid-transit-stations/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1,
+   "saved_as": "data/raw/rapid-transit-stations__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "sewer-catch-basins",
+   "title": "Sewer catch basins",
+   "records_in_dataset": 44975,
+   "data_modified": "2026-09-21T13:35:13+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/sewer-catch-basins/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1070,
+   "saved_as": "data/raw/sewer-catch-basins__king_edward_window.geojson",
+   "layer_group": "utility"
+  },
+  {
+   "dataset_id": "sewer-mains",
+   "title": "Sewer mains",
+   "records_in_dataset": 39916,
+   "data_modified": "2026-09-22T19:11:09+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/sewer-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 864,
+   "saved_as": "data/raw/sewer-mains__king_edward_window.geojson",
+   "layer_group": "utility"
+  },
+  {
+   "dataset_id": "sewer-manholes",
+   "title": "Sewer manholes",
+   "records_in_dataset": 36043,
+   "data_modified": "2026-09-28T13:36:36+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/sewer-manholes/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 726,
+   "saved_as": "data/raw/sewer-manholes__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "street-intersections",
+   "title": "Street intersections",
+   "records_in_dataset": 6125,
+   "data_modified": "2026-07-27T13:35:47+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-intersections/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 132,
+   "saved_as": "data/raw/street-intersections__king_edward_window.geojson",
+   "layer_group": "address"
+  },
+  {
+   "dataset_id": "street-lighting-abandoned-conduits",
+   "title": "Street lighting abandoned conduits",
+   "records_in_dataset": 774,
+   "data_modified": "2024-11-18T14:16:49+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-abandoned-conduits/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 71,
+   "saved_as": "data/raw/street-lighting-abandoned-conduits__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "street-lighting-conduits",
+   "title": "Street lighting conduits",
+   "records_in_dataset": 65456,
+   "data_modified": "2026-09-14T13:37:02+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-conduits/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1533,
+   "saved_as": "data/raw/street-lighting-conduits__king_edward_window.geojson",
+   "layer_group": "utility"
+  },
+  {
+   "dataset_id": "street-lighting-junction-boxes",
+   "title": "Street lighting junction boxes",
+   "records_in_dataset": 7962,
+   "data_modified": "2026-09-28T13:36:29+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-junction-boxes/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 192,
+   "saved_as": "data/raw/street-lighting-junction-boxes__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "street-lighting-poles",
+   "title": "Street lighting poles",
+   "records_in_dataset": 57984,
+   "data_modified": "2026-09-14T13:37:01+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-poles/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1337,
+   "saved_as": "data/raw/street-lighting-poles__king_edward_window.geojson",
+   "layer_group": "utility"
+  },
+  {
+   "dataset_id": "street-lighting-service-panels",
+   "title": "Street lighting service panels",
+   "records_in_dataset": 1455,
+   "data_modified": "2026-09-28T13:36:50+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-lighting-service-panels/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 32,
+   "saved_as": "data/raw/street-lighting-service-panels__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "traffic-signals",
+   "title": "Traffic signals",
+   "records_in_dataset": 966,
+   "data_modified": "2026-08-03T13:35:50+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/traffic-signals/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 18,
+   "saved_as": "data/raw/traffic-signals__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "water-control-valves",
+   "title": "Water control valves",
+   "records_in_dataset": 21323,
+   "data_modified": "2026-09-28T13:37:40+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-control-valves/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 552,
+   "saved_as": "data/raw/water-control-valves__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "water-distribution-mains",
+   "title": "Water distribution mains",
+   "records_in_dataset": 67599,
+   "data_modified": "2026-09-21T13:36:59+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-distribution-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 1546,
+   "saved_as": "data/raw/water-distribution-mains__king_edward_window.geojson",
+   "layer_group": "utility"
+  },
+  {
+   "dataset_id": "water-hydrants",
+   "title": "Water hydrants",
+   "records_in_dataset": 6613,
+   "data_modified": "2026-09-28T13:37:39+00:00",
+   "fetched_on": "2026-09-28",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-hydrants/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 123,
+   "saved_as": "data/raw/water-hydrants__king_edward_window.geojson",
+   "layer_group": "underground_extra"
+  },
+  {
+   "dataset_id": "water-transmission-mains",
+   "title": "Water transmission mains",
+   "records_in_dataset": 3023,
+   "data_modified": "2026-08-31T13:14:22+00:00",
+   "fetched_on": "2026-09-22",
+   "export_url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/water-transmission-mains/exports/geojson?where=within_distance%28geom%2C+geom%27POINT%28-123.1163+49.249%29%27%2C+900m%29",
+   "features_saved": 115,
+   "saved_as": "data/raw/water-transmission-mains__king_edward_window.geojson",
+   "layer_group": "utility"
+  }
+ ],
+ "fetched_on": "2026-09-28",
+ "licence": "Open Government Licence \u2013 Vancouver",
+ "portal": "https://opendata.vancouver.ca",
+ "window": "king_edward_window",
+ "centre": {
+  "lon": -123.1163,
+  "lat": 49.249
+ },
+ "radius_m": 900,
+ "spatial_filter": "within_distance(geom, geom'POINT(-123.1163 49.249)', 900m)"
+}
