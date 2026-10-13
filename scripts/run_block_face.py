@@ -31,6 +31,8 @@ OUT_DIR = ROOT / "data" / "processed"
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--site", default="KE-198571")
+    p.add_argument("--site-type", default="boulevard", choices=list(bf.SITE_TYPES),
+                   help="where the tree stands, the user's confirmation: boulevard (front boulevard, R30) or median (the strip between the median's two curbs)")
     p.add_argument("--curb", type=float, default=None, help="curb offset from the street centreline, m (knob)")
     p.add_argument("--depth", type=float, default=None, help="design soil depth, m (knob)")
     p.add_argument("--target", default=None, choices=["Small", "Medium", "Large", "Columnar"], help="Table 9-2 class (knob)")
@@ -65,7 +67,7 @@ def main(argv=None):
     a = p.parse_args(argv)
 
     sites_path = pathlib.Path(a.sites) if a.sites else bf.si.SITES_PATH
-    face = bf.build_block_face(a.site, sites_path)
+    face = bf.build_block_face(a.site, sites_path, a.site_type)
     existing = {}
     for key, val in (("soil_width_m", a.existing_width), ("soil_depth_m", a.existing_depth), ("soil_type", a.existing_soil)):
         if val is not None:
@@ -87,13 +89,18 @@ def main(argv=None):
                  "provenance": parts[2] if len(parts) > 2 else "DESIGN_ASSUMPTION",
                  "depth_m": float(parts[3]) if len(parts) > 3 else None, "evidence": a.extension_evidence}
             extensions.append(z)
-    result = bf.evaluate_block_face(face, a.curb, a.depth, a.target, a.soil, land_use=a.land_use, width_level=a.width_level,
+    curb = a.curb
+    curb_from_hint = None
+    if curb is None and face.get("curb_hint", {}).get("suggested_m") is not None:   # no curb given: the City's fixtures suggest one (DESIGN_ASSUMPTION)
+        curb, curb_from_hint = face["curb_hint"]["suggested_m"], face["curb_hint"]["suggested_source"]
+        print(f"  {'median curbs ±' if a.site_type == 'median' else 'curb '}{curb} m from the centreline, from the {curb_from_hint} (a design assumption; --curb overrides)")
+    result = bf.evaluate_block_face(face, curb, a.depth, a.target, a.soil, land_use=a.land_use, width_level=a.width_level,
                                     knob_provenance=a.knob_provenance,
                                     existing=existing or None, extra_utilities=extra,
                                     include_city_utilities=not a.no_city_utilities, sites_path=sites_path,
                                     extensions=extensions or None, replacement=a.replacement,
-                                    curb_provenance=a.curb_provenance, curb_evidence=a.curb_evidence)
-    result["run"] = {"script": "scripts/run_block_face.py", "run_on": date.today().isoformat(), "args": vars(a),
+                                    curb_provenance=a.curb_provenance, curb_evidence=a.curb_evidence, site_type=a.site_type)
+    result["run"] = {"script": "scripts/run_block_face.py", "run_on": date.today().isoformat(), "args": vars(a), "curb_from_hint": curb_from_hint,
                      "rules": "sources/06_rules.json v" + bf.engine.RULES["version"],
                      "definition": "sources/11_redefinition_2026-09-28.md (supersedes 08); test cases sources/09_block_face_test_cases.md",
                      "sites": str(sites_path.resolve().relative_to(ROOT)) if str(sites_path.resolve()).startswith(str(ROOT)) else str(sites_path)}
@@ -105,7 +112,11 @@ def main(argv=None):
     except ValueError:           # --out outside the project: show the path as given
         shown = out
     print(f"wrote {shown}")
-    if s:
+    if s and a.site_type == "median":
+        md = result["design"]["median"]["widths_m"]
+        print(f"median band: curbs ±{result['design']['median']['half_width_m']} m from the centreline, median {md['median']} m wide, "
+              f"band {md['band']} m between the backs of the curbs (no sidewalk or back-boulevard deduction; R30 not applied)")
+    elif s:
         fb = result["design"]["front_boulevard"]["widths_m"]
         print(f"front boulevard (R30, {a.land_use}, {result['knobs']['width_level']['value']}): P/L-curb {fb['property_line_to_curb_face']} "
               f"- sidewalk {fb['sidewalk_clear']} - back {fb['back_boulevard']} - curb {fb['curb']} = {fb['front_boulevard']} m")

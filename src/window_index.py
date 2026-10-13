@@ -154,6 +154,18 @@ _SIZE_ONLY = os.environ.get("ROOT_ROOM_INDEX_SIZE_ONLY") == "1"   # a bundle unp
 JSON_CACHE_BYTES = int(os.environ.get("ROOT_ROOM_JSON_CACHE_MB", "192")) * 1024 * 1024   # the parsed window files kept between runs in one process (a street's set is ~40 MB); smaller on a small host
 
 
+def feature_key(f) -> tuple:
+    """A cheap identity for a GeoJSON feature where windows overlap: geometry type, its first coordinate and its properties.
+    The City exports the same feature into every window that holds it, so equal here means the same feature; json.dumps of
+    the whole geometry (the earlier key) was 1.2 s of a 2.4 s block-face build."""
+    g = f.get("geometry") or {}
+    c = g.get("coordinates")
+    while isinstance(c, (list, tuple)) and c and isinstance(c[0], (list, tuple)):
+        c = c[0]
+    first = tuple(c[:2]) if isinstance(c, (list, tuple)) else None
+    return (g.get("type"), first, str(f.get("properties")))
+
+
 def load_json(path: pathlib.Path):
     """json.loads of a file, kept in memory between runs (keyed by size + mtime, so a rewritten file is read again).
     A long-lived server reads a street's windows once; a one-shot script pays nothing extra."""

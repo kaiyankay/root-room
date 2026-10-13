@@ -26,7 +26,7 @@ export class Scene {
   constructor(canvas) {
     this.canvas = canvas;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: false, alpha: false });   /* capture() renders right before it reads the canvas, so the buffer need not be preserved: the swap is cheaper every frame */
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));   /* 1.5 on a 2x screen: the same lines, 44 % fewer pixels to fill (the user, 2026-10-13: 很卡顿) */
     this.renderer.setClearColor(COL.paper, 1);
     this.renderer.localClippingEnabled = true;
     this.scene = new THREE.Scene();
@@ -49,7 +49,7 @@ export class Scene {
 
   // ---------- helpers -------------------------------------------------------------------------
   /* resolution switch (unused on the glide: re-allocating the buffer stalls the GPU for ~1 s on this machine) */
-  setQuality(low) { const pr = low ? 1 : Math.min(window.devicePixelRatio || 1, 2); if (pr === this._pr) return false; this._pr = pr; this.renderer.setPixelRatio(pr); this.renderer.setSize(this.W, this.H, false); return true; }
+  setQuality(low) { const pr = low ? 1 : Math.min(window.devicePixelRatio || 1, 1.5); if (pr === this._pr) return false; this._pr = pr; this.renderer.setPixelRatio(pr); this.renderer.setSize(this.W, this.H, false); return true; }
   _resize() {
     const r = this.canvas.getBoundingClientRect();
     this.W = Math.max(2, r.width); this.H = Math.max(2, r.height);
@@ -103,6 +103,20 @@ export class Scene {
     let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
     for (let y = 3; y < 128; y += step) for (let x = 3; x < 128; x += step) { const jx = (rnd() - .5) * step * .6, jy = (rnd() - .5) * step * .6; g.beginPath(); g.arc(x + jx, y + jy, r, 0, 6.283); g.fill(); }
     const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; return t;
+  }
+  /* the standard details' hatches as textures: 'w45' the diagonal basket weave of G11.3's growing medium (the credited soil), 'w45f' the same finer (the tree pit), 'w0' the orthogonal weave of the subgrade and native ground, 'cross' a crosshatch (the rootball) */
+  hatchTex(kind) {
+    this._hatchTex = this._hatchTex || {}; if (this._hatchTex[kind]) return this._hatchTex[kind];
+    const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#ffffff'; g.fillRect(0, 0, 128, 128); g.strokeStyle = 'rgba(38,56,44,.4)'; g.lineWidth = 0.9; g.lineCap = 'butt';
+    const cell = kind === 'w45f' ? 16 : 32;
+    if (kind === 'base') { let sd = 11; const R = () => { sd = (sd * 16807) % 2147483647; return sd / 2147483647; }; g.fillStyle = 'rgba(38,56,44,.55)'; for (let i = 0; i < 90; i++) { g.beginPath(); g.arc(R() * 128, R() * 128, 0.6 + R() * 0.8, 0, 6.283); g.fill(); }
+      g.lineWidth = 0.9; const placed = []; for (let i = 0; i < 60; i++) { const x = R() * 128, y = R() * 128, r = 2.5 + R() * 4.5; if (placed.some(([qx, qy, qr]) => Math.hypot(qx - x, qy - y) < qr + r + 2)) continue; placed.push([x, y, r]); g.beginPath(); g.ellipse(x, y, r, r * (0.55 + R() * 0.3), R() * 3.1, 0, 6.283); g.stroke(); } }   /* crushed stone and gravel: the granular base under the pavement */
+    else if (kind === 'cross') { g.lineWidth = 0.8; for (let x = -128; x < 256; x += 16) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 128, 128); g.stroke(); g.beginPath(); g.moveTo(x + 128, 0); g.lineTo(x, 128); g.stroke(); } }
+    else for (let y = 0; y < 128; y += cell) for (let x = 0; x < 128; x += cell) { const odd = ((x + y) / cell) % 2 === 1; const n = 3; for (let i = 0; i < n; i++) { const o = (i + 0.5) * cell / n; g.beginPath();
+      if (kind === 'w0') { if (odd) { g.moveTo(x, y + o); g.lineTo(x + cell, y + o); } else { g.moveTo(x + o, y); g.lineTo(x + o, y + cell); } }
+      else { if (odd) { g.moveTo(x, y + o); g.lineTo(x + o, y); } else { g.moveTo(x + cell - o, y); g.lineTo(x + cell, y + o); } g.stroke(); g.beginPath(); if (odd) { g.moveTo(x + o, y + cell); g.lineTo(x + cell, y + o); } else { g.moveTo(x, y + cell - o); g.lineTo(x + cell - o, y + cell); } }
+      g.stroke(); } }
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; t.colorSpace = THREE.SRGBColorSpace; this._hatchTex[kind] = t; return t;
   }
   hatch(u0, u1, v, z0, z1, gap, angle, mat) {  // hatch lines on the vertical plane y = v
     const flat = []; const H = z1 - z0; const L = u1 - u0; const k = Math.tan(angle);
@@ -169,6 +183,49 @@ export class Scene {
 
   // ---------- roots: a NOMINAL line drawing that fills the credited soil and stops at the black / a clearance ----
   // returns { ink: flat segments, cut: flat short ticks }, 3-D, in the engine frame
+  /* the planting as the City's own sheets draw it (Park Board 8-01, G11.3), in three dimensions and 03's proportions: the rootball a bowl flush with grade
+     (width ten times the caliper, held to the band and the depth; height 0.8 × width, flat habit 0.65, tap 0.95) in a crosshatch with the basket's rings and ribs,
+     the pit a splayed square around it in the pit's finer weave. STANDARD, nominal for this tree — never a record of it. Returns the ball's measures for the roots. */
+  planting(u, v, dbhCm, form, bd, g, M) {
+    const hr = form === 'flat' ? 0.65 : form === 'tap' ? 0.95 : 0.794; const rb = Math.max(0.6, Math.min(bd.v_to - bd.v_from - 0.2, (bd.depth_m + 0.3) / hr, (dbhCm || 15) * 0.10)); const rd = rb * hr; const pd = rd + 0.15;
+    const tp = rb / 2 + Math.max(0.08, Math.min(0.45, (bd.v_to - bd.v_from) / 2 - rb / 2 - 0.04)), bp = rb / 2 + Math.max(0.04, Math.min(0.2, tp - rb / 2 - 0.04));
+    const pit = this.mesh(new THREE.CylinderGeometry(tp * Math.SQRT2, bp * Math.SQRT2, pd, 4, 1, true), COL.white, { map: this.hatchTex('w45f'), opacity: 0.5, po: -2 }); pit.material.depthWrite = false; pit.material.map.repeat.set(3, 2); pit.rotation.x = Math.PI / 2; pit.rotation.y = Math.PI / 4; pit.position.set(u, v, -pd / 2); pit.renderOrder = 4; pit.userData.planting = true; g.add(pit);   /* the pit's four splayed sides */
+    { const pb = this.rect(u - bp, u + bp, v - bp, v + bp, -pd, COL.white, { map: this.hatchTex('w0'), opacity: 0.7, po: -2 }); pb.material.depthWrite = false; pb.material.map.repeat.set(2, 2); pb.renderOrder = 4; pb.userData.planting = true; g.add(pb); }   /* 300 mm compacted subgrade under the ball */
+    const pl = []; for (const [a, b] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) pl.push(u + a * tp, v + b * tp, 0, u + a * bp, v + b * bp, -pd); for (let i = 0; i < 4; i++) { const c = [[-1, -1], [1, -1], [1, 1], [-1, 1]]; const [a0, b0] = c[i], [a1, b1] = c[(i + 1) % 4]; pl.push(u + a0 * tp, v + b0 * tp, 0, u + a1 * tp, v + b1 * tp, 0, u + a0 * bp, v + b0 * bp, -pd, u + a1 * bp, v + b1 * bp, -pd); } g.add(this.segs(pl, M.inkThin));
+    const ball = this.mesh(new THREE.SphereGeometry(1, 28, 14, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), COL.white, { map: this.hatchTex('cross'), po: -3 }); ball.material.map.repeat.set(2, 1); ball.rotation.x = Math.PI / 2; ball.scale.set(rb / 2, rd, rb / 2); ball.position.set(u, v, 0); ball.renderOrder = 5; ball.userData.planting = true; ball.userData.ball = true; g.add(ball);   /* the bowl: the lower half of a sphere, flat at grade */
+    { const rim = []; const N = 36; const ringAt = (zf, rf) => { for (let i = 0; i < N; i++) { const a0 = i / N * 6.283, a1 = (i + 1) / N * 6.283; rim.push(u + Math.cos(a0) * rf, v + Math.sin(a0) * rf, -rd * zf, u + Math.cos(a1) * rf, v + Math.sin(a1) * rf, -rd * zf); } };
+      ringAt(0, rb / 2); ringAt(0.42, rb / 2 * Math.sqrt(1 - 0.42 * 0.42)); ringAt(0.72, rb / 2 * Math.sqrt(1 - 0.72 * 0.72));   /* the basket's rings */
+      for (let k = 0; k < 10; k++) { const a = k / 10 * 6.283; let prev = null; for (let j = 0; j <= 8; j++) { const th = j / 8 * Math.PI / 2; const q = [u + Math.cos(a) * rb / 2 * Math.cos(th), v + Math.sin(a) * rb / 2 * Math.cos(th), -rd * Math.sin(th)]; if (prev) rim.push(...prev, ...q); prev = q; } }   /* its ribs */
+      const rs = this.segs(rim, M.inkThin); rs.userData.ball = true; g.add(rs); }
+    return { rb, rd, tp, bp, pd };
+  }
+  /* few clear roots, as 03 draws them (the 2026-10-09 judgement against the Wurzelatlas spray): primaries leave the bowl's sides by habit (heart · flat · tap), each a tapering stroke
+     with one or two forks, sinkers out of its bottom; every line lives only in the soil the rule credits and ends with a red tick where that soil ends. A drawing, not a measurement. */
+  rootsFew3(u, v, rb, rd, roots, strips, seed) {
+    const vol = roots.volume || []; const out = { heavy: [], medium: [], thin: [], cut: [] }; if (!vol.length) return out; const all = [], cuts = [];   /* every piece with its distance along the root, sorted at the end: the roots grow out of the bowl in the planting sequence */
+    const zmin = Math.min(...vol.map((q) => q.z0)) * (roots.depth_ratio || 0.8); const form = roots.form || 'heart';
+    const inside = (p) => p[2] <= 0 && p[2] >= zmin && vol.some((q) => p[0] >= q.u0 && p[0] <= q.u1 && p[1] >= q.v0 && p[1] <= q.v1) && !strips.some((s) => s.u0 != null && p[0] >= s.u0 && p[0] <= s.u1 && p[1] >= s.v0 && p[1] <= s.v1);
+    const R = rng(seed); const reach = Math.max(1.0, rb / 2 + 2.4); const LMAX = reach * 1.15 + rd; const step = 0.13;
+    let dNow = 0; const put = (a, b, w) => { all.push({ d: dNow, k: w > 0.07 ? 'heavy' : w > 0.035 ? 'medium' : 'thin', p: [...a, ...b] }); };
+    const grow = (p, az, dip, len, w0, gen, d0 = 0) => { let cur = p; let dist = d0; let turn = (R() - .5) * 0.3; const wAt = (dd) => w0 * Math.max(0.12, 1 - 0.88 * Math.min(1, dd / LMAX)) / Math.max(0.12, 1 - 0.88 * Math.min(1, d0 / LMAX));
+      for (let i = 0; i < len; i++) { const w = wAt(dist); dist += step; dNow = dist; turn = turn * 0.7 + (R() - .5) * 0.42; az += turn * (gen === 0 ? 0.3 : 0.6); dip += (R() - .5) * 0.16 + (form === 'flat' ? 0.012 : -0.008) * (gen === 0 ? 1 : 0.5); dip = Math.max(-1.3, Math.min(0.35, dip)); if (cur[2] < -1.0 && gen === 0) dip += 0.07;   /* the long roots flatten with distance: most of a street tree's roots live in the top metre */
+        const nxt = [cur[0] + Math.cos(az) * Math.cos(dip) * step, cur[1] + Math.sin(az) * Math.cos(dip) * step, cur[2] + Math.sin(dip) * step];
+        if (nxt[2] < zmin + 0.04 && inside([nxt[0], nxt[1], zmin + 0.05])) { nxt[2] = zmin + 0.05; dip = Math.abs(dip) * 0.3; }   /* the floor of the credited soil: a root turns along it, it is not a cut */
+        if (!inside(nxt)) { let a = cur, b = nxt; for (let k = 0; k < 6; k++) { const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (a[2] + b[2]) / 2]; if (inside(m)) a = m; else b = m; } if (Math.hypot(a[0] - cur[0], a[1] - cur[1], a[2] - cur[2]) > 0.02) put(cur, a, w); const t = gen === 0 ? 0.09 : 0.06; cuts.push({ d: dist, p: [a[0] - Math.sin(az) * t, a[1] + Math.cos(az) * t, a[2], a[0] + Math.sin(az) * t, a[1] - Math.cos(az) * t, a[2]] }); return; }
+        put(cur, nxt, w); cur = nxt;
+        if (gen < 2 && i >= 3 && R() < (gen === 0 ? 0.11 : 0.08)) { const nf = 1; const sgn = R() < .5 ? 1 : -1; for (let q = 0; q < nf; q++) { const spread = 0.35 + R() * 0.7; const ang = nf === 1 ? sgn * spread : (q - 0.5) * spread * 1.3; grow(cur, az + ang, dip + (R() - .5) * 0.3, Math.round(len * (0.35 + R() * 0.35)), w * 0.6, gen + 1, dist); } } } };
+    const n = Math.round((form === 'tap' ? 5 : 8) * Math.min(1, 0.5 + rb / 2));
+    /* the primaries leave the bowl where the credited soil lets them run: of 36 bearings round the bowl, those whose foot and first 1.5 m lie in the credited soil, spread evenly */
+    const shallow = Math.min(1, Math.abs(zmin) / 1.5); const zClamp = (z) => Math.max(z, zmin + 0.08);   /* a 0.9 m band: the roots' feet sit above its floor and the primaries run shallower */
+    const ok = []; for (let k = 0; k < 36; k++) { const az = k / 36 * 6.283; const rr0 = rb / 2 * 0.95; const foot = [u + Math.cos(az) * rr0, v + Math.sin(az) * rr0, zClamp(-rd * 0.3)]; const ahead = [foot[0] + Math.cos(az) * 1.5, foot[1] + Math.sin(az) * 1.5, zClamp(foot[2] - 0.3)]; if (inside(foot) && inside(ahead)) ok.push(az); }
+    const bear = ok.length ? ok : [0, Math.PI]; const nB = Math.min(n, Math.max(4, bear.length));
+    for (let i = 0; i < nB; i++) { const t = Math.min(1, Math.max(0, (i + 0.5) / nB + (R() - .5) * 0.2)); const az = bear[Math.floor(i / nB * bear.length)] + (R() - .5) * 0.12; const zf = 0.06 + 0.55 * ((i % 3) / 2); const rr = rb / 2 * Math.sqrt(Math.max(0.05, 1 - zf * zf)) - 0.03;
+      const dip = -(form === 'flat' ? 0.15 + t * 0.35 : form === 'tap' ? 0.5 + t * 0.5 : 0.45 + t * 0.85) * 0.8 * (0.35 + 0.65 * shallow); const foot = [u + Math.cos(az) * rr, v + Math.sin(az) * rr, zClamp(-rd * zf)]; if (!inside(foot)) continue; grow(foot, az, dip, Math.round(reach / step * (0.45 + R() * 0.7)), (0.16 - t * 0.05) * (0.8 + R() * 0.4), 0); }   /* the primaries leave the bowl's sides, 0.09–0.17 m thick at the flare, dipping and then running out */
+    const sinkers = form === 'tap' ? [[0, 0, 1.6, 0.12], [0.3, 2.1, 0.9, 0.06], [0.3, 4.2, 0.9, 0.06]] : form === 'flat' ? [[0.3, 1.0, 0.6, 0.06], [0.3, 4.1, 0.6, 0.06]] : [[0.35, 0.6, 1.0, 0.07], [0.1, 2.2, 1.3, 0.08], [0.15, 3.9, 1.2, 0.08], [0.4, 5.3, 0.9, 0.06]];
+    for (const [fr, fa, fl, fw] of sinkers) { const foot = [u + Math.cos(fa) * fr * rb / 2, v + Math.sin(fa) * fr * rb / 2, zClamp(-rd * Math.sqrt(Math.max(0.05, 1 - fr * fr)) + 0.02)]; if (inside(foot) && Math.abs(zmin) > 1.2) grow(foot, fa, -Math.PI / 2 + 0.5 * fr + (R() - .5) * 0.3, Math.round(fl / step * (0.8 + R() * 0.4)), fw, 0); }   /* sinkers out of the bowl's bottom, straight down and winding */
+    all.sort((a, b) => a.d - b.d); for (const q of all) out[q.k].push(...q.p); cuts.sort((a, b) => a.d - b.d); for (const q of cuts) out.cut.push(...q.p);
+    return out;
+  }
   rootLines(u, v, r0, roots, strips, seed) {
     // After the Wurzelatlas plates (Kutschera & Lichtenegger): a whole system drawn in section, a few heavy primaries
     // (a tap, oblique heart roots or a surface plate by habit), many medium laterals, a fringe of fine roots; every
@@ -243,25 +300,30 @@ export class Scene {
     const redHatch = this.fat(COL.red, W.thin), redDash = this.fat(COL.red, W.medium, { dashed: true, dash: 0.6, gap: 0.4 }), redThin = this.fat(COL.red, W.medium);
     const greyMed = this.fat(COL.grey, W.medium), greyHeavy = this.fat(COL.grey, W.heavy), ghostMat = this.fat(COL.greyLight, W.medium);
     const rootSet = (c, op) => ({ heavy: this.fat(c, W.medium * 1.15, { opacity: op }), medium: this.fat(c, W.thin * 1.1, { opacity: op }), thin: this.fat(c, W.hair * 0.9, { opacity: op * 0.85 }) });   /* roots: a tone and a taper, never a black cable */
-    const rootInk = rootSet(0x3b4a3f, 0.8), rootAcc = rootSet(COL.accentDark, 0.82), rootGrey = rootSet(COL.grey, 0.5); const rootCut = this.fat(COL.red, W.thin, { opacity: 0.65 }); this.rootCut = rootCut;
-    this.rootSets = { ink: rootInk, acc: rootAcc, grey: rootGrey };
+    const rootInk = rootSet(0x2f3d33, 0.9), rootAcc = rootSet(COL.accentDark, 0.9), rootGrey = rootSet(COL.grey, 0.4); const rootCut = this.fat(COL.red, W.thin, { opacity: 0.8 }); this.rootCut = rootCut;
+    this.rootSets = { ink: rootInk, acc: rootAcc, grey: rootGrey }; const rootHalo = { heavy: this.fat(COL.white, W.medium * 1.15 * 1.9, { opacity: 0.85 }), medium: this.fat(COL.white, W.thin * 1.1 * 1.9, { opacity: 0.85 }), thin: this.fat(COL.white, W.hair * 0.9 * 1.9, { opacity: 0.8 }) }; for (const m of Object.values(rootHalo)) m.depthWrite = false; this.rootHalo = rootHalo;   /* the halo: a white line under each root, so the roots read over the planter's weave */
     this.mats = { inkHeavy, inkMed, inkThin, inkHair, inkDash, inkDashThin, accHeavy, accThin, accDash, accDashHeavy, accHatch, greyDash, greyThin, whiteThin, whiteDash, whiteHair, redHatch, redDash, redThin };
 
     // ---- ground surfaces (paper; road stippled) ----
     const roadTex = this.stipple(9, 1.0, 0.35); roadTex.repeat.set((ex.u_to - ex.u_from) / 6, 12 / 6);
-    const curbV = st.curb_face_v != null ? st.curb_face_v : cl + 6;
-    gGround.add(this.rect(ex.u_from, ex.u_to, ex.v_from, curbV, -0.02, COL.white, { map: roadTex, po: 2 }));
-    { const blvd = this.rect(ex.u_from, ex.u_to, curbV, pl, -0.02, COL.sheet, { po: 2 }); blvd.userData.blvd = true; gGround.add(blvd); }   /* blvd: the boulevard's surface turns to glass in the exploded axonometric, so the roots under the planter's lid read */
+    const md = st.median; const oc = (S.context && S.context.outer_curb_v) || [null, null]; const ocN = md ? (oc[0] != null ? oc[0] : pl - 3) : null, ocF = md ? (oc[1] != null ? oc[1] : (st.property_line_far_v != null ? st.property_line_far_v + 3 : cl - 14)) : null;
+    const curbV = st.curb_face_v != null ? st.curb_face_v : md ? md.curb_face_v[0] : cl + 6;
+    if (md) {   /* a median: a carriageway each side of it, the boulevards beyond the outer curbs */
+      gGround.add(this.rect(ex.u_from, ex.u_to, ocF, md.curb_face_v[1], -0.02, COL.white, { map: roadTex, po: 2 })); gGround.add(this.rect(ex.u_from, ex.u_to, md.curb_face_v[0], ocN, -0.02, COL.white, { map: roadTex, po: 2 }));
+      gGround.add(this.rect(ex.u_from, ex.u_to, ex.v_from, ocF, -0.02, COL.paper, { po: 2 })); gGround.add(this.rect(ex.u_from, ex.u_to, ocN, pl, -0.02, COL.paper, { po: 2 }));
+      const blvd = this.rect(ex.u_from, ex.u_to, md.curb_face_v[1], md.curb_face_v[0], -0.02, COL.sheet, { po: 2 }); blvd.userData.blvd = true; gGround.add(blvd); }
+    else { gGround.add(this.rect(ex.u_from, ex.u_to, ex.v_from, curbV, -0.02, COL.white, { map: roadTex, po: 2 }));
+    { const blvd = this.rect(ex.u_from, ex.u_to, curbV, pl, -0.02, COL.sheet, { po: 2 }); blvd.userData.blvd = true; gGround.add(blvd); } }   /* blvd: the boulevard's surface turns to glass in the exploded axonometric, so the roots under the planter's lid read */
     gGround.add(this.rect(ex.u_from, ex.u_to, pl, ex.v_to, -0.02, COL.paper, { po: 2 }));
-    this.groundMeshes = gGround.children.slice();
+    this.groundMeshes = gGround.children.slice(); for (const m of this.groundMeshes) m.userData.surf = true;   /* surf: the street's surface — the top layer the exploded axonometric (05) lifts first */
     if (st.sidewalk_v && st.sidewalk_v[0] != null) {
       const swTex = this.stipple(12, 0.7, 0.18); swTex.repeat.set((ex.u_to - ex.u_from) / 8, 1);
       gGround.add(this.rect(S.street.block.u_from, S.street.block.u_to, st.sidewalk_v[0], st.sidewalk_v[1], -0.015, COL.white, { map: swTex, po: 1 }));
-      this.groundMeshes.push(gGround.children[gGround.children.length - 1]);
+      this.groundMeshes.push(gGround.children[gGround.children.length - 1]); gGround.children[gGround.children.length - 1].userData.surf = true;
     }
     const strips = B.strips || [], zstrips = B.zone_strips || [];
     if (bd) {
-      for (const sg of B.segments || []) { const m = this.rect(sg.u_from, sg.u_to, bd.v_from, bd.v_to, -0.01, COL.accentTint, { po: 0 }); m.userData.bandTop = true; gGround.add(m); }   /* bandTop: turns to glass in the exploded axonometric so the roots read */
+      for (const sg of B.segments || []) { const m = this.rect(sg.u_from, sg.u_to, bd.v_from, bd.v_to, -0.01, COL.accentTint, { po: 0, map: (this._lidTex = this._lidTex || this.stipple(9, 0.7, 0.28)) }); m.material.map.repeat.set((sg.u_to - sg.u_from) / 1.2, (bd.v_to - bd.v_from) / 1.2); m.userData.bandTop = true; gGround.add(m); }   /* the lid: mulch and ground cover as a stipple over the tint */   /* bandTop: turns to glass in the exploded axonometric so the roots read */
       { const stripGrey = this.fat(COL.grey, W.thin, { opacity: 0.45 }), stripRed = this.fat(COL.red, W.thin, { opacity: 0.6 }); for (const s of strips) gGround.add(this.hatchTop(s.u0, s.u1, s.v0, s.v1, 0.0, 0.5, -Math.PI / 4, s.type === 'crossing' ? stripRed : stripGrey)); }   /* the clearance strips on the lid, lighter than the roots they sit over */
       gGround.add(this.polyline([[bd.u_from, bd.v_from, 0.01], [bd.u_to, bd.v_from, 0.01]], accHeavy));
       gGround.add(this.polyline([[bd.u_from, bd.v_to, 0.01], [bd.u_to, bd.v_to, 0.01]], accHeavy));
@@ -279,11 +341,13 @@ export class Scene {
       gGround.add(this.polyline([[z.u_from, z.v_from, 0.013], [z.u_to, z.v_from, 0.013], [z.u_to, z.v_to, 0.013], [z.u_from, z.v_to, 0.013], [z.u_from, z.v_from, 0.013]], z.status === 'KNOWN' ? accDash : z.status === 'NOT_CONNECTED' ? redDash : greyDash));
       for (const s of zstrips) if (s.v0 < z.v_to && s.v1 > z.v_from) gGround.add(this.hatchTop(s.u0, s.u1, Math.max(s.v0, z.v_from), Math.min(s.v1, z.v_to), 0.014, 0.5, -Math.PI / 4, redHatch));
     }
-    gGround.add(this.polyline([[ex.u_from, cl, 0.02], [ex.u_to, cl, 0.02]], inkDash));
-    if (st.curb_face_v != null) gGround.add(this.polyline([[ex.u_from, st.curb_face_v, 0.02], [ex.u_to, st.curb_face_v, 0.02]], inkHeavy));
-    gGround.add(this.polyline([[S.street.block.u_from, pl, 0.02], [S.street.block.u_to, pl, 0.02]], inkMed));
-    if (st.sidewalk_v && st.sidewalk_v[0] != null) for (const vv of st.sidewalk_v) gGround.add(this.polyline([[S.street.block.u_from, vv, 0.02], [S.street.block.u_to, vv, 0.02]], inkThin));
-    if (S.street.block.outline_uv) gGround.add(this.polyline(S.street.block.outline_uv.map(([u, v]) => [u, v, 0.02]).concat([[...S.street.block.outline_uv[0], 0.02]]), inkThin));
+    const surf = (o) => { o.userData.surf = true; gGround.add(o); };   /* the lines at grade belong to the surface layer */
+    surf(this.polyline([[ex.u_from, cl, 0.02], [ex.u_to, cl, 0.02]], inkDash));
+    if (st.curb_face_v != null) surf(this.polyline([[ex.u_from, st.curb_face_v, 0.02], [ex.u_to, st.curb_face_v, 0.02]], inkHeavy));
+    if (md) { for (const cf of md.curb_face_v) surf(this.polyline([[S.street.block.u_from, cf, 0.02], [S.street.block.u_to, cf, 0.02]], inkHeavy)); for (const o of [ocN, ocF]) surf(this.polyline([[ex.u_from, o, 0.02], [ex.u_to, o, 0.02]], inkDash)); }
+    surf(this.polyline([[S.street.block.u_from, pl, 0.02], [S.street.block.u_to, pl, 0.02]], inkMed));
+    if (st.sidewalk_v && st.sidewalk_v[0] != null) for (const vv of st.sidewalk_v) surf(this.polyline([[S.street.block.u_from, vv, 0.02], [S.street.block.u_to, vv, 0.02]], inkThin));
+    if (S.street.block.outline_uv) surf(this.polyline(S.street.block.outline_uv.map(([u, v]) => [u, v, 0.02]).concat([[...S.street.block.outline_uv[0], 0.02]]), inkThin));
     for (const r of S.parcels || []) gGround.add(this.polyline(r.map(([u, v]) => [u, v, 0.015]), inkHair));
     for (const cs of st.cross_streets || []) if (cs.u != null) gGround.add(this.polyline([[cs.u, ex.v_from, 0.02], [cs.u, ex.v_to, 0.02]], inkDash));
 
@@ -296,7 +360,7 @@ export class Scene {
     }
 
     // ---- trees: species models at City height; roots in the credited soil ----
-    this.treeMeshes = []; this.rootFace = [];
+    this.treeMeshes = []; this.treeGroups = []; this.rootFace = []; this.plant = null; this.selTreeGroup = null; this.ghostGroup = null;
     const cand = S.candidate; const allStrips = strips.concat(zstrips);
     for (const t of S.trees) {
       const h = t.height_m || 4; const sr = t.species_ref; const model = sr ? MODELS.get(sr.model) : null;
@@ -305,17 +369,19 @@ export class Scene {
       const listed = sr && sr.listed;
       const edge = ghost ? ghostMat : listed ? (t.selected ? inkHeavy : inkMed) : (t.selected ? greyHeavy : greyMed);
       const g = this.treeModel(t.u, t.v, h, ratio, model, edge, ghost ? ghostMat : inkThin, t);
-      gAbove.add(g); this.treeMeshes.push(g.userData.crown, g.userData.trunk);
+      gAbove.add(g); g.userData.u = t.u; this.treeGroups.push(g); this.treeMeshes.push(g.userData.crown, g.userData.trunk); if (t.selected && !ghost) { g.userData.subject = true; this.selTreeGroup = g; } if (ghost) { g.userData.ghostTree = true; this.ghostGroup = g; }   /* the City's tree under a species card: lifted out in 05's sequence before the new tree comes down */
       const r = g.userData.radius;
       const circ = []; for (let i = 0; i < 32; i++) { const a0 = i / 32 * 6.283, a1 = (i + 1) / 32 * 6.283; circ.push(t.u + Math.cos(a0) * r, t.v + Math.sin(a0) * r, 0.03, t.u + Math.cos(a1) * r, t.v + Math.sin(a1) * r, 0.03); }
       gGround.add(this.segs(circ, ghost ? ghostMat : inkThin));
       if (t.cell && t.cell.u_from != null && bd) gGround.add(this.segs([t.cell.u_from, bd.v_from - 0.3, 0.03, t.cell.u_from, bd.v_from, 0.03, t.cell.u_to, bd.v_from - 0.3, 0.03, t.cell.u_to, bd.v_from, 0.03], inkThin));
       if (t.selected) { const ring = []; for (let i = 0; i < 40; i++) { const a0 = i / 40 * 6.283, a1 = (i + 1) / 40 * 6.283; ring.push(t.u + Math.cos(a0) * 1.1, t.v + Math.sin(a0) * 1.1, 0.04, t.u + Math.cos(a1) * 1.1, t.v + Math.sin(a1) * 1.1, 0.04); } gSel.add(this.segs(ring, accHeavy)); }
-      if (t.roots && !ghost) {
-        const rl = this.rootLines(t.u, t.v, g.userData.trunkR * 1.2, t.roots, allStrips, 1000 + (+t.tree_id || 1));
+      const formT = (t.roots && t.roots.form) || 'heart'; const hrT = formT === 'flat' ? 0.65 : formT === 'tap' ? 0.95 : 0.794; const rbT = bd ? Math.max(0.6, Math.min(bd.v_to - bd.v_from - 0.2, (bd.depth_m + 0.3) / hrT, (t.diameter_cm || 15) * 0.10)) : 1.0;   /* the ball in 03's proportion, for every tree's roots */
+      if (t.selected && bd) { const pm = this.planting(t.u, t.v, t.diameter_cm, formT, bd, gRoots, this.mats); this.plant = { ...pm, u: t.u, v: t.v }; }   /* the planting as the City's sheets draw it, under the chosen tree (and under a species card standing in for it) */
+      if (t.roots && !ghost && !this.flatRoots) {
+        const rl = this.rootsFew3(t.u, t.v, rbT, rbT * hrT, t.roots, allStrips, 1000 + (+t.tree_id || 1));
         const set = listed || t.selected ? rootInk : rootGrey; const key = listed || t.selected ? 'ink' : 'grey';
-        for (const w of ['heavy', 'medium', 'thin']) gRoots.add(this.segs(rl[w], set[w]));
-        gRoots.add(this.segs(rl.cut, rootCut));
+        for (const w of ['heavy', 'medium', 'thin']) { const o = this.segs(rl[w], set[w]); o.renderOrder = 6; if (t.selected) { o.userData.subjRoots = true; o.userData.n = rl[w].length / 6; } gRoots.add(o); }
+        { const o = this.segs(rl.cut, rootCut); o.renderOrder = 6; if (t.selected) { o.userData.subjRoots = true; o.userData.n = rl.cut.length / 6; } gRoots.add(o); }   /* drawn after the planter's translucent faces, so the roots read inside the box as a section draws them over its hatch */
         this.rootFace.push({ rl, key });
       }
       // By-law 9958 protection barrier (R32, reference): a dashed rectangle at grade, 6 × Ø along the curb, 0.6 m off the curb, 0.3 m off the sidewalk; a fence, not a root extent
@@ -324,8 +390,8 @@ export class Scene {
         const v1 = (st.sidewalk_v && st.sidewalk_v[0] != null ? st.sidewalk_v[0] : pl) - (t.protection.offsets_m ? t.protection.offsets_m.from_sidewalk_edge : 0.3);
         if (v1 > v0 + 0.2) {
           const pm = t.selected ? inkDash : inkDashThin; const z = 0.032;
-          gGround.add(this.polyline([[t.u - r, v0, z], [t.u + r, v0, z], [t.u + r, v1, z], [t.u - r, v1, z], [t.u - r, v0, z]], pm));
-          for (const [uu, vv] of [[t.u - r, v0], [t.u + r, v0], [t.u + r, v1], [t.u - r, v1]]) gAbove.add(this.segs([uu, vv, 0, uu, vv, 1.2], pm));
+          { const pr = this.polyline([[t.u - r, v0, z], [t.u + r, v0, z], [t.u + r, v1, z], [t.u - r, v1, z], [t.u - r, v0, z]], pm); pr.userData.surf = true; gGround.add(pr); }
+          for (const [uu, vv] of [[t.u - r, v0], [t.u + r, v0], [t.u + r, v1], [t.u - r, v1]]) { const post = this.segs([uu, vv, 0, uu, vv, 1.2], pm); post.userData.surf = true; gAbove.add(post); }
           t._protRect = { u0: t.u - r, u1: t.u + r, v0, v1 };
         }
       }
@@ -336,7 +402,7 @@ export class Scene {
       gAbove.add(g); this.candGroup = g;
       const r = g.userData.radius; const circ = []; for (let i = 0; i < 32; i++) { const a0 = i / 32 * 6.283, a1 = (i + 1) / 32 * 6.283; circ.push(cand.u + Math.cos(a0) * r, cand.v + Math.sin(a0) * r, 0.035, cand.u + Math.cos(a1) * r, cand.v + Math.sin(a1) * r, 0.035); }
       gGround.add(this.segs(circ, accThin));
-      if (cand.roots) { const rl = this.rootLines(cand.u, cand.v, g.userData.trunkR * 1.2, cand.roots, allStrips, 77); for (const w of ['heavy', 'medium', 'thin']) gRoots.add(this.segs(rl[w], rootAcc[w])); gRoots.add(this.segs(rl.cut, rootCut)); this.rootFace.push({ rl, key: 'acc' }); }
+      if (cand.roots && !this.flatRoots) { const pm = this.plant || { rb: 1.0, rd: 0.8 }; const rl = this.rootsFew3(cand.u, cand.v, pm.rb, pm.rd, cand.roots, allStrips, 77); for (const w of ['heavy', 'medium', 'thin']) { const o = this.segs(rl[w], rootAcc[w]); o.renderOrder = 6; o.userData.subjRoots = true; o.userData.n = rl[w].length / 6; gRoots.add(o); } { const o = this.segs(rl.cut, rootCut); o.renderOrder = 6; o.userData.subjRoots = true; o.userData.n = rl.cut.length / 6; gRoots.add(o); } this.rootFace.push({ rl, key: 'acc' }); }
     }
 
     // ---- facilities below grade (3-D tubes by grade; the plan and the slab see these) ----
@@ -466,6 +532,9 @@ export class Scene {
     // ---- the slab (05) ----
     this.slab = S.slab || { u0: selU - 16, u1: selU + 16, v0: cl, v1: pl, depth_m: DEPTH };
     this.axo = this.axoBox(S);
+    { const ax = this.axo; const zb = -0.35; const tB = this.hatchTex('base'); const mk = (f, L) => { f.material.transparent = true; f.material.opacity = 0; f.material.depthWrite = false; if (f.material.map) { f.material.map = tB.clone(); f.material.map.needsUpdate = true; f.material.map.repeat.set(L / 1.6, 0.35 / 1.6); } f.userData.surf = true; f.userData.surfSlab = true; f.renderOrder = 2; this.g.ground.add(f); };
+      mk(this.vrect(ax.u0, ax.u1, ax.v0, zb, 0, COL.white, { map: tB, po: 0 }), ax.u1 - ax.u0); mk(this.vrect(ax.u0, ax.u1, ax.v1, zb, 0, COL.white, { map: tB, po: 0 }), ax.u1 - ax.u0); mk(this.urect(ax.u0, ax.v0, ax.v1, zb, 0, COL.white, { map: tB, po: 0 }), ax.v1 - ax.v0); mk(this.urect(ax.u1, ax.v0, ax.v1, zb, 0, COL.white, { map: tB, po: 0 }), ax.v1 - ax.v0); mk(this.rect(ax.u0, ax.u1, ax.v0, ax.v1, zb, COL.sheet, { po: 0 }), 1);
+      const em = this.fat(COL.ink, W.thin, { opacity: 0 }); const bl = this.boxLines(ax.u0, ax.u1, ax.v0, ax.v1, zb, -0.001, em); bl.userData.surf = true; bl.userData.surfSlab = true; this.g.ground.add(bl); }   /* the pavement structure: a 0.35 m slab of asphalt, concrete and granular base under the surface (EDM pavement structure, nominal) — the surface layer has a thickness once it lifts */
     this.buildSlab(S, gSlab, this.axo);
     this.buildBandBox(S, gGround);
     gSlab.visible = false;
@@ -487,26 +556,27 @@ export class Scene {
      Everything here lives in the ground group, so it lifts with the surface and the roots in the exploded axonometric. */
   buildBandBox(S, g) {
     const sl = this.axo || this.slab; const B = S.band, bd = B.design; const st = S.street; if (!bd) return;
-    const soilTex = this.stipple(7, 0.75, 0.42); soilTex.repeat.set(2, 1);
-    const face = (mk) => { const m = mk(); m.material.transparent = true; m.material.opacity = 0.30; m.material.depthWrite = false; m.renderOrder = 3; m.userData.band = true; return m; };
+    const soilTex = this.hatchTex('w45');
+    const face = (mk) => { const m = mk(); m.material.transparent = true; m.material.opacity = 0.5; m.material.depthWrite = false; m.renderOrder = 3; m.userData.band = true; return m; };   /* G11.3's growing-medium weave on white, thin enough for the ball and the roots to read inside */
     const edge = this.fat(COL.accentDark, W.medium), dash = this.fat(COL.accentDark, W.thin, { dashed: true, dash: 0.5, gap: 0.3 });
     const D = bd.depth_m; const segs = (B.segments || []).map((q) => [Math.max(q.u_from, sl.u0), Math.min(q.u_to, sl.u1)]).filter(([a, b]) => b - a > 0.3);
     for (const [u0, u1] of segs) {
       const L = u1 - u0; const tL = soilTex.clone(); tL.needsUpdate = true; tL.repeat.set(L / 1.5, D / 1.5); const tW = soilTex.clone(); tW.needsUpdate = true; tW.repeat.set((bd.v_to - bd.v_from) / 1.5, D / 1.5);
-      g.add(face(() => this.vrect(u0, u1, bd.v_from, -D, 0, COL.accentTint, { map: tL, po: -1 })));
-      g.add(face(() => this.vrect(u0, u1, bd.v_to, -D, 0, COL.accentTint, { map: tL, po: -1 })));
-      g.add(face(() => this.urect(u0, bd.v_from, bd.v_to, -D, 0, COL.accentTint, { map: tW, po: -1 })));
-      g.add(face(() => this.urect(u1, bd.v_from, bd.v_to, -D, 0, COL.accentTint, { map: tW, po: -1 })));
-      g.add(face(() => this.rect(u0, u1, bd.v_from, bd.v_to, -D, COL.accentTint, { po: -1 })));
+      g.add(face(() => this.vrect(u0, u1, bd.v_from, -D, 0, COL.white, { map: tL, po: -1 })));
+      g.add(face(() => this.vrect(u0, u1, bd.v_to, -D, 0, COL.white, { map: tL, po: -1 })));
+      g.add(face(() => this.urect(u0, bd.v_from, bd.v_to, -D, 0, COL.white, { map: tW, po: -1 })));
+      g.add(face(() => this.urect(u1, bd.v_from, bd.v_to, -D, 0, COL.white, { map: tW, po: -1 })));
+      { const tB = soilTex.clone(); tB.needsUpdate = true; tB.repeat.set(L / 1.5, (bd.v_to - bd.v_from) / 1.5); g.add(face(() => this.rect(u0, u1, bd.v_from, bd.v_to, -D, COL.white, { map: tB, po: -1 }))); }
       g.add(this.boxLines(u0, u1, bd.v_from, bd.v_to, -D, 0, edge));
     }
     for (const z of B.zones || []) { if (z.status !== 'KNOWN') continue; const zd = z.depth_m || D; for (const [u0, u1] of segs) { g.add(face(() => { const m = this.rect(u0, u1, z.v_from, z.v_to, -zd, COL.accentTint, { po: -1 }); m.material.opacity = 0.3; return m; })); g.add(this.boxLines(u0, u1, z.v_from, z.v_to, -zd, 0, dash)); } }
     /* the curb: a kerb block 0.15 m wide, 0.15 m proud of the road, white with ink edges */
-    if (st.curb_face_v != null) { const c0 = st.curb_face_v, c1 = st.back_of_curb_v != null ? st.back_of_curb_v : c0 + 0.15; const k = this.fat(COL.ink, W.thin);
-      const box = new THREE.Mesh(new THREE.BoxGeometry(sl.u1 - sl.u0, c1 - c0, 0.15), new THREE.MeshBasicMaterial({ color: COL.white })); box.position.set((sl.u0 + sl.u1) / 2, (c0 + c1) / 2, 0.075); box.userData.kerb = true; g.add(box);
-      g.add(this.segs([sl.u0, c0, 0.15, sl.u1, c0, 0.15, sl.u0, c1, 0.15, sl.u1, c1, 0.15, sl.u0, c0, 0, sl.u1, c0, 0, sl.u0, c0, 0, sl.u0, c0, 0.15, sl.u1, c0, 0, sl.u1, c0, 0.15, sl.u0, c0, 0.15, sl.u0, c1, 0.15, sl.u1, c0, 0.15, sl.u1, c1, 0.15], k)); }
+    const kerbs = st.curb_face_v != null ? [[st.curb_face_v, st.back_of_curb_v != null ? st.back_of_curb_v : st.curb_face_v + 0.15]] : st.median ? [[st.median.curb_face_v[0], st.median.back_of_curb_v[0]], [st.median.back_of_curb_v[1], st.median.curb_face_v[1]]] : [];
+    for (const [c0, c1] of kerbs) { const k = this.fat(COL.ink, W.thin);
+      const box = new THREE.Mesh(new THREE.BoxGeometry(sl.u1 - sl.u0, c1 - c0, 0.15), new THREE.MeshBasicMaterial({ color: COL.white })); box.position.set((sl.u0 + sl.u1) / 2, (c0 + c1) / 2, 0.075); box.userData.kerb = true; box.userData.surf = true; g.add(box);
+      { const kl = this.segs([sl.u0, c0, 0.15, sl.u1, c0, 0.15, sl.u0, c1, 0.15, sl.u1, c1, 0.15, sl.u0, c0, 0, sl.u1, c0, 0, sl.u0, c0, 0, sl.u0, c0, 0.15, sl.u1, c0, 0, sl.u1, c0, 0.15, sl.u0, c0, 0.15, sl.u0, c1, 0.15, sl.u1, c0, 0.15, sl.u1, c1, 0.15], k); kl.userData.surf = true; g.add(kl); } }
     /* the sidewalk's joints every 1.5 m, hairlines */
-    if (st.sidewalk_v && st.sidewalk_v[0] != null) { const j = []; for (let u = Math.ceil(sl.u0 / 1.5) * 1.5; u < sl.u1; u += 1.5) j.push(u, st.sidewalk_v[0], 0.012, u, st.sidewalk_v[1], 0.012); g.add(this.segs(j, this.fat(COL.greyLight, W.hair))); }
+    if (st.sidewalk_v && st.sidewalk_v[0] != null) { const j = []; for (let u = Math.ceil(sl.u0 / 1.5) * 1.5; u < sl.u1; u += 1.5) j.push(u, st.sidewalk_v[0], 0.012, u, st.sidewalk_v[1], 0.012); const jl = this.segs(j, this.fat(COL.greyLight, W.hair)); jl.userData.surf = true; g.add(jl); }
   }
   cutBox(b, cutV, mat, withConflicts) {
     const g = new THREE.Group(); const v = cutV - 0.010; const z0 = -b.depth_m;
@@ -534,11 +604,11 @@ export class Scene {
   strataTexture(D, lenM, seed = 3) {
     const PX = 72; const Wpx = Math.min(4096, Math.round(lenM * PX)), Hpx = Math.max(64, Math.round(D * PX)); const c = document.createElement('canvas'); c.width = Wpx; c.height = Hpx; const g = c.getContext('2d');
     let sd = seed; const R = () => { sd = (sd * 16807) % 2147483647; return sd / 2147483647; };
-    g.fillStyle = '#F3F0E7'; g.fillRect(0, 0, Wpx, Hpx); const INK = 'rgba(38,56,44,'; g.fillStyle = INK + '.78)'; g.strokeStyle = INK + '.8)';
-    const yTop = 1.15 * PX; const n = Math.max(2, Math.round(Wpx / 120)); const b1 = []; for (let i = 0; i <= n; i++) b1.push([Wpx * i / n, yTop + (R() - .5) * 0.36 * PX]);
+    g.fillStyle = '#EEEADF'; g.fillRect(0, 0, Wpx, Hpx); const INK = 'rgba(38,56,44,'; g.fillStyle = INK + '.5)'; g.strokeStyle = INK + '.55)';   /* the native ground a shade below the paper, its stipple lighter: the block no longer reads as a white slab (the user, 2026-10-13) */
+    const yTop = 0.6 * PX; const n = Math.max(2, Math.round(Wpx / 120)); const b1 = []; for (let i = 0; i <= n; i++) b1.push([Wpx * i / n, yTop + (R() - .5) * 0.2 * PX]);
     const yAt = (x) => { const i = Math.min(n - 1, Math.floor(x / Wpx * n)); const [x0, y0] = b1[i], [x1, y1] = b1[i + 1]; return y0 + (y1 - y0) * ((x - x0) / Math.max(1e-6, x1 - x0)); };
-    for (let i = 0; i < Wpx * yTop / 150; i++) { const x = R() * Wpx, y = R() * (yTop + 0.3 * PX); if (y < yAt(x) - 2) { g.beginPath(); g.arc(x, y, 0.5 + R() * 0.9, 0, 6.283); g.fill(); } }
-    g.lineWidth = 1.2; g.beginPath(); b1.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
+    for (let i = 0; i < Wpx * yTop / 40; i++) { const x = R() * Wpx, y = R() * (yTop + 0.3 * PX); if (y < yAt(x) - 2) { g.beginPath(); g.arc(x, y, 0.4 + R() * 0.7, 0, 6.283); g.fill(); } }
+    g.lineWidth = 0.8; g.beginPath(); b1.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
     for (let i = 0; i < Wpx * (Hpx - yTop) / 1100; i++) { const x = R() * Wpx, y = yAt(x) + 4 + R() * (Hpx - yAt(x) - 6); g.beginPath(); g.arc(x, y, 0.5 + R() * 0.7, 0, 6.283); g.fill(); }
     g.lineWidth = 1; const placed = []; for (let i = 0; i < Wpx * (Hpx - yTop) / 2200; i++) { const x = R() * Wpx; const y0 = yAt(x); const y = y0 + 10 + R() * (Hpx - y0 - 20); const r = (2.5 + R() * 6) * (0.6 + 0.8 * (y / Hpx)); if (placed.some(([qx, qy, qr]) => Math.hypot(qx - x, qy - y) < qr + r + 3)) continue; placed.push([x, y, r]); g.beginPath(); g.ellipse(x, y, r, r * (0.6 + R() * 0.3), R() * 3.14, 0, 6.283); g.stroke(); }
     const tex = new THREE.CanvasTexture(c); tex.wrapS = THREE.RepeatWrapping; tex.colorSpace = THREE.SRGBColorSpace; tex.repeat.set(lenM * PX / Wpx, 1); tex.anisotropy = 4; return tex;
@@ -600,10 +670,10 @@ export class Scene {
     }
     // the X-ray: what the City publishes inside the block, drawn over the black as ghost lines (never as fills)
     const ghostMesh = new THREE.MeshBasicMaterial({ color: COL.white, transparent: true, opacity: 0.55, depthTest: false, depthWrite: false, side: THREE.DoubleSide });
-    const ghostEdge = this.fat(COL.white, W.heavy, { depthTest: false, opacity: 1 });
-    const ghostDash = this.fat(COL.white, W.medium, { dashed: true, dash: 0.7, gap: 0.5, depthTest: false });
-    const ghostRoot = this.fat(COL.white, W.medium, { depthTest: false });
-    const ghostRootAcc = this.fat(COL.accentTint, W.heavy, { depthTest: false });
+    const ghostEdge = this.fat(COL.ink, W.thin, { depthTest: false, opacity: 0.28 });
+    const ghostDash = this.fat(COL.ink, W.thin, { dashed: true, dash: 0.7, gap: 0.5, depthTest: false, opacity: 0.28 });
+    const ghostRoot = this.fat(0x2f3d33, W.thin, { depthTest: false, opacity: 0.22 });
+    const ghostRootAcc = this.fat(COL.accentDark, W.medium, { depthTest: false, opacity: 0.26 });   /* the X-ray through the paper base: the roots and the mains inside the closed block, in a low ink */
     const ghostCut = this.fat(COL.red, W.medium, { depthTest: false });
     for (const f of S.facilities) {
       const pts = f.path_uv; if (!pts || pts.length < 2 || f.grade === 'unknown' || f.kind === 'corridor') continue;
@@ -615,11 +685,11 @@ export class Scene {
       const axis = pts.map(([u, v]) => [u, v, zc]); const em = f.grade === 'nominal' ? ghostDash : ghostEdge;
       const top = this.polyline(axis.map(([u, v, z]) => [u, v, z + rad]), em), bot = this.polyline(axis.map(([u, v, z]) => [u, v, z - rad]), em); top.renderOrder = 6; bot.renderOrder = 6; g.add(top, bot);
     }
-    const ghostRootThin = this.fat(COL.white, W.thin, { depthTest: false });
+    const ghostRootThin = this.fat(0x2f3d33, W.hair, { depthTest: false, opacity: 0.18 });
     for (const rf of this.rootFace) { for (const w of ['heavy', 'medium', 'thin']) { const a = this.segs(rf.rl[w], rf.key === 'acc' ? ghostRootAcc : w === 'thin' ? ghostRootThin : ghostRoot); a.renderOrder = 7; g.add(a); } const c = this.segs(rf.rl.cut, ghostCut); c.renderOrder = 7; g.add(c); }
     for (const f of S.corridors || []) { const [v0, v1] = f.corridor_v; const z0 = -f.depth_top_m; const cd = this.fat(COL.white, W.thin, { dashed: true, dash: 0.5, gap: 0.35, depthTest: false }); const fr = this.segs([sl.u0, v0, z0, sl.u1, v0, z0, sl.u0, v1, z0, sl.u1, v1, z0, sl.u0, v0, z0, sl.u0, v1, z0, sl.u1, v0, z0, sl.u1, v1, z0], cd); fr.renderOrder = 6; g.add(fr); }
     const nb2 = (S.candidate && S.candidate.box) ? S.candidate.box : (S.need && S.need.box);
-    if (nb2) { const b = this.boxLines(nb2.u0, nb2.u1, nb2.v0, nb2.v1, -nb2.depth_m, 0, this.fat(COL.accentTint, W.heavy, { dashed: true, dash: 0.7, gap: 0.4, depthTest: false })); b.renderOrder = 8; g.add(b); }
+    if (nb2) { const b = this.boxLines(nb2.u0, nb2.u1, nb2.v0, nb2.v1, -nb2.depth_m, 0, this.fat(COL.accentTint, W.heavy, { dashed: true, dash: 0.7, gap: 0.4, depthTest: false })); b.renderOrder = 8; b.userData.needBox = true; g.add(b); }   /* needBox: the page lifts it with the planter at 05 */
   }
 
   // ---------- cameras and poses -------------------------------------------------------------------
@@ -682,7 +752,9 @@ export class Scene {
     if (t >= 4) {
       for (const m of this.groundMeshes) { m.material.opacity = 1; m.material.depthWrite = true; }
       this.renderer.clippingPlanes = this.slabClip; this.activeCam = this.camAxo; this.split = false;
+      { const ax = this.axo || this.slab; for (const g of this.treeGroups || []) g.visible = g.userData.u >= ax.u0 - 0.2 && g.userData.u <= ax.u1 + 0.2; }   /* 05: only the trees that stand on the block; a neighbour's crown no longer floats in from beyond its end (the user, 2026-10-13) */
     } else {
+      for (const g of this.treeGroups || []) g.visible = true;
       this.renderer.clippingPlanes = cutOn ? [this.clipPlane] : [];
       if (t < 2) { this.activeCam = this.camTop; this.split = false; }
       else if (toCut < 1) {

@@ -1,5 +1,5 @@
 {
- "built_on": "2026-09-28",
+ "built_on": "2026-10-09",
  "provenance": "DERIVED_CALCULATION",
  "source": "public-trees (City Open Data, 2026-09-14 copy) \u00d7 EDM 2026 Table 9-3 via R17 lookup (rules 1.3); area names as the City's local_area field",
  "boundaries": "data/raw/local-area-boundary.geojson (City Open Data)",

@@ -11,7 +11,8 @@ Run the Boulevard Soil Band check for ANY Vancouver City tree (11_redefinition_2
     -> data/processed/block_face_V-<asset_id>.json
 
 The site TYPE is a user confirmation (--site-type boulevard | median | park). Without it the
-script prints the geometric hint and stops; median and park trees stop with the reason.
+script prints the geometric hint and stops; a park tree stops with the reason (not a street tree); a
+median tree runs the median band (2026-10-09: the strip between the median's two curbs).
 
 Examples
   python3 scripts/run_site.py --asset-id 332826 --site-type boulevard --curb 9.0 --depth 0.9 --target Large \
@@ -46,13 +47,17 @@ def window_for(lon: float, lat: float):
 def ensure_fetched(name: str, glon: float, glat: float, refetch: bool):
     raw = ROOT / "data" / "raw"
     log = raw / f"{name}__fetch_log.json"
-    if refetch or not log.exists():
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "fetch_context.py"), "--lon", str(glon), "--lat", str(glat),
-                        "--radius", str(WINDOW_RADIUS_M), "--window", name, "--group", "all"], check=True)
     vlog = raw / "vanmap" / f"{name}__vanmap_fetch_log.json"
+    procs = []   # the City portal and the VanMap service are two servers: both fetches run at once
+    if refetch or not log.exists():
+        procs.append(subprocess.Popen([sys.executable, str(ROOT / "scripts" / "fetch_context.py"), "--lon", str(glon), "--lat", str(glat),
+                                       "--radius", str(WINDOW_RADIUS_M), "--window", name, "--group", "all"]))
     if refetch or not vlog.exists():
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "fetch_vanmap.py"), "--lon", str(glon), "--lat", str(glat),
-                        "--radius", str(WINDOW_RADIUS_M), "--window", name], check=True)
+        procs.append(subprocess.Popen([sys.executable, str(ROOT / "scripts" / "fetch_vanmap.py"), "--lon", str(glon), "--lat", str(glat),
+                                       "--radius", str(WINDOW_RADIUS_M), "--window", name]))
+    for pr in procs:
+        if pr.wait() != 0:
+            raise subprocess.CalledProcessError(pr.returncode, pr.args)
 
 
 def main(argv=None):
@@ -114,21 +119,27 @@ def main(argv=None):
     if a.site_type is None:
         print("  site type not confirmed: re-run with --site-type boulevard | median | park")
         return 2
-    if a.site_type != "boulevard":
-        print(f"  site type {a.site_type}: outside the tool's scope (front boulevard band, R30); stopping")
+    if a.site_type == "park":
+        print("  site type park: a park tree is not a street tree (medians in, parks out, 2026-10-09); stopping")
         return 3
-    if hint.get("in_park_polygon") or hint["hint"] == "median":
-        print(f"  WARNING: the City geometry says {'park polygon' if hint.get('in_park_polygon') else 'median'} but the site type "
-              f"was confirmed as boulevard; the result is flagged REVIEW_REQUIRED in the sites file")
+    if hint.get("in_park_polygon") or (hint["hint"] == "median") != (a.site_type == "median"):
+        print(f"  WARNING: the City geometry says {'park polygon' if hint.get('in_park_polygon') else hint['hint']} but the site type "
+              f"was confirmed as {a.site_type}; the result is flagged REVIEW_REQUIRED in the sites file")
     sys.stdout.flush()
     sites_path, doc = sites.build_window_sites(glon, glat, WINDOW_RADIUS_M, name, asset, a.site_type, use_vanmap=not a.no_vanmap_notes)
     print(f"  {doc['site_count']} SITE records -> {sites_path.relative_to(ROOT)}")
 
-    # 4. engine
-    cmd = [sys.executable, str(ROOT / "scripts" / "run_block_face.py"), "--site", site_id, "--sites", str(sites_path)] + passthrough
-    print("  " + " ".join(cmd[1:]))
+    # 4. engine, in this process (one Python start, and the City window files parsed once are reused by the exporter when
+    #    the server runs this in-process too)
+    args = ["--site", site_id, "--sites", str(sites_path), "--site-type", a.site_type] + passthrough
+    print("  scripts/run_block_face.py " + " ".join(args))
     sys.stdout.flush()
-    return subprocess.run(cmd, cwd=str(ROOT)).returncode
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rootroom_scripts_run_block_face", str(ROOT / "scripts" / "run_block_face.py"))
+    rbf = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(rbf)
+    rc = rbf.main(args)
+    return 0 if rc is None else rc
 
 
 if __name__ == "__main__":

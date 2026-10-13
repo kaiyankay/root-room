@@ -1,5 +1,5 @@
 {
- "built_on": "2026-09-29",
+ "built_on": "2026-10-08",
  "built_by": "scripts/batch_faces.py",
  "source": "data/processed/citywide_faces.json",
  "measure": "per local area: sample block faces run with the batch knobs; 'largest_class_fits' counts faces; review_share = trees whose share is REVIEW_REQUIRED / trees on the run faces",
@@ -7,7 +7,7 @@
  "areas": {
   "Arbutus Ridge": {
    "faces_attempted": 16,
-   "faces_run": 8,
+   "faces_run": 9,
    "windows": [
     "wm123_156_p49_252",
     "wm123_160_p49_248",
@@ -15,25 +15,24 @@
     "wm123_164_p49_240"
    ],
    "largest_class_fits": {
-    "Large": 0,
+    "Large": 1,
     "Medium": 0,
     "Small": 3,
     "none": 0,
     "unknown": 5
    },
-   "trees": 100,
+   "trees": 102,
    "trees_review": 79,
-   "review_share": 0.79,
-   "front_boulevard_median_m": 3.16,
-   "large_fits_share": 0.0,
+   "review_share": 0.775,
+   "front_boulevard_median_m": 3.17,
+   "large_fits_share": 0.111,
    "failures": {
-    "face not measurable": 7,
-    "no catch basin on this face": 1
+    "face not measurable": 7
    }
   },
   "Downtown": {
    "faces_attempted": 14,
-   "faces_run": 9,
+   "faces_run": 10,
    "windows": [
     "wm123_120_p49_288",
     "wm123_124_p49_272",
@@ -43,22 +42,21 @@
    "largest_class_fits": {
     "Large": 0,
     "Medium": 0,
-    "Small": 5,
+    "Small": 6,
     "none": 1,
     "unknown": 3
    },
-   "trees": 96,
-   "trees_review": 68,
-   "review_share": 0.708,
-   "front_boulevard_median_m": 1.45,
+   "trees": 108,
+   "trees_review": 69,
+   "review_share": 0.639,
+   "front_boulevard_median_m": 1.59,
    "large_fits_share": 0.0,
    "failures": {
-    "face not measurable": 4,
-    "no catch basin on this face": 1
+    "face not measurable": 4
    }
   },
   "Dunbar-Southlands": {
-   "faces_attempted": 15,
+   "faces_attempted": 13,
    "faces_run": 10,
    "windows": [
     "wm123_180_p49_252",
@@ -79,12 +77,11 @@
    "front_boulevard_median_m": 3.41,
    "large_fits_share": 0.2,
    "failures": {
-    "no catch basin on this face": 2,
     "face not measurable": 3
    }
   },
   "Fairview": {
-   "faces_attempted": 11,
+   "faces_attempted": 10,
    "faces_run": 10,
    "windows": [
     "wm123_120_p49_264",
@@ -104,12 +101,10 @@
    "review_share": 0.77,
    "front_boulevard_median_m": 2.46,
    "large_fits_share": 0.1,
-   "failures": {
-    "no catch basin on this face": 1
-   }
+   "failures": {}
   },
   "Grandview-Woodland": {
-   "faces_attempted": 15,
+   "faces_attempted": 11,
    "faces_run": 10,
    "windows": [
     "wm123_060_p49_272",
@@ -130,12 +125,11 @@
    "front_boulevard_median_m": 2.98,
    "large_fits_share": 0.3,
    "failures": {
-    "face not measurable": 1,
-    "no catch basin on this face": 4
+    "face not measurable": 1
    }
   },
   "Hastings-Sunrise": {
-   "faces_attempted": 15,
+   "faces_attempted": 12,
    "faces_run": 10,
    "windows": [
     "wm123_028_p49_272",
@@ -156,12 +150,11 @@
    "front_boulevard_median_m": 2.87,
    "large_fits_share": 0.3,
    "failures": {
-    "face not measurable": 2,
-    "no catch basin on this face": 3
+    "face not measurable": 2
    }
   },
   "Kensington-Cedar Cottage": {
-   "faces_attempted": 12,
+   "faces_attempted": 11,
    "faces_run": 10,
    "windows": [
     "wm123_060_p49_260",
@@ -181,13 +174,12 @@
    "front_boulevard_median_m": 2.36,
    "large_fits_share": 0.3,
    "failures": {
-    "no catch basin on this face": 1,
     "face not measurable": 1
    }
   },
   "Kerrisdale": {
    "faces_attempted": 12,
-   "faces_run": 2,
+   "faces_run": 5,
    "windows": [
     "wm123_152_p49_208",
     "wm123_160_p49_224",
@@ -199,21 +191,21 @@
     "Medium": 0,
     "Small": 0,
     "none": 0,
-    "unknown": 2
+    "unknown": 5
    },
-   "trees": 44,
-   "trees_review": 44,
-   "review_share": 1.0,
-   "front_boulevard_median_m": 1.83,
+   "trees": 86,
+   "trees_review": 61,
+   "review_share": 0.709,
+   "front_boulevard_median_m": 1.7,
    "large_fits_share": 0.0,
    "failures": {
     "face not measurable": 6,
-    "no catch basin on this face": 4
+    "front boulevard not available": 1
    }
   },
   "Killarney": {
    "faces_attempted": 12,
-   "faces_run": 7,
+   "faces_run": 8,
    "windows": [
     "wm123_040_p49_224",
     "wm123_044_p49_228",
@@ -225,21 +217,21 @@
     "Medium": 0,
     "Small": 1,
     "none": 0,
-    "unknown": 1
+    "unknown": 2
    },
-   "trees": 73,
-   "trees_review": 20,
-   "review_share": 0.274,
-   "front_boulevard_median_m": 2.94,
-   "large_fits_share": 0.714,
+   "trees": 74,
+   "trees_review": 21,
+   "review_share": 0.284,
+   "front_boulevard_median_m": 2.95,
+   "large_fits_share": 0.625,
    "failures": {
     "face not measurable": 3,
-    "no catch basin on this face": 2
+    "front boulevard not available": 1
    }
   },
   "Kitsilano": {
    "faces_attempted": 16,
-   "faces_run": 9,
+   "faces_run": 10,
    "windows": [
     "wm123_152_p49_260",
     "wm123_156_p49_260",
@@ -251,20 +243,19 @@
     "Medium": 0,
     "Small": 2,
     "none": 1,
-    "unknown": 2
+    "unknown": 3
    },
-   "trees": 87,
-   "trees_review": 51,
-   "review_share": 0.586,
-   "front_boulevard_median_m": 2.94,
-   "large_fits_share": 0.444,
+   "trees": 92,
+   "trees_review": 55,
+   "review_share": 0.598,
+   "front_boulevard_median_m": 2.95,
+   "large_fits_share": 0.4,
    "failures": {
-    "face not measurable": 6,
-    "no catch basin on this face": 1
+    "face not measurable": 6
    }
   },
   "Marpole": {
-   "faces_attempted": 13,
+   "faces_attempted": 12,
    "faces_run": 10,
    "windows": [
     "wm123_116_p49_216",
@@ -285,13 +276,12 @@
    "front_boulevard_median_m": 2.75,
    "large_fits_share": 0.1,
    "failures": {
-    "face not measurable": 2,
-    "no catch basin on this face": 1
+    "face not measurable": 2
    }
   },
   "Mount Pleasant": {
-   "faces_attempted": 16,
-   "faces_run": 7,
+   "faces_attempted": 15,
+   "faces_run": 10,
    "windows": [
     "wm123_084_p49_264",
     "wm123_088_p49_264",
@@ -301,18 +291,17 @@
    "largest_class_fits": {
     "Large": 2,
     "Medium": 0,
-    "Small": 1,
+    "Small": 2,
     "none": 0,
-    "unknown": 4
+    "unknown": 6
    },
-   "trees": 51,
-   "trees_review": 33,
-   "review_share": 0.647,
-   "front_boulevard_median_m": 1.69,
-   "large_fits_share": 0.286,
+   "trees": 72,
+   "trees_review": 49,
+   "review_share": 0.681,
+   "front_boulevard_median_m": 1.86,
+   "large_fits_share": 0.2,
    "failures": {
-    "face not measurable": 5,
-    "no catch basin on this face": 4
+    "face not measurable": 5
    }
   },
   "Oakridge": {
@@ -366,7 +355,7 @@
   },
   "Riley Park": {
    "faces_attempted": 10,
-   "faces_run": 6,
+   "faces_run": 7,
    "windows": [
     "wm123_108_p49_240",
     "wm123_112_p49_244",
@@ -378,22 +367,21 @@
     "Medium": 0,
     "Small": 3,
     "none": 0,
-    "unknown": 1
+    "unknown": 2
    },
-   "trees": 71,
-   "trees_review": 24,
-   "review_share": 0.338,
-   "front_boulevard_median_m": 2.34,
-   "large_fits_share": 0.333,
+   "trees": 72,
+   "trees_review": 25,
+   "review_share": 0.347,
+   "front_boulevard_median_m": 2.45,
+   "large_fits_share": 0.286,
    "failures": {
     "face not measurable": 2,
-    "no catch basin on this face": 1,
     "front boulevard not available": 1
    }
   },
   "Shaughnessy": {
-   "faces_attempted": 15,
-   "faces_run": 6,
+   "faces_attempted": 14,
+   "faces_run": 10,
    "windows": [
     "wm123_132_p49_236",
     "wm123_132_p49_240",
@@ -401,25 +389,24 @@
     "wm123_144_p49_240"
    ],
    "largest_class_fits": {
-    "Large": 1,
+    "Large": 2,
     "Medium": 0,
     "Small": 0,
     "none": 0,
-    "unknown": 5
+    "unknown": 8
    },
-   "trees": 121,
-   "trees_review": 113,
-   "review_share": 0.934,
+   "trees": 140,
+   "trees_review": 123,
+   "review_share": 0.879,
    "front_boulevard_median_m": 3.28,
-   "large_fits_share": 0.167,
+   "large_fits_share": 0.2,
    "failures": {
-    "no catch basin on this face": 5,
     "face not measurable": 4
    }
   },
   "South Cambie": {
    "faces_attempted": 13,
-   "faces_run": 8,
+   "faces_run": 9,
    "windows": [
     "wm123_120_p49_248",
     "wm123_120_p49_252",
@@ -427,25 +414,25 @@
     "wm123_128_p49_240"
    ],
    "largest_class_fits": {
-    "Large": 3,
+    "Large": 4,
     "Medium": 1,
     "Small": 2,
     "none": 0,
     "unknown": 2
    },
-   "trees": 101,
+   "trees": 107,
    "trees_review": 50,
-   "review_share": 0.495,
-   "front_boulevard_median_m": 2.65,
-   "large_fits_share": 0.375,
+   "review_share": 0.467,
+   "front_boulevard_median_m": 2.74,
+   "large_fits_share": 0.444,
    "failures": {
     "face not measurable": 3,
-    "no catch basin on this face": 2
+    "no City fixture at the curb on this face (no catch basin, pole or hydrant)": 1
    }
   },
   "Strathcona": {
    "faces_attempted": 16,
-   "faces_run": 6,
+   "faces_run": 10,
    "windows": [
     "wm123_084_p49_276",
     "wm123_088_p49_276",
@@ -454,24 +441,24 @@
    ],
    "largest_class_fits": {
     "Large": 0,
-    "Medium": 0,
+    "Medium": 1,
     "Small": 2,
     "none": 0,
-    "unknown": 4
+    "unknown": 7
    },
-   "trees": 55,
-   "trees_review": 51,
-   "review_share": 0.927,
+   "trees": 100,
+   "trees_review": 92,
+   "review_share": 0.92,
    "front_boulevard_median_m": 2.18,
    "large_fits_share": 0.0,
    "failures": {
-    "no catch basin on this face": 5,
     "face not measurable": 4,
-    "front boulevard not available": 1
+    "front boulevard not available": 1,
+    "no City fixture at the curb on this face (no catch basin, pole or hydrant)": 1
    }
   },
   "Sunset": {
-   "faces_attempted": 13,
+   "faces_attempted": 11,
    "faces_run": 10,
    "windows": [
     "wm123_084_p49_228",
@@ -492,12 +479,11 @@
    "front_boulevard_median_m": 2.95,
    "large_fits_share": 0.4,
    "failures": {
-    "no catch basin on this face": 2,
     "face not measurable": 1
    }
   },
   "Victoria-Fraserview": {
-   "faces_attempted": 13,
+   "faces_attempted": 12,
    "faces_run": 10,
    "windows": [
     "wm123_056_p49_216",
@@ -518,12 +504,11 @@
    "front_boulevard_median_m": 2.86,
    "large_fits_share": 0.2,
    "failures": {
-    "face not measurable": 2,
-    "no catch basin on this face": 1
+    "face not measurable": 2
    }
   },
   "West End": {
-   "faces_attempted": 15,
+   "faces_attempted": 13,
    "faces_run": 10,
    "windows": [
     "wm123_128_p49_284",
@@ -544,7 +529,6 @@
    "front_boulevard_median_m": 2.93,
    "large_fits_share": 0.1,
    "failures": {
-    "no catch basin on this face": 2,
     "face not measurable": 3
    }
   },

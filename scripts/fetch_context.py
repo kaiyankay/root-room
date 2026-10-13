@@ -98,7 +98,8 @@ def fetch_window(lon, lat, radius_m, window, datasets):
                 "portal": "https://opendata.vancouver.ca", "window": window,
                 "centre": {"lon": lon, "lat": lat}, "radius_m": radius_m, "spatial_filter": where})
     by_id = {e["dataset_id"]: e for e in log.get("datasets", [])}
-    for ds in datasets:
+
+    def one(ds):   # one dataset: its metadata and its features within the window, written as before
         meta = json.loads(fetch(f"{BASE}/{ds}"))
         url = f"{BASE}/{ds}/exports/geojson?{urllib.parse.urlencode({'where': where})}"
         gj = json.loads(fetch(url))
@@ -106,12 +107,18 @@ def fetch_window(lon, lat, radius_m, window, datasets):
         out.write_text(json.dumps(gj), encoding="utf-8")
         (RAW / f"{ds}__dataset_metadata.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
         d = meta["metas"]["default"]
-        by_id[ds] = {"dataset_id": ds, "title": d.get("title"), "records_in_dataset": d.get("records_count"),
-                     "data_modified": d.get("modified"), "fetched_on": date.today().isoformat(),
-                     "export_url": url, "features_saved": len(gj.get("features", [])),
-                     "saved_as": str(out.relative_to(ROOT)),
-                     "layer_group": group_of(ds)}
-        print(f"{ds}: {by_id[ds]['features_saved']} features -> {by_id[ds]['saved_as']}")
+        return ds, {"dataset_id": ds, "title": d.get("title"), "records_in_dataset": d.get("records_count"),
+                    "data_modified": d.get("modified"), "fetched_on": date.today().isoformat(),
+                    "export_url": url, "features_saved": len(gj.get("features", [])),
+                    "saved_as": str(out.relative_to(ROOT)),
+                    "layer_group": group_of(ds)}
+
+    # the datasets are independent requests to the same portal: six at a time, the same files and log as one at a time
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        for ds, entry in pool.map(one, datasets):
+            by_id[ds] = entry
+            print(f"{ds}: {entry['features_saved']} features -> {entry['saved_as']}")
     log["datasets"] = [by_id[k] for k in sorted(by_id)]
     log_path.write_text(json.dumps(log, indent=1), encoding="utf-8")
     return log

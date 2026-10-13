@@ -114,9 +114,9 @@
   ]
  },
  "form": {
-  "value": "conical",
+  "value": "oval",
   "provenance": "NOMINAL",
-  "note": "assigned by the author from horticultural common knowledge; replaced when a cited reference is entered",
+  "note": "assigned by the author from horticultural common knowledge (a broadleaf with a dense ovoid-pyramidal crown: the oval art, not the conifer silhouette · 2026-10-13); replaced when a cited reference is entered",
   "cultivar_overrides": {
    "TUPELO TOWER": "columnar"
   }

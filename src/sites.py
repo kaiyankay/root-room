@@ -91,11 +91,26 @@ def norm_street(text: Optional[str]) -> Optional[str]:
 # Resolution: asset_id / address / point -> tree feature
 # --------------------------------------------------------------------------
 
+_BY_ASSET: Dict[int, Dict[str, Any]] = {}
+_BY_ASSET_SRC: Optional[List[Dict[str, Any]]] = None
+
+
 def tree_by_asset_id(asset_id: int) -> Dict[str, Any]:
-    for f in _features(TREES_PATH):
-        if int(f["properties"].get("asset_id") or -1) == int(asset_id):
-            return f
-    raise SiteResolutionError(f"asset_id {asset_id} not in {TREES_PATH.relative_to(ROOT)}")
+    """The City tree with this asset id; the file is indexed once per process (a linear scan of 184k trees took up to 1.5 s a click)."""
+    global _BY_ASSET_SRC
+    feats = _features(TREES_PATH)
+    if _BY_ASSET_SRC is not feats:
+        _BY_ASSET.clear()
+        for f in feats:
+            try:
+                _BY_ASSET[int(f["properties"].get("asset_id"))] = f
+            except (TypeError, ValueError):
+                continue
+        _BY_ASSET_SRC = feats
+    f = _BY_ASSET.get(int(asset_id))
+    if f is None:
+        raise SiteResolutionError(f"asset_id {asset_id} not in {TREES_PATH.relative_to(ROOT)}")
+    return f
 
 
 def trees_near(lon: float, lat: float, radius_m: float) -> List[Tuple[float, Dict[str, Any]]]:
@@ -181,10 +196,8 @@ def position_hint(lon: float, lat: float, street_name: Optional[str]) -> Dict[st
     to = _frame(lon, lat)
     best = None
     if street_name:
-        for f in _features(STREETS_PATH):
+        for f in _street_features(street_name):
             hb = f["properties"].get("hblock") or ""
-            if street_name not in hb:
-                continue
             g = f["geometry"]
             lines = [g["coordinates"]] if g["type"] == "LineString" else g["coordinates"]
             for line in lines:
@@ -202,14 +215,9 @@ def position_hint(lon: float, lat: float, street_name: Optional[str]) -> Dict[st
                         best = (d, hb, cross, bearing)
     in_park = False
     if PARKS_PATH.exists():
-        for f in _features(PARKS_PATH):
-            g = f.get("geometry") or {}
-            rings = g.get("coordinates") if g.get("type") == "Polygon" else [r for p in (g.get("coordinates") or []) for r in p] if g.get("type") == "MultiPolygon" else []
-            for ring in rings or []:
-                if _point_in_ring(lon, lat, ring):
-                    in_park = True
-                    break
-            if in_park:
+        for x0, y0, x1, y1, ring in _park_rings():
+            if x0 <= lon <= x1 and y0 <= lat <= y1 and _point_in_ring(lon, lat, ring):
+                in_park = True
                 break
     if best is None:
         return {"hint": "unknown", "note": "no centreline segment of the named street found", "in_park_polygon": in_park}
@@ -217,6 +225,47 @@ def position_hint(lon: float, lat: float, street_name: Optional[str]) -> Dict[st
     hint = "median" if d <= MEDIAN_MAX_M else _side_name(cross, bearing)
     return {"hint": hint, "dist_centreline_m": round(d, 2), "nearest_hblock": hb, "in_park_polygon": in_park,
             "note": "geometric hint from public-streets; 'median' = within %.1f m of the centreline; site type is confirmed by the user" % MEDIAN_MAX_M}
+
+
+_STREET_IDX: Dict[str, Any] = {}
+_PARK_RINGS: Dict[str, Any] = {}
+
+
+def _street_features(street_name: str) -> List[Dict[str, Any]]:
+    """The public-streets features whose hblock contains the name — the same test as before, answered from an index
+    built once per process (hblock without its civic range -> features), so a window of 1,200 trees does not scan the
+    whole street file 1,200 times. Same features, same order within a name."""
+    key = str(STREETS_PATH)
+    idx = _STREET_IDX.get(key)
+    if idx is None:
+        idx = {}
+        for f in _features(STREETS_PATH):
+            hb = f["properties"].get("hblock") or ""
+            parts = hb.split(" ", 1)
+            name = parts[1] if len(parts) == 2 and parts[0].replace("-", "").isdigit() else hb
+            idx.setdefault(name, []).append(f)
+        _STREET_IDX[key] = idx
+    out: List[Dict[str, Any]] = []
+    for name, feats in idx.items():
+        if street_name in name:
+            out.extend(feats)
+    return out
+
+
+def _park_rings() -> List[Any]:
+    """Every park ring with its bounding box, built once per process: the box test skips almost every ring."""
+    key = str(PARKS_PATH)
+    rings = _PARK_RINGS.get(key)
+    if rings is None:
+        rings = []
+        for f in _features(PARKS_PATH):
+            g = f.get("geometry") or {}
+            rr = g.get("coordinates") if g.get("type") == "Polygon" else [r for p in (g.get("coordinates") or []) for r in p] if g.get("type") == "MultiPolygon" else []
+            for ring in rr or []:
+                xs = [c[0] for c in ring]; ys = [c[1] for c in ring]
+                rings.append((min(xs), min(ys), max(xs), max(ys), ring))
+        _PARK_RINGS[key] = rings
+    return rings
 
 
 def _side_name(cross: float, bearing_deg: float) -> str:
@@ -313,6 +362,9 @@ def build_window_sites(centre_lon: float, centre_lat: float, radius_m: float, wi
             if site_type == "boulevard" and (hint.get("in_park_polygon") or hint["hint"] == "median"):
                 sidecar["site_type_review"] = ("REVIEW_REQUIRED: user confirmed boulevard but the City geometry puts the tree "
                                                + ("inside a park polygon" if hint.get("in_park_polygon") else "within %.1f m of the centreline (median)" % MEDIAN_MAX_M))
+            elif site_type == "median" and (hint.get("in_park_polygon") or hint["hint"] != "median"):
+                sidecar["site_type_review"] = ("REVIEW_REQUIRED: user confirmed median but the City geometry puts the tree "
+                                               + ("inside a park polygon" if hint.get("in_park_polygon") else "%s m from the centreline (%s)" % (hint.get("dist_centreline_m"), hint["hint"])))
             selected_entry = {"record": rec, "city_reference": sidecar}
         entries.append({"record": rec, "city_reference": sidecar})
     if selected_entry is None:

@@ -1,6 +1,6 @@
 {
  "dataset": "citywide sample of block faces (batch run)",
- "built_on": "2026-09-29",
+ "built_on": "2026-10-08",
  "built_by": "scripts/batch_faces.py",
  "rules": "sources/06_rules.json v1.4",
  "method": {
@@ -33,8 +33,8 @@
   }
  },
  "counts": {
-  "faces_attempted": 302,
-  "faces_run": 182,
+  "faces_attempted": 283,
+  "faces_run": 202,
   "areas": 22
  },
  "plan": [
@@ -1972,37 +1972,6 @@
    "reason": "face not measurable: V-291348: selected tree not found on its own face (frontage -242.2..-2.6)"
   },
   {
-   "site_id": "V-258421",
-   "asset_id": 258421,
-   "local_area": "Arbutus Ridge",
-   "window": "wm123_160_p49_248",
-   "street": "HAGGART ST",
-   "hblock": "4400 HAGGART ST",
-   "side": "east_side",
-   "address": "4493 HAGGART ST",
-   "species_city": "FAGUS SYLVATICA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 44.91,
-   "property_line_from_centreline_m": 10.03,
-   "line_lonlat": [
-    [
-     -123.1614845,
-     49.2464467
-    ],
-    [
-     -123.1612204,
-     49.2460795
-    ]
-   ]
-  },
-  {
    "site_id": "V-291349",
    "asset_id": 291349,
    "local_area": "Arbutus Ridge",
@@ -2625,68 +2594,6 @@
    "crossing_count": 24,
    "partial_count": 11,
    "plausible": true
-  },
-  {
-   "site_id": "V-226493",
-   "asset_id": 226493,
-   "local_area": "Dunbar-Southlands",
-   "window": "wm123_188_p49_244",
-   "street": "W 30TH AV",
-   "hblock": "3800 W 30TH AV",
-   "side": "north_side",
-   "address": "3807 W 30TH AV",
-   "species_city": "PLANTING SITE",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 180.18,
-   "property_line_from_centreline_m": 49.59,
-   "line_lonlat": [
-    [
-     -123.1907462,
-     49.245503
-    ],
-    [
-     -123.1882669,
-     49.2454909
-    ]
-   ]
-  },
-  {
-   "site_id": "V-122040",
-   "asset_id": 122040,
-   "local_area": "Dunbar-Southlands",
-   "window": "wm123_188_p49_244",
-   "street": "W 30TH AV",
-   "hblock": "3600-3700 W 30TH AV",
-   "side": "south_side",
-   "address": "3692 W 30TH AV",
-   "species_city": "PRUNUS CERASIFERA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 15,
-   "block_length_m": 190.32,
-   "property_line_from_centreline_m": 9.99,
-   "line_lonlat": [
-    [
-     -123.1879881,
-     49.2451863
-    ],
-    [
-     -123.1853693,
-     49.2451741
-    ]
-   ]
   },
   {
    "site_id": "V-163616",
@@ -4733,37 +4640,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-122694",
-   "asset_id": 122694,
-   "local_area": "Fairview",
-   "window": "wm123_136_p49_268",
-   "street": "W 2ND AV",
-   "hblock": "1500 W 2ND AV",
-   "side": "north_side",
-   "address": "1505 W 2ND AV",
-   "species_city": "LIQUIDAMBAR STYRACIFLUA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 246.8,
-   "property_line_from_centreline_m": 95.34,
-   "line_lonlat": [
-    [
-     -123.1405451,
-     49.2709271
-    ],
-    [
-     -123.1378257,
-     49.2695889
-    ]
-   ]
-  },
-  {
    "site_id": "V-207259",
    "asset_id": 207259,
    "local_area": "Fairview",
@@ -6478,37 +6354,6 @@
    "reason": "face not measurable: V-189083: no block outline or parcel edge on the property side (layers not loaded?)"
   },
   {
-   "site_id": "V-3848",
-   "asset_id": 3848,
-   "local_area": "Grandview-Woodland",
-   "window": "wm123_064_p49_264",
-   "street": "E 5TH AV",
-   "hblock": "1900 E 5TH AV",
-   "side": "north_side",
-   "address": "1942 E 5TH AV",
-   "species_city": "TILIA EUCHLORA   X",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 9,
-   "block_length_m": 118.32,
-   "property_line_from_centreline_m": 9.95,
-   "line_lonlat": [
-    [
-     -123.0656575,
-     49.2659008
-    ],
-    [
-     -123.0640288,
-     49.2658879
-    ]
-   ]
-  },
-  {
    "site_id": "V-4713",
    "asset_id": 4713,
    "local_area": "Grandview-Woodland",
@@ -7019,99 +6864,6 @@
    "crossing_count": 1,
    "partial_count": 5,
    "plausible": true
-  },
-  {
-   "site_id": "V-89195",
-   "asset_id": 89195,
-   "local_area": "Grandview-Woodland",
-   "window": "wm123_068_p49_272",
-   "street": "KITCHENER ST",
-   "hblock": "1800 KITCHENER ST",
-   "side": "north_side",
-   "address": "1856 KITCHENER ST",
-   "species_city": "ACER PSEUDOPLATANUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 9,
-   "block_length_m": 120.47,
-   "property_line_from_centreline_m": 10.11,
-   "line_lonlat": [
-    [
-     -123.0675031,
-     49.2720714
-    ],
-    [
-     -123.0658446,
-     49.2720601
-    ]
-   ]
-  },
-  {
-   "site_id": "V-401388",
-   "asset_id": 401388,
-   "local_area": "Grandview-Woodland",
-   "window": "wm123_068_p49_272",
-   "street": "GRAVELEY ST",
-   "hblock": "1800 GRAVELEY ST",
-   "side": "north_side",
-   "address": "1838 GRAVELEY ST",
-   "species_city": "FRAXINUS SPECIES",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 120.37,
-   "property_line_from_centreline_m": 9.92,
-   "line_lonlat": [
-    [
-     -123.0675317,
-     49.2703972
-    ],
-    [
-     -123.0658745,
-     49.2703893
-    ]
-   ]
-  },
-  {
-   "site_id": "V-119194",
-   "asset_id": 119194,
-   "local_area": "Grandview-Woodland",
-   "window": "wm123_068_p49_272",
-   "street": "WILLIAM ST",
-   "hblock": "1800 WILLIAM ST",
-   "side": "south_side",
-   "address": "1827 WILLIAM ST",
-   "species_city": "FRAXINUS PENNSYLVANICA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 7,
-   "block_length_m": 120.57,
-   "property_line_from_centreline_m": 10.07,
-   "line_lonlat": [
-    [
-     -123.0674665,
-     49.2739779
-    ],
-    [
-     -123.0658066,
-     49.2739677
-    ]
-   ]
   },
   {
    "site_id": "V-230381",
@@ -8136,68 +7888,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-213945",
-   "asset_id": 213945,
-   "local_area": "Hastings-Sunrise",
-   "window": "wm123_028_p49_272",
-   "street": "WILLIAM ST",
-   "hblock": "3600 WILLIAM ST",
-   "side": "north_side",
-   "address": "3610 WILLIAM ST",
-   "species_city": "FRAXINUS ORNUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 270.73,
-   "property_line_from_centreline_m": 111.43,
-   "line_lonlat": [
-    [
-     -123.0275578,
-     49.2739877
-    ],
-    [
-     -123.0238302,
-     49.2739835
-    ]
-   ]
-  },
-  {
-   "site_id": "V-196788",
-   "asset_id": 196788,
-   "local_area": "Hastings-Sunrise",
-   "window": "wm123_028_p49_272",
-   "street": "GRAVELEY ST",
-   "hblock": "3600 GRAVELEY ST",
-   "side": "south_side",
-   "address": "3585 GRAVELEY ST",
-   "species_city": "QUERCUS SPECIES",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 122.88,
-   "property_line_from_centreline_m": 170.61,
-   "line_lonlat": [
-    [
-     -123.0272081,
-     49.2708072
-    ],
-    [
-     -123.0255162,
-     49.2708012
-    ]
-   ]
-  },
-  {
    "site_id": "V-141064",
    "asset_id": 141064,
    "local_area": "Hastings-Sunrise",
@@ -8834,37 +8524,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-146426",
-   "asset_id": 146426,
-   "local_area": "Hastings-Sunrise",
-   "window": "wm123_032_p49_284",
-   "street": "CASSIAR ST",
-   "hblock": "0 CASSIAR ST",
-   "side": "east_side",
-   "address": "23 CASSIAR ST",
-   "species_city": "CARPINUS BETULUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 3,
-   "block_length_m": 79.97,
-   "property_line_from_centreline_m": 20.13,
-   "line_lonlat": [
-    [
-     -123.030959,
-     49.2839559
-    ],
-    [
-     -123.0309575,
-     49.2846791
-    ]
-   ]
-  },
-  {
    "site_id": "V-232316",
    "asset_id": 232316,
    "local_area": "Hastings-Sunrise",
@@ -9147,37 +8806,6 @@
    "crossing_count": 0,
    "partial_count": 3,
    "plausible": true
-  },
-  {
-   "site_id": "V-201974",
-   "asset_id": 201974,
-   "local_area": "Kensington-Cedar Cottage",
-   "window": "wm123_060_p49_260",
-   "street": "E 11TH AV",
-   "hblock": "2100 E 11TH AV",
-   "side": "south_side",
-   "address": "2137 E 11TH AV",
-   "species_city": "PICEA SITCHENSIS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 53,
-   "block_length_m": 120.5,
-   "property_line_from_centreline_m": 47.0,
-   "line_lonlat": [
-    [
-     -123.061919,
-     49.2605617
-    ],
-    [
-     -123.0602605,
-     49.2605496
-    ]
-   ]
   },
   {
    "site_id": "V-186026",
@@ -10878,37 +10506,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-217716",
-   "asset_id": 217716,
-   "local_area": "Kerrisdale",
-   "window": "wm123_160_p49_224",
-   "street": "YEW ST",
-   "hblock": "6700-6800 YEW ST",
-   "side": "east_side",
-   "address": "6711 YEW ST",
-   "species_city": "ACER PLATANOIDES",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 25,
-   "block_length_m": 291.11,
-   "property_line_from_centreline_m": 35.52,
-   "line_lonlat": [
-    [
-     -123.1591909,
-     49.222308
-    ],
-    [
-     -123.159097,
-     49.22494
-    ]
-   ]
-  },
-  {
    "site_id": "V-248124",
    "asset_id": 248124,
    "local_area": "Kerrisdale",
@@ -11291,99 +10888,6 @@
    },
    "run_ok": false,
    "reason": "face not measurable: V-317506: no 'MACDONALD ST' centreline segment within 60 m (public-streets)"
-  },
-  {
-   "site_id": "V-190587",
-   "asset_id": 190587,
-   "local_area": "Kerrisdale",
-   "window": "wm123_172_p49_220",
-   "street": "CARNARVON ST",
-   "hblock": "7300-7500 CARNARVON ST",
-   "side": "east_side",
-   "address": "7455 CARNARVON ST",
-   "species_city": "MALUS ZUMI",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 15,
-   "block_length_m": 259.77,
-   "property_line_from_centreline_m": 10.25,
-   "line_lonlat": [
-    [
-     -123.1733269,
-     49.2169685
-    ],
-    [
-     -123.1732544,
-     49.2193174
-    ]
-   ]
-  },
-  {
-   "site_id": "V-65216",
-   "asset_id": 65216,
-   "local_area": "Kerrisdale",
-   "window": "wm123_172_p49_220",
-   "street": "CARNARVON ST",
-   "hblock": "6900-7000 CARNARVON ST",
-   "side": "west_side",
-   "address": "7025 CARNARVON ST",
-   "species_city": "MALUS SPECIES",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 200.58,
-   "property_line_from_centreline_m": 10.07,
-   "line_lonlat": [
-    [
-     -123.1731766,
-     49.2214861
-    ],
-    [
-     -123.1731179,
-     49.2232996
-    ]
-   ]
-  },
-  {
-   "site_id": "V-184573",
-   "asset_id": 184573,
-   "local_area": "Kerrisdale",
-   "window": "wm123_172_p49_220",
-   "street": "W 55TH AV",
-   "hblock": "3000-3100 W 55TH AV",
-   "side": "north_side",
-   "address": "3141 W 55TH AV",
-   "species_city": "POPULUS NIGRA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 10,
-   "block_length_m": 199.39,
-   "property_line_from_centreline_m": 9.3,
-   "line_lonlat": [
-    [
-     -123.1759429,
-     49.2215022
-    ],
-    [
-     -123.1732009,
-     49.2214725
-    ]
-   ]
   },
   {
    "site_id": "V-316918",
@@ -11902,37 +11406,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-190566",
-   "asset_id": 190566,
-   "local_area": "Killarney",
-   "window": "wm123_044_p49_228",
-   "street": "E 45TH AV",
-   "hblock": "2800 E 45TH AV",
-   "side": "south_side",
-   "address": "2901 E 45TH AV",
-   "species_city": "CARPINUS BETULUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 13,
-   "block_length_m": 181.73,
-   "property_line_from_centreline_m": 10.0,
-   "line_lonlat": [
-    [
-     -123.0457997,
-     49.2293981
-    ],
-    [
-     -123.0432999,
-     49.2293848
-    ]
-   ]
-  },
-  {
    "site_id": "V-169777",
    "asset_id": 169777,
    "local_area": "Killarney",
@@ -12081,37 +11554,6 @@
    "crossing_count": 3,
    "partial_count": 8,
    "plausible": true
-  },
-  {
-   "site_id": "V-214298",
-   "asset_id": 214298,
-   "local_area": "Killarney",
-   "window": "wm123_040_p49_224",
-   "street": "E 50TH AV",
-   "hblock": "3100 E 50TH AV",
-   "side": "south_side",
-   "address": "3195 E 50TH AV",
-   "species_city": "CELTIS OCCIDENTALIS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 139.96,
-   "property_line_from_centreline_m": 238.49,
-   "line_lonlat": [
-    [
-     -123.0408727,
-     49.2239845
-    ],
-    [
-     -123.038948,
-     49.223964
-    ]
-   ]
   },
   {
    "site_id": "V-46083",
@@ -12934,37 +12376,6 @@
    "crossing_count": 0,
    "partial_count": 14,
    "plausible": true
-  },
-  {
-   "site_id": "V-16098",
-   "asset_id": 16098,
-   "local_area": "Kitsilano",
-   "window": "wm123_152_p49_260",
-   "street": "W 15TH AV",
-   "hblock": "2000 W 15TH AV",
-   "side": "south_side",
-   "address": "2014 W 15TH AV",
-   "species_city": "THUJA PLICATA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 5,
-   "block_length_m": 138.38,
-   "property_line_from_centreline_m": 47.9,
-   "line_lonlat": [
-    [
-     -123.152815,
-     49.2581247
-    ],
-    [
-     -123.1509107,
-     49.2580951
-    ]
-   ]
   },
   {
    "site_id": "V-200922",
@@ -14793,37 +14204,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-298413",
-   "asset_id": 298413,
-   "local_area": "Marpole",
-   "window": "wm123_116_p49_216",
-   "street": "W 58TH AV",
-   "hblock": "500 W 58TH AV",
-   "side": "south_side",
-   "address": "622 W 58TH AV",
-   "species_city": "PLATANUS ACERIFOLIA   X",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 6,
-   "block_length_m": 47.86,
-   "property_line_from_centreline_m": 9.94,
-   "line_lonlat": [
-    [
-     -123.1181277,
-     49.217715
-    ],
-    [
-     -123.1174787,
-     49.2177872
-    ]
-   ]
-  },
-  {
    "site_id": "V-204440",
    "asset_id": 204440,
    "local_area": "Marpole",
@@ -15402,37 +14782,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-174228",
-   "asset_id": 174228,
-   "local_area": "Mount Pleasant",
-   "window": "wm123_088_p49_264",
-   "street": "PRINCE ALBERT ST",
-   "hblock": "2300 PRINCE ALBERT ST",
-   "side": "west_side",
-   "address": "2350 PRINCE ALBERT ST",
-   "species_city": "MALUS ZUMI",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 8,
-   "block_length_m": 80.03,
-   "property_line_from_centreline_m": 10.65,
-   "line_lonlat": [
-    [
-     -123.0870744,
-     49.2634977
-    ],
-    [
-     -123.0870593,
-     49.2642214
-    ]
-   ]
-  },
-  {
    "site_id": "V-150652",
    "asset_id": 150652,
    "local_area": "Mount Pleasant",
@@ -15449,37 +14798,6 @@
    },
    "run_ok": false,
    "reason": "face not measurable: V-150652: no block outline or parcel edge on the property side (layers not loaded?)"
-  },
-  {
-   "site_id": "V-10351",
-   "asset_id": 10351,
-   "local_area": "Mount Pleasant",
-   "window": "wm123_092_p49_260",
-   "street": "ST. GEORGE ST",
-   "hblock": "2600 ST. GEORGE ST",
-   "side": "east_side",
-   "address": "2663 ST. GEORGE ST",
-   "species_city": "PRUNUS SERRULATA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 5,
-   "block_length_m": 80.01,
-   "property_line_from_centreline_m": 9.99,
-   "line_lonlat": [
-    [
-     -123.0930879,
-     49.2607437
-    ],
-    [
-     -123.0930776,
-     49.2614672
-    ]
-   ]
   },
   {
    "site_id": "V-12707",
@@ -15988,68 +15306,6 @@
    "crossing_count": 1,
    "partial_count": 9,
    "plausible": true
-  },
-  {
-   "site_id": "V-144882",
-   "asset_id": 144882,
-   "local_area": "Mount Pleasant",
-   "window": "wm123_084_p49_264",
-   "street": "E 6TH AV",
-   "hblock": "800 E 6TH AV",
-   "side": "north_side",
-   "address": "894 E 6TH AV",
-   "species_city": "CRATAEGUS MORDENENSIS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 8,
-   "block_length_m": 120.18,
-   "property_line_from_centreline_m": 10.0,
-   "line_lonlat": [
-    [
-     -123.0869745,
-     49.2651625
-    ],
-    [
-     -123.0853204,
-     49.2651494
-    ]
-   ]
-  },
-  {
-   "site_id": "V-68478",
-   "asset_id": 68478,
-   "local_area": "Mount Pleasant",
-   "window": "wm123_108_p49_272",
-   "street": "W 1ST AV",
-   "hblock": "100 W 1ST AV",
-   "side": "north_side",
-   "address": "151 W 1ST AV",
-   "species_city": "ACER FREEMANII   X",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 22,
-   "block_length_m": 179.46,
-   "property_line_from_centreline_m": 72.26,
-   "line_lonlat": [
-    [
-     -123.1092828,
-     49.2703782
-    ],
-    [
-     -123.1068132,
-     49.2703331
-    ]
-   ]
   },
   {
    "site_id": "V-255523",
@@ -18850,37 +18106,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-28629",
-   "asset_id": 28629,
-   "local_area": "Riley Park",
-   "window": "wm123_112_p49_244",
-   "street": "W 28TH AV",
-   "hblock": "400 W 28TH AV",
-   "side": "south_side",
-   "address": "406 W 28TH AV",
-   "species_city": "PRUNUS SERRULATA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 216.26,
-   "property_line_from_centreline_m": 116.52,
-   "line_lonlat": [
-    [
-     -123.1151689,
-     49.2458642
-    ],
-    [
-     -123.1121943,
-     49.2458065
-    ]
-   ]
-  },
-  {
    "site_id": "V-11475",
    "asset_id": 11475,
    "local_area": "Riley Park",
@@ -20389,37 +19614,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-229814",
-   "asset_id": 229814,
-   "local_area": "Shaughnessy",
-   "window": "wm123_136_p49_240",
-   "street": "HUDSON ST",
-   "hblock": "4800 HUDSON ST",
-   "side": "west_side",
-   "address": "4890 HUDSON ST",
-   "species_city": "PRUNUS CERASIFERA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 5,
-   "block_length_m": 211.45,
-   "property_line_from_centreline_m": 10.51,
-   "line_lonlat": [
-    [
-     -123.1344919,
-     49.2417928
-    ],
-    [
-     -123.1344683,
-     49.243705
-    ]
-   ]
-  },
-  {
    "site_id": "V-26391",
    "asset_id": 26391,
    "local_area": "Shaughnessy",
@@ -20436,68 +19630,6 @@
    },
    "run_ok": false,
    "reason": "face not measurable: V-26391: no 'CARTIER ST' centreline segment within 60 m (public-streets)"
-  },
-  {
-   "site_id": "V-110162",
-   "asset_id": 110162,
-   "local_area": "Shaughnessy",
-   "window": "wm123_132_p49_240",
-   "street": "SELKIRK ST",
-   "hblock": "4700-4800 SELKIRK ST",
-   "side": "east_side",
-   "address": "4897 SELKIRK ST",
-   "species_city": "PRUNUS CERASIFERA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 37.84,
-   "property_line_from_centreline_m": 178.4,
-   "line_lonlat": [
-    [
-     -123.1326728,
-     49.2416762
-    ],
-    [
-     -123.1326369,
-     49.2413348
-    ]
-   ]
-  },
-  {
-   "site_id": "V-182434",
-   "asset_id": 182434,
-   "local_area": "Shaughnessy",
-   "window": "wm123_132_p49_240",
-   "street": "SELKIRK ST",
-   "hblock": "4700-4800 SELKIRK ST",
-   "side": "west_side",
-   "address": "4888 SELKIRK ST",
-   "species_city": "PRUNUS SERRULATA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 3,
-   "block_length_m": 155.87,
-   "property_line_from_centreline_m": 10.19,
-   "line_lonlat": [
-    [
-     -123.1326705,
-     49.2430748
-    ],
-    [
-     -123.13219,
-     49.241701
-    ]
-   ]
   },
   {
    "site_id": "V-199437",
@@ -20604,37 +19736,6 @@
    "crossing_count": 0,
    "partial_count": 8,
    "plausible": true
-  },
-  {
-   "site_id": "V-139394",
-   "asset_id": 139394,
-   "local_area": "Shaughnessy",
-   "window": "wm123_132_p49_240",
-   "street": "OSLER ST",
-   "hblock": "4800 OSLER ST",
-   "side": "west_side",
-   "address": "4890 OSLER ST",
-   "species_city": "FRAXINUS ORNUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 9,
-   "block_length_m": 82.33,
-   "property_line_from_centreline_m": 9.78,
-   "line_lonlat": [
-    [
-     -123.1300356,
-     49.2416278
-    ],
-    [
-     -123.1300094,
-     49.2423722
-    ]
-   ]
   },
   {
    "site_id": "V-208851",
@@ -20849,37 +19950,6 @@
    "crossing_count": 11,
    "partial_count": 1,
    "plausible": true
-  },
-  {
-   "site_id": "V-110181",
-   "asset_id": 110181,
-   "local_area": "Shaughnessy",
-   "window": "wm123_132_p49_236",
-   "street": "SELKIRK ST",
-   "hblock": "5600 SELKIRK ST",
-   "side": "east_side",
-   "address": "5625 SELKIRK ST",
-   "species_city": "PRUNUS CERASIFERA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 1,
-   "block_length_m": 92.33,
-   "property_line_from_centreline_m": 177.29,
-   "line_lonlat": [
-    [
-     -123.1328514,
-     49.2342655
-    ],
-    [
-     -123.1328225,
-     49.2351003
-    ]
-   ]
   },
   {
    "site_id": "V-146689",
@@ -22050,37 +21120,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-181594",
-   "asset_id": 181594,
-   "local_area": "South Cambie",
-   "window": "wm123_120_p49_252",
-   "street": "ASH ST",
-   "hblock": "3800 ASH ST",
-   "side": "east_side",
-   "address": "3899 ASH ST",
-   "species_city": "FRAXINUS PENNSYLVANICA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 6,
-   "block_length_m": 79.55,
-   "property_line_from_centreline_m": 10.04,
-   "line_lonlat": [
-    [
-     -123.1184482,
-     49.2507383
-    ],
-    [
-     -123.1184217,
-     49.2514575
-    ]
-   ]
-  },
-  {
    "site_id": "V-339269",
    "asset_id": 339269,
    "local_area": "South Cambie",
@@ -22503,37 +21542,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-182160",
-   "asset_id": 182160,
-   "local_area": "South Cambie",
-   "window": "wm123_120_p49_248",
-   "street": "ASH ST",
-   "hblock": "4000 ASH ST",
-   "side": "west_side",
-   "address": "4088 ASH ST",
-   "species_city": "STYRAX JAPONICUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 4,
-   "block_length_m": 39.4,
-   "property_line_from_centreline_m": 10.03,
-   "line_lonlat": [
-    [
-     -123.1183459,
-     49.2491871
-    ],
-    [
-     -123.1183337,
-     49.2495434
-    ]
-   ]
-  },
-  {
    "site_id": "V-232094",
    "asset_id": 232094,
    "local_area": "South Cambie",
@@ -22550,37 +21558,6 @@
    },
    "run_ok": false,
    "reason": "face not measurable: V-232094: no block outline or parcel edge on the property side (layers not loaded?)"
-  },
-  {
-   "site_id": "V-133039",
-   "asset_id": 133039,
-   "local_area": "Strathcona",
-   "window": "wm123_084_p49_276",
-   "street": "UNION ST",
-   "hblock": "800 UNION ST",
-   "side": "north_side",
-   "address": "898 UNION ST",
-   "species_city": "ACER PALMATUM",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 3,
-   "block_length_m": 324.41,
-   "property_line_from_centreline_m": 110.13,
-   "line_lonlat": [
-    [
-     -123.0871921,
-     49.2772074
-    ],
-    [
-     -123.0827268,
-     49.2771278
-    ]
-   ]
   },
   {
    "site_id": "V-125326",
@@ -22617,37 +21594,6 @@
    },
    "run_ok": false,
    "reason": "face not measurable: V-271048: no 'UNION ST' centreline segment within 60 m (public-streets)"
-  },
-  {
-   "site_id": "V-115283",
-   "asset_id": 115283,
-   "local_area": "Strathcona",
-   "window": "wm123_084_p49_276",
-   "street": "UNION ST",
-   "hblock": "800 UNION ST",
-   "side": "south_side",
-   "address": "863 UNION ST",
-   "species_city": "FAGUS SYLVATICA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 10,
-   "block_length_m": 152.06,
-   "property_line_from_centreline_m": 10.11,
-   "line_lonlat": [
-    [
-     -123.0871761,
-     49.2775127
-    ],
-    [
-     -123.0850831,
-     49.2774754
-    ]
-   ]
   },
   {
    "site_id": "V-144536",
@@ -22762,68 +21708,6 @@
    "crossing_count": 2,
    "partial_count": 17,
    "plausible": true
-  },
-  {
-   "site_id": "V-115250",
-   "asset_id": 115250,
-   "local_area": "Strathcona",
-   "window": "wm123_088_p49_276",
-   "street": "UNION ST",
-   "hblock": "600 UNION ST",
-   "side": "north_side",
-   "address": "676 UNION ST",
-   "species_city": "ACER PLATANOIDES",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 8,
-   "block_length_m": 168.84,
-   "property_line_from_centreline_m": 174.14,
-   "line_lonlat": [
-    [
-     -123.0897955,
-     49.2771062
-    ],
-    [
-     -123.0874716,
-     49.2770633
-    ]
-   ]
-  },
-  {
-   "site_id": "V-220602",
-   "asset_id": 220602,
-   "local_area": "Strathcona",
-   "window": "wm123_088_p49_276",
-   "street": "UNION ST",
-   "hblock": "700 UNION ST",
-   "side": "north_side",
-   "address": "710 UNION ST",
-   "species_city": "PYRUS CALLERYANA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 15,
-   "block_length_m": 152.13,
-   "property_line_from_centreline_m": 9.84,
-   "line_lonlat": [
-    [
-     -123.0895551,
-     49.2774076
-    ],
-    [
-     -123.087461,
-     49.2773725
-    ]
-   ]
   },
   {
    "site_id": "V-341200",
@@ -23402,37 +22286,6 @@
    }
   },
   {
-   "site_id": "V-178325",
-   "asset_id": 178325,
-   "local_area": "Strathcona",
-   "window": "wm123_092_p49_276",
-   "street": "ATLANTIC ST",
-   "hblock": "600 ATLANTIC ST",
-   "side": "north_side",
-   "address": "612 ATLANTIC ST",
-   "species_city": "AESCULUS CARNEA   X",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 17,
-   "block_length_m": 378.34,
-   "property_line_from_centreline_m": 9.97,
-   "line_lonlat": [
-    [
-     -123.0927411,
-     49.275689
-    ],
-    [
-     -123.0875337,
-     49.2755949
-    ]
-   ]
-  },
-  {
    "site_id": "V-204634",
    "asset_id": 204634,
    "local_area": "Strathcona",
@@ -23977,37 +22830,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-209525",
-   "asset_id": 209525,
-   "local_area": "Sunset",
-   "window": "wm123_084_p49_228",
-   "street": "ROSS ST",
-   "hblock": "6100-6200 ROSS ST",
-   "side": "west_side",
-   "address": "6094 ROSS ST",
-   "species_city": "ACER FREEMANII   X",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 74.04,
-   "property_line_from_centreline_m": 46.65,
-   "line_lonlat": [
-    [
-     -123.0826364,
-     49.2297138
-    ],
-    [
-     -123.0821253,
-     49.2291348
-    ]
-   ]
-  },
-  {
    "site_id": "V-112680",
    "asset_id": 112680,
    "local_area": "Sunset",
@@ -24516,37 +23338,6 @@
    "crossing_count": 0,
    "partial_count": 14,
    "plausible": true
-  },
-  {
-   "site_id": "V-191625",
-   "asset_id": 191625,
-   "local_area": "Sunset",
-   "window": "wm123_088_p49_228",
-   "street": "CHESTER ST",
-   "hblock": "6100-6200 CHESTER ST",
-   "side": "east_side",
-   "address": "6273 CHESTER ST",
-   "species_city": "FRAXINUS PENNSYLVANICA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 15,
-   "block_length_m": 180.35,
-   "property_line_from_centreline_m": 10.03,
-   "line_lonlat": [
-    [
-     -123.089403,
-     49.2274462
-    ],
-    [
-     -123.0893639,
-     49.2290771
-    ]
-   ]
   },
   {
    "site_id": "V-199527",
@@ -25339,37 +24130,6 @@
    "crossing_count": 0,
    "partial_count": 3,
    "plausible": true
-  },
-  {
-   "site_id": "V-76230",
-   "asset_id": 76230,
-   "local_area": "Victoria-Fraserview",
-   "window": "wm123_072_p49_220",
-   "street": "FLEMING ST",
-   "hblock": "7000 FLEMING ST",
-   "side": "north_side",
-   "address": "7088 FLEMING ST",
-   "species_city": "PRUNUS SERRULATA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 5,
-   "block_length_m": 66.57,
-   "property_line_from_centreline_m": 10.57,
-   "line_lonlat": [
-    [
-     -123.0738651,
-     49.2195428
-    ],
-    [
-     -123.0731625,
-     49.2199287
-    ]
-   ]
   },
   {
    "site_id": "V-280265",
@@ -26516,37 +25276,6 @@
    "crossing_count": 3,
    "partial_count": 1,
    "plausible": true
-  },
-  {
-   "site_id": "V-99980",
-   "asset_id": 99980,
-   "local_area": "West End",
-   "window": "wm123_132_p49_288",
-   "street": "NELSON ST",
-   "hblock": "1400 NELSON ST",
-   "side": "north_side",
-   "address": "1435 NELSON ST",
-   "species_city": "MALUS FLORIBUNDA",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 7,
-   "block_length_m": 100.13,
-   "property_line_from_centreline_m": 10.04,
-   "line_lonlat": [
-    [
-     -123.1341419,
-     49.2865389
-    ],
-    [
-     -123.1331601,
-     49.285903
-    ]
-   ]
   },
   {
    "site_id": "V-259976",
@@ -27771,37 +26500,6 @@
    "crossing_count": 2,
    "partial_count": 26,
    "plausible": true
-  },
-  {
-   "site_id": "V-159447",
-   "asset_id": 159447,
-   "local_area": "West End",
-   "window": "wm123_136_p49_288",
-   "street": "HARO ST",
-   "hblock": "1600 HARO ST",
-   "side": "south_side",
-   "address": "1636 HARO ST",
-   "species_city": "CARPINUS BETULUS",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 2,
-   "block_length_m": 67.33,
-   "property_line_from_centreline_m": 59.81,
-   "line_lonlat": [
-    [
-     -123.1345525,
-     49.288938
-    ],
-    [
-     -123.133892,
-     49.2885105
-    ]
-   ]
   },
   {
    "site_id": "V-268299",
@@ -29962,37 +28660,6 @@
    "plausible": true
   },
   {
-   "site_id": "V-145152",
-   "asset_id": 145152,
-   "local_area": "Downtown",
-   "window": "wm123_128_p49_272",
-   "street": "BEACH CRESCENT",
-   "hblock": "200 BEACH CRESCENT",
-   "side": "south_side",
-   "address": "268 BEACH CRESCENT",
-   "species_city": "ACER TRUNCATUM",
-   "site_type": {
-    "value": "boulevard",
-    "provenance": "DESIGN_ASSUMPTION",
-    "note": "assumed for the batch; a user confirmation in the tool"
-   },
-   "run_ok": false,
-   "reason": "no catch basin on this face: the curb knob has no City hint",
-   "tree_count": 12,
-   "block_length_m": 71.65,
-   "property_line_from_centreline_m": 9.74,
-   "line_lonlat": [
-    [
-     -123.1268695,
-     49.2714698
-    ],
-    [
-     -123.1261667,
-     49.271015
-    ]
-   ]
-  },
-  {
    "site_id": "V-247417",
    "asset_id": 247417,
    "local_area": "Downtown",
@@ -30730,6 +29397,2384 @@
    "largest_class_fits": "Large",
    "crossing_count": 0,
    "partial_count": 2,
+   "plausible": true
+  },
+  {
+   "site_id": "V-258421",
+   "asset_id": 258421,
+   "local_area": "Arbutus Ridge",
+   "window": "wm123_160_p49_248",
+   "street": "HAGGART ST",
+   "hblock": "4400 HAGGART ST",
+   "side": "east_side",
+   "address": "4493 HAGGART ST",
+   "species_city": "FAGUS SYLVATICA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 2,
+   "block_length_m": 44.91,
+   "property_line_from_centreline_m": 10.03,
+   "line_lonlat": [
+    [
+     -123.1614845,
+     49.2464467
+    ],
+    [
+     -123.1612204,
+     49.2460795
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 3.5,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 3.38,
+   "band_width_m": 3.38,
+   "curb_offset_m": 3.5,
+   "trees": [
+    {
+     "site_id": "V-258421",
+     "u": 0.0,
+     "share_m3": 72.03456,
+     "status": "KNOWN",
+     "spacing_m": 23.68,
+     "genus": "FAGUS"
+    },
+    {
+     "site_id": "V-195680",
+     "u": 23.68,
+     "share_m3": 36.71694,
+     "status": "KNOWN",
+     "spacing_m": 12.07,
+     "genus": "PARROTIA"
+    }
+   ],
+   "known_count": 2,
+   "review_count": 0,
+   "share_min_m3": 36.71694,
+   "share_median_m3": 54.38,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Large",
+   "crossing_count": 0,
+   "partial_count": 1,
+   "plausible": true
+  },
+  {
+   "site_id": "V-145152",
+   "asset_id": 145152,
+   "local_area": "Downtown",
+   "window": "wm123_128_p49_272",
+   "street": "BEACH CRESCENT",
+   "hblock": "200 BEACH CRESCENT",
+   "side": "south_side",
+   "address": "268 BEACH CRESCENT",
+   "species_city": "ACER TRUNCATUM",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 12,
+   "block_length_m": 71.65,
+   "property_line_from_centreline_m": 9.74,
+   "line_lonlat": [
+    [
+     -123.1268695,
+     49.2714698
+    ],
+    [
+     -123.1261667,
+     49.271015
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 4.0,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 2.58,
+   "band_width_m": 2.58,
+   "curb_offset_m": 4.0,
+   "trees": [
+    {
+     "site_id": "V-17451",
+     "u": -48.32,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-17450",
+     "u": -43.12,
+     "share_m3": 10.62315,
+     "status": "KNOWN",
+     "spacing_m": 4.58,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-17446",
+     "u": -37.85,
+     "share_m3": 11.342970000000001,
+     "status": "KNOWN",
+     "spacing_m": 4.88,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-17445",
+     "u": -33.35,
+     "share_m3": 11.447460000000001,
+     "status": "KNOWN",
+     "spacing_m": 4.93,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-140439",
+     "u": -27.99,
+     "share_m3": 11.86542,
+     "status": "KNOWN",
+     "spacing_m": 5.11,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-140436",
+     "u": -23.13,
+     "share_m3": 11.2617,
+     "status": "KNOWN",
+     "spacing_m": 4.85,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-139261",
+     "u": -18.29,
+     "share_m3": 12.35304,
+     "status": "KNOWN",
+     "spacing_m": 5.32,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-139157",
+     "u": -12.49,
+     "share_m3": 13.781070000000001,
+     "status": "KNOWN",
+     "spacing_m": 5.94,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-145158",
+     "u": -6.42,
+     "share_m3": 14.500890000000002,
+     "status": "KNOWN",
+     "spacing_m": 6.25,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-145152",
+     "u": 0.0,
+     "share_m3": 14.930460000000002,
+     "status": "KNOWN",
+     "spacing_m": 6.43,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-145066",
+     "u": 6.44,
+     "share_m3": 14.38479,
+     "status": "KNOWN",
+     "spacing_m": 6.2,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-145030",
+     "u": 12.39,
+     "share_m3": 13.815900000000001,
+     "status": "KNOWN",
+     "spacing_m": 5.95,
+     "genus": "ACER"
+    }
+   ],
+   "known_count": 11,
+   "review_count": 1,
+   "share_min_m3": 10.62315,
+   "share_median_m3": 12.35,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Small",
+   "crossing_count": 1,
+   "partial_count": 0,
+   "plausible": true
+  },
+  {
+   "site_id": "V-217716",
+   "asset_id": 217716,
+   "local_area": "Kerrisdale",
+   "window": "wm123_160_p49_224",
+   "street": "YEW ST",
+   "hblock": "6700-6800 YEW ST",
+   "side": "east_side",
+   "address": "6711 YEW ST",
+   "species_city": "ACER PLATANOIDES",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 25,
+   "block_length_m": 291.11,
+   "property_line_from_centreline_m": 35.52,
+   "line_lonlat": [
+    [
+     -123.1591909,
+     49.222308
+    ],
+    [
+     -123.159097,
+     49.22494
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 5.7,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 26.67,
+   "band_width_m": 26.67,
+   "curb_offset_m": 5.7,
+   "trees": [
+    {
+     "site_id": "V-320562",
+     "u": -277.75,
+     "share_m3": 504.31464,
+     "status": "KNOWN",
+     "spacing_m": 22.55,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-320558",
+     "u": -255.2,
+     "share_m3": 627.83586,
+     "status": "KNOWN",
+     "spacing_m": 26.26,
+     "genus": "THUJA"
+    },
+    {
+     "site_id": "V-71875",
+     "u": -225.24,
+     "share_m3": 467.85501,
+     "status": "KNOWN",
+     "spacing_m": 19.57,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-65372",
+     "u": -216.06,
+     "share_m3": 212.85072,
+     "status": "KNOWN",
+     "spacing_m": 9.18,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-267578",
+     "u": -206.88,
+     "share_m3": 274.54752,
+     "status": "KNOWN",
+     "spacing_m": 11.5,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-63877",
+     "u": -193.06,
+     "share_m3": 294.09534,
+     "status": "KNOWN",
+     "spacing_m": 12.33,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-65368",
+     "u": -182.23,
+     "share_m3": 259.95465,
+     "status": "KNOWN",
+     "spacing_m": 10.94,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-65369",
+     "u": -171.17,
+     "share_m3": 262.80476999999996,
+     "status": "KNOWN",
+     "spacing_m": 11.06,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121289",
+     "u": -160.1,
+     "share_m3": 225.99072,
+     "status": "KNOWN",
+     "spacing_m": 9.51,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121290",
+     "u": -152.14,
+     "share_m3": 178.60752,
+     "status": "KNOWN",
+     "spacing_m": 7.52,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121291",
+     "u": -145.06,
+     "share_m3": 164.11941,
+     "status": "KNOWN",
+     "spacing_m": 6.91,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121302",
+     "u": -138.32,
+     "share_m3": 167.88573000000002,
+     "status": "KNOWN",
+     "spacing_m": 7.08,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121292",
+     "u": -130.9,
+     "share_m3": 196.64127,
+     "status": "KNOWN",
+     "spacing_m": 8.3,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121293",
+     "u": -121.73,
+     "share_m3": 217.50255,
+     "status": "KNOWN",
+     "spacing_m": 9.17,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-63605",
+     "u": -112.55,
+     "share_m3": 224.38386000000003,
+     "status": "KNOWN",
+     "spacing_m": 9.52,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-63565",
+     "u": -102.7,
+     "share_m3": 242.892,
+     "status": "KNOWN",
+     "spacing_m": 10.3,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121297",
+     "u": -91.96,
+     "share_m3": 338.08158000000003,
+     "status": "KNOWN",
+     "spacing_m": 14.27,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-267577",
+     "u": -74.17,
+     "share_m3": 298.14669,
+     "status": "KNOWN",
+     "spacing_m": 12.77,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121301",
+     "u": -66.42,
+     "share_m3": 175.71321,
+     "status": "KNOWN",
+     "spacing_m": 7.41,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-63315",
+     "u": -59.34,
+     "share_m3": 203.20173,
+     "status": "KNOWN",
+     "spacing_m": 8.57,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-121303",
+     "u": -49.27,
+     "share_m3": 309.204,
+     "status": "KNOWN",
+     "spacing_m": 13.22,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-217717",
+     "u": -32.9,
+     "share_m3": 326.7108,
+     "status": "KNOWN",
+     "spacing_m": 14.32,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-207775",
+     "u": -20.63,
+     "share_m3": 252.44801999999999,
+     "status": "KNOWN",
+     "spacing_m": 11.07,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-217715",
+     "u": -10.77,
+     "share_m3": 235.33677,
+     "status": "KNOWN",
+     "spacing_m": 10.31,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-217716",
+     "u": 0.0,
+     "share_m3": 126.57861,
+     "status": "KNOWN",
+     "spacing_m": 5.5,
+     "genus": "ACER"
+    }
+   ],
+   "known_count": 25,
+   "review_count": 0,
+   "share_min_m3": 126.57861,
+   "share_median_m3": 242.89,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 18,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 26.67 m > 6.0; property line 35.52 m from the centreline → class not read",
+   "largest_class_fits_raw": "Large"
+  },
+  {
+   "site_id": "V-190587",
+   "asset_id": 190587,
+   "local_area": "Kerrisdale",
+   "window": "wm123_172_p49_220",
+   "street": "CARNARVON ST",
+   "hblock": "7300-7500 CARNARVON ST",
+   "side": "east_side",
+   "address": "7455 CARNARVON ST",
+   "species_city": "MALUS ZUMI",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 15,
+   "block_length_m": 259.77,
+   "property_line_from_centreline_m": 10.25,
+   "line_lonlat": [
+    [
+     -123.1733269,
+     49.2169685
+    ],
+    [
+     -123.1732544,
+     49.2193174
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 5.4,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 1.7,
+   "band_width_m": 1.7,
+   "curb_offset_m": 5.4,
+   "trees": [
+    {
+     "site_id": "V-65230",
+     "u": -117.98,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 5.17,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65231",
+     "u": -108.03,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 6.07,
+     "genus": "PINUS"
+    },
+    {
+     "site_id": "V-65234",
+     "u": -105.83,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 4.97,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65237",
+     "u": -98.09,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 8.28,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65239",
+     "u": -89.28,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 6.06,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65241",
+     "u": -85.96,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 3.87,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65242",
+     "u": -81.54,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 4.42,
+     "genus": "QUERCUS"
+    },
+    {
+     "site_id": "V-202197",
+     "u": -77.12,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.53,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65243",
+     "u": -60.48,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 17.16,
+     "genus": "THUJA"
+    },
+    {
+     "site_id": "V-65245",
+     "u": -42.8,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 11.05,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-65246",
+     "u": -38.38,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 12.69,
+     "genus": "POPULUS"
+    },
+    {
+     "site_id": "V-190589",
+     "u": -17.43,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 13.29,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-190588",
+     "u": -11.81,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 5.7,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-65228",
+     "u": -6.04,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 5.91,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-190587",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 6.04,
+     "genus": "MALUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 15,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 1,
+   "plausible": true
+  },
+  {
+   "site_id": "V-65216",
+   "asset_id": 65216,
+   "local_area": "Kerrisdale",
+   "window": "wm123_172_p49_220",
+   "street": "CARNARVON ST",
+   "hblock": "6900-7000 CARNARVON ST",
+   "side": "west_side",
+   "address": "7025 CARNARVON ST",
+   "species_city": "MALUS SPECIES",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 2,
+   "block_length_m": 200.58,
+   "property_line_from_centreline_m": 10.07,
+   "line_lonlat": [
+    [
+     -123.1731766,
+     49.2214861
+    ],
+    [
+     -123.1731179,
+     49.2232996
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 6.5,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 0.42,
+   "band_width_m": 0.42,
+   "curb_offset_m": 6.5,
+   "trees": [
+    {
+     "site_id": "V-65218",
+     "u": -10.15,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.15,
+     "genus": "SORBUS"
+    },
+    {
+     "site_id": "V-65216",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.15,
+     "genus": "MALUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 2,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 0,
+   "plausible": true
+  },
+  {
+   "site_id": "V-184573",
+   "asset_id": 184573,
+   "local_area": "Kerrisdale",
+   "window": "wm123_172_p49_220",
+   "street": "W 55TH AV",
+   "hblock": "3000-3100 W 55TH AV",
+   "side": "north_side",
+   "address": "3141 W 55TH AV",
+   "species_city": "POPULUS NIGRA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": false,
+   "reason": "front boulevard not available: front boulevard width -1.14 m at this curb position and land use: no band; move the curb toward the centreline or choose another row / level",
+   "tree_count": 10,
+   "block_length_m": 199.39,
+   "property_line_from_centreline_m": 9.3,
+   "line_lonlat": [
+    [
+     -123.1759429,
+     49.2215022
+    ],
+    [
+     -123.1732009,
+     49.2214725
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 7.3,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the hydrants, 0.6 m behind the curb"
+   }
+  },
+  {
+   "site_id": "V-190566",
+   "asset_id": 190566,
+   "local_area": "Killarney",
+   "window": "wm123_044_p49_228",
+   "street": "E 45TH AV",
+   "hblock": "2800 E 45TH AV",
+   "side": "south_side",
+   "address": "2901 E 45TH AV",
+   "species_city": "CARPINUS BETULUS",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": false,
+   "reason": "front boulevard not available: front boulevard width -1.95 m at this curb position and land use: no band; move the curb toward the centreline or choose another row / level",
+   "tree_count": 13,
+   "block_length_m": 181.73,
+   "property_line_from_centreline_m": 10.0,
+   "line_lonlat": [
+    [
+     -123.0457997,
+     49.2293981
+    ],
+    [
+     -123.0432999,
+     49.2293848
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 8.8,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   }
+  },
+  {
+   "site_id": "V-214298",
+   "asset_id": 214298,
+   "local_area": "Killarney",
+   "window": "wm123_040_p49_224",
+   "street": "E 50TH AV",
+   "hblock": "3100 E 50TH AV",
+   "side": "south_side",
+   "address": "3195 E 50TH AV",
+   "species_city": "CELTIS OCCIDENTALIS",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 1,
+   "block_length_m": 139.96,
+   "property_line_from_centreline_m": 238.49,
+   "line_lonlat": [
+    [
+     -123.0408727,
+     49.2239845
+    ],
+    [
+     -123.038948,
+     49.223964
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 10.8,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 224.54,
+   "band_width_m": 224.54,
+   "curb_offset_m": 10.8,
+   "trees": [
+    {
+     "site_id": "V-214298",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "CELTIS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 1,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 57,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 224.54 m > 6.0; property line 238.49 m from the centreline → class not read",
+   "largest_class_fits_raw": "unknown"
+  },
+  {
+   "site_id": "V-16098",
+   "asset_id": 16098,
+   "local_area": "Kitsilano",
+   "window": "wm123_152_p49_260",
+   "street": "W 15TH AV",
+   "hblock": "2000 W 15TH AV",
+   "side": "south_side",
+   "address": "2014 W 15TH AV",
+   "species_city": "THUJA PLICATA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 5,
+   "block_length_m": 138.38,
+   "property_line_from_centreline_m": 47.9,
+   "line_lonlat": [
+    [
+     -123.152815,
+     49.2581247
+    ],
+    [
+     -123.1509107,
+     49.2580951
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 11.1,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 33.65,
+   "band_width_m": 33.65,
+   "curb_offset_m": 11.1,
+   "trees": [
+    {
+     "site_id": "V-334405",
+     "u": -104.33,
+     "share_m3": 0.30285,
+     "status": "KNOWN",
+     "spacing_m": 0.01,
+     "genus": "CHAMAECYPARIS"
+    },
+    {
+     "site_id": "V-334404",
+     "u": -104.32,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 50.38,
+     "genus": "CHAMAECYPARIS"
+    },
+    {
+     "site_id": "V-16099",
+     "u": -3.57,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 52.16,
+     "genus": "THUJA"
+    },
+    {
+     "site_id": "V-16098",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 4.98,
+     "genus": "THUJA"
+    },
+    {
+     "site_id": "V-16097",
+     "u": 6.39,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 6.39,
+     "genus": "THUJA"
+    }
+   ],
+   "known_count": 1,
+   "review_count": 4,
+   "share_min_m3": 0.30285,
+   "share_median_m3": 0.3,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 0,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 33.65 m > 6.0; property line 47.9 m from the centreline → class not read",
+   "largest_class_fits_raw": "none"
+  },
+  {
+   "site_id": "V-174228",
+   "asset_id": 174228,
+   "local_area": "Mount Pleasant",
+   "window": "wm123_088_p49_264",
+   "street": "PRINCE ALBERT ST",
+   "hblock": "2300 PRINCE ALBERT ST",
+   "side": "west_side",
+   "address": "2350 PRINCE ALBERT ST",
+   "species_city": "MALUS ZUMI",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 8,
+   "block_length_m": 80.03,
+   "property_line_from_centreline_m": 10.65,
+   "line_lonlat": [
+    [
+     -123.0870744,
+     49.2634977
+    ],
+    [
+     -123.0870593,
+     49.2642214
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 4.8,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 2.7,
+   "band_width_m": 2.7,
+   "curb_offset_m": 4.8,
+   "trees": [
+    {
+     "site_id": "V-174228",
+     "u": 0.0,
+     "share_m3": 13.82823,
+     "status": "KNOWN",
+     "spacing_m": 7.5,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-174227",
+     "u": 10.73,
+     "share_m3": 17.704259999999998,
+     "status": "KNOWN",
+     "spacing_m": 10.73,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-174226",
+     "u": 21.46,
+     "share_m3": 14.20848,
+     "status": "KNOWN",
+     "spacing_m": 10.12,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-224569",
+     "u": 30.97,
+     "share_m3": 13.248090000000001,
+     "status": "KNOWN",
+     "spacing_m": 11.66,
+     "genus": "PARROTIA"
+    },
+    {
+     "site_id": "V-174224",
+     "u": 44.79,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 12.77,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-174223",
+     "u": 56.51,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 9.51,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-174222",
+     "u": 63.81,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 7.96,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-245464",
+     "u": 72.43,
+     "share_m3": 6.62427,
+     "status": "KNOWN",
+     "spacing_m": 8.62,
+     "genus": "PARROTIA"
+    }
+   ],
+   "known_count": 5,
+   "review_count": 3,
+   "share_min_m3": 6.62427,
+   "share_median_m3": 13.83,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Small",
+   "crossing_count": 0,
+   "partial_count": 7,
+   "plausible": true
+  },
+  {
+   "site_id": "V-10351",
+   "asset_id": 10351,
+   "local_area": "Mount Pleasant",
+   "window": "wm123_092_p49_260",
+   "street": "ST. GEORGE ST",
+   "hblock": "2600 ST. GEORGE ST",
+   "side": "east_side",
+   "address": "2663 ST. GEORGE ST",
+   "species_city": "PRUNUS SERRULATA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 5,
+   "block_length_m": 80.01,
+   "property_line_from_centreline_m": 9.99,
+   "line_lonlat": [
+    [
+     -123.0930879,
+     49.2607437
+    ],
+    [
+     -123.0930776,
+     49.2614672
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 4.8,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 2.04,
+   "band_width_m": 2.04,
+   "curb_offset_m": 4.8,
+   "trees": [
+    {
+     "site_id": "V-10349",
+     "u": -24.66,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 11.25,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-10350",
+     "u": -13.27,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 12.33,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-10351",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 13.27,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-112737",
+     "u": 20.56,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 20.96,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-9043",
+     "u": 45.45,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 16.77,
+     "genus": "PRUNUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 5,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 2,
+   "partial_count": 8,
+   "plausible": true
+  },
+  {
+   "site_id": "V-144882",
+   "asset_id": 144882,
+   "local_area": "Mount Pleasant",
+   "window": "wm123_084_p49_264",
+   "street": "E 6TH AV",
+   "hblock": "800 E 6TH AV",
+   "side": "north_side",
+   "address": "894 E 6TH AV",
+   "species_city": "CRATAEGUS MORDENENSIS",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 8,
+   "block_length_m": 120.18,
+   "property_line_from_centreline_m": 10.0,
+   "line_lonlat": [
+    [
+     -123.0869745,
+     49.2651625
+    ],
+    [
+     -123.0853204,
+     49.2651494
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 5.4,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 1.46,
+   "band_width_m": 1.46,
+   "curb_offset_m": 5.4,
+   "trees": [
+    {
+     "site_id": "V-232056",
+     "u": -109.7,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.42,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-247828",
+     "u": -99.09,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 14.35,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-232055",
+     "u": -81.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 20.27,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-232054",
+     "u": -58.55,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 18.26,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-144914",
+     "u": -47.73,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 15.01,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-144908",
+     "u": -24.04,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 17.65,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-144891",
+     "u": -12.42,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 12.02,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-144882",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 8.91,
+     "genus": "CRATAEGUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 8,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 3,
+   "partial_count": 7,
+   "plausible": true
+  },
+  {
+   "site_id": "V-28629",
+   "asset_id": 28629,
+   "local_area": "Riley Park",
+   "window": "wm123_112_p49_244",
+   "street": "W 28TH AV",
+   "hblock": "400 W 28TH AV",
+   "side": "south_side",
+   "address": "406 W 28TH AV",
+   "species_city": "PRUNUS SERRULATA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 1,
+   "block_length_m": 216.26,
+   "property_line_from_centreline_m": 116.52,
+   "line_lonlat": [
+    [
+     -123.1151689,
+     49.2458642
+    ],
+    [
+     -123.1121943,
+     49.2458065
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 26.3,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 87.07,
+   "band_width_m": 87.07,
+   "curb_offset_m": 26.3,
+   "trees": [
+    {
+     "site_id": "V-28629",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 33.98,
+     "genus": "PRUNUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 1,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 163,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 87.07 m > 6.0; curb hint 26.3 m from the centreline; property line 116.52 m from the centreline → class not read",
+   "largest_class_fits_raw": "unknown"
+  },
+  {
+   "site_id": "V-229814",
+   "asset_id": 229814,
+   "local_area": "Shaughnessy",
+   "window": "wm123_136_p49_240",
+   "street": "HUDSON ST",
+   "hblock": "4800 HUDSON ST",
+   "side": "west_side",
+   "address": "4890 HUDSON ST",
+   "species_city": "PRUNUS CERASIFERA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 5,
+   "block_length_m": 211.45,
+   "property_line_from_centreline_m": 10.51,
+   "line_lonlat": [
+    [
+     -123.1344919,
+     49.2417928
+    ],
+    [
+     -123.1344683,
+     49.243705
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 7.2,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 0.16,
+   "band_width_m": 0.16,
+   "curb_offset_m": 7.2,
+   "trees": [
+    {
+     "site_id": "V-167940",
+     "u": -13.49,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.63,
+     "genus": "TILIA"
+    },
+    {
+     "site_id": "V-229814",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 13.82,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-169404",
+     "u": 14.16,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 16.25,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-84510",
+     "u": 32.5,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 18.34,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-224578",
+     "u": 180.04,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 1.78,
+     "genus": "PYRUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 5,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 2,
+   "partial_count": 0,
+   "plausible": true
+  },
+  {
+   "site_id": "V-110162",
+   "asset_id": 110162,
+   "local_area": "Shaughnessy",
+   "window": "wm123_132_p49_240",
+   "street": "SELKIRK ST",
+   "hblock": "4700-4800 SELKIRK ST",
+   "side": "east_side",
+   "address": "4897 SELKIRK ST",
+   "species_city": "PRUNUS CERASIFERA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 2,
+   "block_length_m": 37.84,
+   "property_line_from_centreline_m": 178.4,
+   "line_lonlat": [
+    [
+     -123.1326728,
+     49.2416762
+    ],
+    [
+     -123.1326369,
+     49.2413348
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 27.5,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 147.74,
+   "band_width_m": 147.74,
+   "curb_offset_m": 27.5,
+   "trees": [
+    {
+     "site_id": "V-110162",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-229126",
+     "u": 13.17,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 25.94,
+     "genus": "ACER"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 2,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 29,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 147.74 m > 6.0; curb hint 27.5 m from the centreline; property line 178.4 m from the centreline → class not read",
+   "largest_class_fits_raw": "unknown"
+  },
+  {
+   "site_id": "V-182434",
+   "asset_id": 182434,
+   "local_area": "Shaughnessy",
+   "window": "wm123_132_p49_240",
+   "street": "SELKIRK ST",
+   "hblock": "4700-4800 SELKIRK ST",
+   "side": "west_side",
+   "address": "4888 SELKIRK ST",
+   "species_city": "PRUNUS SERRULATA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 3,
+   "block_length_m": 155.87,
+   "property_line_from_centreline_m": 10.19,
+   "line_lonlat": [
+    [
+     -123.1326705,
+     49.2430748
+    ],
+    [
+     -123.13219,
+     49.241701
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 5.6,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 1.45,
+   "band_width_m": 1.45,
+   "curb_offset_m": 5.6,
+   "trees": [
+    {
+     "site_id": "V-130980",
+     "u": -15.05,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 14.37,
+     "genus": "CORNUS"
+    },
+    {
+     "site_id": "V-182434",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 15.43,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-110156",
+     "u": 15.81,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 10.58,
+     "genus": "PRUNUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 3,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 2,
+   "partial_count": 0,
+   "plausible": true
+  },
+  {
+   "site_id": "V-139394",
+   "asset_id": 139394,
+   "local_area": "Shaughnessy",
+   "window": "wm123_132_p49_240",
+   "street": "OSLER ST",
+   "hblock": "4800 OSLER ST",
+   "side": "west_side",
+   "address": "4890 OSLER ST",
+   "species_city": "FRAXINUS ORNUS",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 9,
+   "block_length_m": 82.33,
+   "property_line_from_centreline_m": 9.78,
+   "line_lonlat": [
+    [
+     -123.1300356,
+     49.2416278
+    ],
+    [
+     -123.1300094,
+     49.2423722
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 2.9,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 3.74,
+   "band_width_m": 3.74,
+   "curb_offset_m": 2.9,
+   "trees": [
+    {
+     "site_id": "V-139394",
+     "u": 0.0,
+     "share_m3": 24.08373,
+     "status": "KNOWN",
+     "spacing_m": 7.15,
+     "genus": "FRAXINUS"
+    },
+    {
+     "site_id": "V-256600",
+     "u": 10.29,
+     "share_m3": 35.4519,
+     "status": "KNOWN",
+     "spacing_m": 11.17,
+     "genus": "FRAXINUS"
+    },
+    {
+     "site_id": "V-256599",
+     "u": 22.34,
+     "share_m3": 33.42483,
+     "status": "KNOWN",
+     "spacing_m": 11.34,
+     "genus": "MAGNOLIA"
+    },
+    {
+     "site_id": "V-270869",
+     "u": 32.96,
+     "share_m3": 35.0064,
+     "status": "KNOWN",
+     "spacing_m": 10.4,
+     "genus": "MAGNOLIA"
+    },
+    {
+     "site_id": "V-102156",
+     "u": 43.14,
+     "share_m3": 31.6404,
+     "status": "KNOWN",
+     "spacing_m": 9.4,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-204782",
+     "u": 51.76,
+     "share_m3": 29.031750000000002,
+     "status": "KNOWN",
+     "spacing_m": 8.62,
+     "genus": "FRAXINUS"
+    },
+    {
+     "site_id": "V-102146",
+     "u": 60.39,
+     "share_m3": 29.418840000000003,
+     "status": "KNOWN",
+     "spacing_m": 8.74,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-199435",
+     "u": 69.24,
+     "share_m3": 30.916710000000002,
+     "status": "KNOWN",
+     "spacing_m": 9.19,
+     "genus": "CHAMAECYPARIS"
+    },
+    {
+     "site_id": "V-102145",
+     "u": 78.76,
+     "share_m3": 19.515420000000002,
+     "status": "KNOWN",
+     "spacing_m": 6.32,
+     "genus": "PRUNUS"
+    }
+   ],
+   "known_count": 9,
+   "review_count": 0,
+   "share_min_m3": 19.515420000000002,
+   "share_median_m3": 30.92,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Large",
+   "crossing_count": 0,
+   "partial_count": 8,
+   "plausible": true
+  },
+  {
+   "site_id": "V-181594",
+   "asset_id": 181594,
+   "local_area": "South Cambie",
+   "window": "wm123_120_p49_252",
+   "street": "ASH ST",
+   "hblock": "3800 ASH ST",
+   "side": "east_side",
+   "address": "3899 ASH ST",
+   "species_city": "FRAXINUS PENNSYLVANICA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 6,
+   "block_length_m": 79.55,
+   "property_line_from_centreline_m": 10.04,
+   "line_lonlat": [
+    [
+     -123.1184482,
+     49.2507383
+    ],
+    [
+     -123.1184217,
+     49.2514575
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 4.1,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 2.79,
+   "band_width_m": 2.79,
+   "curb_offset_m": 4.1,
+   "trees": [
+    {
+     "site_id": "V-253463",
+     "u": -8.29,
+     "share_m3": 20.816190000000002,
+     "status": "KNOWN",
+     "spacing_m": 8.29,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-181594",
+     "u": 0.0,
+     "share_m3": 27.759149999999998,
+     "status": "KNOWN",
+     "spacing_m": 11.05,
+     "genus": "FRAXINUS"
+    },
+    {
+     "site_id": "V-181595",
+     "u": 13.82,
+     "share_m3": 34.702020000000005,
+     "status": "KNOWN",
+     "spacing_m": 13.82,
+     "genus": "FRAXINUS"
+    },
+    {
+     "site_id": "V-23806",
+     "u": 40.27,
+     "share_m3": 27.77166,
+     "status": "KNOWN",
+     "spacing_m": 11.06,
+     "genus": "CORNUS"
+    },
+    {
+     "site_id": "V-23807",
+     "u": 51.33,
+     "share_m3": 25.26066,
+     "status": "KNOWN",
+     "spacing_m": 10.06,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-247598",
+     "u": 60.39,
+     "share_m3": 17.20179,
+     "status": "KNOWN",
+     "spacing_m": 8.13,
+     "genus": "ACER"
+    }
+   ],
+   "known_count": 6,
+   "review_count": 0,
+   "share_min_m3": 17.20179,
+   "share_median_m3": 26.51,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Large",
+   "crossing_count": 1,
+   "partial_count": 1,
+   "plausible": true
+  },
+  {
+   "site_id": "V-182160",
+   "asset_id": 182160,
+   "local_area": "South Cambie",
+   "window": "wm123_120_p49_248",
+   "street": "ASH ST",
+   "hblock": "4000 ASH ST",
+   "side": "west_side",
+   "address": "4088 ASH ST",
+   "species_city": "STYRAX JAPONICUS",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": false,
+   "reason": "no City fixture at the curb on this face (no catch basin, pole or hydrant): the curb knob has no hint",
+   "tree_count": 4,
+   "block_length_m": 39.4,
+   "property_line_from_centreline_m": 10.03,
+   "line_lonlat": [
+    [
+     -123.1183459,
+     49.2491871
+    ],
+    [
+     -123.1183337,
+     49.2495434
+    ]
+   ]
+  },
+  {
+   "site_id": "V-133039",
+   "asset_id": 133039,
+   "local_area": "Strathcona",
+   "window": "wm123_084_p49_276",
+   "street": "UNION ST",
+   "hblock": "800 UNION ST",
+   "side": "north_side",
+   "address": "898 UNION ST",
+   "species_city": "ACER PALMATUM",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 3,
+   "block_length_m": 324.41,
+   "property_line_from_centreline_m": 110.13,
+   "line_lonlat": [
+    [
+     -123.0871921,
+     49.2772074
+    ],
+    [
+     -123.0827268,
+     49.2771278
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 23.5,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 83.48,
+   "band_width_m": 83.48,
+   "curb_offset_m": 23.5,
+   "trees": [
+    {
+     "site_id": "V-158378",
+     "u": -0.14,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 0.14,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-133039",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 5.99,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-64880",
+     "u": 11.83,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 11.83,
+     "genus": "ULMUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 3,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 0,
+   "partial_count": 218,
+   "plausible": false,
+   "flag": "implausible geometry hint: front boulevard 83.48 m > 6.0; curb hint 23.5 m from the centreline; property line 110.13 m from the centreline → class not read",
+   "largest_class_fits_raw": "unknown"
+  },
+  {
+   "site_id": "V-115283",
+   "asset_id": 115283,
+   "local_area": "Strathcona",
+   "window": "wm123_084_p49_276",
+   "street": "UNION ST",
+   "hblock": "800 UNION ST",
+   "side": "south_side",
+   "address": "863 UNION ST",
+   "species_city": "FAGUS SYLVATICA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 10,
+   "block_length_m": 152.06,
+   "property_line_from_centreline_m": 10.11,
+   "line_lonlat": [
+    [
+     -123.0871761,
+     49.2775127
+    ],
+    [
+     -123.0850831,
+     49.2774754
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 5.2,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the catch basins at the block's corners"
+   },
+   "front_boulevard_m": 1.76,
+   "band_width_m": 1.76,
+   "curb_offset_m": 5.2,
+   "trees": [
+    {
+     "site_id": "V-189103",
+     "u": -74.11,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "CRATAEGUS"
+    },
+    {
+     "site_id": "V-115280",
+     "u": -60.88,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "FAGUS"
+    },
+    {
+     "site_id": "V-157741",
+     "u": -46.92,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-401593",
+     "u": -34.32,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-157744",
+     "u": -26.59,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-157745",
+     "u": -16.34,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-115283",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "FAGUS"
+    },
+    {
+     "site_id": "V-115284",
+     "u": 16.28,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "FAGUS"
+    },
+    {
+     "site_id": "V-115287",
+     "u": 32.98,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "FAGUS"
+    },
+    {
+     "site_id": "V-158230",
+     "u": 46.57,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 0.5,
+     "genus": "PYRUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 10,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 3,
+   "partial_count": 3,
+   "plausible": true
+  },
+  {
+   "site_id": "V-115250",
+   "asset_id": 115250,
+   "local_area": "Strathcona",
+   "window": "wm123_088_p49_276",
+   "street": "UNION ST",
+   "hblock": "600 UNION ST",
+   "side": "north_side",
+   "address": "676 UNION ST",
+   "species_city": "ACER PLATANOIDES",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": false,
+   "reason": "no City fixture at the curb on this face (no catch basin, pole or hydrant): the curb knob has no hint",
+   "tree_count": 8,
+   "block_length_m": 168.84,
+   "property_line_from_centreline_m": 174.14,
+   "line_lonlat": [
+    [
+     -123.0897955,
+     49.2771062
+    ],
+    [
+     -123.0874716,
+     49.2770633
+    ]
+   ]
+  },
+  {
+   "site_id": "V-220602",
+   "asset_id": 220602,
+   "local_area": "Strathcona",
+   "window": "wm123_088_p49_276",
+   "street": "UNION ST",
+   "hblock": "700 UNION ST",
+   "side": "north_side",
+   "address": "710 UNION ST",
+   "species_city": "PYRUS CALLERYANA",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 15,
+   "block_length_m": 152.13,
+   "property_line_from_centreline_m": 9.84,
+   "line_lonlat": [
+    [
+     -123.0895551,
+     49.2774076
+    ],
+    [
+     -123.087461,
+     49.2773725
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 3.9,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 2.8,
+   "band_width_m": 2.8,
+   "curb_offset_m": 3.9,
+   "trees": [
+    {
+     "site_id": "V-228541",
+     "u": -12.99,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-220602",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-175377",
+     "u": 11.35,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "SALIX"
+    },
+    {
+     "site_id": "V-175376",
+     "u": 28.72,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-157755",
+     "u": 30.97,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-175375",
+     "u": 33.65,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-144544",
+     "u": 48.02,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "BETULA"
+    },
+    {
+     "site_id": "V-115272",
+     "u": 63.86,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "BETULA"
+    },
+    {
+     "site_id": "V-157759",
+     "u": 82.09,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-231144",
+     "u": 94.51,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "ACER"
+    },
+    {
+     "site_id": "V-115273",
+     "u": 106.65,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PICEA"
+    },
+    {
+     "site_id": "V-115274",
+     "u": 108.54,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PICEA"
+    },
+    {
+     "site_id": "V-330608",
+     "u": 119.56,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PINUS"
+    },
+    {
+     "site_id": "V-338193",
+     "u": 125.8,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PRUNUS"
+    },
+    {
+     "site_id": "V-338194",
+     "u": 131.8,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 0.84,
+     "genus": "PRUNUS"
+    }
+   ],
+   "known_count": 0,
+   "review_count": 15,
+   "share_min_m3": null,
+   "share_median_m3": null,
+   "required_m3_medium": 15,
+   "largest_class_fits": "unknown",
+   "crossing_count": 2,
+   "partial_count": 7,
+   "plausible": true
+  },
+  {
+   "site_id": "V-178325",
+   "asset_id": 178325,
+   "local_area": "Strathcona",
+   "window": "wm123_092_p49_276",
+   "street": "ATLANTIC ST",
+   "hblock": "600 ATLANTIC ST",
+   "side": "north_side",
+   "address": "612 ATLANTIC ST",
+   "species_city": "AESCULUS CARNEA   X",
+   "site_type": {
+    "value": "boulevard",
+    "provenance": "DESIGN_ASSUMPTION",
+    "note": "assumed for the batch; a user confirmation in the tool"
+   },
+   "run_ok": true,
+   "reason": null,
+   "tree_count": 17,
+   "block_length_m": 378.34,
+   "property_line_from_centreline_m": 9.97,
+   "line_lonlat": [
+    [
+     -123.0927411,
+     49.275689
+    ],
+    [
+     -123.0875337,
+     49.2755949
+    ]
+   ],
+   "curb_from_centreline_m": {
+    "value": 4.9,
+    "provenance": "DESIGN_ASSUMPTION",
+    "hint": "from the street-lighting poles, 0.6 m behind the curb"
+   },
+   "front_boulevard_m": 1.91,
+   "band_width_m": 1.91,
+   "curb_offset_m": 4.9,
+   "trees": [
+    {
+     "site_id": "V-57751",
+     "u": -93.85,
+     "share_m3": 17.24157,
+     "status": "KNOWN",
+     "spacing_m": 10.03,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57752",
+     "u": -83.82,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 9.19,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57753",
+     "u": -75.47,
+     "share_m3": 18.926190000000002,
+     "status": "KNOWN",
+     "spacing_m": 11.01,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57754",
+     "u": -61.8,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 11.51,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57755",
+     "u": -52.44,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 8.46,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57756",
+     "u": -44.88,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 8.1,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-57758",
+     "u": -36.23,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 22.44,
+     "genus": "PYRUS"
+    },
+    {
+     "site_id": "V-178325",
+     "u": 0.0,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 25.31,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-178326",
+     "u": 14.39,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 12.75,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-57759",
+     "u": 29.65,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-178328",
+     "u": 43.52,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-178327",
+     "u": 58.78,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-176543",
+     "u": 66.04,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "PLATANUS"
+    },
+    {
+     "site_id": "V-57760",
+     "u": 75.01,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": null,
+     "genus": "AESCULUS"
+    },
+    {
+     "site_id": "V-83193",
+     "u": 86.82,
+     "share_m3": 82.09944,
+     "status": "KNOWN",
+     "spacing_m": 47.76,
+     "genus": "PLATANUS"
+    },
+    {
+     "site_id": "V-338616",
+     "u": 168.28,
+     "share_m3": 112.90392000000001,
+     "status": "KNOWN",
+     "spacing_m": 65.68,
+     "genus": "MALUS"
+    },
+    {
+     "site_id": "V-338344",
+     "u": 218.18,
+     "share_m3": null,
+     "status": "REVIEW_REQUIRED",
+     "spacing_m": 49.9,
+     "genus": "ALBIZIA"
+    }
+   ],
+   "known_count": 4,
+   "review_count": 13,
+   "share_min_m3": 17.24157,
+   "share_median_m3": 50.51,
+   "required_m3_medium": 15,
+   "largest_class_fits": "Medium",
+   "crossing_count": 6,
+   "partial_count": 23,
    "plausible": true
   }
  ]

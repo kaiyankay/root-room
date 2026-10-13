@@ -43,9 +43,24 @@ class InputLayerError(ValueError):
     pass
 
 
+_SITES_DOC: Dict[str, Any] = {}
+
+
+def _sites_doc(sites_path: pathlib.Path) -> Dict[str, Any]:
+    """The SITES file parsed once while unchanged (a block-face run read it once per tree: 0.6 s of a 1.3 s run)."""
+    sp = pathlib.Path(sites_path)
+    st = sp.stat()
+    key = str(sp)
+    ent = _SITES_DOC.get(key)
+    if ent is None or ent[0] != (st.st_size, st.st_mtime_ns):
+        ent = ((st.st_size, st.st_mtime_ns), json.loads(sp.read_text(encoding="utf-8")))
+        _SITES_DOC[key] = ent
+    return ent[1]
+
+
 def load_site_record(site_id: str, sites_path: pathlib.Path = SITES_PATH) -> Dict[str, Any]:
     """Return a deep copy of one Round 2A SITE record and its city_reference sidecar."""
-    doc = json.loads(pathlib.Path(sites_path).read_text(encoding="utf-8"))
+    doc = _sites_doc(sites_path)
     for entry in doc["sites"]:
         if entry["record"]["site_id"] == site_id:
             return copy.deepcopy(entry)

@@ -30,7 +30,7 @@
    "class": "Medium",
    "listed": true,
    "city_count": 1715,
-   "form": "conical",
+   "form": "oval",
    "drawn_height_m": 7.6,
    "on_block_faces": [
     "V-305190"
@@ -469,7 +469,7 @@
    "class": "Medium",
    "listed": true,
    "city_count": 57,
-   "form": "conical",
+   "form": "oval",
    "drawn_height_m": 16.8,
    "on_block_faces": [],
    "root_form": "heart",

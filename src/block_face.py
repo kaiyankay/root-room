@@ -69,7 +69,12 @@ UTILITY_WINDOW_MARGIN_M = 5.0    # utilities are collected this far beyond the f
 DESIGNER_PROVENANCE = ("USER_INPUT", "CONFIRMED_SITE_DATA")
 KNOB_PROVENANCE = ("USER_INPUT", "DESIGN_ASSUMPTION")
 CURB_PROVENANCE = ("USER_INPUT", "DESIGN_ASSUMPTION", "CONFIRMED_SITE_DATA")   # the curb is a site fact: a measurement with evidence confirms it
-EXTENSION_SIDES = ("property", "road")            # R31: beyond the sidewalk edge / beyond the back of curb
+EXTENSION_SIDES = ("property", "road")            # R31: beyond the sidewalk edge / beyond the back of curb; in a median: the +v / the -v carriageway
+SITE_TYPES = ("boulevard", "median")               # the user's confirmation of where the tree stands (2026-10-09: a median tree is a street tree)
+MEDIAN_MIN_HALF_M = 1.0                            # a median curb nearer the centreline than this is not a median (the tree would not fit)
+MEDIAN_CARRIAGEWAY_MIN_M = 6.0                     # a median curb must leave at least this to the property line (a lane, a boulevard, a sidewalk): the outer curb's fixtures are not the median's
+MEDIAN_TREE_TOLERANCE_M = 12.0                     # a median face's trees: the sites hinted 'median' (sites.position_hint, within 3 m of the centreline) and every tree inside the roadway's outer curbs, this far out at most
+MEDIAN_NOSE_M = 10.0                               # catch basins this far beyond the block's ends are the median's nose inlets (counted); further out they belong to the cross street (not counted)
 EXTENSION_SOIL_TYPES = ("native_soil", "structural_soil", "soil_cell", "other")
 EXTENSION_PROVENANCE = ("USER_INPUT", "DESIGN_ASSUMPTION", "CONFIRMED_SITE_DATA")
 
@@ -196,7 +201,7 @@ def _layer(dataset_id: str) -> List[Dict[str, Any]]:
         for p in paths:
             for f in wi.load_json(p).get("features", []):
                 # windows overlap (the same City feature is exported into every window that contains it): keep one copy
-                key = json.dumps([f.get("geometry"), f.get("properties")], sort_keys=True, default=str)
+                key = wi.feature_key(f)
                 if key in seen:
                     continue
                 seen.add(key)
@@ -219,15 +224,17 @@ def _sites_doc(sites_path: pathlib.Path) -> Dict[str, Any]:
 _FACE_CACHE: Dict[Any, Dict[str, Any]] = {}
 
 
-def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> Dict[str, Any]:
-    """The measured face, kept per site, SITE file and City data generation: the knobs never change it (evaluate_block_face applies them)."""
+def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH, site_type: str = "boulevard") -> Dict[str, Any]:
+    """The measured face, kept per site, SITE file, site type and City data generation: the knobs never change it (evaluate_block_face applies them)."""
+    if site_type not in SITE_TYPES:
+        raise BlockFaceError(f"site_type must be one of {SITE_TYPES}; got {site_type!r}")
     try:
-        st = pathlib.Path(sites_path).stat(); key = (site_id, str(sites_path), st.st_size, st.st_mtime_ns, wi.raw_generation())
+        st = pathlib.Path(sites_path).stat(); key = (site_id, str(sites_path), site_type, st.st_size, st.st_mtime_ns, wi.raw_generation())
     except OSError:
         key = None
     if key is not None and key in _FACE_CACHE:
         return copy.deepcopy(_FACE_CACHE[key])
-    face = _build_block_face(site_id, sites_path)
+    face = _build_block_face(site_id, sites_path, site_type)
     if key is not None:
         if len(_FACE_CACHE) > 32:
             _FACE_CACHE.clear()
@@ -235,12 +242,14 @@ def build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> 
     return face
 
 
-def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) -> Dict[str, Any]:
+def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH, site_type: str = "boulevard") -> Dict[str, Any]:
     """
-    Measure the block face of one boulevard site. Every value is DERIVED_CALCULATION from
+    Measure the block face of one boulevard site, or of one median (site_type "median": the strip between the two curbs of
+    a street's median, one block long, the trees of both its sides on it). Every value is DERIVED_CALCULATION from
     CITY_DATA files; each entry says which dataset it was read from. Raises BlockFaceError
     when a required City layer is missing or the site cannot be placed on a block.
     """
+    is_median = site_type == "median"
     entry = si.load_site_record(site_id, sites_path)
     rec, cr = entry["record"], entry["city_reference"]
     if rec["street_name"]["status"] != "KNOWN":
@@ -272,7 +281,7 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
     ux, uy = math.cos(bearing), math.sin(bearing)
     # left normal of u; v is signed so that the property side is positive
     w = -px * uy + py * ux
-    sign = -1.0 if w > 0 else 1.0
+    sign = 1.0 if is_median else (-1.0 if w > 0 else 1.0)   # a median has no property side: v is the left of u (north on an east-west street, west on a north-south one), recorded below
 
     def uv(x: float, y: float) -> Tuple[float, float]:
         return (x * ux + y * uy, sign * (-x * uy + y * ux))
@@ -308,6 +317,12 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
     if hit is None:
         raise BlockFaceError(f"{site_id}: no block outline or parcel edge on the property side (layers not loaded?)")
     pl_at_tree, pl_dataset, pl_ring = hit
+    pl_far_at_tree = None   # the -v side's property line (a median face reaches both sides of the street)
+    if is_median:
+        far_hits = [-v for _, loc in rings for v in _vertical_hits(0.0, loc) if v < -0.1]
+        if not far_hits:
+            raise BlockFaceError(f"{site_id}: no block outline or parcel edge on the far side of the median")
+        pl_far_at_tree = min(far_hits)
     block_ring = pl_ring if pl_dataset == "block-outlines" else None
     if block_ring is None:
         for dataset, loc in rings:
@@ -377,20 +392,30 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
         if r["tree_point"]["status"] != "KNOWN":
             continue
         u, v = uv_lonlat(*r["tree_point"]["value"]["coordinates"])
-        if u_from - 0.5 <= u <= u_to + 0.5 and abs(v) <= TREE_LINE_TOLERANCE_M:
+        hinted = (e.get("city_reference") or {}).get("px_position_hint_geometric")
+        if is_median:
+            # candidates for the median's trees, both of its sides: every tree of the block within reach of the centreline; which of
+            # them stand in the median is settled once the roadway's outer curbs are read from the fixtures (below)
+            keep = u_from - 0.5 <= u <= u_to + 0.5 and (r["site_id"] == site_id or abs(v + d_cl) <= MEDIAN_TREE_TOLERANCE_M)
+        else:
+            keep = u_from - 0.5 <= u <= u_to + 0.5 and abs(v) <= TREE_LINE_TOLERANCE_M
+        if keep:
             trees.append({"site_id": r["site_id"], "tree_id": r["tree_id"]["value"], "u": _r(u), "v": _r(v),
                           "genus": r["genus"]["value"], "species": r["species"]["value"],
                           "cultivar": r["cultivar"]["value"], "install_date": r["install_date"]["value"],
                           "height_m": r["inventory_height"]["value"], "diameter_cm": r["inventory_diameter"]["value"],
                           "property_line_offset_m": _r(pl_offset_at(u)),
-                          "dist_centreline_m": _r(d_cl + v)})
+                          "dist_centreline_m": _r(d_cl + v), **({"position_hint": hinted} if is_median else {})})
     trees.sort(key=lambda t: t["u"])
     if not any(t["site_id"] == site_id for t in trees):
         raise BlockFaceError(f"{site_id}: selected tree not found on its own face (frontage {u_from:.1f}..{u_to:.1f})")
-    for i, t in enumerate(trees):
-        t["gap_west_m"] = _r(t["u"] - trees[i - 1]["u"]) if i > 0 else None
-        t["gap_east_m"] = _r(trees[i + 1]["u"] - t["u"]) if i + 1 < len(trees) else None
-    gaps = [t["gap_east_m"] for t in trees if t["gap_east_m"] is not None]
+
+    def settle_gaps():
+        for i, t in enumerate(trees):
+            t["gap_west_m"] = _r(t["u"] - trees[i - 1]["u"]) if i > 0 else None
+            t["gap_east_m"] = _r(trees[i + 1]["u"] - t["u"]) if i + 1 < len(trees) else None
+        return [t["gap_east_m"] for t in trees if t["gap_east_m"] is not None]
+    gaps = settle_gaps()
 
     # --- right-of-way record: nearest City point on this street's centreline within the block --
     row = None
@@ -410,7 +435,7 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
 
     # --- utilities: six City layers, plan position only ----------------------------------------
     win = (u_from - UTILITY_WINDOW_MARGIN_M, u_to + UTILITY_WINDOW_MARGIN_M,
-           -d_cl - 1.0, pl_at_tree + UTILITY_WINDOW_MARGIN_M)
+           (-pl_far_at_tree - UTILITY_WINDOW_MARGIN_M) if is_median else (-d_cl - 1.0), pl_at_tree + UTILITY_WINDOW_MARGIN_M)
     utilities = []
     keep_props = ("diameter_mm", "material", "installation_date", "effluent_type", "wireset_type")
     for dataset_id, kind in CITY_UTILITY_KINDS.items():
@@ -439,22 +464,64 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
     # --- curb hint: catch basins on this side sit at the curb / gutter ('location approximate')
     cb = [d_cl + u_v[1] for x in utilities if x["dataset"] == "sewer-catch-basins" and x["local_uv"]
           for u_v in x["local_uv"] if u_from <= u_v[0] <= u_to and abs(u_v[1]) <= 4.0]
+    # the curb line is not in City Open Data: the hint reads the fixtures that stand at or just behind the curb, in order of
+    # trust — catch basins on this face (at the gutter), catch basins just beyond its ends (the corner inlets), street-lighting
+    # poles (about 0.6 m behind the curb face), hydrants (the same) — and offers the first that gives a plausible offset.
+    lo_ok, hi_ok = 1.5, max(1.6, d_cl + pl_at_tree - 1.0)   # a curb lies between the centreline and the property line
+    plaus = lambda xs: [x for x in xs if lo_ok <= x <= hi_ok]
+    median = lambda xs: (sorted(xs)[len(xs) // 2] if len(xs) % 2 else (sorted(xs)[len(xs) // 2 - 1] + sorted(xs)[len(xs) // 2]) / 2) if xs else None
+    poles = plaus([d_cl + u_v[1] - 0.6 for x in utilities if x["dataset"] == "street-lighting-poles" and x["local_uv"]
+                   for u_v in x["local_uv"] if u_from - 5 <= u_v[0] <= u_to + 5 and abs(u_v[1]) <= 4.0])
+    near_cb, hyd = [], []
+    for ds, out, shift in (("sewer-catch-basins", near_cb, 0.0), ("water-hydrants", hyd, -0.6)):
+        for f in _layer(ds):
+            for pt in _points(f["geometry"]):
+                u, v = uv_lonlat(*pt[:2])
+                if u_from - 30 <= u <= u_to + 30 and abs(v) <= 4.0:
+                    out.append(d_cl + v + shift)
+    near_cb, hyd = plaus(near_cb), plaus(hyd)
+    suggested, source = None, None
+    for xs, src in ((plaus(cb), "catch basins on this face"), (near_cb, "catch basins at the block's corners"),
+                    (poles, "street-lighting poles, 0.6 m behind the curb"), (hyd, "hydrants, 0.6 m behind the curb")):
+        if xs:
+            suggested, source = _r(median(xs)), src
+            break
     curb_hint = {"catch_basin_offsets_from_centreline_m": sorted(_r(x) for x in cb),
-                 "note": ("City sewer-catch-basins on this face; the City labels them 'location approximate'. "
-                          "A hint for the curb knob only; the curb line itself is not in City Open Data.")}
+                 "nearby_catch_basin_offsets_from_centreline_m": sorted(_r(x) for x in near_cb),
+                 "pole_offsets_from_centreline_m": sorted(_r(x) for x in poles),
+                 "hydrant_offsets_from_centreline_m": sorted(_r(x) for x in hyd),
+                 "suggested_m": suggested, "suggested_source": source,
+                 "note": ("City fixtures at or just behind the curb (catch basins 'location approximate'; poles and hydrants "
+                          "taken 0.6 m behind the curb face). A hint for the curb knob only, DESIGN_ASSUMPTION when used; "
+                          "the curb line itself is not in City Open Data.")}
+    if is_median:
+        curb_hint = _median_hint(utilities, _layer, uv_lonlat, u_from, u_to, d_cl, pl_at_tree, pl_far_at_tree,
+                                 [(t["dist_centreline_m"], t.get("position_hint") == "median" or t["site_id"] == site_id) for t in trees])
+        # the median's trees: the sites hinted 'median' (within 3 m of the centreline) and every tree that stands inside the
+        # roadway's outer curbs (a tree inside the roadway is on the median); without an outer curb reading, the hinted ones only
+        inner = curb_hint["inner_bound_m"]
+        trees[:] = [t for t in trees if t.get("position_hint") == "median" or t["site_id"] == site_id
+                    or (inner is not None and abs(t["dist_centreline_m"]) < inner)]
+        gaps = settle_gaps()
+    unit_p = (-sign * uy, sign * ux)
+    v_toward = ("north" if unit_p[1] > 0 else "south") if abs(unit_p[1]) >= abs(unit_p[0]) else ("east" if unit_p[0] > 0 else "west")
 
     return {
         "site_id": site_id,
         "street_name": street_name,
         "hblock": hblock,
-        "side": cr.get("px_position_hint_geometric"),
+        "side": "median" if is_median else cr.get("px_position_hint_geometric"),
+        "site_type": site_type,
         "frame": {"origin_lonlat": [lon0, lat0], "bearing_deg_from_east": _r(math.degrees(bearing)),
                   "along_unit_xy": [round(ux, 6), round(uy, 6)],
-                  "property_unit_xy": [round(-sign * uy, 6), round(sign * ux, 6)],
+                  "property_unit_xy": [round(unit_p[0], 6), round(unit_p[1], 6)],
+                  "v_positive_toward": v_toward,
                   "note": ("local equirectangular metres at the selected tree's City point; u along the street "
-                           "(east-pointing), v across, positive toward the property; DERIVED_CALCULATION")},
+                           "(east-pointing), v across, positive toward the property; DERIVED_CALCULATION")
+                          + ("; a median face: v positive toward the %s side (the left of u), the frame right-handed" % v_toward if is_median else "")},
         "tree": {"u": 0.0, "v": 0.0, "dist_centreline_m": _r(d_cl), "property_line_offset_m": _r(pl_at_tree),
-                 "property_line_from_centreline_m": _r(d_cl + pl_at_tree)},
+                 "property_line_from_centreline_m": _r(d_cl + pl_at_tree),
+                 "property_line_far_offset_m": _r(pl_far_at_tree), "property_line_far_from_centreline_m": _r(pl_far_at_tree - d_cl) if is_median else None},
         "block": {"u_from": _r(u_from), "u_to": _r(u_to), "length_m": _r(u_to - u_from),
                   "cross_street_west": cross_name(west), "cross_street_east": cross_name(east),
                   "outline_local_uv": [[_r(u), _r(v)] for u, v in block_ring] if block_ring else None,
@@ -478,6 +545,108 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH) ->
         },
         "_uv": uv, "_xy": xy, "_uv_lonlat": uv_lonlat, "_pl_offset_at": pl_offset_at,
     }
+
+
+def _median_hint(utilities, layer, uv_lonlat, u_from, u_to, d_cl, pl_near, pl_far, tree_offsets: List[Tuple[float, bool]]) -> Dict[str, Any]:
+    """
+    The two curbs of a median are not City data either. The hint reads the fixtures that stand at a curb — catch basins at the
+    gutter ('location approximate'), then street-lighting poles and hydrants taken 0.6 m behind a curb face — as signed offsets
+    from the centreline (toward +v positive), on either side, and settles them in this order:
+
+      1. the roadway's OUTER curb per side: the outermost catch-basin cluster short of that side's property line (else the
+         outermost pole / hydrant cluster) — drawing only, ASSUMED; it bounds the carriageway;
+      2. the MEDIAN's curb: the fixture cluster nearest the centreline that (a) stands beyond the median's own trees (the sites
+         hinted 'median', + 0.8 m), (b) leaves a carriageway of MEDIAN_CARRIAGEWAY_MIN_M to the outer curb of its side (or to
+         the property line), (c) is on this block or at its nose (catch basins within MEDIAN_NOSE_M of the block's ends; a
+         cross street's basins are not the median's); clustered within 1.5 m, both sides pooled;
+      3. a cluster with members on both sides is a PAIR: the median's own centre is their midpoint (a median can sit off the
+         centreline, e.g. beside a turn bay), the half-width half their distance; one side only: symmetric about the centreline.
+
+    No fixture passes the three tests (e.g. a wide heritage median whose only inlets sit at its nose): no suggestion, the user
+    types the half-width. Everything here is a hint for the curb knob, DESIGN_ASSUMPTION when used.
+    """
+    cl = -d_cl
+    pl_cl = {"+v": pl_near + d_cl, "-v": pl_far - d_cl}       # each side's property line from the centreline
+    med = lambda xs: (sorted(xs)[len(xs) // 2] if len(xs) % 2 else (sorted(xs)[len(xs) // 2 - 1] + sorted(xs)[len(xs) // 2]) / 2) if xs else None
+    side = lambda s: "+v" if s > 0 else "-v"
+    cb_block, cb_nose = [], []
+    for f in layer("sewer-catch-basins"):
+        for pt in _points(f["geometry"]):
+            u, v = uv_lonlat(*pt[:2])
+            s_ = v - cl
+            if abs(s_) > pl_cl[side(s_)] - 0.5 or abs(s_) < 0.3:
+                continue
+            if u_from <= u <= u_to:
+                cb_block.append((s_, u))
+            elif u_from - MEDIAN_NOSE_M <= u <= u_to + MEDIAN_NOSE_M:
+                cb_nose.append((s_, u))
+    poles = [((v - cl) - math.copysign(0.6, v - cl), u) for x in utilities if x["dataset"] == "street-lighting-poles" and x["local_uv"]
+             for u, v in x["local_uv"] if u_from - 5 <= u <= u_to + 5 and 0.9 < abs(v - cl) < pl_cl[side(v - cl)] - 0.5]
+    hyd = []
+    for f in layer("water-hydrants"):
+        for pt in _points(f["geometry"]):
+            u, v = uv_lonlat(*pt[:2])
+            s_ = v - cl
+            if u_from - 5 <= u <= u_to + 5 and 0.9 < abs(s_) < pl_cl[side(s_)] - 0.5:
+                hyd.append((s_ - math.copysign(0.6, s_), u))
+    basins = cb_block + cb_nose
+    # 1. the outer curbs
+    outer = {"near": None, "far": None, "source": None}
+    for key, sg in (("near", "+v"), ("far", "-v")):
+        for xs, src in ((basins, "catch basins"), (poles + hyd, "poles / hydrants, 0.6 m behind the curb")):
+            vals = sorted(abs(s_) for s_, _ in xs if side(s_) == sg)
+            if vals:
+                top = vals[-1]
+                outer[key] = _r(med([x for x in vals if x >= top - 2.0]))
+                outer["source"] = outer["source"] or src
+                break
+    # 2. the median's curb, beyond the median's trees: the sites hinted 'median' and every tree inside the outer curbs
+    inner = (min(x for x in (outer["near"], outer["far"]) if x is not None) - 1.0) if (outer["near"] is not None or outer["far"] is not None) else None
+    in_median = [o for o, hinted in tree_offsets if hinted or (inner is not None and abs(o) < inner)]
+    lo = max(MEDIAN_MIN_HALF_M, max([abs(x) for x in in_median] or [0.0]) + 0.8)
+    def hi(sg):
+        o = outer["near" if sg == "+v" else "far"]
+        return (o if o is not None else pl_cl[sg]) - MEDIAN_CARRIAGEWAY_MIN_M
+    ok = lambda xs: [(s_, u) for s_, u in xs if lo <= abs(s_) <= hi(side(s_))]
+    tiers = ((ok(basins), "catch basins on this block, either side of the centreline"),
+             (ok(poles), "street-lighting poles, 0.6 m behind a curb"), (ok(hyd), "hydrants, 0.6 m behind a curb"))
+    suggested, centre, source, cluster, sides = None, 0.0, None, [], []
+    for xs, src in tiers:
+        if not xs:
+            continue
+        a0 = min(abs(s_) for s_, _ in xs)
+        cluster = [(s_, u) for s_, u in xs if abs(s_) <= a0 + 1.5]
+        plus = [s_ for s_, _ in cluster if s_ > 0]; minus = [s_ for s_, _ in cluster if s_ < 0]
+        sides = (["+v"] if plus else []) + (["-v"] if minus else [])
+        if plus and minus:
+            mp, mm = med(plus), med(minus)
+            centre, suggested = _r((mp + mm) / 2), _r((mp - mm) / 2)
+        else:
+            suggested = _r(med([abs(s_) for s_, _ in cluster]))
+        source = src
+        break
+    rejected = sorted({_r(abs(s_)) for s_, _ in basins + poles + hyd if abs(s_) < lo})
+    return {"kind": "median",
+            "catch_basin_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in basins),
+            "nearby_catch_basin_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in cb_nose),
+            "pole_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in poles),
+            "hydrant_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in hyd),
+            "signed_offsets_m": {"catch_basins_on_block": sorted(_r(s_) for s_, _ in cb_block), "catch_basins_at_the_nose": sorted(_r(s_) for s_, _ in cb_nose),
+                                 "poles": sorted(_r(s_) for s_, _ in poles), "hydrants": sorted(_r(s_) for s_, _ in hyd)},
+            "suggested_m": suggested, "suggested_source": source, "centre_offset_m": centre if suggested is not None else 0.0,
+            "sides_seen": sides, "cluster_m": sorted(_r(s_) for s_, _ in cluster),
+            "tree_bound_m": _r(lo), "carriageway_min_m": MEDIAN_CARRIAGEWAY_MIN_M, "inner_bound_m": _r(inner),
+            "inside_the_trees_m": rejected,
+            "outer_curb_m": outer,
+            "reason_if_none": (None if suggested is not None else
+                               ("no City fixture marks the median's curb on this block: the inlets at " + ", ".join(f"{x} m" for x in rejected)
+                                + " sit inside the median's trees (a nose or a drain in the lawn)" if rejected else
+                                "no City fixture (catch basin, pole, hydrant) stands at the median's curb on this block") + "; type the half-width"),
+            "note": ("the median's two curbs are not in City Open Data: the hint reads the fixtures at or just behind a curb on either side of the "
+                     "centreline (catch basins 'location approximate'; poles and hydrants 0.6 m behind the curb face), takes the cluster nearest "
+                     "the centreline that stands beyond the median's trees and leaves a carriageway to the outer curb as the median's curb, "
+                     "a pair on both sides giving the median's own centre; the outermost cluster per side is the outer curb (drawn, assumed). "
+                     "A hint for the curb knob only, DESIGN_ASSUMPTION when used.")}
 
 
 def public_face(face: Dict[str, Any]) -> Dict[str, Any]:
@@ -736,14 +905,17 @@ def _tree_record(face: Dict[str, Any], tree: Dict[str, Any], cell: Dict[str, Any
                                        "are a row (shared_row); a lone tree on its face is solitary", False)
     width = cell["band_width_m"]
     rec["boulevard_width_m"] = derived_field(width)
-    pre["boulevard_width_m"] = _trace(R30 if band["kind"] == "design" else R26, {
+    r30_band = band["kind"] == "design" and band.get("site_type") != "median"
+    pre["boulevard_width_m"] = _trace(R30 if r30_band else R26, {
         "property_line_offset_m": {"value": face["tree"]["property_line_offset_m"], "provenance": "DERIVED_CALCULATION",
                                    "source": face["block"]["property_line_source"]},
         "band_edge": band["edge_description"],
         "band_edge_provenance": band["provenance_field"]["provenance"],
         **band.get("width_inputs", {})}, band["width_note"], depends,
-        also=["R26"] if band["kind"] == "design" else [],
-        formula=(R30["formula"] if band["kind"] == "design" else
+        also=["R26"] if r30_band else (["R30 not applied: median, no pedestrian realm to deduct"] if band.get("site_type") == "median" else []),
+        formula=(R30["formula"] if r30_band else
+                 "boulevard_width_m = median width between the backs of its two curbs = 2 × (curb face from the centreline − curb width); no sidewalk or back-boulevard deduction (site_type median; a rule note under R26, not a new rule)"
+                 if band.get("site_type") == "median" else
                  "boulevard_width_m = existing open-strip width (designer input)"))
     if cell["usable_area_m2"] is None:
         rec["soil_area_m2"] = field(None, "DERIVED_CALCULATION", "REVIEW_REQUIRED")
@@ -861,14 +1033,16 @@ def _what_closes_the_gap(env: Dict[str, Any], cell: Dict[str, Any], face: Dict[s
         "soil_depth_change_m": _r(depth_needed - depth, 3) if depth_needed is not None else None,
         "usable_band_width_to_meet_m": _r(width_needed, 3),
         "band_width_change_m": _r(width_needed - usable_w, 3) if width_needed is not None else None,
-        "curb_offset_from_centreline_to_meet_m": (_r(pl_from_cl - fixed - width_needed, 3)
+        "curb_offset_from_centreline_to_meet_m": ((_r(width_needed / 2 + wi.get("curb_width_m", {}).get("value", 0), 3) if band.get("site_type") == "median"
+                                                   else _r(pl_from_cl - fixed - width_needed, 3))
                                                   if width_needed is not None and band["kind"] == "design" and not cell["interrupted"] else None),
         "at_full_credit_share_m3": _r(rec["physical_soil_volume_m3"]["value"]) if factor and factor < 1 else None,
         "formulas": {
             "share": "share = credit_factor × usable_area × depth (R05, R06/R07)",
             "depth_to_meet": "depth = benchmark / (credit_factor × usable_width × spacing)",
             "width_to_meet": "usable_width = benchmark / (credit_factor × depth × spacing)",
-            "curb_to_meet": "curb_offset = property_line_from_centreline - (sidewalk + back boulevard + curb, R30) - usable_width (only when no strip interrupts)",
+            "curb_to_meet": ("curb_offset (median half-width) = usable_width / 2 + curb (only when no strip interrupts)" if band.get("site_type") == "median" else
+                             "curb_offset = property_line_from_centreline - (sidewalk + back boulevard + curb, R30) - usable_width (only when no strip interrupts)"),
         },
         "note": ("arithmetic inversion of the Table 9-2 comparison; a design exploration prompt (R22), "
                  "not a City requirement"),
@@ -923,6 +1097,50 @@ def front_boulevard(face: Dict[str, Any], curb_offset_from_centreline_m: float, 
     }
 
 
+def median_band(face: Dict[str, Any], curb_offset_from_centreline_m: float) -> Dict[str, Any]:
+    """
+    The median band (the user's definition, 2026-10-09): the strip between the median's two curbs, symmetric about the
+    centreline. The knob keeps its meaning — the curb face's offset from the centreline — and is the median's half-width.
+    Width = 2 × (half-width − 0.15 m curb): back of curb to back of curb. No sidewalk, no back boulevard: R30's front-
+    boulevard formula is not applied (a rule note, not a new rule number). Returns the edges in the tree frame and every
+    width with its source, in the shape the exporter and the page read beside front_boulevard().
+    """
+    h = float(curb_offset_from_centreline_m)
+    curb_w = R30["curb_width_m"]
+    d_cl = face["tree"]["dist_centreline_m"]
+    pl = face["tree"]["property_line_offset_m"]
+    pl_far = face["tree"].get("property_line_far_offset_m")
+    cl = -d_cl
+    if h - curb_w <= MEDIAN_MIN_HALF_M / 2:
+        return {"available": False, "reason": f"median half-width {h} m leaves no band inside the curbs", "half_width_m": h}
+    hint = face.get("curb_hint") or {}
+    outer = (hint.get("outer_curb_m") or {}) if hint.get("kind") == "median" else {}
+    c = cl + float((hint.get("centre_offset_m") or 0.0) if hint.get("kind") == "median" else 0.0)   # the median's own centre: the midpoint of its fixture pair, else the centreline
+    v_from, v_to = _r(c - h + curb_w), _r(c + h - curb_w)
+    width = round(v_to - v_from, 2)
+    return {
+        "available": True, "half_width_m": h, "width_m": _r(2 * h),
+        "centre_v": _r(c), "centre_offset_m": _r(c - cl),
+        "centre_note": ("the median's centre from the midpoint of its fixture pair (DERIVED from City fixtures, approximate)" if abs(c - cl) > 1e-6
+                        else "the median taken symmetric about the street centreline"),
+        "curb_face_v": [_r(c + h), _r(c - h)], "back_of_curb_v": [_r(c + h - curb_w), _r(c - h + curb_w)],
+        "band_v": [v_from, v_to], "centreline_v": _r(cl),
+        "property_line_v": pl, "property_line_far_v": _r(-pl_far) if pl_far is not None else None,
+        "outer_curb_v": [_r(cl + outer["near"]) if outer.get("near") is not None else None, _r(cl - outer["far"]) if outer.get("far") is not None else None],
+        "outer_curb_source": outer.get("source"),
+        "widths_m": {"median": _r(2 * h), "curb": curb_w, "band": width,
+                     "carriageway_near": _r(outer["near"] - (c - cl) - h) if outer.get("near") is not None else None,
+                     "carriageway_far": _r(outer["far"] + (c - cl) - h) if outer.get("far") is not None else None},
+        "sources": {"curb": "EDM 2026 Table 8-4 note 7 p.256 (0.15 m)",
+                    "median_curbs": "a site fact the City does not publish: the knob (hint from the City's fixtures either side of the centreline), DESIGN_ASSUMPTION",
+                    "outer_curbs": "drawing only: the next fixture cluster out from the median curb, ASSUMED; not read by the rule",
+                    "band": "the strip between the backs of the median's two curbs (the user's definition of 2026-10-09); R30 not applied"},
+        "width_note": (f"design band = the median between its two curbs: curb faces ±{h} m about the median's centre{' (' + str(_r(c - cl)) + ' m off the street centreline, from its fixture pair)' if abs(c - cl) > 1e-6 else ' (the street centreline)'} (knob = the half-width), width = 2 × ({h} − curb {curb_w}) = {width} m; "
+                       "no sidewalk or back-boulevard deduction — R30's front-boulevard formula does not apply to a median (a rule note under R26, not a new rule); "
+                       "Table 9-2 volumes, shared-row spacing, cells (R26) and the clearance strips (R28) as for a boulevard"),
+    }
+
+
 def evaluate_block_face(face: Dict[str, Any],
                         curb_offset_from_centreline_m: Optional[float],
                         soil_depth_m: Optional[float],
@@ -938,9 +1156,13 @@ def evaluate_block_face(face: Dict[str, Any],
                         extensions: Optional[List[Dict[str, Any]]] = None,
                         replacement: bool = False,
                         curb_provenance: Optional[str] = None,
-                        curb_evidence: Optional[str] = None) -> Dict[str, Any]:
+                        curb_evidence: Optional[str] = None,
+                        site_type: str = "boulevard") -> Dict[str, Any]:
     """
     Evaluate the face in two states.
+
+    site_type    "boulevard" (the front boulevard of R30) or "median" (the strip between the median's two curbs, the knob
+                 `curb_offset_from_centreline_m` being the median's half-width; no land use needed; see median_band).
 
     curb_provenance / curb_evidence   the curb face is a site fact the City does not publish, so by default it carries the
              knob provenance (DESIGN_ASSUMPTION). A measured value is passed with curb_provenance CONFIRMED_SITE_DATA and
@@ -974,6 +1196,11 @@ def evaluate_block_face(face: Dict[str, Any],
     """
     if knob_provenance not in KNOB_PROVENANCE:
         raise BlockFaceError(f"knob_provenance must be one of {KNOB_PROVENANCE}")
+    if site_type not in SITE_TYPES:
+        raise BlockFaceError(f"site_type must be one of {SITE_TYPES}; got {site_type!r}")
+    median = site_type == "median"
+    if median and face.get("site_type") != "median":
+        raise BlockFaceError("a median run needs a face measured as a median (build_block_face(..., site_type='median'))")
     curb_prov = curb_provenance or knob_provenance
     if curb_prov not in CURB_PROVENANCE:
         raise BlockFaceError(f"curb_provenance must be one of {CURB_PROVENANCE}")
@@ -988,7 +1215,10 @@ def evaluate_block_face(face: Dict[str, Any],
     knobs = {
         "curb_offset_from_centreline_m": {"value": curb_offset_from_centreline_m, "provenance": curb_prov,
                                           "evidence": curb_evidence, "hint": face["curb_hint"],
-                                          "note": "a site fact the City does not publish: DESIGN_ASSUMPTION until a measurement with evidence confirms it"},
+                                          "note": ("a site fact the City does not publish: DESIGN_ASSUMPTION until a measurement with evidence confirms it"
+                                                   + ("; in a median the knob is the curb face's offset from the centreline on either side (the median's half-width)" if median else ""))},
+        "site_type": {"value": site_type, "provenance": "USER_INPUT",
+                      "note": "where the tree stands, confirmed by the user: boulevard = the front boulevard of R30; median = the strip between the median's two curbs (no R30 deductions)"},
         "soil_depth_m": {"value": soil_depth_m, "provenance": knob_provenance},
         "target_tree_class": {"value": target_tree_class, "provenance": "USER_INPUT"},
         "soil_type": {"value": soil_type, "provenance": knob_provenance},
@@ -1007,10 +1237,30 @@ def evaluate_block_face(face: Dict[str, Any],
                               "notes": list(R26.get("guardrails", [])) + list(R28.get("guardrails", [])) + list(R30.get("guardrails", []))}
 
     # ---- design state --------------------------------------------------------------------
-    missing = [n for n, v in (("curb_offset_from_centreline_m", curb_offset_from_centreline_m), ("land_use", land_use)) if v is None]
+    missing = [n for n, v in (("curb_offset_from_centreline_m", curb_offset_from_centreline_m), ("land_use", land_use))
+               if v is None and not (median and n == "land_use")]   # a median has no land-use row: no sidewalk or back boulevard to look up
     if missing:
         result["design"] = {"available": False, "missing": missing,
-                            "note": "the curb line is not in City data and the land use is a user choice; both are needed to define the front boulevard"}
+                            "note": ("the median's curbs are not in City data: a curb offset (the half-width) is needed to define the median band" if median else
+                                     "the curb line is not in City data and the land use is a user choice; both are needed to define the front boulevard")}
+    elif median:
+        md = median_band(face, curb_offset_from_centreline_m)
+        if not md["available"]:
+            result["design"] = {"available": False, "missing": [], "median": md, "note": md["reason"]}
+            result["existing"] = _existing_state(face, existing, target, extra_utilities, include_city_utilities, sites_path)
+            return result
+        band = {"kind": "design", "site_type": "median", "u_from": face["block"]["u_from"], "u_to": face["block"]["u_to"],
+                "v_from": md["band_v"][0], "v_to": md["band_v"][1], "median": md,
+                "edge_description": (f"back of curb to back of curb across the median (curb faces ±{curb_offset_from_centreline_m} m from the centreline, knob, "
+                                     f"0.15 m curbs); no sidewalk or back-boulevard deduction"),
+                "provenance_field": field(curb_offset_from_centreline_m, curb_prov, "KNOWN"),
+                "width_inputs": {"curb_width_m": {"value": md["widths_m"]["curb"], "provenance": "SOURCE_RULE", "source": md["sources"]["curb"]},
+                                 "site_type": "median"},
+                "width_note": md["width_note"]}
+        result["design"] = _evaluate_state(face, band, soil_depth_m, soil_type, knob_provenance, target,
+                                           extra_utilities, include_city_utilities, sites_path, "design",
+                                           extensions=knobs["extensions"]["value"], replacement=replacement)
+        result["design"]["median"] = md
     else:
         fb = front_boulevard(face, curb_offset_from_centreline_m, land_use, level)
         if not fb["available"]:
@@ -1174,8 +1424,18 @@ def _extension_setup(face, band, zones, extra_utilities, include_city) -> Dict[s
     d_cl = face["tree"]["dist_centreline_m"]
     out_zones = []
     v_lo, v_hi = band["v_from"], band["v_to"]
+    md = band.get("median") if band.get("site_type") == "median" else None
     for z in zones:
-        if z["side"] == "property":
+        if md:
+            oc = md.get("outer_curb_v") or [None, None]
+            if z["side"] == "property":
+                v0, v1 = band["v_to"], min(band["v_to"] + z["width_m"], oc[0] if oc[0] is not None else pl)
+                under = "the carriageway beside the median, +v side (hardscape)"
+            else:
+                far = oc[1] if oc[1] is not None else (md.get("property_line_far_v") if md.get("property_line_far_v") is not None else -d_cl - pl)
+                v0, v1 = max(band["v_from"] - z["width_m"], far), band["v_from"]
+                under = "the carriageway beside the median, -v side (hardscape)"
+        elif z["side"] == "property":
             v0, v1 = band["v_to"], min(band["v_to"] + z["width_m"], pl)
             under = "sidewalk / back boulevard (hardscape unless evidenced)"
         else:

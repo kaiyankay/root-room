@@ -20,6 +20,7 @@ Routes
   GET  /...                     static files from web/
 """
 import argparse
+import gzip
 import json
 import pathlib
 import sys
@@ -28,6 +29,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, unquote, urlparse
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+_GZ_CACHE = {}       # gzip bytes of the large static payloads, keyed by name
+_BYTES_CACHE = {}    # their JSON bytes, serialised once
 sys.path.insert(0, str(ROOT))
 
 from src import web_api  # noqa: E402
@@ -52,11 +55,32 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _send_cached(self, body, ctype, key):
+        """A large, unchanging payload (the City's trees, the address index, the map's data files): gzip once, keep the bytes,
+        let the browser cache it for an hour — the page loaded ~20 MB of JSON on every visit (the user, 2026-10-13)."""
+        enc = self.headers.get("Accept-Encoding", "") or ""
+        gz = "gzip" in enc
+        if gz:
+            cached = _GZ_CACHE.get(key)
+            if cached is None:
+                cached = gzip.compress(body, 6)
+                _GZ_CACHE[key] = cached
+            body = cached
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "max-age=3600")
+        if gz:
+            self.send_header("Content-Encoding", "gzip")
+        self.send_header("Vary", "Accept-Encoding")
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_GET(self):
         path = urlparse(self.path).path
         qs = parse_qs(urlparse(self.path).query)
         if path == "/":
-            # the root is the six-stage demo; the round-12 one-screen page stays at /index.html
+            # the root is the six-stage demo
             q = urlparse(self.path).query
             self.send_response(HTTPStatus.FOUND); self.send_header("Location", "/one.html" + ("?" + q if q else "")); self.end_headers()
             return None
@@ -68,13 +92,14 @@ class Handler(SimpleHTTPRequestHandler):
             elif name in ("local_area_species.json", "local_area_capacity.json", "citywide_faces.json", "region_base.json", "city_blocks.json", "region_blocks.json") and (ROOT / "data" / "processed" / name).exists():
                 body = (ROOT / "data" / "processed" / name).read_bytes()
             if body is not None:
-                self.send_response(HTTPStatus.OK); self.send_header("Content-Type", "application/geo+json"); self.send_header("Content-Length", str(len(body))); self.send_header("Cache-Control", "max-age=3600"); self.end_headers(); self.wfile.write(body)
-                return
+                return self._send_cached(body, "application/geo+json", "data:" + name)
             return self._json(HTTPStatus.NOT_FOUND, {"error": "not served"})
         if path == "/api/trees_all":
-            return self._json(HTTPStatus.OK, scene_api.trees_all())
+            body = _BYTES_CACHE.get("trees_all") or _BYTES_CACHE.setdefault("trees_all", json.dumps(scene_api.trees_all()).encode("utf-8"))
+            return self._send_cached(body, "application/json; charset=utf-8", "trees_all")
         if path == "/api/address_index":
-            return self._json(HTTPStatus.OK, scene_api.address_index())
+            body = _BYTES_CACHE.get("address_index") or _BYTES_CACHE.setdefault("address_index", json.dumps(scene_api.address_index()).encode("utf-8"))
+            return self._send_cached(body, "application/json; charset=utf-8", "address_index")
         if path == "/api/trees_near":
             try:
                 return self._json(HTTPStatus.OK, scene_api.trees_near_point(float(qs.get("lon", [""])[0]), float(qs.get("lat", [""])[0]), float(qs.get("r", ["40"])[0])))
@@ -92,6 +117,8 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json(HTTPStatus.OK, scene_api.scene_result(site))
             except web_api.ApiError as exc:
                 return self._json(HTTPStatus.NOT_FOUND, {"error": str(exc)})
+        if path == "/api/progress":
+            return self._json(HTTPStatus.OK, scene_api.PROGRESS)
         if path == "/api/tree":
             try:
                 return self._json(HTTPStatus.OK, scene_api.tree_lookup(int(qs.get("asset_id", [""])[0])))

@@ -105,6 +105,15 @@ def _script_module(path: str):
     return mod
 
 
+# ---- what the server is doing right now, for the page's wait (one street at a time) ------------------------------------
+PROGRESS: Dict[str, Any] = {"what": "", "text": "", "t": 0.0}
+
+
+def set_progress(what: str, text: str) -> None:
+    import time as _time
+    PROGRESS.update(what=what, text=text, t=_time.time())
+
+
 def _run(args: List[str], what: str) -> str:
     if os.environ.get("ROOT_ROOM_SUBPROCESS") == "1":
         return W._run(args, what)
@@ -134,9 +143,57 @@ def scene_result(site: str) -> Dict[str, Any]:
         shutil.copy2(PROCESSED / "batch" / bp.name, bp)      # a sampled face from the citywide batch: the unsuffixed file is the web loop's working copy
     if not bp.exists():
         raise W.ApiError(f"no engine file for {site}")
+    set_progress("open", "reading the rule's file for this street")
     if not sp.exists() or sp.stat().st_mtime < bp.stat().st_mtime:
+        set_progress("open", "drawing the street: the City's trees, its utilities, the block")
         export_scene(site)
-    return json.loads(sp.read_text(encoding="utf-8"))
+    doc = json.loads(sp.read_text(encoding="utf-8"))
+    if doc.get("scene_version") != _scene_version():   # an older export: the page reads blocks it does not have (the plan's context)
+        set_progress("open", "drawing the street again: the file is from an older version")
+        export_scene(site)
+        doc = json.loads(sp.read_text(encoding="utf-8"))
+    set_progress("open", "the street is drawn")
+    _warm_street(doc)
+    return doc
+
+
+_WARMED: set = set()
+
+
+def _warm_street(doc: Dict[str, Any]) -> None:
+    """Parse the City window files around this street now, in a daemon thread, so the first run for one of its trees
+    (at 03) finds them in memory: cold, that parsing was ~7 s of an 11 s wait; warm, the run is ~2 s."""
+    fr = (doc or {}).get("frame") or {}
+    o = fr.get("origin_lonlat")
+    if not o:
+        return
+    key = (round(o[0], 3), round(o[1], 3))
+    if key in _WARMED:
+        return
+    _WARMED.add(key)
+
+    def go():
+        try:
+            from . import window_index as wi
+            bbox = wi.pad_lonlat(o[0], o[1], 500.0)
+            paths = [pathlib.Path(p) for p in glob.glob(str(RAW / "*__wm*.geojson"))] + [pathlib.Path(p) for p in glob.glob(str(RAW / "*__king_edward_window.geojson"))] \
+                + [pathlib.Path(p) for p in glob.glob(str(RAW / "vanmap" / "*__*.geojson"))]
+            for p in wi.select(paths, bbox):
+                if p.name.endswith("__dataset_metadata.json") or p.name.endswith("__layer_info.json"):
+                    continue
+                wi.load_json(p)
+            _script_module(str(SCRIPTS / "export_scene.py")).warm_process()
+        except Exception:
+            pass
+
+    threading.Thread(target=go, name="warm-street", daemon=True).start()
+
+
+def _scene_version() -> int:
+    try:
+        return int(getattr(_script_module(str(SCRIPTS / "export_scene.py")), "SCENE_VERSION", 0))
+    except Exception:
+        return 0
 
 
 def _knob_args(params: Dict[str, Any]) -> List[str]:
@@ -200,6 +257,16 @@ def _knob_args(params: Dict[str, Any]) -> List[str]:
     return args
 
 
+def site_type_of(site_id: str) -> str:
+    """The site type the engine file was run with (boulevard unless the file says median)."""
+    try:
+        d = json.loads(W.block_face_path(site_id).read_text(encoding="utf-8"))
+        st = ((d.get("knobs") or {}).get("site_type") or {}).get("value") or (d.get("face") or {}).get("site_type")
+        return "median" if st == "median" else "boulevard"
+    except (OSError, ValueError):
+        return "boulevard"
+
+
 def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
     """A run of the engine and the exporter. With params["scenario"] truthy (the page's scenario / review modes) both write
     the `_scenario` side files (block_face_<id>_scenario.json, scene_<id>_scenario.json) so the canonical files — the
@@ -220,6 +287,7 @@ def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
             if m and (PROCESSED / m.group(1)).exists():
                 src = PROCESSED / m.group(1)
             shutil.copy2(src, bp_out)
+        set_progress("place", "placing the species card in the ground")
         export_scene(out_id, params.get("candidate") or None)
         scene = json.loads(scene_path(out_id).read_text(encoding="utf-8"))
         scene["engine_stdout"] = ["candidate only: the engine did not run; the exporter placed the card"]
@@ -228,10 +296,13 @@ def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
     sp = sites_path_for(site_id)
     if sp is not None:
         args += ["--sites", str(sp)]
+    args += ["--site-type", site_type_of(site_id)]   # the site type is the user's confirmation, kept in the engine file: a re-run keeps it
     if scenario:
         args += ["--out", str(PROCESSED / f"block_face_{out_id}.json")]
     args += _knob_args(params)
+    set_progress("engine", "running the rule for this cell")
     stdout = _run(args, "engine")
+    set_progress("engine", "drawing the section")
     export_scene(out_id, params.get("candidate") or None)
     scene = json.loads(scene_path(out_id).read_text(encoding="utf-8"))
     scene["engine_stdout"] = stdout.strip().splitlines()[-6:]
@@ -248,15 +319,13 @@ def run_site(params: Dict[str, Any]) -> Dict[str, Any]:
     st = params.get("site_type")
     if st not in ("boulevard", "median", "park"):
         raise W.ApiError("site_type must be boulevard | median | park (your confirmation)")
-    args = [sys.executable, str(SCRIPTS / "run_site.py"), "--asset-id", str(asset), "--site-type", st] + _knob_args(params)
-    proc = subprocess.run(args, cwd=str(ROOT), capture_output=True, text=True, timeout=900)
-    out = (proc.stdout or "") + (proc.stderr or "")
-    if proc.returncode == 3:
-        raise W.ApiError(f"site type {st}: outside the tool's scope (front boulevard band)")
-    if proc.returncode != 0:
-        raise W.ApiError("run_site failed: " + out.strip().splitlines()[-1] if out.strip() else "run_site failed")
+    args = [str(SCRIPTS / "run_site.py"), "--asset-id", str(asset), "--site-type", st] + _knob_args(params)
+    set_progress("run_site", f"fetching the City's layers around tree {asset}, then running the rule for its block")
+    out = _run(args, "run_site")   # in-process, like the engine and the exporter: no Python start, the window's files parsed once
     site_id = f"V-{asset}"
+    set_progress("run_site", "drawing the street: the City's trees, its utilities, the block")
     export_scene(site_id)
+    set_progress("run_site", "the street is drawn")
     scene = json.loads(scene_path(site_id).read_text(encoding="utf-8"))
     scene["engine_stdout"] = out.strip().splitlines()[-8:]
     return scene
@@ -320,6 +389,34 @@ def trees_near_point(lon: float, lat: float, radius_m: float = 40.0) -> List[Dic
     return out
 
 
+_TREE_SITE: Optional[Dict[int, str]] = None
+
+
+def _tree_site_index(rebuild: bool = False) -> Dict[int, str]:
+    """Every tree of every checked block face → the face's site id (the anchor tree's). A tree on a checked street then opens that
+    street at once instead of being fetched and run as a new site; built once from the engine files, rebuilt on a miss."""
+    global _TREE_SITE
+    if _TREE_SITE is None or rebuild:
+        idx: Dict[int, str] = {}
+        for p in list(PROCESSED.glob("block_face_*.json")) + list((PROCESSED / "batch").glob("block_face_V-*.json")):
+            stem = p.stem[len("block_face_"):]
+            if "_" in stem:
+                continue   # variants (…_curb10) and scenarios (…_A, …_scenario)
+            try:
+                d = json.loads(p.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if not ((d.get("design") or {}).get("band")):
+                continue   # a run without a design band (no curb could be set) is no home for the face's trees
+            face = d.get("face") or {}
+            for t in face.get("trees") or []:
+                sid = str(t.get("site_id") or "")
+                if "-" in sid and sid.split("-")[1].isdigit():
+                    idx.setdefault(int(sid.split("-")[1]), stem)
+        _TREE_SITE = idx
+    return _TREE_SITE
+
+
 def tree_lookup(asset_id: int) -> Dict[str, Any]:
     from . import sites
     f = sites.tree_by_asset_id(asset_id)
@@ -330,7 +427,12 @@ def tree_lookup(asset_id: int) -> Dict[str, Any]:
     # the engine file may exist under V-<id> (any tree), KE-<id> (the pilot sites) or in the citywide batch folder
     site_id = next((sid for sid in (f"V-{asset_id}", f"KE-{asset_id}") if (PROCESSED / f"block_face_{sid}.json").exists()), f"V-{asset_id}")
     has = (PROCESSED / f"block_face_{site_id}.json").exists() or (PROCESSED / "batch" / f"block_face_V-{asset_id}.json").exists()
-    return {"asset_id": asset_id, "properties": p, "lon": lon, "lat": lat, "street": street, "hint": hint, "site_id": site_id, "has_engine_file": has}
+    tree_site = None
+    if not has:   # not an anchor: maybe a tree on a checked face — open that face and select this tree there
+        home = _tree_site_index().get(asset_id) or _tree_site_index(rebuild=True).get(asset_id)
+        if home:
+            site_id, has, tree_site = home, True, f"V-{asset_id}"
+    return {"asset_id": asset_id, "properties": p, "lon": lon, "lat": lat, "street": street, "hint": hint, "site_id": site_id, "has_engine_file": has, "tree_site_id": tree_site}
 
 
 # ---------------------------------------------------------------------------------------------------- frozen scenarios

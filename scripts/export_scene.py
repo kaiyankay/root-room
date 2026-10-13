@@ -142,6 +142,8 @@ def need_box_for(u_centre, required_m3, band, depth, cell, strips):
             "conflicts": rects_overlapping(u0, u1, band["v_from"], band["v_to"], strips), "beyond_cell": beyond,
             "note": "need-box: the band's width and depth, long enough to hold the Table 9-2 volume (PROJECT_INTERPRETATION: the source gives a volume, not a shape)"}
 EXTENT_MARGIN_U = 25.0
+SCENE_VERSION = 5                   # bumped when the scene gains a block the page reads or its frame changes; the server re-exports older files (4: street.median, both carriageways; 5: the library forms of 2026-10-13 — Turkish Hazel and Black Gum as broadleaf ovals)
+CONTEXT_FAR_DEPTH_M = 57.0          # the plan's context reaches this far past the street centreline (the far side's houses)
 EXTENT_PROPERTY_DEPTH = 45.0        # how far behind the property line the scene reaches (houses)
 CUT_OFFSET_V = 0.3                  # the long cut sits just behind the trunks, on the property side
 
@@ -196,6 +198,41 @@ class Frame:
     def uv(self, lon, lat):
         x, y = (lon - self.lon0) * self.kx, (lat - self.lat0) * self.ky
         return (x * self.ux + y * self.uy, x * self.px + y * self.py)
+
+
+def right_handed(bf):
+    """The engine's frame is u east- or north-pointing with v toward the property: for a south or a west face that pair is
+    left-handed, and a top-down drawing of it (the plan, the atlas under the dive) is a mirror image of the ground. The scene
+    is exported in a right-handed frame: u is turned about (every u negated, every u-range swapped) so that u × v points up.
+    Only the frame's orientation changes; every number is the engine's."""
+    fr = bf["face"]["frame"]
+    ux, uy = fr["along_unit_xy"]
+    px, py = fr["property_unit_xy"]
+    if ux * py - uy * px >= 0:
+        return bf
+    fr["along_unit_xy"] = [-ux, -uy]
+    if fr.get("bearing_deg_from_east") is not None:
+        fr["bearing_deg_from_east"] = round((fr["bearing_deg_from_east"] + 180.0) % 360.0, 2)
+    fr["note"] = (fr.get("note") or "") + "; u turned about at export so the frame is right-handed (u × v up)"
+    num = (int, float)
+
+    def walk(o):
+        if isinstance(o, dict):
+            for a, b in (("u_from", "u_to"), ("u0", "u1")):
+                if isinstance(o.get(a), num) and isinstance(o.get(b), num):
+                    o[a], o[b] = -o[b], -o[a]
+            for k, v in list(o.items()):
+                if k in ("u", "centreline_u") and isinstance(v, num):
+                    o[k] = -v
+                elif k.endswith("_uv") and isinstance(v, list):
+                    o[k] = [[-q[0], q[1]] if isinstance(q, list) and len(q) == 2 and isinstance(q[0], num) else q for q in v]
+                elif isinstance(v, (dict, list)):
+                    walk(v)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(bf)
+    return bf
 
 
 def geom_parts(geom):
@@ -258,12 +295,21 @@ def _coords(geom):
 _FEATURES_CACHE = {}
 
 
+def _clip_key_bbox():
+    """The padded extent as a lon/lat box rounded outward to 0.001° (~70–110 m): the layers clipped for one tree serve every
+    tree of its face (each tree's frame has its own origin, so a key in uv never repeated), and the test needs no projection."""
+    if _CLIP is None:
+        return None
+    b = clip_bbox(margin_m=0.0)
+    q = 0.001
+    return (math.floor(b[0] / q) * q, math.floor(b[1] / q) * q, math.ceil(b[2] / q) * q, math.ceil(b[3] / q) * q)
+
+
 def features(dataset, sub=None):
     """The layer's features near this site (below); the same for every run of the site while the City data is unchanged."""
     if _CLIP is None:
         return _features(dataset, sub)
-    F, ext, pad = _CLIP
-    key = (dataset, sub, F.lon0, F.lat0, F.ux, F.uy, F.px, F.py, tuple(sorted(ext.items())), pad, wi.raw_generation())
+    key = (dataset, sub, _clip_key_bbox(), wi.raw_generation())
     if key not in _FEATURES_CACHE:
         if len(_FEATURES_CACHE) > 400:
             _FEATURES_CACHE.clear()
@@ -273,26 +319,26 @@ def features(dataset, sub=None):
 
 def _features(dataset, sub=None):
     # Every window file of the dataset is read (the citywide sample stores one window per sampled block face), so the
-    # features are clipped to this site's padded extent and de-duplicated where windows overlap; otherwise a per-site
-    # export walks the whole city (nearest-manhole search became minutes long after the 2026-09-28 batch).
+    # features are clipped to this site's padded extent (a lon/lat box, a superset of the rotated uv box; every later step
+    # tests the uv extent itself) and de-duplicated where windows overlap; otherwise a per-site export walks the whole city
+    # (nearest-manhole search became minutes long after the 2026-09-28 batch).
     out = []
     seen = set()
+    bb = _clip_key_bbox()
     for p in wi.select(window_files(dataset, sub), clip_bbox()):
 
         if p.name.endswith("__dataset_metadata.json") or p.name.endswith("__layer_info.json"):
             continue
         for f in load(p).get("features", []):
-            if _CLIP is not None:
-                F, ext, pad = _CLIP
+            if bb is not None:
                 near = False
                 for c in _coords(f.get("geometry")):
-                    u, v = F.uv(c[0], c[1])
-                    if ext["u_from"] - pad <= u <= ext["u_to"] + pad and ext["v_from"] - pad <= v <= ext["v_to"] + pad:
+                    if bb[0] <= c[0] <= bb[2] and bb[1] <= c[1] <= bb[3]:
                         near = True
                         break
                 if not near:
                     continue
-            key = json.dumps([f.get("geometry"), f.get("properties")], sort_keys=True, default=str)
+            key = wi.feature_key(f)
             if key in seen:
                 continue
             seen.add(key)
@@ -306,6 +352,63 @@ def in_extent(pts, ext):
 
 def clip_pts(pts, ext, pad=0.0):
     return [[r2(u), r2(v)] for u, v in pts]
+
+
+_TREE_BUCKETS = None
+
+
+def city_trees_in(F, box):
+    """Every City public tree whose point falls in the uv box: data/raw/public-trees.geojson bucketed once per process
+    (0.002° cells, ~150 × 220 m), the same parsed file the server's tree lookup keeps."""
+    global _TREE_BUCKETS
+    if _TREE_BUCKETS is None:
+        from src import sites
+        bk = {}
+        try:
+            feats = sites._features(sites.TREES_PATH)
+        except Exception:   # a host without the citywide tree file (a clipped static build): the plan shows no other trees
+            feats = []
+        for f in feats:
+            g = f.get("geometry") or {}
+            c = g.get("coordinates")
+            if not c:
+                continue
+            bk.setdefault((int(c[0] * 500), int(c[1] * 500)), []).append(f)
+        _TREE_BUCKETS = bk
+    if F is None:
+        return []
+    lons, lats = [], []
+    for u in (box["u_from"], box["u_to"]):
+        for v in (box["v_from"], box["v_to"]):
+            x, y = u * F.ux + v * F.px, u * F.uy + v * F.py
+            lons.append(F.lon0 + x / F.kx)
+            lats.append(F.lat0 + y / F.ky)
+    out = []
+    for i in range(int(min(lons) * 500) - 1, int(max(lons) * 500) + 2):
+        for j in range(int(min(lats) * 500) - 1, int(max(lats) * 500) + 2):
+            for f in _TREE_BUCKETS.get((i, j), ()):
+                u, v = F.uv(*f["geometry"]["coordinates"][:2])
+                if box["u_from"] <= u <= box["u_to"] and box["v_from"] <= v <= box["v_to"]:
+                    out.append(f)
+    return out
+
+
+def warm_process():
+    """What every export pays once per process, done ahead by the server's warm thread: the City tree buckets (the public-trees
+    file, 74 MB), the ground layers (311 CSVs, GWELLS, sidewalk ratings) and the species library."""
+    try:
+        city_trees_in(None, None)
+    except Exception:
+        pass
+    for name in ("_fetch_log.json", "sidewalk-condition-rating.geojson", "gwells_vancouver.geojson", "311_2009_2021.csv", "311_2022_on.csv"):
+        try:
+            ground_layer(name)
+        except Exception:
+            pass
+    try:
+        load_library()
+    except Exception:
+        pass
 
 
 def where_class(pts, band, cell):
@@ -447,14 +550,19 @@ def main(argv=None):
     a = p.parse_args(argv)
     lib_index, lib = load_library()
 
-    bf = load(PROCESSED / f"block_face_{a.site}.json")
+    bf = right_handed(load(PROCESSED / f"block_face_{a.site}.json"))
     face, design, existing, knobs = bf["face"], bf["design"], bf["existing"], bf["knobs"]
     F = Frame(face)
     d_cl = face["tree"]["dist_centreline_m"]
     pl = face["tree"]["property_line_offset_m"]
     blk = face["block"]
+    # a median face (the user's confirmation, 2026-10-09): the band is the strip between the median's two curbs and the scene reaches
+    # the houses on both sides of the street; md is the engine's median block (None for a boulevard)
+    is_median = ((knobs.get("site_type") or {}).get("value") == "median") or face.get("site_type") == "median"
+    md = design.get("median") if (is_median and design.get("median") and design["median"].get("available")) else None
+    pl_far = face["tree"].get("property_line_far_offset_m")
     ext = {"u_from": blk["u_from"] - EXTENT_MARGIN_U, "u_to": blk["u_to"] + EXTENT_MARGIN_U,
-           "v_from": -d_cl - 12.0, "v_to": pl + EXTENT_PROPERTY_DEPTH}
+           "v_from": (-pl_far - EXTENT_PROPERTY_DEPTH) if (is_median and pl_far is not None) else (-d_cl - 12.0), "v_to": pl + EXTENT_PROPERTY_DEPTH}
     global _CLIP
     _CLIP = (F, ext, 120.0)          # 120 m beyond the extent: the sewer depth derivation looks for a manhole within 80 m
     sel_id = face["site_id"]
@@ -559,9 +667,9 @@ def main(argv=None):
                 pts = [F.uv(*c[:2]) for c in part]
                 mid = pts[len(pts) // 2]
                 rim = nearest_rim(*mid) if (ui is not None and di is not None) else None
-                if rim and rim["dist_m"] <= 80:
-                    inv = (ui + di) / 2
-                    depth_inv = rim["rim_m"] - inv
+                inv = (ui + di) / 2 if rim else None
+                depth_inv = rim["rim_m"] - inv if rim else None
+                if rim and rim["dist_m"] <= 80 and depth_inv - (dia or 0) / 1000.0 >= 0.05:   # a rim − invert at or above grade is a bad record, not a depth (2026-10-09: 28 scenes carried one; the page hung a sewer in the sky)
                     top = depth_inv - (dia or 0) / 1000.0
                     add("sewer_main", "sewer-mains", "VanMap Infrastructure_Sewer", pts, "derived", top, dia,
                         f"{pr.get('EFFLUENT_TYPE') or lid} sewer {dia or '?'} mm · {pr.get('MATERIAL') or ''} {pr.get('INSTALLDATE_iso') or ''}".strip(),
@@ -571,10 +679,11 @@ def main(argv=None):
                         depth_bottom=depth_inv)
                 else:
                     nd = EDM_COVER["sewer_main"]["depth_m"]
+                    bad = rim is not None and rim["dist_m"] <= 80
                     add("sewer_main", "sewer-mains", "VanMap Infrastructure_Sewer", pts, "nominal", nd, dia,
-                        f"{pr.get('EFFLUENT_TYPE') or lid} sewer {dia or '?'} mm · no invert record",
-                        {"effluent": pr.get("EFFLUENT_TYPE"), "material": pr.get("MATERIAL")},
-                        cite=EDM_COVER["sewer_main"]["cite"] + " minimum cover; not surveyed", depth_bottom=nd + (dia or 0) / 1000.0)
+                        f"{pr.get('EFFLUENT_TYPE') or lid} sewer {dia or '?'} mm · " + (f"invert record unusable (rim − invert {r2(depth_inv)} m)" if bad else "no invert record"),
+                        {"effluent": pr.get("EFFLUENT_TYPE"), "material": pr.get("MATERIAL"), **({"derived_depth_rejected_m": r2(depth_inv), "upstream_invert_m": ui, "downstream_invert_m": di} if bad else {})},
+                        cite=EDM_COVER["sewer_main"]["cite"] + " minimum cover; " + ("the manhole rim − invert gave a depth at or above grade, rejected" if bad else "not surveyed"), depth_bottom=nd + (dia or 0) / 1000.0)
     # sewer service lines (record at P/L / nominal)
     for f in features("sewer-service-lines", "vanmap"):
         pr = f["properties"]
@@ -593,10 +702,11 @@ def main(argv=None):
                     cite=EDM_COVER["sewer_service"]["cite"], depth_bottom=nd + (dia or 0) / 1000.0)
     # street lighting conduits: no record anywhere; Standard Detail G4.7 gives the minimum cover of a City electrical duct bank (nominal)
     curb_v = fb.get("curb_face_v")
+    in_road = (lambda v: not (md["curb_face_v"][1] <= v <= md["curb_face_v"][0])) if md else (lambda v: curb_v is not None and v < curb_v)   # a median: either carriageway
     for f in features("street-lighting-conduits", "vanmap"):
         for part in geom_parts(f["geometry"]):
             pts = [F.uv(*c[:2]) for c in part]
-            vehicular = curb_v is not None and any(v < curb_v for u, v in pts)
+            vehicular = any(in_road(v) for u, v in pts)
             nd = G47["vehicular_m"] if vehicular else G47["non_vehicular_m"]
             add("electrical_conduit", "street-lighting-conduits", "VanMap Infrastructure_Street_Lighting/95", pts, "nominal", nd, None,
                 f"street-lighting conduit · wireset {f['properties'].get('WIRESET_TYPE') or '?'} · nominal cover {nd} m (G4.7)", {"wireset": f["properties"].get("WIRESET_TYPE")},
@@ -630,7 +740,7 @@ def main(argv=None):
                     cite="City: 'as most of the line locations are underground, their locations are approximate'")
     # nominal corridors (task 4, EDM §7): the private utilities nobody publishes, at Table 7-1 cover, lateral position undetermined
     corridors = []
-    if avail and band and fb.get("back_of_curb_v") is not None:
+    if avail and band and fb.get("back_of_curb_v") is not None and not md:
         span = [fb["back_of_curb_v"], pl]
         for i, (kind, t71) in enumerate(TABLE_7_1.items()):
             vc = r2((span[0] + span[1]) / 2)
@@ -659,6 +769,57 @@ def main(argv=None):
             pts = [F.uv(*c[:2]) for c in ring]
             if in_extent(pts, ext):
                 parcels.append(clip_pts(pts, ext))
+
+    # ---- the plan's context: the street as a map (CITY_DATA drawn as context, not read by the rule) --------------
+    # blocks (block-outlines: the road edge of every block near the site, so cross streets and lanes are the gaps between
+    # them), lanes, the City's address points (civic numbers), every other public tree in the box, and the far side's houses
+    # and parcels. The engine's extent stops at the far curb; this box reaches the far side's houses.
+    ctx = {"u_from": ext["u_from"], "u_to": ext["u_to"], "v_from": min(-d_cl - CONTEXT_FAR_DEPTH_M, ext["v_from"] - 12.0), "v_to": ext["v_to"]}
+    blocks, lanes, addresses, far_buildings, far_parcels = [], [], [], [], []
+    for f in features("block-outlines"):
+        for ring in geom_parts(f["geometry"]):
+            pts = [F.uv(*c[:2]) for c in ring]
+            if in_extent(pts, ctx):
+                blocks.append(clip_pts(pts, ctx))
+    for f in features("lanes"):
+        for part in geom_parts(f["geometry"]):
+            pts = [F.uv(*c[:2]) for c in part]
+            if in_extent(pts, ctx):
+                lanes.append(clip_pts(pts, ctx))
+    for f in features("property-addresses"):
+        g = f.get("geometry") or {}
+        if g.get("type") != "Point" or not g.get("coordinates"):
+            continue
+        u, v = F.uv(*g["coordinates"][:2])
+        if ctx["u_from"] <= u <= ctx["u_to"] and ctx["v_from"] <= v <= ctx["v_to"]:
+            pr = f.get("properties") or {}
+            addresses.append([r2(u), r2(v), str(pr.get("civic_number") or ""), pr.get("std_street")])
+    for f in features("building-footprints-2015"):
+        for ring in geom_parts(f["geometry"]):
+            pts = [F.uv(*c[:2]) for c in ring]
+            if in_extent(pts, ctx) and not in_extent(pts, ext):
+                far_buildings.append({"ring_uv": clip_pts(pts, ctx), "height_m": NOMINAL_BUILDING_HEIGHT_M, "grade": "footprint 2015 (City); height nominal"})
+    for f in features("property-parcel-polygons"):
+        for ring in geom_parts(f["geometry"]):
+            pts = [F.uv(*c[:2]) for c in ring]
+            if in_extent(pts, ctx) and not in_extent(pts, ext):
+                far_parcels.append(clip_pts(pts, ctx))
+    face_ids = {str(t.get("tree_id")) for t in face["trees"]}
+    ctx_trees = []
+    for f in city_trees_in(F, ctx):
+        pr = f.get("properties") or {}
+        if str(pr.get("asset_id")) in face_ids:
+            continue
+        u, v = F.uv(*f["geometry"]["coordinates"][:2])
+        ctx_trees.append([r2(u), r2(v), pr.get("height_m"), (pr.get("common_name") or "").title(), pr.get("asset_id")])
+    row_rec = face.get("right_of_way") or {}
+    context = {"extent": {k: r2(v) for k, v in ctx.items()}, "blocks": blocks, "lanes": lanes, "addresses": addresses,
+               "trees": ctx_trees, "buildings": far_buildings, "parcels": far_parcels,
+               "far_curb_v": r2(-d_cl - (fb["curb_face_v"] + d_cl)) if fb.get("curb_face_v") is not None else None,
+               "outer_curb_v": md["outer_curb_v"] if md else None, "outer_curb_source": md["outer_curb_source"] if md else None,
+               "right_of_way": {"width_m": row_rec.get("width_m_if_feet"), "as_published": row_rec.get("width_as_published"), "unit_published": row_rec.get("unit_published")} if row_rec else None,
+               "grade": "City Open Data (block-outlines, lanes, property-addresses, public-trees, building-footprints-2015, property-parcel-polygons), drawn as context; the far curb is the near curb mirrored about the centreline (ASSUMED); the rule reads none of this",
+               "sources": {"trees": "public-trees", "addresses": "property-addresses", "blocks": "block-outlines", "lanes": "lanes", "buildings": "building-footprints-2015", "parcels": "property-parcel-polygons", "right_of_way": "right-of-way-widths"}}
 
     # ---- strips / segments / zones -----------------------------------------------------------------
     strips = [{k: s.get(k) for k in ("u0", "u1", "v0", "v1", "type", "kind", "dataset", "clearance_m", "provenance")}
@@ -758,7 +919,8 @@ def main(argv=None):
     cw, ce = (blk.get("cross_street_west") or {}).get("name"), (blk.get("cross_street_east") or {}).get("name")
     r01 = (f"{n_tree} trees on the {side} of {face['hblock']}" + (f", {cw} to {ce}" if cw and ce else "") +
            f". At this tree the neighbours stand {sel['gap_west_m'] or '—'} m west and {sel['gap_east_m'] or '—'} m east; "
-           f"the property line is {pl} m behind the trunk and the street centreline {d_cl} m in front.")
+           + (f"the street centreline runs {d_cl} m from the trunk and a carriageway passes each side of the median." if is_median else
+              f"the property line is {pl} m behind the trunk and the street centreline {d_cl} m in front."))
     by_grade = {}
     for fc in facilities:
         if fc["where"] in ("cell", "band", "face"):
@@ -779,9 +941,11 @@ def main(argv=None):
     if avail:
         s = design["selected"]["summary"]
         wfb = fb.get("widths_m", {})
-        r03 = (f"Front boulevard {wfb.get('front_boulevard')} m: property line to curb {wfb.get('property_line_to_curb_face')} m, "
-               f"minus sidewalk {wfb.get('sidewalk_clear')} m, back boulevard {wfb.get('back_boulevard')} m and curb {wfb.get('curb')} m. "
-               f"Depth {depth} m. Cut into {len(design.get('segments', []))} segment(s) by {design.get('crossing_count')} crossing(s); "
+        r03 = ((f"Median {md['widths_m']['median']} m wide between its curbs, ±{md['half_width_m']} m about its centre (the City's fixtures; no curb line is published): "
+                f"band {md['widths_m']['band']} m, back of curb to back of curb, nothing to deduct for a sidewalk or a back boulevard. ") if md else
+               (f"Front boulevard {wfb.get('front_boulevard')} m: property line to curb {wfb.get('property_line_to_curb_face')} m, "
+                f"minus sidewalk {wfb.get('sidewalk_clear')} m, back boulevard {wfb.get('back_boulevard')} m and curb {wfb.get('curb')} m. "))
+        r03 += (f"Depth {depth} m. Cut into {len(design.get('segments', []))} segment(s) by {design.get('crossing_count')} crossing(s); "
                f"{design.get('partial_count')} clearance strip(s) take width. This tree's share: {r2(s.get('share_m3'))} m³ "
                f"against Table 9-2 {s.get('required_m3')} m³ ({s.get('planting_condition', '').replace('_', ' ')}, {knobs['target_tree_class']['value']})"
                + (f"; it would carry {', '.join(s['benchmark_classes'])}." if s.get("benchmark_classes") else "."))
@@ -818,13 +982,15 @@ def main(argv=None):
         r04 += "Drag a species card from the library into this cell."
 
     # ---- 05: the slab and its numbered captions (every line a number from this file) ----------------
-    slab = {"u0": r2(sel["u"] - ZOOM_CELL_HALF_M), "u1": r2(sel["u"] + ZOOM_CELL_HALF_M), "v0": r2(-d_cl), "v1": pl, "depth_m": GROUND_DEPTH_M,
-            "note": "one thick block of the street pulled out: property line to centreline, the cut window long, 8 m deep; end faces carry the transverse section"}
+    slab = ({"u0": r2(sel["u"] - ZOOM_CELL_HALF_M), "u1": r2(sel["u"] + ZOOM_CELL_HALF_M), "v0": r2(md["curb_face_v"][1] - 1.0), "v1": r2(md["curb_face_v"][0] + 1.0), "depth_m": GROUND_DEPTH_M,
+             "note": "one thick block of the median pulled out: curb to curb and a metre into each carriageway, the cut window long, 8 m deep; end faces carry the transverse section"} if md else
+            {"u0": r2(sel["u"] - ZOOM_CELL_HALF_M), "u1": r2(sel["u"] + ZOOM_CELL_HALF_M), "v0": r2(-d_cl), "v1": pl, "depth_m": GROUND_DEPTH_M,
+             "note": "one thick block of the street pulled out: property line to centreline, the cut window long, 8 m deep; end faces carry the transverse section"})
     caps = []
     if avail and band:
         wfb = fb.get("widths_m", {})
         caps.append({"n": 1, "title": "the band", "at": {"u": sel["u"], "v": r2((band["v_from"] + band["v_to"]) / 2), "z": -depth / 2},
-                     "text": f"front boulevard {wfb.get('front_boulevard')} m wide, {depth} m deep; this tree's share {r2(sel.get('share_m3'))} m³"
+                     "text": (f"median {md['widths_m']['median']} m wide, band {md['widths_m']['band']} m" if md else f"front boulevard {wfb.get('front_boulevard')} m wide") + f", {depth} m deep; this tree's share {r2(sel.get('share_m3'))} m³"
                              + (f", {r2(sel['extensions']['share_total_m3'])} m³ with the zones" if sel.get("extensions") and sel["extensions"].get("share_total_m3") is not None else "")})
         cut_by = [fc for fc in facilities if fc["where"] in ("cell", "band")]
         strips_here = sorted({(x.get("kind") or "?").replace("_", " ") for x in (need["box"]["conflicts"] if need and need.get("box") else [])})
@@ -853,10 +1019,19 @@ def main(argv=None):
                   "selected_tree": f"{sel['genus']} {sel['species']}".strip(), "selected_site_id": sel_id},
         "frame": face["frame"], "units": "metres in the engine frame: u along the street (east+), v toward the property (+), z up, z = 0 road surface (nominal)",
         "extent": {k: r2(v) for k, v in ext.items()},
-        "street": {"centreline_v": r2(-d_cl), "curb_face_v": fb.get("curb_face_v"), "back_of_curb_v": fb.get("back_of_curb_v"),
+        "street": {"site_type": "median" if is_median else "boulevard",
+                   "centreline_v": r2(-d_cl), "curb_face_v": fb.get("curb_face_v"), "back_of_curb_v": fb.get("back_of_curb_v"),
                    "sidewalk_v": [fb.get("sidewalk_road_edge_v"), fb.get("sidewalk_property_edge_v")],
                    "back_boulevard_v": [fb.get("sidewalk_property_edge_v"), pl], "property_line_v": pl,
-                   "widths_m": fb.get("widths_m"), "sources": fb.get("sources"),
+                   "property_line_far_v": r2(-pl_far) if (is_median and pl_far is not None) else None,
+                   # the median (site_type median): v_from / v_to are the backs of its two curbs (the band's edges), curb_face_v [near +v, far -v],
+                   # outer_curb_v the roadway's outer curbs either side (hint, ASSUMED) or null; the knob is the half-width about centre_v
+                   "median": ({"v_from": md["band_v"][0], "v_to": md["band_v"][1], "curb_face_v": md["curb_face_v"], "back_of_curb_v": md["back_of_curb_v"],
+                               "centre_v": md["centre_v"], "centre_offset_m": md["centre_offset_m"], "centre_note": md["centre_note"],
+                               "half_width_m": md["half_width_m"], "width_m": md["width_m"], "outer_curb_v": md["outer_curb_v"], "outer_curb_source": md["outer_curb_source"],
+                               "widths_m": md["widths_m"], "provenance": knobs["curb_offset_from_centreline_m"]["provenance"],
+                               "note": "the strip between the median's two curbs (the user's definition, 2026-10-09); no sidewalk or back-boulevard deduction, R30 not applied"} if md else None),
+                   "widths_m": md["widths_m"] if md else fb.get("widths_m"), "sources": md["sources"] if md else fb.get("sources"),
                    "cross_streets": [c for c in ({"name": cw, "u": (blk.get("cross_street_west") or {}).get("centreline_u")},
                                                  {"name": ce, "u": (blk.get("cross_street_east") or {}).get("centreline_u")}) if c["name"]],
                    "block": {"u_from": blk["u_from"], "u_to": blk["u_to"], "outline_uv": blk.get("outline_local_uv")}},
@@ -868,7 +1043,7 @@ def main(argv=None):
                  "zones": zones, "zone_strips": ext_strips},
         "trees": trees,
         "facilities": facilities, "not_published": not_published, "corridors": corridors, "ground": ground,
-        "buildings": buildings, "parcels": parcels,
+        "buildings": buildings, "parcels": parcels, "context": context, "scene_version": SCENE_VERSION,
         "need": need,
         "candidate": candidate,
         "library": library,
