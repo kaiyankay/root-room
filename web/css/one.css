@@ -1075,3 +1075,40 @@ button:focus-visible, input:focus-visible, summary:focus-visible, .steps li:focu
 /* 05's rail: the station the sequence stands at (the user, 2026-10-13: the scroll must say where it is) */
 #ctl .stn { margin: 10px 0 2px; font-family: var(--mono); font-size: 12px; color: var(--ink); line-height: 1.5; }
 #ctl .stn em { font-style: normal; font-family: var(--title); font-weight: 600; letter-spacing: .08em; font-size: 10px; color: var(--grey); margin-right: 8px; }
+/* 06 · four layers (2026-10-13): the takeaway, the outcome beside the overlaid section, the design behind it, the data folded. TODAY grey, A dashed ink, B the accent — the same marks in the table and on the drawing. */
+.summary .ab { display: flex; align-items: center; gap: 14px; margin: 8px 0 2px; font: 400 12px var(--title); color: var(--grey); }
+.summary .ab .pk { display: inline-flex; align-items: center; gap: 7px; } .summary .ab .pk b { font: 600 11px var(--title); letter-spacing: .08em; color: var(--ink); }
+.summary .ab select { font: 500 12px var(--mono); color: var(--ink); background: #fff; border: 1px solid var(--grey-light); border-radius: 2px; padding: 3px 6px; }
+.summary .ab .vs { font-style: italic; } .summary .ab .nt { margin-left: auto; font-size: 11.5px; }
+.summary .out2 { display: flex; gap: 22px; align-items: stretch; margin: 4px 0 12px; }
+.summary .out2 .ovl { flex: 0 0 48%; min-height: 250px; height: clamp(250px, 34vh, 360px); border: 1px solid var(--grey-light); background: transparent; position: relative; }   /* bare: the section layer draws through it */
+.summary .out2 .ovl .ot { position: absolute; left: 12px; top: 9px; font: 600 11px var(--title); letter-spacing: .08em; color: var(--grey); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.summary .out2 .ovl .ot span { display: inline-flex; gap: 14px; align-items: center; font: 500 11px var(--mono); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.summary .out2 .num { flex: 1 1 auto; min-width: 0; }
+.summary .sw { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--grey); vertical-align: middle; margin-right: 7px; }
+.summary .sw.a { border-top: 2px dashed var(--ink); } .summary .sw.b { border-top: 3px solid var(--accent-dark); } .summary .sw.ex { border-top: 2px solid #B8B6AE; }
+.summary table.cmp.out th.hc, .summary table.cmp.out th.hc.on, .summary table.cmp.out th.hc.ex { width: auto; min-width: 0; max-width: none; border: none; border-bottom: 1px solid var(--ink); padding: 6px 12px 7px; background: transparent; cursor: pointer; }
+.summary table.cmp.out th.hc.ex { cursor: default; } .summary table.cmp.out th.hc b { font: 600 11px var(--title); letter-spacing: .08em; color: var(--ink); } .summary table.cmp.out th.hc.ex b { color: var(--grey); }
+.summary table.cmp.out th.hc span { display: block; font: 400 11px var(--title); color: var(--grey); margin-top: 2px; }
+.summary table.cmp.out, .summary table.cmp.str, .summary table.cmp.dat { width: 100%; table-layout: fixed; max-width: none; } .summary table.cmp.out th.m { width: 118px; }
+.summary table.cmp td .num { font: 600 24px var(--title); letter-spacing: -.01em; line-height: 1; color: var(--ink); } .summary table.cmp td .num.yes { color: var(--accent-dark); } .summary table.cmp td .num.no { color: var(--red); } .summary table.cmp td .num.review { color: #A8742A; }
+.summary table.cmp td .nr { color: var(--grey); font-style: italic; } .summary table.cmp td.ex { color: var(--grey); } .summary table.cmp td.ex .num { color: var(--grey); }
+.summary table.cmp td small { display: block; font: 10.5px var(--mono); color: var(--grey); margin-top: 2px; line-height: 1.35; }
+.summary table.cmp tr.bars td { padding-top: 2px; padding-bottom: 8px; } .summary table.cmp tr.bars th.m small { display: block; font: 10px var(--title); color: var(--grey); }
+.summary table.cmp td .track { height: 10px; border: 1px solid var(--grey-light); }
+.summary table.cmp td .verdict, .summary table.cmp td b.verdict.yes, .summary table.cmp td b.verdict.no, .summary table.cmp td b.verdict.review { font: 600 11px var(--title); letter-spacing: .08em; padding: 2px 7px; background: var(--accent-dark); color: #fff; display: inline-block; }   /* the tag's white text, over the td b.yes / b.no colours */ .summary table.cmp td .verdict.yes { background: var(--accent); } .summary table.cmp td .verdict.no { background: var(--red); } .summary table.cmp td .verdict.review { background: #A8742A; } .summary table.cmp td.ex .verdict { background: #B8B6AE; }
+.summary table.cmp.str th.hs { text-align: left; font: 500 11.5px var(--mono); color: var(--ink); padding: 4px 12px; border-bottom: 1px solid var(--ink); } .summary table.cmp.str th.hs.ex { color: var(--grey); }
+.summary table.cmp td.diff { background: linear-gradient(90deg, var(--accent) 0 3px, #F2F4EE 3px 100%); } .summary table.cmp td.diff.a { background: linear-gradient(90deg, var(--ink) 0 3px, #F2F4EE 3px 100%); }   /* a gradient, not a box-shadow: html2canvas paints an inset shadow as a filled box */
+.summary .gh { margin: 14px 0 4px; } .summary .gh span { font: 400 11px var(--title); letter-spacing: 0; text-transform: none; margin-left: 8px; }
+.summary table.cmp .cta.sec { background: #fff; color: var(--accent-dark); }
+#osec .ovl .today .earth { fill: #F7F5EF; stroke: none; } #osec .ovl .today .slab { fill: #E6E3DA; stroke: #B8B6AE; stroke-width: .6; } #osec .ovl .today .road { fill: #DDDAD1; stroke: #B8B6AE; stroke-width: .6; }
+#osec .ovl .today .ground { stroke: #8A8880; stroke-width: 1; } #osec .ovl .today .curb { stroke: #8A8880; stroke-width: 1.2; } #osec .ovl .today .pl { stroke: #B8B6AE; stroke-width: .8; stroke-dasharray: 5 4; }
+#osec .ovl .today .tick { stroke: #8A8880; stroke-width: .8; } #osec .ovl .today .ax { font: 500 10px var(--mono); fill: var(--grey); } #osec .ovl .today .w { font: 500 10px var(--title); letter-spacing: .06em; fill: var(--grey); }
+#osec .ovl .today .pipe { fill: #fff; stroke: #8A8880; stroke-width: 1; } #osec .ovl .today .pw { font: 500 9.5px var(--mono); fill: var(--grey); }
+#osec .ovl .today .dim { stroke: #8A8880; stroke-width: .7; } #osec .ovl .today .dtick { stroke: #8A8880; stroke-width: .9; } #osec .ovl .today .dn { font: 500 10.5px var(--mono); fill: var(--grey); }
+#osec .ovl .sa .env { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-dasharray: 5 3; } #osec .ovl .sa .env.off { stroke-dasharray: 2 3; stroke-opacity: .6; }
+#osec .ovl .sb .env { fill: rgba(70,105,63,.10); stroke: var(--accent-dark); stroke-width: 1.6; } #osec .ovl .sb .env.off { fill: none; stroke-dasharray: 2 3; stroke-opacity: .6; }
+#osec .ovl .sa .dim, #osec .ovl .sa .dtick { stroke: var(--ink); stroke-width: .8; } #osec .ovl .sb .dim, #osec .ovl .sb .dtick { stroke: var(--accent-dark); stroke-width: .9; }
+#osec .ovl .sa .dn { font: 600 11px var(--mono); fill: var(--ink); } #osec .ovl .sb .dn { font: 600 11px var(--mono); fill: var(--accent-dark); }
+#osec .ovl .tree .treeart path { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+#osec .ovl .sa .tree .treeart path { stroke: rgba(38,56,44,.55); stroke-width: .7; stroke-dasharray: 3 2; } #osec .ovl .sb .tree .treeart path { stroke: var(--accent-dark); stroke-width: .8; }
