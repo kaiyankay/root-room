@@ -9,9 +9,11 @@ The page is the same `web/one.html`; a manifest written into it (window.ROOT_ROO
 - api/…            the answers of the server's GET routes, computed here by the same functions (scene_api, web_api);
 - api/scene/<T>    for every tree on the pilot street, the engine's run of that tree with the pilot's knobs, exactly as the
                    server returns it when the tree is clicked;
-- engine/bundle.zip  the Python the server runs (src/, scripts/export_scene.py, scripts/run_block_face.py) and the files a
-                   run reads, found by tracing real runs; the page unpacks it into Pyodide (engine-worker.js) and every later
-                   run happens in the visitor's browser.
+- engine/bundle.zip  the Python the server runs (src/, scripts/export_scene.py, scripts/run_block_face.py, scripts/run_site.py)
+                   and the files a run reads, found by tracing real runs; the page unpacks it into Pyodide (engine-worker.js)
+                   and every later run happens in the visitor's browser. A tree on any other street: the worker fetches its
+                   window of City layers from the two City services (as scripts/fetch_context.py and fetch_vanmap.py do) and
+                   the engine runs on them there; the manifest lists the windows the bundle already holds.
 
 The engine runs in a temporary copy of the repository, so the working tree is not touched.
 """
@@ -37,8 +39,47 @@ MAP_FILES = {
     "data/processed": ("local_area_species.json", "local_area_capacity.json", "citywide_faces.json", "region_base.json",
                        "city_blocks.json", "region_blocks.json"),
 }
-OFF_PILOT = ("the online demo carries the City data of the pilot street, 400 W King Edward Av · any other street runs on your "
-             "own machine (python3 scripts/serve_web.py, see the README)")
+
+WINDOW_NEED_M = 300.0   # a block face and its neighbours: what the engine needs around a tree (engine-worker.js tests the same)
+NEVER_BUNDLED = ("elevation-contour-lines", "data/raw/ground/311_")   # read by nothing the page draws; 150 MB and 37 MB on the author's machine
+
+
+def window_name(rel: str):
+    """'data/raw/vanmap/storm-mains__wm123_120_p49_248.geojson' -> 'wm123_120_p49_248'; None for a citywide file."""
+    if not rel.startswith("data/raw/") or "__" not in rel or not rel.endswith(".geojson"):
+        return None
+    return rel.split("__", 1)[1][: -len(".geojson")]
+
+
+def window_logs(work: pathlib.Path, names) -> dict:
+    out = {}
+    for n in names:
+        log = work / "data" / "raw" / f"{n}__fetch_log.json"
+        try:
+            d = json.loads(log.read_text(encoding="utf-8")); c = d["centre"]
+            out[n] = {"name": n, "lon": c["lon"], "lat": c["lat"], "r": float(d["radius_m"])}
+        except (OSError, KeyError, ValueError, TypeError):
+            continue
+    return out
+
+
+def demo_windows(work: pathlib.Path, out: pathlib.Path, tr, names) -> dict:
+    """The windows that hold the whole demo street: every story tree within (r − WINDOW_NEED_M) of the window's centre. Any
+    other window the author's machine holds stays there; online, the browser's engine fetches a street's window itself."""
+    import math
+    pts = []
+    for a in story_assets(tr):
+        try:
+            d = json.loads((out / "api" / "tree" / f"{a}.json").read_text()); pts.append((d["lon"], d["lat"]))
+        except (OSError, KeyError, ValueError):
+            pass
+    keep = {}
+    for n, w in window_logs(work, names).items():
+        kx = 111_320.0 * math.cos(math.radians(w["lat"]))
+        if pts and all(math.hypot((x - w["lon"]) * kx, (y - w["lat"]) * 111_320.0) <= w["r"] - WINDOW_NEED_M for x, y in pts):
+            keep[n] = w
+    return keep
+
 
 # Runs inside the temporary copy (cwd = the copy). Writes the static answers and the trace to argv[1].
 TRACE = r'''
@@ -129,9 +170,19 @@ CLIP_KEEP = ("gwells",)          # the nearest logged borehole may lie far away:
 SKIP_KEYS = ("exported_on", "generated", "timestamp", "run_at", "saved_at", "engine_stdout", "args", "run_on")
 
 
+def story_assets(tr) -> list:
+    out = []
+    for s in tr["story"]:
+        try:
+            out.append(int(str(s).split("_")[0].split("-")[1]))
+        except (IndexError, ValueError):
+            continue
+    return out or list(tr["engine_assets"])
+
+
 def demo_bbox(out: pathlib.Path, tr) -> list:
     pts = []
-    for a in tr["engine_assets"]:
+    for a in story_assets(tr):
         try:
             d = json.loads((out / "api" / "tree" / f"{a}.json").read_text()); pts.append((d["lon"], d["lat"]))
         except (OSError, KeyError, ValueError):
@@ -220,28 +271,51 @@ def main(argv=None) -> int:
         (out / "_trace.json").unlink()
         before = set(tr["before"])
 
-        # the large City files cut to the streets the demo carries (+ CLIP_PAD_M); kept only if every check run is unchanged
+        # the engine's files: what the runs read, less the windows of other streets and the files nothing draws. The site's
+        # api/ answers are then made again from that reduced set (what the browser will hold), so page and engine agree
+        reads_all = sorted(r for r in tr["reads"] if r in before)
+        names = {window_name(r) for r in reads_all} - {None}
+        windows = demo_windows(work, out, tr, names)
+        print("the demo street's windows:", ", ".join(sorted(windows)) or "none", "· other windows on this machine:", len(names - set(windows)))
+        reads = [r for r in reads_all if not any(k in r for k in NEVER_BUNDLED) and (window_name(r) is None or window_name(r) in windows)]
+        tr["reads"] = reads
+        dropped = [rel for rel in reads_all if rel not in reads]
+        if dropped:
+            work = pathlib.Path(tmp) / "repo_reduced"   # a fresh copy: the first run's outputs are not the build's inputs
+            copy_repo(work)
+            for rel in dropped:
+                if (work / rel).exists():
+                    (work / rel).unlink()
+            shutil.rmtree(out / "api"); shutil.rmtree(out / "_check", ignore_errors=True)
+            subprocess.run([sys.executable, "-c", TRACE, str(out), PILOT], cwd=work, check=True, stdout=subprocess.DEVNULL)
+            tr2 = json.loads((out / "_trace.json").read_text()); (out / "_trace.json").unlink()
+            before = set(tr2["before"]); tr["story"], tr["base"], tr["engine_assets"] = tr2["story"], tr2["base"], tr2["engine_assets"]
+            print(f"{len(dropped)} files of other streets left the build; the site's answers were made again without them")
+        # the large City files cut to the demo street (+ CLIP_PAD_M); kept only if every check run is unchanged
         work2 = pathlib.Path(tmp) / "repo_clipped"
         copy_repo(work2)
         bbox = demo_bbox(out, tr)
-        cut = clip_large_files(work2, sorted(r for r in tr["reads"] if r in before), bbox)
+        for rel in dropped:   # the other streets' windows leave the check copy too: the browser's case
+            if (work2 / rel).exists():
+                (work2 / rel).unlink()
+        cut = clip_large_files(work2, reads, bbox)
         out2 = pathlib.Path(tmp) / "check"
         # this second run is the browser's case: clipped files, and records decided by the fast validator alone
         subprocess.run([sys.executable, "-c", TRACE, str(out2), PILOT], cwd=work2, check=True, stdout=subprocess.DEVNULL, env={**os.environ, "ROOT_ROOM_FAST_ONLY": "1"})
         diffs = compare_runs(out, out2, tr["story"])
         if diffs:
-            print("clipping changes the result, the bundle keeps the full files:", "; ".join(diffs[:4]))
-            work_bundle = work
+            print("the reduced files change the result, the bundle keeps the full files:", "; ".join(diffs[:4]))
+            work_bundle = work; reads = reads_all; bbox = None
         else:
-            print(f"clipped {len(cut)} files to the demo's streets; every check run identical")
+            print(f"clipped {len(cut)} files to the demo street; every check run identical")
             work_bundle = work2
         shutil.rmtree(out / "_check", ignore_errors=True)
 
         # the engine bundle: the Python, then what the runs read, then the scene and engine files as the runs left them
         work = work_bundle
         files = {str(p.relative_to(work)) for p in (work / "src").rglob("*.py")}
-        files |= {"scripts/export_scene.py", "scripts/run_block_face.py"}
-        files |= {r for r in tr["reads"] if r in before and not r.endswith(".py")}
+        files |= {"scripts/export_scene.py", "scripts/run_block_face.py", "scripts/run_site.py"}   # run_site: any City tree, from the window the browser fetches
+        files |= {r for r in reads if not r.endswith(".py")}
         files |= {str(p.relative_to(work)) for p in (work / "data" / "processed").glob("*.json")
                   if (p.name.startswith(("scene_", "block_face_")) and not p.stem.endswith("_scenario") and str(p.relative_to(work)) in before)}
         files |= {str(p.relative_to(work)) for p in (work / "data" / "species").glob("*.json")}
@@ -267,6 +341,7 @@ def main(argv=None) -> int:
             for rel, fp in pyc.items():
                 z.write(fp, rel)
         print(f"engine bundle: {len(files)} files ({len(pyc)} precompiled), {size / 1e6:.1f} MB unpacked, {(out / 'engine' / 'bundle.zip').stat().st_size / 1e6:.1f} MB zipped")
+        windows = [dict(w, **({"bbox": bbox} if bbox else {})) for w in windows.values() if any(window_name(f) == w["name"] for f in files)]   # with the box the files were cut to
 
     # the page
     for p in (ROOT / "web").iterdir():
@@ -290,7 +365,7 @@ def main(argv=None) -> int:
         if s2 != s:
             js.write_text(s2, encoding="utf-8")
     manifest = {"version": version, "bundle": f"engine/bundle.zip?v={version}", "pilot": PILOT, "story": {"trees": tr["story"], "knobs": tr["base"]},
-                "engineAssets": tr["engine_assets"], "offPilot": OFF_PILOT, "built": datetime.date.today().isoformat()}
+                "engineAssets": tr["engine_assets"], "windows": windows, "built": datetime.date.today().isoformat()}
     html = (ROOT / "web" / "one.html").read_text(encoding="utf-8")
     tag = '<script type="module" src="js/one.js"></script>'
     assert tag in html, "one.html: the module tag moved"

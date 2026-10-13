@@ -24,7 +24,7 @@ Root Room starts from a real public street tree, reads the City's data about the
 
 ## Run the demo
 
-**Online.** [kaiyankay.github.io/root-room](https://kaiyankay.github.io/root-room/) runs the whole tool on the pilot street, the 400 block of West King Edward Avenue, with nothing to install. The page is static; the rule engine runs inside your browser (Python compiled to WebAssembly with [Pyodide](https://pyodide.org)), the same code as the local server, so the numbers are the engine's, not an approximation. Clicking a tree is instant. The engine starts in the background as the page opens and is ready a few seconds later, usually before you reach the scenario builder; from then on a change of the ground answers in under a second. Saved scenarios last as long as the browser tab.
+**Online.** [kaiyankay.github.io/root-room](https://kaiyankay.github.io/root-room/) runs the whole tool for any City tree, with nothing to install. The page is static; the rule engine runs inside your browser (Python compiled to WebAssembly with [Pyodide](https://pyodide.org)), the same code as the local server, so the numbers are the engine's, not an approximation. The pilot street, the 400 block of West King Edward Avenue, is carried by the page and opens at once. Any other street is fetched when you first open it: the engine in your browser reads the City's layers around the tree from the City's Open Data portal and VanMap services (the same requests the local scripts make, about a minute), then runs; the street is kept for the rest of the visit. The engine starts in the background as the page opens; from then on a change of the ground answers in seconds. Saved scenarios last as long as the browser tab.
 
 **On your own machine,** for any street in the City. Python 3.10+ and one package. The page loads three.js and jsPDF from a CDN, so the browser needs internet access.
 
@@ -137,7 +137,7 @@ City data is used under the City of Vancouver Open Government Licence.
 
 ## Status and limits
 
-- Online, the pilot street works in full; another street asks you to run the tool locally, where any City tree runs from the City's data on first visit (about two minutes, with the fetch).
+- Online and locally, any City tree runs from the City's data on first visit (about a minute online, where the browser fetches the street's layers; about two minutes locally, with the fetch). A street fetched online is kept for the visit, not stored.
 - The existing soil has no City record anywhere; the page shows NO RECORD and counts nothing for today. A measured existing soil can be typed with evidence on the command line, not yet on the page.
 - Species are drawn as the library's line-art billboards; Rhino species models are parked.
 - The Rhino model is built on the author's machine from the saved file; the public hosting of the demo, and with it how the Rhino build reports back to the page, is not decided.

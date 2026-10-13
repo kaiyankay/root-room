@@ -1,8 +1,9 @@
-/* Root Room on a static host (GitHub Pages): the same page and the same engine.
+/* Root Room on a static host (GitHub Pages): the same page and the same engine, for any City tree.
    window.ROOT_ROOM_STATIC is written into one.html by scripts/build_static.py; without it the page talks to scripts/serve_web.py.
    - GET routes read the files the build wrote under api/ (the build ran the engine to make them, as the server would).
-   - A tree clicked on the pilot street, with the knobs the build used, reads the build's run of that tree (instant).
-   - Every other run — a ground change, a species, a saved scenario — goes to the engine in this browser (engine-worker.js). */
+   - A tree clicked on the street the build carries, with the knobs the build used, reads the build's run of that tree (instant).
+   - Every other run — a ground change, a species, a saved scenario, a tree anywhere in the city — goes to the engine in this
+     browser (engine-worker.js), which fetches a street's City layers from the City's two services when it first meets it. */
 export const STATIC = typeof window !== 'undefined' && window.ROOT_ROOM_STATIC ? window.ROOT_ROOM_STATIC : null;
 const M = STATIC || {};
 
@@ -34,7 +35,8 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
       const w = waits.get(id); if (!w) return; waits.delete(id); if (ok) w.res(result); else w.rej(new Error(error));
     };
     worker.onerror = (e) => { for (const w of waits.values()) w.rej(new Error('the engine could not start in this browser: ' + (e.message || 'worker error'))); waits.clear(); };
-    booting = call('boot', [new URL(M.bundle || 'engine/bundle.zip', location.href).href]).then(() => { booted = true; });
+    const city = ['data/public-streets.geojson', 'data/parks-polygon-representation.geojson'].map((f) => new URL(f, location.href).href);   /* citywide: the street names, the park test */
+    booting = call('boot', [new URL(M.bundle || 'engine/bundle.zip', location.href).href, city, M.windows || []]).then(() => { booted = true; });
     booting.catch(() => { booting = null; worker = null; });
     return booting;
   }
@@ -42,8 +44,9 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
     if (!booted) { onStage('PREPARING THE ENGINE IN THIS BROWSER', true); await boot(); onStage(null); }
     return call(op, args);
   }
-  let trees = null;
+  let trees = null, byAsset = null;
   const treesAll = () => trees || (trees = get('api/trees_all.json'));
+  const treeXY = async (siteOrAsset) => { const a = +String(siteOrAsset).split('_')[0].replace(/^[A-Z]+-/, ''); if (!byAsset) { byAsset = new Map(); for (const t of await treesAll()) byAsset.set(t[2], t); } const t = byAsset.get(a); return t ? { lon: t[0], lat: t[1] } : {}; };   /* where a site's tree stands: the engine fetches its window when it has none */
   const story = M.story || { trees: [], knobs: {} };
   if (STATIC) boot().catch(() => {});   /* the engine starts with the page, not after the street has loaded */
   return {
@@ -56,7 +59,7 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
         if (booting) booting.then(() => call('warm', [{ ...p, scenario: true, scenario_fresh: true }])).catch(() => {});   /* the engine gets ready for this tree while it is read */
         return get(`api/scene/${encodeURIComponent(p.site_id)}.json`);
       }
-      const S = await engine('evaluate_scene', [p.site_id, p]);
+      const S = await engine('evaluate_scene', [p.site_id, { ...p, ...(await treeXY(p.site_id)) }]);
       session.add(S.site_id); return S;
     },
     freezeScenario: async (p) => { const F = await engine('freeze_scene', [p.site_id, p.scene, p.subject, p.cut_aa_u]); session.add(F.site_id); frozenHere.add(String(p.site_id).split('_')[0]); return F; },
@@ -65,7 +68,8 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
       try { return await get(`api/scenario_list/${encodeURIComponent(site)}.json`); } catch (e) { return { site_id: site, base_hash: null, scenarios: [] }; }
     },
     tree: async (id) => {
-      try { return await get(`api/tree/${id}.json`); } catch (e) { return { asset_id: +id, properties: {}, street: null, site_id: 'V-' + id, has_engine_file: false }; }
+      try { return await get(`api/tree/${id}.json`); } catch (e) { /* not a tree the build ran: the engine reads the City's record of it */ }
+      return engine('tree_lookup', [+id]);
     },
     treesNear: async (lon, lat) => {
       const all = await treesAll(); const kx = 111320 * Math.cos((lat * Math.PI) / 180), ky = 111320; const have = new Set(M.engineAssets || []);
@@ -74,7 +78,7 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
     },
     addresses: () => get('api/address_index.json'),
     rules: () => get('api/rules.json'),
-    runSite: async () => { throw new Error(M.offPilot || 'the online demo carries the City data of the pilot street only'); },
+    runSite: async (p) => { const S = await engine('run_site', [p]); session.add(S.site_id); return S; },   /* any City tree: the engine fetches its street's window, then runs */
     warm: (payload) => boot().then(() => call('warm', [payload || null])).catch(() => {}),
   };
 }

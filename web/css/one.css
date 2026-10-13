@@ -1072,3 +1072,6 @@ button:focus-visible, input:focus-visible, summary:focus-visible, .steps li:focu
 #overlay .axo-lab text { paint-order: stroke; stroke: rgba(247,244,236,.92); stroke-width: 3px; stroke-linejoin: round; }   /* the notes stay legible over a line */
 .summary .empty { max-width: 520px; margin: 18px 0 0; } .summary .empty .cta { display: block; width: 100%; text-align: left; font: 600 12.5px/1.25 var(--title); letter-spacing: .08em; border: 1.5px solid var(--accent-dark); background: var(--accent-dark); color: #fff; padding: 12px 14px; cursor: pointer; border-radius: 2px; } .summary .empty .cta small { display: block; font: 400 11px/1.4 var(--title); letter-spacing: 0; opacity: .88; margin-top: 4px; }
 .summary table.cmp tr.fold th.m a { font-size: 11px; }
+/* 05's rail: the station the sequence stands at (the user, 2026-10-13: the scroll must say where it is) */
+#ctl .stn { margin: 10px 0 2px; font-family: var(--mono); font-size: 12px; color: var(--ink); line-height: 1.5; }
+#ctl .stn em { font-style: normal; font-family: var(--title); font-weight: 600; letter-spacing: .08em; font-size: 10px; color: var(--grey); margin-right: 8px; }
