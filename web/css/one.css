@@ -1112,3 +1112,48 @@ button:focus-visible, input:focus-visible, summary:focus-visible, .steps li:focu
 #osec .ovl .sa .dn { font: 600 11px var(--mono); fill: var(--ink); } #osec .ovl .sb .dn { font: 600 11px var(--mono); fill: var(--accent-dark); }
 #osec .ovl .tree .treeart path { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
 #osec .ovl .sa .tree .treeart path { stroke: rgba(38,56,44,.55); stroke-width: .7; stroke-dasharray: 3 2; } #osec .ovl .sb .tree .treeart path { stroke: var(--accent-dark); stroke-width: .8; }
+/* 04 · the count as a ledger (2026-10-13): one row per step, the operator in a narrow column, the number at the right; the credited line is the one big number */
+.strip .ledger { margin: 2px 0 0; border-top: 1px solid rgba(30,45,35,.15); }
+.strip .ledger .lr { display: grid; grid-template-columns: 12px 1fr auto; align-items: baseline; gap: 0 6px; padding: 1px 0; border-bottom: 1px solid rgba(30,45,35,.08); }
+.strip .ledger .lr i { font: 500 12px var(--mono); color: var(--grey); font-style: normal; text-align: center; }
+.strip .ledger .lr em { font: 600 10.5px/1.3 var(--title); letter-spacing: .04em; color: var(--ink); font-style: normal; min-width: 0; } .strip .ledger .lr em span { font: 400 10.5px/1.3 var(--title); letter-spacing: 0; color: var(--grey); margin-left: 3px; }
+.strip .ledger .lr b { font: 500 12px var(--mono); color: var(--ink); white-space: nowrap; text-align: right; } .strip .ledger .lr b small { font: 400 10px var(--title); color: var(--grey); margin-left: 3px; letter-spacing: 0; }
+.strip .ledger .lr.off em, .strip .ledger .lr.off b { color: var(--grey); } .strip .ledger .lr.red b { color: var(--red); } .strip .ledger .lr.review b { color: #A8742A; }
+.strip .ledger .lr.sum { border-bottom: 1px solid rgba(30,45,35,.3); }
+.strip .ledger .lr.total { border-bottom: none; padding-top: 2px; } .strip .ledger .lr.total em { font-size: 11px; }
+.strip .ledger .lr.total b.n { font: 600 22px/1.1 var(--title); letter-spacing: -.01em; color: var(--accent-dark); } .strip .ledger .lr.total b.n small { font: 400 11px var(--title); }
+.strip .ledger .lr.total b.n .rev { font: 600 12px var(--title); letter-spacing: .08em; color: #A8742A; font-style: normal; }
+.strip .ledger.wait b { color: var(--grey); }
+.strip .ruler { margin: 4px 0 0; padding: 10px 6px 24px; }
+.strip .ctas { display: flex; gap: 6px; margin-top: 8px; } .strip .ctas .cta { flex: 1 1 0; min-width: 0; margin: 0 !important; padding: 9px 10px !important; font: 600 11.5px/1.2 var(--title) !important; letter-spacing: .06em !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center !important; }
+.strip .ruler { margin: 4px 0 0; padding: 8px 6px 22px; }
+/* 04 at 1500×800 with the ledger, a zone open and both buttons: the last pixels */
+.strip .ledger .lr { padding: 0; } .strip .ledger .lr.total b.n { line-height: 1; } .strip .ledger .lr.total { padding-top: 3px; }
+#tool.strip #inputsC .gh { margin: 6px 0 3px; } .strip .ruler { padding: 6px 6px 20px; } .strip .ctas { margin-top: 6px; }
+/* ===== 2026-10-13 (evening) · the type scale, one step up (the outside review: 10–11 px grey text everywhere makes reading tiring; the one number must be the focus) =====
+   prose 12.5/1.5 · field labels 11 · mono values 12 · tags 10.5 · the one big number 24–28 · buttons 13; 04's strip half a step smaller (its column has no slack at 1500×800) */
+.strip .ctl .f .fs span, .strip .rl, .strip .rl.grey, .strip .res .rl, .result.record .grow small, .result.record .gcard .gs, .result.record .carry.first small, .ctl .pn, .result.locate .ctl .pn, .strip .th span, .tray04 .th span, .summary th.hc .bl, .summary th.hc .ch span, .strip .ctl .f .fs span.note, .strip .ctl .prop .ph2 .dim, .strip .ctl .prop .pr, .ctl details.reads .rg { font-size: 12.5px; line-height: 1.5; }
+.strip .ctl .f .fs span, .strip .ctl .f .fs span.note, .strip .ctl .prop .ph2 .dim, .strip .ctl .prop .pr, .strip .rl, .strip .rl.grey, .strip .res .rl, .strip .th span, .tray04 .th span { font-size: 12px; line-height: 1.45; }
+.result.locate .ctl .gh span, .strip .gh span, .summary .gh span, .summary .k .sub, .result.locate .ctl details.reads summary span { font-size: 12px; }
+.strip .ctl .f .fl label, .ctl .prop .ph2 label, .result.record .grow em, .result.record .rows .r em, .result.record .k.top, .result.record .carry.first em, .tray04 .ttile em, .strip .term em { font-size: 11px; }
+.result.record .rows .r em, .result.record .k.top, .result.record .carry.first em { font-size: 12px; }
+.result.record .rows .r b, .strip .term b, .strip .ctl .f .fl b, .summary table.cmp td, .strip .ctl .prop .pr input[type=number], .result.record .eqline, .ctl .sv { font-size: 12px; }
+.result.record .rows .r { grid-template-columns: 100px 1fr; }
+.tag { font-size: 10.5px; }
+.result.record .carry.first b, .result.record .gcard .gn, .result.axo .verd b { font-size: 24px; }
+.strip .ledger .lr.total b.n { font-size: 26px; } .strip .ledger .lr em { font-size: 11px; } .strip .ledger .lr em span { font-size: 11px; } .strip .ledger .lr b { font-size: 12px; }
+.summary table.cmp td .num { font-size: 28px; } .summary .lead { font-size: 18px; max-width: 1180px; } .summary table.cmp td small { font-size: 11px; } .summary table.cmp th.m { font-size: 12px; } .summary table.cmp th.m small { font-size: 10.5px; }
+.summary .ab { font-size: 13px; } .summary .ab select { font-size: 12.5px; } .summary table.cmp.out th.hc span { font-size: 12px; } .summary table.cmp.str th.hs { font-size: 12px; } .summary .out2 .ovl .ot span { font-size: 11.5px; }
+.cta.big, .result.record .siteread .cta.big, .strip .cta.big, .result.locate .ctl .cta.big, .axogo .cta.big, .summary table.cmp .cta, .summary .empty .cta { font-size: 13px; } .cta.big small, .summary table.cmp .cta small, .summary .empty .cta small, .strip .cta.sec small { font-size: 11.5px; }
+.strip .ctas .cta { font-size: 12px !important; }
+.rail .ctl .do { font-size: 13px; } .rail .ctl .sv, .rail .ctl .pn, .railhint, .status { font-size: 12px; } .rail .ctl .sv2 b { font-size: 14px; } .rail .ctl .sv2 span { font-size: 12px; } .rail .ctl .sv2 em { font-size: 11px; } #ctl .stn { font-size: 12.5px; }
+.result.locate .ctl .ar { font-size: 12.5px; } .result.locate .ctl .ar b { font-size: 12px; } .result.locate .ctl .fc .hb { font-size: 12.5px; } .result.locate .ctl .fc i { font-size: 11px; } .result.locate .ctl form.go input { font-size: 12.5px; }
+.result.record .sub { font-size: 12.5px; } .result.record .v.small, .summary th.hc .cn { font-size: 17px; }
+.tray04 .ttile i { font-size: 11px; } .tray04 .tcard b { font-size: 11.5px; } .tray04 .tcard i { font-size: 11px; } .tray04 .ttile b { font-size: 14px; }
+#overlay .axo-lab .l { font-size: 12px; } #overlay .axo-lab .t { font-size: 11.5px; }
+.tip.paper { font-size: 12px; }
+.strip .gh span { font-size: 11px; } .strip .ctl .f .fs span, .strip .ctl .f .fs span.note { font-size: 11.5px; }   /* 04's heads stay on one line; its notes half a step smaller: the column has no slack */
+#ctl .stn { margin: 6px 0 2px; } .rail .ctl .sv2 { margin: 2px 0 6px; padding: 6px 0 6px; }   /* 05's rail at 1500×800: the station and the scenario head take less */
+.rail .ctl .sv2 b { font-size: 13px; } .rail .ctl .ph { margin-bottom: 6px; }
+#ctl .stn { font: 600 12.5px/1.4 var(--mono); color: var(--accent-dark); margin: 6px 0 4px; padding-top: 6px; border-top: 1px solid rgba(30,45,35,.15); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }   /* one line: the station alone, in the accent */
+.rail .ctl .do { font-size: 12.5px; }
