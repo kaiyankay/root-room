@@ -204,7 +204,7 @@ def _warm(payload=None):
     return True
 
 _OPS = {'evaluate_scene': scene_api.evaluate_scene, 'freeze_scene': scene_api.freeze_scene,
-        'list_frozen': scene_api.list_frozen, 'scene_get': _scene_get, 'warm': _warm,
+        'list_frozen': scene_api.list_frozen, 'delete_frozen': scene_api.delete_frozen, 'scene_get': _scene_get, 'warm': _warm,
         'run_site': scene_api.run_site, 'tree_lookup': scene_api.tree_lookup}
 
 def _call(op, args_json):

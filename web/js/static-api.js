@@ -62,7 +62,8 @@ export function makeStaticApi({ onStage = () => {} } = {}) {
       const S = await engine('evaluate_scene', [p.site_id, { ...p, ...(await treeXY(p.site_id)) }]);
       session.add(S.site_id); return S;
     },
-    freezeScenario: async (p) => { const F = await engine('freeze_scene', [p.site_id, p.scene, p.subject, p.cut_aa_u]); session.add(F.site_id); frozenHere.add(String(p.site_id).split('_')[0]); return F; },
+    freezeScenario: async (p) => { const F = await engine('freeze_scene', [p.site_id, p.scene, p.subject, p.cut_aa_u, p.replace || null]); session.add(F.site_id); frozenHere.add(String(p.site_id).split('_')[0]); return F; },
+    deleteScenario: async (p) => { frozenHere.add(String(p.site_id).split('_')[0]); return engine('delete_frozen', [p.site_id, p.scenario_id]); },
     listScenarios: async (site) => {
       if (frozenHere.has(String(site).split('_')[0])) return engine('list_frozen', [site]);
       try { return await get(`api/scenario_list/${encodeURIComponent(site)}.json`); } catch (e) { return { site_id: site, base_hash: null, scenarios: [] }; }

@@ -26,7 +26,7 @@ export class Scene {
   constructor(canvas) {
     this.canvas = canvas;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: false, alpha: false });   /* capture() renders right before it reads the canvas, so the buffer need not be preserved: the swap is cheaper every frame */
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));   /* 1.5 on a 2x screen: the same lines, 44 % fewer pixels to fill (the user, 2026-10-13: 很卡顿) */
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));   /* 1.5 on a 2x screen: the same lines, 44 % fewer pixels to fill (the user, 2026-10-13: the page lagged) */
     this.renderer.setClearColor(COL.paper, 1);
     this.renderer.localClippingEnabled = true;
     this.scene = new THREE.Scene();
@@ -375,7 +375,7 @@ export class Scene {
       gGround.add(this.segs(circ, ghost ? ghostMat : inkThin));
       if (t.cell && t.cell.u_from != null && bd) gGround.add(this.segs([t.cell.u_from, bd.v_from - 0.3, 0.03, t.cell.u_from, bd.v_from, 0.03, t.cell.u_to, bd.v_from - 0.3, 0.03, t.cell.u_to, bd.v_from, 0.03], inkThin));
       if (t.selected) { const ring = []; for (let i = 0; i < 40; i++) { const a0 = i / 40 * 6.283, a1 = (i + 1) / 40 * 6.283; ring.push(t.u + Math.cos(a0) * 1.1, t.v + Math.sin(a0) * 1.1, 0.04, t.u + Math.cos(a1) * 1.1, t.v + Math.sin(a1) * 1.1, 0.04); } gSel.add(this.segs(ring, accHeavy)); }
-      const formT = (t.roots && t.roots.form) || 'heart'; const hrT = formT === 'flat' ? 0.65 : formT === 'tap' ? 0.95 : 0.794; const rbT = bd ? Math.max(0.6, Math.min(bd.v_to - bd.v_from - 0.2, (bd.depth_m + 0.3) / hrT, (t.diameter_cm || 15) * 0.10)) : 1.0;   /* the ball in 03's proportion, for every tree's roots */
+      const formT = (t.roots && t.roots.form) || 'heart'; const hrT = formT === 'flat' ? 0.65 : formT === 'tap' ? 0.95 : 0.794; const rbT = bd ? Math.max(0.6, Math.min(bd.v_to - bd.v_from - 0.2, (t.diameter_cm || 15) * 0.10, 1.5)) : 1.0;   /* the tree's own ball, as 03 sizes it: never by the planter's depth */   /* the ball in 03's proportion, for every tree's roots */
       if (t.selected && bd) { const pm = this.planting(t.u, t.v, t.diameter_cm, formT, bd, gRoots, this.mats); this.plant = { ...pm, u: t.u, v: t.v }; }   /* the planting as the City's sheets draw it, under the chosen tree (and under a species card standing in for it) */
       if (t.roots && !ghost && !this.flatRoots) {
         const rl = this.rootsFew3(t.u, t.v, rbT, rbT * hrT, t.roots, allStrips, 1000 + (+t.tree_id || 1));

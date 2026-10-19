@@ -209,22 +209,28 @@ class Handler(SimpleHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(length) or b"{}")
                 name = "".join(c for c in str(payload.get("name", "")) if c.isalnum() or c in "-_.")[:80] or "capture"
                 data = payload.get("data_url", "")
-                if not data.startswith("data:image/png;base64,"):
-                    raise ValueError("data_url must be a PNG data URL")
+                if data.startswith("data:application/pdf;") and ";base64," in data[:80]:
+                    ext = "pdf"      # the report's A3 PDF, kept beside the captures so it can be opened and measured (a check, not a deliverable path)
+                elif data.startswith("data:image/png;base64,"):
+                    ext = "png"
+                else:
+                    raise ValueError("data_url must be a PNG or PDF data URL")
                 import base64
-                out = ROOT / "reports" / "screens" / f"{name}.png"
+                out = ROOT / "reports" / "screens" / f"{name}.{ext}"
                 out.parent.mkdir(parents=True, exist_ok=True)
                 out.write_bytes(base64.b64decode(data.split(",", 1)[1]))
                 return self._json(HTTPStatus.OK, {"saved": str(out.relative_to(ROOT))})
             except (ValueError, TypeError) as exc:
                 return self._json(HTTPStatus.BAD_REQUEST, {"error": f"bad capture: {exc}"})
-        if path not in ("/api/evaluate", "/api/block_face/evaluate", "/api/scene/evaluate", "/api/site/run", "/api/scenario/freeze"):
+        if path not in ("/api/evaluate", "/api/block_face/evaluate", "/api/scene/evaluate", "/api/site/run", "/api/scenario/freeze", "/api/scenario/delete"):
             return self._json(HTTPStatus.NOT_FOUND, {"error": "unknown api route"})
         length = int(self.headers.get("Content-Length") or 0)
         try:
             payload = json.loads(self.rfile.read(length) or b"{}")
             if path == "/api/scenario/freeze":
-                result = scene_api.freeze_scene(payload.get("site_id"), payload.get("scene"), payload.get("subject"), payload.get("cut_aa_u"))
+                result = scene_api.freeze_scene(payload.get("site_id"), payload.get("scene"), payload.get("subject"), payload.get("cut_aa_u"), payload.get("replace"))
+            elif path == "/api/scenario/delete":
+                result = scene_api.delete_frozen(payload.get("site_id"), payload.get("scenario_id"))
             elif path == "/api/scene/evaluate":
                 result = scene_api.evaluate_scene(payload.get("site_id"), payload)
             elif path == "/api/site/run":

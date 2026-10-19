@@ -44,12 +44,32 @@ def sites_path_for(site_id: str) -> Optional[pathlib.Path]:
     """KE- sites live in the pilot file; V- sites in the sites_<window>.json that lists them."""
     if site_id.startswith("KE-"):
         return None
+    # the engine file remembers the sites file it was run from: read first, before any cached index — a scan made earlier in
+    # the server's life can point at an older window file for a tree run since (2026-10-17: a re-run on 1500 W 29th read a
+    # 10-13 file and found the tree outside its own frontage)
+    try:
+        ran = ((json.loads(W.block_face_path(site_id).read_text(encoding="utf-8")).get("run") or {}).get("args") or {}).get("sites")
+        if ran and pathlib.Path(ran).exists():
+            _SITES_INDEX[site_id] = str(ran)
+            return pathlib.Path(ran)
+    except (OSError, ValueError, W.ApiError):
+        pass
     if site_id in _SITES_INDEX:
         return pathlib.Path(_SITES_INDEX[site_id])
+    # windows overlap, so several files list one tree: prefer the file whose record was built from the VanMap block sentence
+    # (the tree was run from it), then the file built for this tree, then the newest (2026-10-17)
+    best: Dict[str, tuple] = {}
     for p in sorted(glob.glob(str(PROCESSED / "sites_*.json"))):
         doc = json.loads(pathlib.Path(p).read_text(encoding="utf-8"))
+        built = str(doc.get("built_on") or "")
         for e in doc.get("sites", []):
-            _SITES_INDEX.setdefault(e["record"]["site_id"], p)
+            sid = e["record"]["site_id"]; cr = e.get("city_reference") or {}
+            score = (2 if cr.get("LOCATION_NOTES") else 0) + (1 if doc.get("selected_site_id") == sid else 0)
+            key = (score, built)
+            if sid not in best or key > best[sid][0]:
+                best[sid] = (key, p)
+    for sid, (_k, p) in best.items():
+        _SITES_INDEX[sid] = p
     if site_id not in _SITES_INDEX:
         raise W.ApiError(f"{site_id}: no SITE records file lists it; run scripts/run_site.py --asset-id {site_id[2:]} first")
     return pathlib.Path(_SITES_INDEX[site_id])
@@ -257,14 +277,49 @@ def _knob_args(params: Dict[str, Any]) -> List[str]:
     return args
 
 
-def site_type_of(site_id: str) -> str:
-    """The site type the engine file was run with (boulevard unless the file says median)."""
+def _file_site_type(path) -> Optional[str]:
     try:
-        d = json.loads(W.block_face_path(site_id).read_text(encoding="utf-8"))
+        d = json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
         st = ((d.get("knobs") or {}).get("site_type") or {}).get("value") or (d.get("face") or {}).get("site_type")
-        return "median" if st == "median" else "boulevard"
-    except (OSError, ValueError):
+        return "median" if st == "median" else ("boulevard" if st else None)
+    except (OSError, ValueError, TypeError):
+        return None
+
+
+def _window_hint(site_id: str, sites_path) -> Optional[str]:
+    """The geometric position hint the window file holds for a tree ('median' within 3 m of the centreline)."""
+    try:
+        doc = json.loads(pathlib.Path(sites_path).read_text(encoding="utf-8"))
+        for e in doc.get("sites") or []:
+            r = e.get("record") or {}
+            sid = (r.get("site_id") or {}).get("value") if isinstance(r.get("site_id"), dict) else r.get("site_id")
+            if sid == site_id:
+                return (e.get("city_reference") or {}).get("px_position_hint_geometric")
+    except (OSError, ValueError, TypeError):
+        pass
+    return None
+
+
+def site_type_of(site_id: str, base_engine: Optional[str] = None, sites_path=None) -> str:
+    """The site type a run uses, in this order: the tree's own engine file; the face the page stands on (base_engine — a tree
+    clicked on a median's plan is a median tree); the window record's geometric hint; boulevard. A file that says boulevard for
+    a tree the window hints 'median' is overruled: that file is the bug this guards against (2026-10-18: a plan click on a
+    median tree without a file of its own defaulted to boulevard, with the median's half-width taken as a curb)."""
+    own = None
+    try:
+        own = _file_site_type(W.block_face_path(site_id))
+    except W.ApiError:
+        own = None
+    hint = _window_hint(site_id, sites_path) if sites_path else None
+    if own == "median" or hint == "median":
+        return "median"
+    if own == "boulevard":
         return "boulevard"
+    if base_engine:
+        inherited = _file_site_type(base_engine)
+        if inherited:
+            return inherited
+    return "boulevard"
 
 
 def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
@@ -296,7 +351,7 @@ def evaluate_scene(site_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
     sp = sites_path_for(site_id)
     if sp is not None:
         args += ["--sites", str(sp)]
-    args += ["--site-type", site_type_of(site_id)]   # the site type is the user's confirmation, kept in the engine file: a re-run keeps it
+    args += ["--site-type", site_type_of(site_id, params.get("base_engine"), sp)]   # the tree's own file, else the face the page stands on, else the window's hint
     if scenario:
         args += ["--out", str(PROCESSED / f"block_face_{out_id}.json")]
     args += _knob_args(params)
@@ -422,7 +477,11 @@ def tree_lookup(asset_id: int) -> Dict[str, Any]:
     f = sites.tree_by_asset_id(asset_id)
     p = f["properties"]
     lon, lat = f["geometry"]["coordinates"][:2]
-    street, how = sites.street_name_for(p, None)
+    # the street the tree stands on comes from the VanMap block sentence ("1400 W KING EDWARD AV, MEDIAN"), as the run reads it;
+    # the nearest address alone names the wrong street for a corner or median tree (2026-10-17: tree 206213, addressed to
+    # 4088 GRANVILLE ST, was hinted 41 m off Granville's centreline and run as a boulevard with its trees outside the band)
+    notes = sites.vanmap_location_notes(asset_id, timeout=8)
+    street, how = sites.street_name_for(p, notes)
     hint = sites.position_hint(lon, lat, street)
     # the engine file may exist under V-<id> (any tree), KE-<id> (the pilot sites) or in the citywide batch folder
     site_id = next((sid for sid in (f"V-{asset_id}", f"KE-{asset_id}") if (PROCESSED / f"block_face_{sid}.json").exists()), f"V-{asset_id}")
@@ -432,7 +491,40 @@ def tree_lookup(asset_id: int) -> Dict[str, Any]:
         home = _tree_site_index().get(asset_id) or _tree_site_index(rebuild=True).get(asset_id)
         if home:
             site_id, has, tree_site = home, True, f"V-{asset_id}"
-    return {"asset_id": asset_id, "properties": p, "lon": lon, "lat": lat, "street": street, "hint": hint, "site_id": site_id, "has_engine_file": has, "tree_site_id": tree_site}
+    if tree_site and how.startswith("VanMap"):
+        _window_street_from_vanmap(site_id, tree_site, street, how)
+    return {"asset_id": asset_id, "properties": p, "lon": lon, "lat": lat, "street": street, "street_how": how, "hint": hint, "site_id": site_id, "has_engine_file": has, "tree_site_id": tree_site}
+
+
+def _window_street_from_vanmap(anchor_site: str, tree_site: str, street: str, how: str) -> None:
+    """A tree on a checked face keeps its City address street in the window file until it is looked up; a corner tree's address
+    is on the cross street, and a run with it as the anchor then frames the cross street (4400 Selkirk St, tree 99234 addressed to
+    1206 Nanton Av, 2026-10-18: a 148 m 'band'). The lookup has the VanMap block sentence: write that street into the record,
+    as build_window_sites does for the selected tree, so a later run from the plan frames the right street."""
+    try:
+        path = sites_path_for(anchor_site)
+        if not path:
+            return
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        changed = False
+        for e in doc.get("sites") or []:
+            r = e.get("record") or {}
+            sid = (r.get("site_id") or {}).get("value") if isinstance(r.get("site_id"), dict) else r.get("site_id")
+            if sid != tree_site:
+                continue
+            cur = (r.get("street_name") or {}).get("value")
+            if cur != street:
+                r["street_name"] = {"value": street, "provenance": "DERIVED_CALCULATION", "status": "KNOWN"}
+                e.setdefault("city_reference", {})["street_name_source"] = how
+                changed = True
+            break
+        if changed:
+            tmp = path.with_suffix(".json.tmp")
+            tmp.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+            tmp.replace(path)
+            _SITES_INDEX.pop(tree_site, None)
+    except (OSError, ValueError):
+        return
 
 
 # ---------------------------------------------------------------------------------------------------- frozen scenarios
@@ -471,14 +563,15 @@ def frozen_files(site_id: str) -> List[pathlib.Path]:
     return out
 
 
-def freeze_scene(site_id: str, scene: Dict[str, Any], subject: Optional[str] = None, cut_aa_u: Optional[float] = None) -> Dict[str, Any]:
-    """Write the page's finished scenario scene as scene_<site>_<ID>.json (next free letter) and copy its engine file.
+def freeze_scene(site_id: str, scene: Dict[str, Any], subject: Optional[str] = None, cut_aa_u: Optional[float] = None, replace: Optional[str] = None) -> Dict[str, Any]:
+    """Write the page's finished scenario scene as scene_<site>_<ID>.json (next free letter, or `replace`'s letter overwritten:
+    the page keeps one scenario per tree and remembers it on every run, 2026-10-18) and copy its engine file.
     Returns the frozen scene exactly as written, so the page keeps the file's content, not its own copy."""
     W.block_face_path(site_id)
     if not isinstance(scene, dict) or scene.get("site_id", "").split("_")[0] != site_id:
         raise W.ApiError("the scene to freeze does not belong to this site")
     used = {p.stem[len(f"scene_{site_id}_"):] for p in frozen_files(site_id)}
-    sid = next((c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" if c not in used), None)
+    sid = replace if (replace and FROZEN_ID.fullmatch(str(replace))) else next((c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" if c not in used), None)
     if sid is None:
         raise W.ApiError("26 scenarios are frozen for this site already")
     out_scene = PROCESSED / f"scene_{site_id}_{sid}.json"
@@ -513,6 +606,18 @@ def freeze_scene(site_id: str, scene: Dict[str, Any], subject: Optional[str] = N
     frozen["frozen"]["hash"] = scene_hash(frozen)
     out_scene.write_text(json.dumps(frozen, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return frozen
+
+
+def delete_frozen(site_id: str, scenario_id: str) -> Dict[str, Any]:
+    """Remove one frozen scenario (its scene and its engine copy): the page's START OVER, or a run that equals today again."""
+    W.block_face_path(site_id)
+    if not FROZEN_ID.fullmatch(str(scenario_id or "")):
+        raise W.ApiError("not a scenario id")
+    gone = []
+    for q in (PROCESSED / f"scene_{site_id}_{scenario_id}.json", PROCESSED / f"block_face_{site_id}_{scenario_id}.json"):
+        if q.exists():
+            q.unlink(); gone.append(q.name)
+    return {"site_id": site_id, "scenario_id": scenario_id, "deleted": gone}
 
 
 def list_frozen(site_id: str) -> Dict[str, Any]:

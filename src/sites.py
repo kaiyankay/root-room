@@ -341,9 +341,25 @@ def build_window_sites(centre_lon: float, centre_lat: float, radius_m: float, wi
     """
     entries = []
     selected_entry = None
+    # a tree run before keeps its record: its street came from the VanMap block sentence when it was the selected tree, and the
+    # engine's re-runs read this shared window file (2026-10-17: a median tree re-run from the address's street found no
+    # property line and failed; the record built for another tree's run had replaced its own)
+    out = PROCESSED / f"sites_{window}.json"
+    prev: Dict[int, Dict[str, Any]] = {}
+    if out.exists():
+        try:
+            for e in json.loads(out.read_text(encoding="utf-8")).get("sites", []):
+                cr = e.get("city_reference") or {}
+                if cr.get("LOCATION_NOTES") and cr.get("asset_id") is not None:
+                    prev[int(cr["asset_id"])] = e
+        except (OSError, ValueError):
+            prev = {}
     for d, f in trees_near(centre_lon, centre_lat, radius_m):
         p = f["properties"]
         asset = int(p["asset_id"])
+        if asset != int(selected_asset_id) and asset in prev:
+            entries.append(prev[asset])
+            continue
         notes = vanmap_location_notes(asset) if (use_vanmap and asset == int(selected_asset_id)) else None
         street, how = street_name_for(p, notes)
         lon, lat = f["geometry"]["coordinates"][:2]
@@ -383,6 +399,5 @@ def build_window_sites(centre_lon: float, centre_lat: float, radius_m: float, wi
         "sites": entries,
     }
     PROCESSED.mkdir(parents=True, exist_ok=True)
-    out = PROCESSED / f"sites_{window}.json"
     out.write_text(json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8")
     return out, doc

@@ -1475,7 +1475,9 @@
       "u_to": -35.65
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 40.2798,
+     "clearance_area_m2": 19.8168
     }
    },
    {
@@ -1520,7 +1522,9 @@
       "u_to": -35.65
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 75.9968,
+     "clearance_area_m2": 37.3888
     }
    },
    {
@@ -1565,7 +1569,9 @@
       "u_to": -35.65
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 73.7902,
+     "clearance_area_m2": 30.6717
     }
    },
    {
@@ -1610,7 +1616,9 @@
       "u_to": -35.65
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 38.1854,
+     "clearance_area_m2": 15.4171
     }
    },
    {
@@ -1655,7 +1663,9 @@
       "u_to": -35.65
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 40.5042,
+     "clearance_area_m2": 16.3533
     }
    },
    {
@@ -1699,7 +1709,9 @@
       "u_to": 37.06
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 37.0821,
+     "clearance_area_m2": 14.9717
     }
    },
    {
@@ -1744,7 +1756,9 @@
       "u_to": 37.06
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 54.3609,
+     "clearance_area_m2": 21.9479
     }
    },
    {
@@ -1789,7 +1803,9 @@
       "u_to": 37.06
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 52.3226,
+     "clearance_area_m2": 21.0623
     }
    },
    {
@@ -1834,7 +1850,9 @@
       "u_to": 37.06
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 54.2487,
+     "clearance_area_m2": 22.096
     }
    },
    {
@@ -1879,7 +1897,9 @@
       "u_to": 37.06
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 57.7082,
+     "clearance_area_m2": 32.5573
     }
    },
    {
@@ -1921,7 +1941,9 @@
       "u_to": 45.98
      },
      "interrupted": true,
-     "utility_conflict_at_tree": false
+     "utility_conflict_at_tree": false,
+     "gross_area_m2": 17.952,
+     "clearance_area_m2": 10.128
     }
    }
   ],
@@ -4553,7 +4575,7 @@
  },
  "run": {
   "script": "scripts/run_block_face.py",
-  "run_on": "2026-10-12",
+  "run_on": "2026-10-16",
   "args": {
    "site": "KE-198571",
    "site_type": "boulevard",

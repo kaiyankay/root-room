@@ -74,6 +74,7 @@ SITE_TYPES = ("boulevard", "median")               # the user's confirmation of 
 MEDIAN_MIN_HALF_M = 1.0                            # a median curb nearer the centreline than this is not a median (the tree would not fit)
 MEDIAN_CARRIAGEWAY_MIN_M = 6.0                     # a median curb must leave at least this to the property line (a lane, a boulevard, a sidewalk): the outer curb's fixtures are not the median's
 MEDIAN_TREE_TOLERANCE_M = 12.0                     # a median face's trees: the sites hinted 'median' (sites.position_hint, within 3 m of the centreline) and every tree inside the roadway's outer curbs, this far out at most
+MEDIAN_PAIR_WINDOW_M = 2.5                         # a median's two curbs are paired within this of the nearest candidate (measured from the median's centre; a median sits a metre or so off that centre at a turn bay)
 MEDIAN_NOSE_M = 10.0                               # catch basins this far beyond the block's ends are the median's nose inlets (counted); further out they belong to the cross street (not counted)
 EXTENSION_SOIL_TYPES = ("native_soil", "structural_soil", "soil_cell", "other")
 EXTENSION_PROVENANCE = ("USER_INPUT", "DESIGN_ASSUMPTION", "CONFIRMED_SITE_DATA")
@@ -468,10 +469,20 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH, si
     # trust — catch basins on this face (at the gutter), catch basins just beyond its ends (the corner inlets), street-lighting
     # poles (about 0.6 m behind the curb face), hydrants (the same) — and offers the first that gives a plausible offset.
     lo_ok, hi_ok = 1.5, max(1.6, d_cl + pl_at_tree - 1.0)   # a curb lies between the centreline and the property line
+    # and on the road side of the row's trunks: a boulevard tree stands behind the curb, so a fixture offset beyond the nearest
+    # trunk (less half a metre) is not this face's curb (3600 Cartier, 2026-10-17: the median of two basins at 3.71 and 8.55 m
+    # put the curb 0.5 m behind the City's tree; the band held no tree and the rule stopped at every cell)
+    trunks = [d_cl] + [t["dist_centreline_m"] for t in trees if t.get("dist_centreline_m") is not None and abs(t["u"]) <= 25.0]
+    trunk_lo = min(trunks)
+    hi_fix = hi_ok
+    hi_ok = min(hi_ok, trunk_lo - 0.5)
     plaus = lambda xs: [x for x in xs if lo_ok <= x <= hi_ok]
+    behind = lambda xs: sorted(_r(x) for x in xs if hi_ok < x <= hi_fix)
     median = lambda xs: (sorted(xs)[len(xs) // 2] if len(xs) % 2 else (sorted(xs)[len(xs) // 2 - 1] + sorted(xs)[len(xs) // 2]) / 2) if xs else None
-    poles = plaus([d_cl + u_v[1] - 0.6 for x in utilities if x["dataset"] == "street-lighting-poles" and x["local_uv"]
-                   for u_v in x["local_uv"] if u_from - 5 <= u_v[0] <= u_to + 5 and abs(u_v[1]) <= 4.0])
+    poles_all = [d_cl + u_v[1] - 0.6 for x in utilities if x["dataset"] == "street-lighting-poles" and x["local_uv"]
+                 for u_v in x["local_uv"] if u_from - 5 <= u_v[0] <= u_to + 5 and abs(u_v[1]) <= 4.0]
+    poles = plaus(poles_all)
+    cb_all = list(cb)
     near_cb, hyd = [], []
     for ds, out, shift in (("sewer-catch-basins", near_cb, 0.0), ("water-hydrants", hyd, -0.6)):
         for f in _layer(ds):
@@ -479,21 +490,27 @@ def _build_block_face(site_id: str, sites_path: pathlib.Path = si.SITES_PATH, si
                 u, v = uv_lonlat(*pt[:2])
                 if u_from - 30 <= u <= u_to + 30 and abs(v) <= 4.0:
                     out.append(d_cl + v + shift)
+    near_cb_all, hyd_all = list(near_cb), list(hyd)
     near_cb, hyd = plaus(near_cb), plaus(hyd)
     suggested, source = None, None
+    trunk_fallback = [trunk_lo - 0.75] if trunk_lo - 0.75 >= lo_ok else []
     for xs, src in ((plaus(cb), "catch basins on this face"), (near_cb, "catch basins at the block's corners"),
-                    (poles, "street-lighting poles, 0.6 m behind the curb"), (hyd, "hydrants, 0.6 m behind the curb")):
+                    (poles, "street-lighting poles, 0.6 m behind the curb"), (hyd, "hydrants, 0.6 m behind the curb"),
+                    (trunk_fallback, "the row's trunks, the curb face 0.75 m on the road side of the nearest")):
         if xs:
             suggested, source = _r(median(xs)), src
             break
+    behind_trunks = behind(cb_all + near_cb_all + poles_all + hyd_all)
     curb_hint = {"catch_basin_offsets_from_centreline_m": sorted(_r(x) for x in cb),
                  "nearby_catch_basin_offsets_from_centreline_m": sorted(_r(x) for x in near_cb),
                  "pole_offsets_from_centreline_m": sorted(_r(x) for x in poles),
                  "hydrant_offsets_from_centreline_m": sorted(_r(x) for x in hyd),
+                 "trunk_bound_m": _r(trunk_lo - 0.5), "behind_the_trunks_m": behind_trunks,
                  "suggested_m": suggested, "suggested_source": source,
                  "note": ("City fixtures at or just behind the curb (catch basins 'location approximate'; poles and hydrants "
-                          "taken 0.6 m behind the curb face). A hint for the curb knob only, DESIGN_ASSUMPTION when used; "
-                          "the curb line itself is not in City Open Data.")}
+                          "taken 0.6 m behind the curb face), and never behind the row's trunks (trunk_bound_m: the nearest "
+                          "trunk within 25 m less 0.5 m; offsets beyond it are listed under behind_the_trunks_m and not used). "
+                          "A hint for the curb knob only, DESIGN_ASSUMPTION when used; the curb line itself is not in City Open Data.")}
     if is_median:
         curb_hint = _median_hint(utilities, _layer, uv_lonlat, u_from, u_to, d_cl, pl_at_tree, pl_far_at_tree,
                                  [(t["dist_centreline_m"], t.get("position_hint") == "median" or t["site_id"] == site_id) for t in trees])
@@ -600,32 +617,39 @@ def _median_hint(utilities, layer, uv_lonlat, u_from, u_to, d_cl, pl_near, pl_fa
                 outer[key] = _r(med([x for x in vals if x >= top - 2.0]))
                 outer["source"] = outer["source"] or src
                 break
-    # 2. the median's curb, beyond the median's trees: the sites hinted 'median' and every tree inside the outer curbs
-    inner = (min(x for x in (outer["near"], outer["far"]) if x is not None) - 1.0) if (outer["near"] is not None or outer["far"] is not None) else None
-    in_median = [o for o, hinted in tree_offsets if hinted or (inner is not None and abs(o) < inner)]
-    lo = max(MEDIAN_MIN_HALF_M, max([abs(x) for x in in_median] or [0.0]) + 0.8)
+    # 2. the median's curb, beyond the median's trees: the sites hinted 'median' and every tree inside the outer curbs.
+    # Everything is measured from the median's own centre c0, the outer curbs' midpoint: on a divided street the frame's
+    # centreline (the nearest public-streets segment) can sit metres off the median's centre, and two trees of one median then
+    # got two frames and two half-widths (1400 W King Edward, 2026-10-18: 5.48 m from one tree's frame, 9.77 m — the far outer
+    # curb paired with the near median curb — from another's, 4.8 m apart). Measured from c0 the same pair is found from any tree.
+    c0 = _r((outer["near"] - outer["far"]) / 2) if (outer["near"] is not None and outer["far"] is not None) else 0.0
+    half_road = {"+v": (outer["near"] if outer["near"] is not None else pl_cl["+v"]) - c0,
+                 "-v": (outer["far"] if outer["far"] is not None else pl_cl["-v"]) + c0}
+    inner = (min(half_road.values()) - 1.0) if (outer["near"] is not None or outer["far"] is not None) else None
+    in_median = [o for o, hinted in tree_offsets if hinted or (inner is not None and abs(o - c0) < inner)]
+    lo = max(MEDIAN_MIN_HALF_M, max([abs(x - c0) for x in in_median] or [0.0]) + 0.8)
     def hi(sg):
-        o = outer["near" if sg == "+v" else "far"]
-        return (o if o is not None else pl_cl[sg]) - MEDIAN_CARRIAGEWAY_MIN_M
-    ok = lambda xs: [(s_, u) for s_, u in xs if lo <= abs(s_) <= hi(side(s_))]
+        return half_road[sg] - MEDIAN_CARRIAGEWAY_MIN_M
+    ok = lambda xs: [(s_, u) for s_, u in xs if lo <= abs(s_ - c0) <= hi(side(s_ - c0))]
     tiers = ((ok(basins), "catch basins on this block, either side of the centreline"),
              (ok(poles), "street-lighting poles, 0.6 m behind a curb"), (ok(hyd), "hydrants, 0.6 m behind a curb"))
     suggested, centre, source, cluster, sides = None, 0.0, None, [], []
     for xs, src in tiers:
         if not xs:
             continue
-        a0 = min(abs(s_) for s_, _ in xs)
-        cluster = [(s_, u) for s_, u in xs if abs(s_) <= a0 + 1.5]
-        plus = [s_ for s_, _ in cluster if s_ > 0]; minus = [s_ for s_, _ in cluster if s_ < 0]
+        a0 = min(abs(s_ - c0) for s_, _ in xs)
+        cluster = [(s_, u) for s_, u in xs if abs(s_ - c0) <= a0 + MEDIAN_PAIR_WINDOW_M]
+        plus = [s_ - c0 for s_, _ in cluster if s_ - c0 > 0]; minus = [s_ - c0 for s_, _ in cluster if s_ - c0 < 0]
         sides = (["+v"] if plus else []) + (["-v"] if minus else [])
         if plus and minus:
             mp, mm = med(plus), med(minus)
-            centre, suggested = _r((mp + mm) / 2), _r((mp - mm) / 2)
+            centre, suggested = _r(c0 + (mp + mm) / 2), _r((mp - mm) / 2)
         else:
-            suggested = _r(med([abs(s_) for s_, _ in cluster]))
+            suggested = _r(med([abs(s_ - c0) for s_, _ in cluster]))
+            centre = c0
         source = src
         break
-    rejected = sorted({_r(abs(s_)) for s_, _ in basins + poles + hyd if abs(s_) < lo})
+    rejected = sorted({_r(abs(s_ - c0)) for s_, _ in basins + poles + hyd if abs(s_ - c0) < lo})
     return {"kind": "median",
             "catch_basin_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in basins),
             "nearby_catch_basin_offsets_from_centreline_m": sorted(_r(abs(s_)) for s_, _ in cb_nose),
@@ -635,7 +659,7 @@ def _median_hint(utilities, layer, uv_lonlat, u_from, u_to, d_cl, pl_near, pl_fa
                                  "poles": sorted(_r(s_) for s_, _ in poles), "hydrants": sorted(_r(s_) for s_, _ in hyd)},
             "suggested_m": suggested, "suggested_source": source, "centre_offset_m": centre if suggested is not None else 0.0,
             "sides_seen": sides, "cluster_m": sorted(_r(s_) for s_, _ in cluster),
-            "tree_bound_m": _r(lo), "carriageway_min_m": MEDIAN_CARRIAGEWAY_MIN_M, "inner_bound_m": _r(inner),
+            "tree_bound_m": _r(lo), "carriageway_min_m": MEDIAN_CARRIAGEWAY_MIN_M, "inner_bound_m": _r(inner), "median_centre_from_outer_curbs_m": c0,
             "inside_the_trees_m": rejected,
             "outer_curb_m": outer,
             "reason_if_none": (None if suggested is not None else
@@ -847,6 +871,10 @@ def apportion(face: Dict[str, Any], band: Dict[str, float], strips: List[Dict[st
                 "segment": seg, "u_from": _r(left), "u_to": _r(right), "spacing_m": _r(right - left),
                 "band_width_m": width, "pieces": pieces,
                 "usable_area_m2": None if (conflict or outside) else area,
+                # the cell's gross area and what the clearance strips take from it, so the page's ledger reads both from the
+                # engine instead of multiplying and subtracting on its own (the UX review of 2026-10-16)
+                "gross_area_m2": round((right - left) * width, 4),
+                "clearance_area_m2": None if (conflict or outside) else round(max(0.0, (right - left) * width - area), 4),
                 "utility_conflict_at_tree": conflict, "tree_outside_band": outside,
                 "interrupted": any(p["strips"] for p in pieces),
                 "end_of_row": inner_w is None or inner_e is None,
@@ -1342,7 +1370,7 @@ def _evaluate_state(face, band, depth_value, type_value, knob_provenance, target
         envs[t["site_id"]] = env
         s = _summary(env, cell)
         s.update({"site_id": t["site_id"], "u": t["u"], "height_m": t["height_m"], "genus": t["genus"],
-                  "cell": {k: cell[k] for k in ("u_from", "u_to", "segment", "interrupted", "utility_conflict_at_tree")}})
+                  "cell": {k: cell.get(k) for k in ("u_from", "u_to", "segment", "interrupted", "utility_conflict_at_tree", "gross_area_m2", "clearance_area_m2")}})
         if ext:
             s["extensions"] = _extension_shares(face, t, cell, ext, env, depth, target, state, sites_path, replacement)
         trees_out.append(s)

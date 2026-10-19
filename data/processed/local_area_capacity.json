@@ -1,5 +1,5 @@
 {
- "built_on": "2026-10-08",
+ "built_on": "2026-10-18",
  "built_by": "scripts/batch_faces.py",
  "source": "data/processed/citywide_faces.json",
  "measure": "per local area: sample block faces run with the batch knobs; 'largest_class_fits' counts faces; review_share = trees whose share is REVIEW_REQUIRED / trees on the run faces",
@@ -179,7 +179,7 @@
   },
   "Kerrisdale": {
    "faces_attempted": 12,
-   "faces_run": 5,
+   "faces_run": 6,
    "windows": [
     "wm123_152_p49_208",
     "wm123_160_p49_224",
@@ -190,17 +190,16 @@
     "Large": 0,
     "Medium": 0,
     "Small": 0,
-    "none": 0,
+    "none": 1,
     "unknown": 5
    },
-   "trees": 86,
-   "trees_review": 61,
-   "review_share": 0.709,
-   "front_boulevard_median_m": 1.7,
+   "trees": 96,
+   "trees_review": 69,
+   "review_share": 0.719,
+   "front_boulevard_median_m": 1.69,
    "large_fits_share": 0.0,
    "failures": {
-    "face not measurable": 6,
-    "front boulevard not available": 1
+    "face not measurable": 6
    }
   },
   "Killarney": {
@@ -246,8 +245,8 @@
     "unknown": 3
    },
    "trees": 92,
-   "trees_review": 55,
-   "review_share": 0.598,
+   "trees_review": 52,
+   "review_share": 0.565,
    "front_boulevard_median_m": 2.95,
    "large_fits_share": 0.4,
    "failures": {
@@ -289,17 +288,17 @@
     "wm123_108_p49_272"
    ],
    "largest_class_fits": {
-    "Large": 2,
+    "Large": 3,
     "Medium": 0,
-    "Small": 2,
+    "Small": 1,
     "none": 0,
     "unknown": 6
    },
    "trees": 72,
    "trees_review": 49,
    "review_share": 0.681,
-   "front_boulevard_median_m": 1.86,
-   "large_fits_share": 0.2,
+   "front_boulevard_median_m": 2.04,
+   "large_fits_share": 0.3,
    "failures": {
     "face not measurable": 5
    }
@@ -370,8 +369,8 @@
     "unknown": 2
    },
    "trees": 72,
-   "trees_review": 25,
-   "review_share": 0.347,
+   "trees_review": 24,
+   "review_share": 0.333,
    "front_boulevard_median_m": 2.45,
    "large_fits_share": 0.286,
    "failures": {
@@ -389,24 +388,24 @@
     "wm123_144_p49_240"
    ],
    "largest_class_fits": {
-    "Large": 2,
+    "Large": 4,
     "Medium": 0,
     "Small": 0,
     "none": 0,
-    "unknown": 8
+    "unknown": 6
    },
    "trees": 140,
-   "trees_review": 123,
-   "review_share": 0.879,
-   "front_boulevard_median_m": 3.28,
-   "large_fits_share": 0.2,
+   "trees_review": 117,
+   "review_share": 0.836,
+   "front_boulevard_median_m": 3.42,
+   "large_fits_share": 0.4,
    "failures": {
     "face not measurable": 4
    }
   },
   "South Cambie": {
    "faces_attempted": 13,
-   "faces_run": 9,
+   "faces_run": 10,
    "windows": [
     "wm123_120_p49_248",
     "wm123_120_p49_252",
@@ -416,23 +415,22 @@
    "largest_class_fits": {
     "Large": 4,
     "Medium": 1,
-    "Small": 2,
+    "Small": 3,
     "none": 0,
     "unknown": 2
    },
-   "trees": 107,
+   "trees": 111,
    "trees_review": 50,
-   "review_share": 0.467,
-   "front_boulevard_median_m": 2.74,
-   "large_fits_share": 0.444,
+   "review_share": 0.45,
+   "front_boulevard_median_m": 2.65,
+   "large_fits_share": 0.4,
    "failures": {
-    "face not measurable": 3,
-    "no City fixture at the curb on this face (no catch basin, pole or hydrant)": 1
+    "face not measurable": 3
    }
   },
   "Strathcona": {
    "faces_attempted": 16,
-   "faces_run": 10,
+   "faces_run": 11,
    "windows": [
     "wm123_084_p49_276",
     "wm123_088_p49_276",
@@ -444,17 +442,16 @@
     "Medium": 1,
     "Small": 2,
     "none": 0,
-    "unknown": 7
+    "unknown": 8
    },
-   "trees": 100,
-   "trees_review": 92,
-   "review_share": 0.92,
-   "front_boulevard_median_m": 2.18,
+   "trees": 108,
+   "trees_review": 96,
+   "review_share": 0.889,
+   "front_boulevard_median_m": 2.29,
    "large_fits_share": 0.0,
    "failures": {
     "face not measurable": 4,
-    "front boulevard not available": 1,
-    "no City fixture at the curb on this face (no catch basin, pole or hydrant)": 1
+    "front boulevard not available": 1
    }
   },
   "Sunset": {
