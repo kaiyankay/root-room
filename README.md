@@ -1,12 +1,9 @@
-# Root Room
+<h1 align="center">Root Room</h1>
+<p align="center"><b>How much tree can the ground carry?</b><br>ARCH 540 · Assignment 1 · Making Design Knowledge Interactive</p>
+<p align="center"><a href="https://kaiyankay.github.io/root-room/"><b>Open the live demo →</b></a><br><sub>a desktop browser, 1500 × 800 or larger · any public street tree in Vancouver</sub></p>
 
-### How much tree can the ground carry?
+<p align="center"><img src="docs/readme_cover.png" width="960" alt="Root Room · the block of 400 W King Edward Avenue as an axonometric: the band with its trees, the credited soil in green, the ground below"></p>
 
-ARCH 540 · Assignment 1 · Making Design Knowledge Interactive
-
-**[Open the live demo →](https://kaiyankay.github.io/root-room/)** · a desktop browser, 1500 × 800 or larger
-
-![Root Room · the scenario as an exploded axonometric: the credited soil lifted as a planter with the roots inside, the mains at their depth, the native ground drawn as a convention](docs/readme_cover.png)
 
 ## Purpose
 
@@ -41,23 +38,23 @@ The online version is built by `scripts/build_static.py` and published by GitHub
 
 One question runs through the page, *how much tree can the ground carry at …?*, and one continuous scroll answers it in six stages on one drawing. The rail's steps, the keys 1–6 and the arrow keys jump between them; every forward button names the stage it goes to. Every run shows itself: a bar along the top of the sheet fills over the time the last run took, and the stage tag counts the seconds.
 
-![Stage 1 · location: the city as an atlas of the 22 local areas; the checked streets listed in the rail](docs/readme_01_atlas.png)
+<p align="center"><img src="docs/readme_01_atlas.png" width="960" alt="Stage 1 · location: the city as an atlas of the 22 local areas; the checked streets listed in the rail"></p>
 
 **1 · location.** The city as an atlas. Scroll zooms through three levels (CITY · AREA · BLOCK); a click chooses the subject at each level: a local area, one of its checked streets, or, at the block level, any public tree as a dot. The rail lists what the tool reads (the City layers and the rule sources) and the checked streets of the focused area, 205 block faces in the 22 local areas. Any address or tree id typed into the title runs the engine for a new street.
 
 **2 · street plan.** The whole block face at one scale: the property line, the sidewalk, the band, the curb, the road, every tree with its share of the band in m³, the mains' clearance strips hatched across the band. Click a tree and its card opens; the A–A mark drags along the street and picks the tree it crosses.
 
-![Stage 3 · tree + ground: the plan strip, SECTION A–A through the chosen tree across the whole half-street, and the City's record of the site with its tags](docs/readme_03_tree_ground.png)
+<p align="center"><img src="docs/readme_03_tree_ground.png" width="960" alt="Stage 3 · tree + ground: the plan strip, SECTION A–A through the chosen tree across the whole half-street, and the City's record of the site with its tags"></p>
 
 **3 · tree + ground.** Before anything is changed, what is known about this site. SECTION A–A runs from the yard to the centreline with the ground drawn in the City's standard-detail hatches, the tree's nursery ball and its roots in the credited soil, the mains in their trenches, and every layer named on a leader. The column reads THE TREE (the City's record) and THE GROUND as the rule reads it: GIVEN, CUT, EXISTING, COUNTED, each value with its tag; a tag opens the page of the manual it comes from. A curb measured on site can be entered with its evidence and replaces the assumed curb.
 
-![Stage 4 · scenario builder: THE GROUND on the left, SECTION A–A as the instrument with the whole tree, THE TREE on the right with the species cards](docs/readme_04_workbench.png)
+<p align="center"><img src="docs/readme_04_workbench.png" width="960" alt="Stage 4 · scenario builder: THE GROUND on the left, SECTION A–A as the instrument with the whole tree, THE TREE on the right with the species cards"></p>
 
 **4 · scenario builder.** Design the ground and see how much tree it can carry. Left, THE GROUND: the soil depth (a slider, or the handle on the section), the soil system (native, structural, soil cells), more soil under the sidewalk or the parking lane, checked against the mains, and START OVER. Centre: SECTION A–A with the whole tree, the depth handle on the band and the credited soil named on the drawing. Right, THE TREE: keep the City's tree or plant a new one, the Table 9-2 classes the ground carries (Small · Medium · Large, FITS or NO ROOM) and the Table 9-3 species of each class as cards, dragged into the section or planted with a click. WHAT IT CARRIES answers first: the figure and the class it reaches, a placed species' verdict with its requirement and the gap, the Table 9-2 ruler, then HOW IT IS COUNTED, the ledger from the cell to the credited soil. Every finished run is remembered as this tree's scenario, one per tree; the title keeps TODAY and SCENARIO side by side at stages 4, 5 and 6.
 
 **5 · axonometric results.** The scenario built: the block opens station by station — the surface, the planter with the credited soil, the tree coming down into its pit with the roots growing out, the mains at their recorded depth, the native ground drawn as a soil section and captioned as a convention. One wheel notch is one station; drag to turn the block; a ladder of numbers opens any station.
 
-![Stage 6 · summary & report: TODAY beside YOUR SCENARIO — the class each ground carries, the two ground details on one frame, what changed](docs/readme_06_summary.png)
+<p align="center"><img src="docs/readme_06_summary.png" width="960" alt="Stage 6 · summary & report: TODAY beside YOUR SCENARIO — the class each ground carries, the two ground details on one frame, what changed"></p>
 
 **6 · summary & report.** The answer as one row: TODAY | YOUR SCENARIO, each with the class the ground carries (NOT ASSESSABLE · UP TO A LARGE TREE · ONLY A SMALL TREE · MANUAL REVIEW), the volume credited, the species, its requirement and the verdict with the gap. Under it the two grounds drawn as 3's ground detail on one frame at one scale, before and after, each with its numbered key; then the same six rows for both (premise · species · soil · more soil · band · counted), the scenario's differences from today marked; 05 · AXONOMETRIC, 04 · CHANGE IT, and PDF REPORT, one letter page in landscape with the section, the rows and the sourced count.
 
